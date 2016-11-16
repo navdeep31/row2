@@ -2,21 +2,18 @@ package jar;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="purchase_order")
 
+@NamedQueries({
+@NamedQuery(name="findById", query="SELECT p FROM purchase_order p WHERE p.id=:id"),
+@NamedQuery(name="findByAddress", query="SELECT p FROM purchase_order p WHERE p.deliveryAddress=:deliveryAddress"),
+@NamedQuery(name="findByEmployee", query="SELECT p FROM purchase_order p WHERE p.employee_id=:employee_id")
+
+})
 public class PurchaseOrder {
 	
 	@Id
