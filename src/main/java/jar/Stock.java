@@ -8,4 +8,11 @@ public class Stock {
 	public Stock(int id) {
 		
 	}
+
+	//Getters and setters
+	public int getId() {
+		return id;
+	}
+
+	
 }

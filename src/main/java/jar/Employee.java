@@ -9,4 +9,16 @@ public class Employee {
 	public Employee (int id, String password_hash) {
 		
 	}
+
+	//Getters and setters
+	public int getId() {
+		return id;
+	}
+
+	public String getPassword_hash() {
+		return password_hash;
+	}
+
+	
+	
 }
