@@ -8,12 +8,15 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name="product")
-@NamedQuery(name="findByID", query="SELECT p FROM product WHERE p.id=:id")
-//@NamedQuery(name="findByName", query="SELECT p FROM product WHERE p.name=:name")
+@NamedQueries({
+@NamedQuery(name="findByID", query="SELECT p FROM product WHERE p.id=id"),
+@NamedQuery(name="findByname", query="SELECT * FROM product WHERE p.name=:name"),
+@NamedQuery(name="OrderByDateAdded", query="SELECT * FROM product ORDER BY date_added DESC")
+
+})
+
 public class Product {
 	
-
-
 	@Id
 	@Column(name = "id", nullable=false, unique = true)
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
