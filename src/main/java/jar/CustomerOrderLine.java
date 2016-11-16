@@ -1,5 +1,9 @@
 package jar;
 
+import javax.persistence.*;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
 /**
  * Represents a Customer Order Line, with a single product and quantity
  * 
@@ -7,16 +11,34 @@ package jar;
  * @version 0.2 16/11/2016
  *
  */
+@Entity
+@Table(name="customer_order_line")
+@NamedQueries({
+	@NamedQuery(name="CustomerOrderLine.findAll", query="SELECT col FROM customer_order_line col"),
+	@NamedQuery(name="CustomerOrderLine.findByCustomerOrder", query="SELECT col FROM customer_order_line co WHERE col.customer_order_id = :id")
+})
 public class CustomerOrderLine {
 	
 	/////////////////////////////////////////////FIELDS//////////////////////////////////////////////////
 	
+	@Id
+	@Column(name="number", nullable=false)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int lineNumber;
+	
+	@ManyToOne
+	@JoinColumn(name="product_id", nullable=false)
+	@NotNull
 	private Product product;
+	
+	@Column(name="quantity", nullable=false)
+	@NotNull
 	private int quantity;
 	
 	private static int lineNumberCount = 0;
 	//TODO Possibly rename as id? Doesn't set line numbers from 1 per order currently
+	//TODO Possibly needs a rethink with database integration? (unless stored in database?)
+	
 	
 	/////////////////////////////////////////CONSTRUCTORS///////////////////////////////////////////////
 	
