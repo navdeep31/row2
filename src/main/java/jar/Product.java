@@ -1,24 +1,65 @@
+
 package jar;
-//@Entity
-//@Table(name="product")
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name="product")
 public class Product {
+	
+
+
+	@Id
+	@Column(name = "id", nullable=false, unique = true)
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private long productID;
+	
+	@ManyToOne
+	@JoinColumn(name="stock_id", nullable =false)
+	@NotNull
+	private long stockID;
+	
+	@Column(length=225)
+	@Size(max=225)
+	@NotNull
 	private String name;
+	
+	@Column(length=225)
+	@Size(max=225)
+	@NotNull
 	private String description;
+	
+	@Column
+	@NotNull
 	private int quantity;
-	private double rrp;
-	private double currentPrice;
+	
+	@Column
+	@NotNull
+	private int rrp;
+	
+	@Column(name="current_price")
+	@NotNull
+	private int currentPrice;
+	
+	@Column(length=225)
+	@Size(max=225)
+	@NotNull
 	private String status;
+	
+	@Column(name="date_added")
+	@NotNull
 	private LocalDate dateAdded;
 	
 	
-	
-	public Product(long productID, String name, String description, int quantity, double rrp, double currentPrice,
-			String status, LocalDate dateAdded) {
-		
+	//Constructors
+	public Product(long productID, long stockID, String name, String description, int quantity, int rrp,
+			int currentPrice, String status, LocalDate dateAdded) {
+		super();
 		this.productID = productID;
+		this.stockID = stockID;
 		this.name = name;
 		this.description = description;
 		this.quantity = quantity;
@@ -30,6 +71,7 @@ public class Product {
 
 
 
+	//Getters and Setters
 	public long getProductID() {
 		return productID;
 	}
@@ -40,7 +82,15 @@ public class Product {
 		this.productID = productID;
 	}
 
+	public long getStockID() {
+		return stockID;
+	}
 
+
+
+	public void setStockID(long stockID) {
+		this.stockID = stockID;
+	}
 
 	public String getName() {
 		return name;
@@ -84,7 +134,7 @@ public class Product {
 
 
 
-	public void setRrp(double rrp) {
+	public void setRrp(int rrp) {
 		this.rrp = rrp;
 	}
 
@@ -96,7 +146,7 @@ public class Product {
 
 
 
-	public void setCurrentPrice(double currentPrice) {
+	public void setCurrentPrice(int currentPrice) {
 		this.currentPrice = currentPrice;
 	}
 
