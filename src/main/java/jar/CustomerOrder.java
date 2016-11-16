@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
  * Represents a customer order, using a list of customer order lines
  * 
  * @author Alex Dawson
- * @version 0.2 16/11/2016
+ * @version 0.3 16/11/2016
  *
  */
 @Entity
