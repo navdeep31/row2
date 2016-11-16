@@ -1,24 +1,50 @@
 package jar;
 
 import java.util.*;
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
 /**
  * Represents a customer order, using a list of customer order lines
  * 
  * @author Alex Dawson
- * @version 0.2 16/11/2016
+ * @version 0.3 16/11/2016
  *
  */
+@Entity
+@Table(name="customer_order")
+@NamedQueries({
+	@NamedQuery(name="CustomerOrder.findAll", query="SELECT co FROM customer_order co"),
+	@NamedQuery(name="CustomerOrder.findByCustomer", query="SELECT co FROM customer_order co WHERE co.customer_id = :id")
+})
 public class CustomerOrder {
 	
 	/////////////////////////////////////////////FIELDS//////////////////////////////////////////////////
 	
+	@Id
+	@Column(name="id", nullable=false, unique=true)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	@OneToMany
+	@JoinTable(name="customer_order_lines",
+		joinColumns=
+			@JoinColumn(name="customer_order_id", referencedColumnName="id")
+	)
 	private List<CustomerOrderLine> orderLines;
+	
+	@ManyToOne
+	@JoinColumn(name="address_id", nullable=false)
+	@NotNull
 	private Address deliveryAddress;
+	
+	@ManyToOne
+	@JoinColumn(name="address_id", nullable=false)
+	@NotNull
 	private Address billingAddress;
 	
 	private static int idCount = 0;
+	//TODO Possibly needs a rethink with database integration? (unless stored in database?)
 	
 	/////////////////////////////////////////CONSTRUCTORS///////////////////////////////////////////////
 	

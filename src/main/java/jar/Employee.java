@@ -8,6 +8,13 @@ import javax.validation.constraints.Size;
 
 import com.sun.istack.internal.NotNull;
 
+/**
+ * 
+ * @author Tim Spencer v0.2
+ *
+ */
+
+
 public class Employee {
 	//Variables
 	@Id
@@ -25,7 +32,7 @@ public class Employee {
 		
 	}
 
-	//Getters and setters
+	//Getters and setters  
 	public int getId() {
 		return id;
 	}

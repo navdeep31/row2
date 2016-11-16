@@ -8,6 +8,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name="product")
+@NamedQuery(name="findByID", query="SELECT p FROM product WHERE p.id=:id")
+//@NamedQuery(name="findByName", query="SELECT p FROM product WHERE p.name=:name")
 public class Product {
 	
 
