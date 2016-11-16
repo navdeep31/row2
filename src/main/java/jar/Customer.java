@@ -14,7 +14,7 @@ public class Customer {
 	private String password;
 	private LocalDate dateAdded;
 	private Address address;
-	private List<Stock> wishlist;
+	private List<Product> wishlist;
 	
 	
 	public Customer(String firstName, String lastname, String email, String password, Address address, LocalDate dateAdded) {
@@ -73,11 +73,11 @@ public class Customer {
 		this.address = address;
 	}
 
-	public List<Stock> getWishlist() {
+	public List<Product> getWishlist() {
 		return wishlist;
 	}
 
-	public void setWishlist(List<Stock> wishlist) {
+	public void setWishlist(List<Product> wishlist) {
 		this.wishlist = wishlist;
 	}
 	
