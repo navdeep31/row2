@@ -1,23 +1,20 @@
 package jar;
 import java.time.LocalDate;
 import java.util.List;
-
 import javax.mail.Address;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import javax.xml.ws.RespectBinding;
 
 @Entity
 @Table(name="customers")
+
+@NamedQueries({
+@NamedQuery(name="findByEmail", query= "SELECT c FROM customers c WHERE c.email=:email"),
+@NamedQuery(name="orderBySurname", query= "SELECT c FROM customers c ORDER BY c.lastname"),
+@NamedQuery(name="orderByDate", query= "SELECT c FROM customers c ORDER BY c.dateAdded")
+})
+
 public class Customer {
 
 	@Id
@@ -52,19 +49,16 @@ public class Customer {
 	@JoinColumn(name="addresses_id", nullable=false)
 	@NotNull
 	private Address address;
-<<<<<<< HEAD
+
 	
 	@ManyToMany
 	@JoinTable(name="wishlist", 
-	joinColumns=@JoinColumn(name="customers_id", 
+	joinColumns=
+	@JoinColumn(name="customers_id", 
 	referencedColumnName="id"), 
 	inverseJoinColumns=
-	@JoinColumn(name="stock_id", 
-	referencedColumnName="id"))
+	@JoinColumn(name="stock_id", referencedColumnName="id"))
 	private List<Stock> wishlist;
-=======
-	private List<Product> wishlist;
->>>>>>> e8243b3678eb4f1aaa3cf02b3c657a0e36ffc225
 	
 	
 	public Customer(String firstName, String lastname, String email, String password, Address address, LocalDate dateAdded) {
