@@ -52,6 +52,7 @@ public class Customer {
 	@JoinColumn(name="addresses_id", nullable=false)
 	@NotNull
 	private Address address;
+<<<<<<< HEAD
 	
 	@ManyToMany
 	@JoinTable(name="wishlist", 
@@ -61,6 +62,9 @@ public class Customer {
 	@JoinColumn(name="stock_id", 
 	referencedColumnName="id"))
 	private List<Stock> wishlist;
+=======
+	private List<Product> wishlist;
+>>>>>>> e8243b3678eb4f1aaa3cf02b3c657a0e36ffc225
 	
 	
 	public Customer(String firstName, String lastname, String email, String password, Address address, LocalDate dateAdded) {
@@ -119,11 +123,11 @@ public class Customer {
 		this.address = address;
 	}
 
-	public List<Stock> getWishlist() {
+	public List<Product> getWishlist() {
 		return wishlist;
 	}
 
-	public void setWishlist(List<Stock> wishlist) {
+	public void setWishlist(List<Product> wishlist) {
 		this.wishlist = wishlist;
 	}
 

@@ -1,8 +1,15 @@
 package jar;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="stock")
 public class Stock {
 	//Variables
-	int id;
+	@Id
+	@Column(name="id", nullable =false, unique=true)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	
 	//Stock constructor
 	public Stock(int id) {

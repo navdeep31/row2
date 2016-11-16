@@ -8,77 +8,80 @@ package jar;
  *
  */
 public class Address {
-////////////////////////////////////////////////Attributes/////////////////////////////////////////////////////	
+	//////////////////////////////////////////////// Attributes/////////////////////////////////////////////////////
 	private int id;
-	private int house_number;
-	private String line_1;
-	private String line_2;
+	private int houseNumber;
+	private String line1;
+	private String line2;
 	private String postcode;
 	private String city;
 
-
-
-/////////////////////////////////////////// Constructor////////////////////////////////////////////////////////	
-public Address (int id, int house_number, String line_1, String line_2,String postcode, String city)
-	{
+	/////////////////////////////////////////// Constructor////////////////////////////////////////////////////////
+	public Address(int id, int houseNumber, String line1, String line2, String postcode, String city) {
 		this.id = id;
-		this.house_number = house_number;
-		this.line_1 = line_1;
-		this.line_2 =line_2;
+		this.houseNumber = houseNumber;
+		this.line1 = line1;
+		this.line2 = line2;
 		this.postcode = postcode;
 		this.city = city;
-   
+
 	}
-///////////////////////////////////////////Default Constructor/////////////////////////////////////////////////	
-public Address()
-		{
-	
-		}
 
+	////////////////////////////////////////////// Default//////////////////////////////////////////////////
+	/////////////////////////////////////////// Constructor/////////////////////////////////////////////////
+	public Address() {
 
-///////////////////////////////////////////Getters & Setters/////////////////////////////////////////////////
+	}
 
-		public int getId() {
-				return id;
-			}
-		public void setId(int id) {
-				this.id = id;
-			}
-		public int getHouse_number() {
-				return house_number;
-			}
-		public void setHouse_number(int house_number) {
-				this.house_number = house_number;
-			}
-		public String getLine_1() {
-				return line_1;
-			}
-		public void setLine_1(String line_1) {
-				this.line_1 = line_1;
-			}
-		public String getLine_2() {
-				return line_2;
-			}
-		public void setLine_2(String line_2) {
-				this.line_2 = line_2;
-			}
-		public String getPostcode() {
-				return postcode;
-			}
-		public void setPostcode(String postcode) {
-				this.postcode = postcode;
-			}
-		public String getCity() {
-				return city;
-			}
-		public void setCity(String city) {
-				this.city = city;
-			}
-			
+	/////////////////////////////////////////// Getters/////////////////////////////////////////////////
+	/////////////////////////////////////////// Setters/////////////////////////////////////////////////
 
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
+	public int getHouseNumber() {
+		return houseNumber;
+	}
 
+	public void setHouseNumber(int houseNumber) {
+		this.houseNumber = houseNumber;
+	}
 
+	public String getLine1() {
+		return line1;
+	}
+
+	public void setLine1(String line1) {
+		this.line1 = line1;
+	}
+
+	public String getLine2() {
+		return line2;
+	}
+
+	public void setLine2(String line2) {
+		this.line2 = line2;
+	}
+
+	public String getPostcode() {
+		return postcode;
+	}
+
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
 
 }
