@@ -15,7 +15,7 @@ public class CustomerOrderLine {
 	private Product product;
 	private int quantity;
 	
-	private static int lineNumberCount = 1;
+	private static int lineNumberCount = 0;
 	//TODO Possibly rename as id? Doesn't set line numbers from 1 per order currently
 	
 	/////////////////////////////////////////CONSTRUCTORS///////////////////////////////////////////////
@@ -30,14 +30,14 @@ public class CustomerOrderLine {
 	
 	/**
 	 * Constructor without line number
-	 * Automatically sets line number
+	 * Automatically sets line number as next lineNumberCount
 	 * 
 	 * @param iProduct Product (Object)
 	 * @param iQuantity Quantity (assumed positive)
 	 */
 	CustomerOrderLine(Product iProduct, int iQuantity)
 	{
-		this.lineNumber = lineNumberCount++;
+		this.lineNumber = ++lineNumberCount;
 		this.product = iProduct;
 		this.quantity = iQuantity;
 		//TODO Check positive?
