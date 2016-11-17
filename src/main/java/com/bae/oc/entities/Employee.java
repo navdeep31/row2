@@ -1,4 +1,4 @@
-package jar;
+package com.bae.oc.entities;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;

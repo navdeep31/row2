@@ -1,4 +1,4 @@
-package jar;
+package com.bae.oc.managers.offline;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,6 +6,11 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
+
+import com.bae.oc.entities.PurchaseOrder;
+import com.bae.oc.entities.PurchaseOrderLine;
+import com.bae.oc.managers.PurchaseOrderManager;
+import com.bae.oc.util.TestData;
 
 @Stateless
 @Default

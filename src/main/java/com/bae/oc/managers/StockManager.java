@@ -1,6 +1,8 @@
-package jar;
+package com.bae.oc.managers;
 
 import java.util.ArrayList;
+
+import com.bae.oc.entities.Stock;
 
 /**
  * 

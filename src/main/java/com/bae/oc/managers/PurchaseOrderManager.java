@@ -1,7 +1,10 @@
-package jar;
+package com.bae.oc.managers;
 
 import java.util.Date;
 import java.util.List;
+
+import com.bae.oc.entities.PurchaseOrder;
+import com.bae.oc.entities.PurchaseOrderLine;
 
 public interface PurchaseOrderManager {
 	

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jar;
+package com.bae.oc.entities;
 
 /**
  * @author Administrator

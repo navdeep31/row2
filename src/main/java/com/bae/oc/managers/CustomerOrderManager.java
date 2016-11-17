@@ -1,4 +1,8 @@
-package jar;
+package com.bae.oc.managers;
+
+import com.bae.oc.entities.Customer;
+import com.bae.oc.entities.CustomerOrder;
+import com.bae.oc.entities.CustomerOrderLine;
 
 /**
  * 

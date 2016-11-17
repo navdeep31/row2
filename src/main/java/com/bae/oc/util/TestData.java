@@ -1,9 +1,14 @@
-package jar;
+package com.bae.oc.util;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.*;
+
+import com.bae.oc.entities.Customer;
+import com.bae.oc.entities.Employee;
+import com.bae.oc.entities.Product;
+import com.bae.oc.entities.Stock;
 
 @Startup
 @Singleton

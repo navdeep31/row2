@@ -1,10 +1,16 @@
-package jar;
+package com.bae.oc.managers.offline;
 
 import java.util.*;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
+
+import com.bae.oc.entities.Customer;
+import com.bae.oc.entities.CustomerOrder;
+import com.bae.oc.entities.CustomerOrderLine;
+import com.bae.oc.managers.CustomerOrderManager;
+import com.bae.oc.util.TestData;
 
 /**
  * 

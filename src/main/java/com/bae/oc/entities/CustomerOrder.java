@@ -1,4 +1,4 @@
-package jar;
+package com.bae.oc.entities;
 
 import java.util.*;
 import javax.persistence.*;

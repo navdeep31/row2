@@ -1,7 +1,9 @@
-package jar;
+package com.bae.oc.managers;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import com.bae.oc.entities.Product;
 
 public interface ProductManager {
 

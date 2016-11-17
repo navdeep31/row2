@@ -1,4 +1,4 @@
-package jar;
+package com.bae.oc.managers.offline;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,6 +7,10 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
+
+import com.bae.oc.entities.Product;
+import com.bae.oc.managers.ProductManager;
+import com.bae.oc.util.TestData;
 
 @Stateless
 @Default

@@ -1,4 +1,4 @@
-package jar;
+package com.bae.oc.entities;
 import java.time.LocalDate;
 import java.util.List;
 import javax.mail.Address;

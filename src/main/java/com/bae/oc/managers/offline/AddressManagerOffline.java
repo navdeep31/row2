@@ -1,10 +1,14 @@
-package jar;
+package com.bae.oc.managers.offline;
 
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
+
+import com.bae.oc.entities.Address;
+import com.bae.oc.managers.AddressManager;
+import com.bae.oc.util.TestData;
 @Stateless
 @Default
 

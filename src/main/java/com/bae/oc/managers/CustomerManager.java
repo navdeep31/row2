@@ -1,6 +1,9 @@
-package jar;
+package com.bae.oc.managers;
 
 import java.time.LocalDate;
+
+import com.bae.oc.entities.Customer;
+import com.bae.oc.entities.Product;
 
 public interface CustomerManager {
 	public Customer findByEmail(String email);

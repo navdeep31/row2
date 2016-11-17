@@ -1,8 +1,13 @@
-package jar;
+package com.bae.oc.managers.offline;
 
 import javax.ejb.Stateless; 
 import javax.enterprise.inject.Default;
-import javax.inject.Inject; 
+import javax.inject.Inject;
+
+import com.bae.oc.entities.Stock;
+import com.bae.oc.managers.StockManager;
+import com.bae.oc.util.TestData;
+
 import java.util.ArrayList;
 import java.util.List;
 
