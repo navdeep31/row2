@@ -16,14 +16,21 @@ public class PurchaseOrderManagerOffline implements PurchaseOrderManager {
 	
 	@Override
 	public void createPurchaseOrder(PurchaseOrder purchaseOrder) {
-		List<PurchaseOrder> purchaseOrderList;
+		
+		List <PurchaseOrder> purchaseOrderList = testdata.getPurchaseOrders();
+		
+		purchaseOrder.setId(purchaseOrderList.size()+1);
+		
 		purchaseOrderList.add(purchaseOrder);
 		
+		testdata.setPurchaseOrders(purchaseOrderList);
+			
 	}
 
 	@Override
 	public void updatePurchaseOrder(PurchaseOrder purchaseOrder) {
-		List<PurchaseOrder> purchaseOrderList;
+		List <PurchaseOrder> purchaseOrderList = testdata.getPurchaseOrders();
+		
 			for(PurchaseOrder order : purchaseOrderList)
 			{
 				if (order.getId() == purchaseOrder.getId())
@@ -31,31 +38,53 @@ public class PurchaseOrderManagerOffline implements PurchaseOrderManager {
 					order = purchaseOrder;
 				}
 			}
-		
+			
+			testdata.setPurchaseOrders(purchaseOrderList);
 	}
 
 	@Override
 	public void createOrderline(PurchaseOrder purchaseOrder, PurchaseOrderLine purchaseOrderLine) {
-		// TODO Auto-generated method stub
 		
+		List <PurchaseOrderLine> purchaseOrderLineList = purchaseOrder.getOrderLines();
+		
+		purchaseOrderLine.setPurchaseOrderId(purchaseOrder.getOrderLines().size()+1);
+		
+		purchaseOrderLineList.add(purchaseOrderLine);
+		
+		purchaseOrder.setOrderLines(purchaseOrderLineList);
+
 	}
 
 	@Override
 	public void removeOrderline(PurchaseOrder purchaseOrder, int purchaseOrderLineNo) {
-		// TODO Auto-generated method stub
+		
+		List <PurchaseOrderLine> purchaseOrderLineList = purchaseOrder.getOrderLines();
+		
+		for(PurchaseOrderLine orderLineList : purchaseOrderLineList)
+			if(orderLineList.getPurchaseOrderId() == purchaseOrderLineNo)
+				purchaseOrderLineList.remove(purchaseOrderLineNo);
+		
+		purchaseOrder.setOrderLines(purchaseOrderLineList);
 		
 	}
 
 	@Override
 	public void updateOrderline(PurchaseOrder purchaseOrder, PurchaseOrderLine purchaseOrderLine) {
-		// TODO Auto-generated method stub
+		
+		List <PurchaseOrderLine> purchaseOrderLineList = purchaseOrder.getOrderLines();
+		
+		for(PurchaseOrderLine orderLineList : purchaseOrderLineList)
+			if(orderLineList.getPurchaseOrderId() == purchaseOrderLine.getPurchaseOrderId())
+				purchaseOrderLineList.remove(purchaseOrderLine.getLineNumber());
+		
+		purchaseOrder.setOrderLines(purchaseOrderLineList);
 		
 	}
 
 	@Override
 	public PurchaseOrder findPurchaseOrderByDate(Date date) {
-		for(PurchaseOrder purchaseorder: testdata.getPurchaseOrder())
-			if(purchaseorder.getDate().equals(date))
+		for(PurchaseOrder purchaseorder: testdata.getPurchaseOrders())
+			if(purchaseorder.getDateAdded().equals(date))
 			return purchaseorder;
 			return null;
 	}
@@ -63,17 +92,16 @@ public class PurchaseOrderManagerOffline implements PurchaseOrderManager {
 	@Override
 	public List<PurchaseOrder> findAllPurchaseOrders() {
 		List<PurchaseOrder>purchaseOrderList = new ArrayList<PurchaseOrder>();
-		for(PurchaseOrder purchaseorder: testdata.getPurchaseOrder())
+		for(PurchaseOrder purchaseorder: testdata.getPurchaseOrders())
 		{
 			purchaseOrderList.add(purchaseorder);
 		}
 			return purchaseOrderList;
-		return null;
 	}
 
 	@Override
 	public PurchaseOrder findPurchaseByEmployee(int employeeId) {
-		for(PurchaseOrder purchaseorder: testdata.getPurchaseOrder())
+		for(PurchaseOrder purchaseorder: testdata.getPurchaseOrders())
 			if(purchaseorder.getEmployeeId().equals(employeeId))
 			return purchaseorder;
 		return null;

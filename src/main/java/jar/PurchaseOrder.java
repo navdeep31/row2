@@ -1,5 +1,6 @@
 package jar;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.*;
@@ -36,15 +37,19 @@ public class PurchaseOrder {
 	@JoinColumn(name="address_id", nullable=false)
 	@NotNull
 	private Address deliveryAddress;
+	
+	@Column
+	private LocalDate dateAdded;
 
 	PurchaseOrder() {
 
 	}
 
-	public PurchaseOrder(int id, Employee employeeId, Address deliveryAddress) {
+	public PurchaseOrder(int id, Employee employeeId, Address deliveryAddress, LocalDate dateAdded) {
 		this.id = id;
 		this.employeeId = employeeId;
 		this.deliveryAddress = deliveryAddress;
+		this.dateAdded = dateAdded;
 	}
 
 	/**
@@ -105,5 +110,21 @@ public class PurchaseOrder {
 	public void setOrderLines(List<PurchaseOrderLine> orderLines) {
 		this.orderLines = orderLines;
 	}
+
+	/**
+	 * @return the dateAdded
+	 */
+	public LocalDate getDateAdded() {
+		return dateAdded;
+	}
+
+	/**
+	 * @param dateAdded the dateAdded to set
+	 */
+	public void setDateAdded(LocalDate dateAdded) {
+		this.dateAdded = dateAdded;
+	}
+	
+	
 
 }

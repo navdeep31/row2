@@ -4,6 +4,7 @@ import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject; 
 import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 @Default
@@ -13,39 +14,66 @@ public class StockManagerOffline implements StockManager {
 	private TestData testData; 
 	
 	@Override
-	public Stock createStock(Stock stock) {
-		// TODO Auto-generated method stub
-		return null;
+	public void createStock(Stock stock) {
+		List<Stock> stocks = testData.getStocks();
+		stock.setId(stocks.size()+1);
+		stocks.add(stock);
+		testData.setStocks(stocks);
+		
 	}
 
 	@Override
 	public void updateStock(Stock stock) {
-		// TODO Auto-generated method stub
+		for(Stock testStock: testData.getStocks()) {
+			if(testStock.getId()==stock.getId()) {
+				testStock=stock; 
+			}
+		}
 		
 	}
 
 	@Override
 	public void removeStock(Stock stock) {
-		// TODO Auto-generated method stub
+		long iterator = 0;
+		for(Stock testStock : testData.getStocks()) {
+			if(testStock.equals(stock)) {
+				testData.getStocks().remove(iterator); 
+			}
+			iterator++; 
+		}
 		
 	}
 
 	@Override
-	public Stock findStockById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Stock> findStockById(Long id) {
+		ArrayList<Stock> stocks = new ArrayList();
+		for(Stock testStock: testData.getStocks()) {
+			if(id==testStock.getId()) {
+				stocks.add(testStock);
+			}
+		}
+		return stocks;
 	}
 
 	@Override
-	public Stock findStockByStatus(String status) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Stock> findStockByStatus(String status) {
+		ArrayList<Stock> stocks = new ArrayList();
+		for(Stock testStock: testData.getStocks()) {
+			if(status.equals(testStock.getStatus())) {
+				stocks.add(testStock);
+			}
+		}
+		return stocks;
 	}
 
 	@Override
 	public ArrayList<Stock> findAllStock() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Stock> stocks = new ArrayList();
+		for(Stock testStock: testData.getStocks()) {
+				stocks.add(testStock);
+			
+		}
+		return stocks;
 	}
 
 }

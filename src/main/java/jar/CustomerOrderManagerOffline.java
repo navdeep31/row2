@@ -1,6 +1,9 @@
 package jar;
 
 import java.util.*;
+
+import javax.ejb.Stateless;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 
 /**
@@ -9,6 +12,8 @@ import javax.inject.Inject;
  * @version 0.1 17/11/2016
  *
  */
+@Stateless
+@Default
 public class CustomerOrderManagerOffline implements CustomerOrderManager{
 	@Inject
 	private TestData testData;
