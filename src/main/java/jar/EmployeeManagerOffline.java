@@ -15,11 +15,11 @@ public class EmployeeManagerOffline implements EmployeeManager {
 	private TestData testData; 
 	
 	@Override
-	public List<Employee> findEmployeeById(long id) {
+	public Employee findEmployeeById(long id) {
 		List<Employee> employeeList = new ArrayList<Employee>(); 
-		for(Customer customer: testData.getCustomers()) {
-			if(customer.getId()==id) {
-				
+		for(Employee employee: testData.getEmployees()) {
+			if(employee.getId()==id) {
+				return employee; 
 			}
 		}
 		return null;
@@ -27,7 +27,11 @@ public class EmployeeManagerOffline implements EmployeeManager {
 
 	@Override
 	public void updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
+		for (Employee testemployee : testData.getEmployees()) {
+			if(testemployee.getPassword_hash().equals(employee.getPassword_hash())) {
+				
+			}
+		}
 		
 	}
 
