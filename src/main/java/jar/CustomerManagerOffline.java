@@ -16,12 +16,12 @@ public class CustomerManagerOffline implements CustomerManager {
 private TestData testData;
 
 @Override
-public Customer createNewCustomer(Customer customer) {
+public void createNewCustomer(Customer customer) {
 List <Customer> customers = testData.getCustomers();
 customer.setId(customers.size()+1);
 customers.add(customer);
 testData.setCustomers(customers);
-return findByEmail(customer.getEmail());
+
 }
 
 @Override
@@ -33,30 +33,22 @@ return null;
 }
 
 @Override
-public Customer updateCustomer(Customer customer){
-	//TODO
+public void updateCustomer(Customer customer){
 	for(Customer customers : testData.getCustomers())
 		if(customers.getId() == customer.getId())
 			customers = customer;
-		testData.setCustomers(customers);
-	return customer;
 	
 }
 
 @Override
-public Customer addToWishList(Product id){
-	//TODO
-	
-return null;
+public void addToWishList(Product product, Customer customer){
+		customer.getWishlist().add(product);
 
 }
 
 @Override
-public Customer removeFromWishList(Product id){
-	//TODO
-	
-return null;
-
+public void removeFromWishList(Product product, Customer customer){
+	customer.getWishlist().remove(product);
 }
 
 @Override
