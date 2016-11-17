@@ -11,6 +11,7 @@ public class TestData{
 private List<Product> products;
 private List<Stock> stocks;
 private List<Customer> customers;
+public List<Address> addresses;
 
 @PostConstruct
 private void setupData() {
@@ -39,5 +40,16 @@ public List<Customer> getCustomers() {
 public void setCustomers(List<Customer> customers) {
 	this.customers = customers;
 }
+
+public List<Address> getAddress(){
+	return addresses;
+}
+
+
+public void setAddress(List<Address> addresses) {
+	this.addresses = addresses;
+	
+}
+
 }
 
