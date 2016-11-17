@@ -17,10 +17,10 @@ public interface CustomerOrderManager {
 	
 	//TODO Possibly need to be refactored depending on how Hibernate commands are implemented
 	
-	void updateOrderLine(Customer iCustomer, CustomerOrder iCustomerOrder, CustomerOrderLine iCustomerOrderLine);
+	void updateOrderLine(CustomerOrder iCustomerOrder, CustomerOrderLine iCustomerOrderLine);
 	
-	void addOrderLine(Customer iCustomer, CustomerOrder iCustomerOrder, CustomerOrderLine iCustomerOrderLine);
+	void addOrderLine(CustomerOrder iCustomerOrder, CustomerOrderLine iCustomerOrderLine);
 	
-	void removeOrderLine(Customer iCustomer, CustomerOrder iCustomerOrder, int iCustomerOrderLineNumber);
+	void removeOrderLine(CustomerOrder iCustomerOrder, CustomerOrderLine iCustomerOrderLine);
 
 }
