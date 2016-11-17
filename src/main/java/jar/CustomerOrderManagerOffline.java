@@ -1,8 +1,7 @@
 package jar;
 
+import java.util.*;
 import javax.inject.Inject;
-
-import antlr.collections.List;
 
 /**
  * 
@@ -15,25 +14,55 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager{
 	private TestData testData;
 	
 	@Override
-	public void createCustomerOrder(Customer iCustomer, CustomerOrder iCustomerOrder)
+	public void createCustomerOrder(Customer iCustomer, CustomerOrder iOrder)
 	{
-		List<CustomerOrder> customerOrders = iCustomer.getCustomerOrders();
-		customerOrders.add(iCustomerOrder);
+		List<CustomerOrder> customerOrders = iCustomer.getOrders();
+		customerOrders.add(iOrder);
 	}
 	
 	@Override
-	public void updateCustomerOrder(Customer iCustomer, CustomerOrder iCustomerOrder)
+	public void updateCustomerOrder(Customer iCustomer, CustomerOrder iOrder)
 	{
-		List<CustomerOrder> customerOrders = iCustomer.getCustomerOrders();
-		for(CustomerOrder customerOrder : customerOrders)
+		List<CustomerOrder> orders = iCustomer.getOrders();
+		for(CustomerOrder order : orders)
 		{
-			if (customerOrder.getId() == iCustomerOrder.getId())
+			if (order.getId() == iOrder.getId())
 			{
-				customerOrder = iCustomerOrder;
+				order = iOrder;
 			}
 		}
 		
 		//TODO Raise exception if Customer Order (with ID) doesn't exist?
+	}
+	
+	@Override
+	public void updateOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine)
+	{
+		List<CustomerOrderLine> orderLines = iOrder.getOrderLines();
+		for(CustomerOrderLine orderLine : orderLines)
+		{
+			if(orderLine.getLineNumber() == iOrderLine.getLineNumber())
+			{
+				orderLine = iOrderLine;
+			}
+		}
+		
+		//TODO Raise exception if Customer Order Line (with number) doesn't exist?
+		
+	}
+	
+	@Override
+	public void addOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine)
+	{
+		List<CustomerOrderLine> orderLines = iOrder.getOrderLines();
+		orderLines.add(iOrderLine);
+	}
+	
+	@Override
+	public void removeOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine)
+	{
+		List<CustomerOrderLine> orderLines = iOrder.getOrderLines();
+		orderLines.remove(iOrderLine);
 	}
 
 }
