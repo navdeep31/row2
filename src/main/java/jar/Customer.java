@@ -58,15 +58,29 @@ public class Customer {
 	referencedColumnName="id"), 
 	inverseJoinColumns=
 	@JoinColumn(name="stock_id", referencedColumnName="id"))
-	private List<Stock> wishlist;
+	private List<Product> wishlist;
 	
 	
 	public Customer(String firstName, String lastname, String email, String password, Address address, LocalDate dateAdded) {
-	//TODOconstructors
+		
+		this.firstName = firstName;
+		this.lastname = lastname;
+		this.email = email;
+		this.password = password;
+		this.dateAdded = dateAdded;
+		this.address = address;
+		
 	}
-	
+
 	public Customer(long id, String firstName, String lastname, String email, String password, Address address, LocalDate dateAdded) {
-	//TODOconstructors
+		this.id = id;
+		this.firstName = firstName;
+		this.lastname = lastname;
+		this.email = email;
+		this.password = password;
+		this.dateAdded = dateAdded;
+		this.address = address;
+	
 	}
 
 	public String getFirstName() {

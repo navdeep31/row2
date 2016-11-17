@@ -33,14 +33,38 @@ return null;
 }
 
 @Override
+public Customer updateCustomer(Customer customer){
+	//TODO
+	
+	return customer;
+	
+}
+
+@Override
+public Customer addToWishList(Product id){
+	//TODO
+	
+return null;
+
+}
+
+@Override
+public Customer removeFromWishList(Product id){
+	//TODO
+	
+return null;
+
+}
+
+@Override
 public Customer orderBySurname(String lastname) {
-	// TODO Auto-generated method stub
+	// TODO 
 	return null;
 }
 
 @Override
 public Customer orderByDate(LocalDate dateAdded) {
-	// TODO Auto-generated method stub
+	// TODO 
 	return null;
 }
 }
