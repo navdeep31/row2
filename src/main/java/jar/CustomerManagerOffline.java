@@ -36,8 +36,7 @@ return null;
 public void updateCustomer(Customer customer){
 	for(Customer customers : testData.getCustomers())
 		if(customers.getId() == customer.getId())
-			customers = customer;
-	
+			customers = customer;	
 }
 
 @Override
