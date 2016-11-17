@@ -34,7 +34,13 @@ public class StockManagerOffline implements StockManager {
 
 	@Override
 	public void removeStock(Stock stock) {
-		// TODO Auto-generated method stub
+		long iterator = 0;
+		for(Stock testStock : testData.getStocks()) {
+			if(testStock.equals(stock)) {
+				testData.getStocks().remove(iterator); 
+			}
+			iterator++; 
+		}
 		
 	}
 
