@@ -13,6 +13,7 @@ private List<Stock> stocks;
 private List<Customer> customers;
 public List<Address> addresses;
 private List<Employee> employees;
+private List<PurchaseOrder> purchaseOrders;
 
 @PostConstruct
 private void setupData() {
@@ -62,6 +63,15 @@ public List<Employee> getEmployees() {
 public void setEmployees(List<Employee> employees) {
 	this.employees = employees;
 }
+
+public List<PurchaseOrder> getPurchaseOrders() {
+	return purchaseOrders;
+}
+
+public void setPurchaseOrders(List<PurchaseOrder> purchaseOrders) {
+	this.purchaseOrders = purchaseOrders;
+}
+
 
 }
 
