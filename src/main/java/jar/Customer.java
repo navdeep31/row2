@@ -60,6 +60,13 @@ public class Customer {
 	@JoinColumn(name="product_id", referencedColumnName="id"))
 	private List<Product> wishlist;
 	
+	@OneToMany
+	@JoinTable(name="customer_order",
+			joinColumns=
+				@JoinColumn(name="customer_id", referencedColumnName="id")
+	)
+	private List<CustomerOrder> orders;
+	
 	
 	public Customer(String firstName, String lastname, String email, String password, Address address, LocalDate dateAdded) {
 	//TODOconstructors
@@ -67,6 +74,11 @@ public class Customer {
 	
 	public Customer(long id, String firstName, String lastname, String email, String password, Address address, LocalDate dateAdded) {
 	//TODOconstructors
+	}
+	
+	public Customer(long id, String firstName, String lastname, String email, String password, Address address, LocalDate dateAdded, List<Product> wishlist, List<CustomerOrder> orders)
+	{
+		//TODO constructors
 	}
 
 	public String getFirstName() {
@@ -131,6 +143,16 @@ public class Customer {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public List<CustomerOrder> getOrders()
+	{
+		return this.orders;
+	}
+	
+	public void setOrders(List<CustomerOrder> iOrders)
+	{
+		this.orders = iOrders;
 	}
 	
 
