@@ -57,8 +57,8 @@ public class Customer {
 	@JoinColumn(name="customers_id", 
 	referencedColumnName="id"), 
 	inverseJoinColumns=
-	@JoinColumn(name="stock_id", referencedColumnName="id"))
-	private List<Stock> wishlist;
+	@JoinColumn(name="product_id", referencedColumnName="id"))
+	private List<Product> wishlist;
 	
 	
 	public Customer(String firstName, String lastname, String email, String password, Address address, LocalDate dateAdded) {
