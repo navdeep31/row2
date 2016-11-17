@@ -11,12 +11,14 @@ public class TestData{
 private List<Product> products;
 private List<Stock> stocks;
 private List<Customer> customers;
+private List<Employee> employees;
 
 @PostConstruct
 private void setupData() {
 setProducts(new ArrayList<>());
 setStocks(new ArrayList<>());
 setCustomers(new ArrayList<>());
+setEmployees(new ArrayList<>()); 
 //TODOadd data
 }
 //TODOgetters & setters
@@ -38,6 +40,14 @@ public List<Customer> getCustomers() {
 }
 public void setCustomers(List<Customer> customers) {
 	this.customers = customers;
+}
+
+public List<Employee> getEmployees() {
+	return employees;
+}
+
+public void setEmployees(List<Employee> employees) {
+	this.employees = employees;
 }
 }
 
