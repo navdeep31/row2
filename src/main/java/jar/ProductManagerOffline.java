@@ -54,6 +54,7 @@ public class ProductManagerOffline implements ProductManager {
 	}
 
 	@Override
+	//TODO get category from mongo?
 	public Product findProductByCategory(String category) {
 		for(Product product : testData.getProducts())
 			if(product.getCategory().equalsIgnoreCase(category))
