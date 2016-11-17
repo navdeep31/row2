@@ -8,6 +8,7 @@ import javax.ejb.*;
 import com.bae.oc.entities.Customer;
 import com.bae.oc.entities.Employee;
 import com.bae.oc.entities.Product;
+import com.bae.oc.entities.PurchaseOrder;
 import com.bae.oc.entities.Stock;
 
 @Startup
@@ -17,6 +18,7 @@ public class TestData {
 	private List<Stock> stocks;
 	private List<Customer> customers;
 	private List<Employee> employees;
+	private List<PurchaseOrder> purchaseOrders;
 
 	@PostConstruct
 	private void setupData() {
@@ -24,6 +26,7 @@ public class TestData {
 		setStocks(new ArrayList<>());
 		setCustomers(new ArrayList<>());
 		setEmployees(new ArrayList<>());
+		setPurchaseOrders(new ArrayList<PurchaseOrder>());
 		// TODOadd data
 	}
 	// TODOgetters & setters
@@ -58,5 +61,14 @@ public class TestData {
 
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+	}
+	
+	public List<PurchaseOrder> getPurchaseOrders() {
+		return purchaseOrders;
+	}
+	
+	public void setPurchaseOrders(List<PurchaseOrder> iPurchaseOrders)
+	{
+		this.purchaseOrders = iPurchaseOrders;
 	}
 }
