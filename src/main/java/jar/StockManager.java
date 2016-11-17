@@ -2,7 +2,20 @@ package jar;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Tim Spencer
+ *
+ */
+
 public interface StockManager {
+	
+	/**
+	 * 
+	 * Method Stubs
+	 * 
+	 */
+	
 	public Stock createStock (Stock stock);
 	
 	public void updateStock (Stock stock);
