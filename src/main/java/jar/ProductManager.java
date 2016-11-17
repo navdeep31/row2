@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface ProductManager {
 
-	public Product createNewProduct(Product product);
+	public void createNewProduct(Product product);
 	
-	public Product updateProduct();
+	public void updateProduct(Product product);
 	
 	public List<Product> findProductByName(String name);
 	
@@ -23,7 +23,7 @@ public interface ProductManager {
 	
 	public List<Product> findAllProducts();
 	
-	public void removeProduct();
+	public void removeProduct(Product product);
 
 	
 
