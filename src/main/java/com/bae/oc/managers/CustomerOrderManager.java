@@ -8,7 +8,7 @@ import com.bae.oc.entities.CustomerOrderLine;
  * Specification for Customer Order Managers
  * 
  * @author Alex Dawson
- * @version 0.1 17/11/2016
+ * @version 0.2 22/11/2016
  *
  */
 public interface CustomerOrderManager {
