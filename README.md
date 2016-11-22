@@ -5,18 +5,18 @@
 -All methods documented with the @MethodAuthor annotation from the slides.
 
 --Naming Conventions--
--Classes have Upper cammel case. ie: ThisIsAClass
--Classe names should sound like the name of a thing. ie: Customer, CustomerManager
+-Classes have Upper camel case. ie: ThisIsAClass
+-Class names should sound like the name of a thing. ie: Customer, CustomerManager
 
--methods have lower cammel case. ie: thisIsAMethod
+-methods have lower camel case. ie: thisIsAMethod
 -method names should be actions. ie: calculateCost, validateDate
 
--variables have lower cammel case. ie: thisIsAVariable
--variable names should sound tangable. ie: name, age, value.
+-variables have lower camel case. ie: thisIsAVariable
+-variable names should sound tangible. ie: name, age, value.
 
 -packages should be single words, all lower case with no spaces.
--packeges should be nested in a structure following the groupID then the artifact ID seperated by a '.'.
--top-level package names should be pluralized to indicate the type of object they hold. ie: a package holding the Entity objects would be called entities.
+-packages should be nested in a structure following the groupID then the artifact ID separated by a '.'.
+-top-level package names should be pluralised to indicate the type of object they hold. ie: a package holding the Entity objects would be called entities.
 
 --syntax--
 -opening curly braces should be on the same line as the class, method or block declaration.
