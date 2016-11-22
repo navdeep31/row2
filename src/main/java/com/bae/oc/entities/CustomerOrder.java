@@ -51,8 +51,7 @@ public class CustomerOrder {
 	/**
 	 * Default constructor
 	 */
-	CustomerOrder()
-	{
+	CustomerOrder() {
 		//TODO Keep this or not?
 	}
 	
@@ -63,8 +62,7 @@ public class CustomerOrder {
 	 * @param iDeliveryAddress Delivery Address (Address Object)
 	 * @param iBillingAddress Billing Address (Address Object)
 	 */
-	CustomerOrder(List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress)
-	{
+	CustomerOrder(List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
 		this.id = ++idCount;
 		this.orderLines = iOrderLines;
 		this.deliveryAddress = iDeliveryAddress;
@@ -79,8 +77,7 @@ public class CustomerOrder {
 	 * @param iDeliveryAddress Delivery Address (Address Object)
 	 * @param iBillingAddress Billing Address (Address Object)
 	 */
-	CustomerOrder(int iId, List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress)
-	{
+	CustomerOrder(int iId, List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
 		this.id = iId;
 		//TODO Logic to check non-conflicting id?
 		this.orderLines = iOrderLines;
@@ -100,7 +97,7 @@ public class CustomerOrder {
 	}
 
 	public List<CustomerOrderLine> getOrderLines() {
-		return orderLines;
+		return new ArrayList<CustomerOrderLine>(orderLines);
 	}
 
 	public void setOrderLines(List<CustomerOrderLine> iOrderLines) {

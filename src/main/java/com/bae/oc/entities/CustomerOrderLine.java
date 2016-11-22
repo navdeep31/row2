@@ -45,8 +45,7 @@ public class CustomerOrderLine {
 	/**
 	 * Default constructor
 	 */
-	CustomerOrderLine()
-	{
+	CustomerOrderLine() {
 		//TODO Keep this or not?
 	}
 	
@@ -57,8 +56,7 @@ public class CustomerOrderLine {
 	 * @param iProduct Product (Object)
 	 * @param iQuantity Quantity (assumed positive)
 	 */
-	CustomerOrderLine(Product iProduct, int iQuantity)
-	{
+	CustomerOrderLine(Product iProduct, int iQuantity) {
 		this.lineNumber = ++lineNumberCount;
 		this.product = iProduct;
 		this.quantity = iQuantity;
@@ -72,8 +70,7 @@ public class CustomerOrderLine {
 	 * @param iProduct Product (Object)
 	 * @param iQuantity Quantity (assumed positive)
 	 */
-	CustomerOrderLine(int iLineNumber, Product iProduct, int iQuantity)
-	{
+	CustomerOrderLine(int iLineNumber, Product iProduct, int iQuantity)	{
 		this.lineNumber = iLineNumber;
 		//TODO Check non-conflicting?
 		this.product = iProduct;
