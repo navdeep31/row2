@@ -13,6 +13,7 @@ import com.bae.oc.managers.CustomerOrderManager;
 import com.bae.oc.util.TestData;
 
 /**
+ * Implements a Customer Order Manager with Test Data (without a database)
  * 
  * @author Alex Dawson
  * @version 0.2 22/11/2016

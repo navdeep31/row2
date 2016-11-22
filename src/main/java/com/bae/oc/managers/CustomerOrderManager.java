@@ -5,7 +5,7 @@ import com.bae.oc.entities.CustomerOrder;
 import com.bae.oc.entities.CustomerOrderLine;
 
 /**
- * Specification for Customer Order Managers
+ * Interface Specification for Customer Order Managers
  * 
  * @author Alex Dawson
  * @version 0.2 22/11/2016
