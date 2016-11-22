@@ -24,12 +24,28 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 	@Inject
 	private TestData testData;
 	
+	/**
+	 * Creates a new Customer Order
+	 * 
+	 * @param iCustomer Customer to add an order to
+	 * @param iCustomerOrder CustomerOrder
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	@Override
 	public void createCustomerOrder(Customer iCustomer, CustomerOrder iOrder) {
 		List<CustomerOrder> customerOrders = iCustomer.getOrders();
 		customerOrders.add(iOrder);
 	}
 	
+	/**
+	 * Updates a Customer Order
+	 * 
+	 * @param iCustomer Customer whose order needs updating
+	 * @param iCustomerOrder Updated CustomerOrder
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	@Override
 	public void updateCustomerOrder(Customer iCustomer, CustomerOrder iOrder) {
 		List<CustomerOrder> orders = iCustomer.getOrders();
@@ -42,6 +58,14 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 		//TODO Raise exception if Customer Order (with ID) doesn't exist?
 	}
 	
+	/**
+	 * Updates a Customer Order Line
+	 * 
+	 * @param iCustomerOrder CustomerOrder whose line needs updating
+	 * @param iCustomerOrderLine Updated CustomerOrderLine
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	@Override
 	public void updateOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine)	{
 		List<CustomerOrderLine> orderLines = iOrder.getOrderLines();
@@ -55,12 +79,28 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 		
 	}
 	
+	/**
+	 * Adds a Customer Order Line
+	 * 
+	 * @param iCustomerOrder CustomerOrder to add a line to
+	 * @param iCustomerOrderLine CustomerOrderLine to add
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	@Override
 	public void addOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine) {
 		List<CustomerOrderLine> orderLines = iOrder.getOrderLines();
 		orderLines.add(iOrderLine);
 	}
 	
+	/**
+	 * Removes a Customer Order Line (by CustomerOrderLine object)
+	 * 
+	 * @param iCustomerOrder CustomerOrder to remove line from
+	 * @param iCustomerOrderLine CustomerOrderLine to remove
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	@Override
 	public void removeOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine)	{
 		List<CustomerOrderLine> orderLines = iOrder.getOrderLines();
