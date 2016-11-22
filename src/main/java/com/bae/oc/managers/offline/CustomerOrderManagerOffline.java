@@ -20,25 +20,21 @@ import com.bae.oc.util.TestData;
  */
 @Stateless
 @Default
-public class CustomerOrderManagerOffline implements CustomerOrderManager{
+public class CustomerOrderManagerOffline implements CustomerOrderManager {
 	@Inject
 	private TestData testData;
 	
 	@Override
-	public void createCustomerOrder(Customer iCustomer, CustomerOrder iOrder)
-	{
+	public void createCustomerOrder(Customer iCustomer, CustomerOrder iOrder) {
 		List<CustomerOrder> customerOrders = iCustomer.getOrders();
 		customerOrders.add(iOrder);
 	}
 	
 	@Override
-	public void updateCustomerOrder(Customer iCustomer, CustomerOrder iOrder)
-	{
+	public void updateCustomerOrder(Customer iCustomer, CustomerOrder iOrder) {
 		List<CustomerOrder> orders = iCustomer.getOrders();
-		for(CustomerOrder order : orders)
-		{
-			if (order.getId() == iOrder.getId())
-			{
+		for(CustomerOrder order : orders) {
+			if (order.getId() == iOrder.getId()) {
 				order = iOrder;
 			}
 		}
@@ -47,13 +43,10 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager{
 	}
 	
 	@Override
-	public void updateOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine)
-	{
+	public void updateOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine)	{
 		List<CustomerOrderLine> orderLines = iOrder.getOrderLines();
-		for(CustomerOrderLine orderLine : orderLines)
-		{
-			if(orderLine.getLineNumber() == iOrderLine.getLineNumber())
-			{
+		for(CustomerOrderLine orderLine : orderLines) {
+			if(orderLine.getLineNumber() == iOrderLine.getLineNumber())	{
 				orderLine = iOrderLine;
 			}
 		}
@@ -63,15 +56,13 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager{
 	}
 	
 	@Override
-	public void addOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine)
-	{
+	public void addOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine) {
 		List<CustomerOrderLine> orderLines = iOrder.getOrderLines();
 		orderLines.add(iOrderLine);
 	}
 	
 	@Override
-	public void removeOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine)
-	{
+	public void removeOrderLine(CustomerOrder iOrder, CustomerOrderLine iOrderLine)	{
 		List<CustomerOrderLine> orderLines = iOrder.getOrderLines();
 		orderLines.remove(iOrderLine);
 	}
