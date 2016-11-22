@@ -5,7 +5,7 @@ import com.bae.oc.entities.CustomerOrder;
 import com.bae.oc.entities.CustomerOrderLine;
 
 /**
- * 
+ * Specification for Customer Order Managers
  * 
  * @author Alex Dawson
  * @version 0.1 17/11/2016
@@ -13,18 +13,58 @@ import com.bae.oc.entities.CustomerOrderLine;
  */
 public interface CustomerOrderManager {
 	
+	/**
+	 * Creates a new Customer Order
+	 * 
+	 * @param iCustomer Customer to add an order to
+	 * @param iCustomerOrder CustomerOrder
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	void createCustomerOrder(Customer iCustomer, CustomerOrder iCustomerOrder);
 	
+	/**
+	 * Updates a Customer Order
+	 * 
+	 * @param iCustomer Customer whose order needs updating
+	 * @param iCustomerOrder Updated CustomerOrder
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	void updateCustomerOrder(Customer iCustomer, CustomerOrder iCustomerOrder);
 	
 	//////////////////////////////POSSIBLY OPTIONAL/////////////////////////////////////////
 	
 	//TODO Possibly need to be refactored depending on how Hibernate commands are implemented
 	
+	/**
+	 * Updates a Customer Order Line
+	 * 
+	 * @param iCustomerOrder CustomerOrder whose line needs updating
+	 * @param iCustomerOrderLine Updated CustomerOrderLine
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	void updateOrderLine(CustomerOrder iCustomerOrder, CustomerOrderLine iCustomerOrderLine);
 	
+	/**
+	 * Adds a Customer Order Line
+	 * 
+	 * @param iCustomerOrder CustomerOrder to add a line to
+	 * @param iCustomerOrderLine CustomerOrderLine to add
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	void addOrderLine(CustomerOrder iCustomerOrder, CustomerOrderLine iCustomerOrderLine);
 	
+	/**
+	 * Removes a Customer Order Line (by CustomerOrderLine object)
+	 * 
+	 * @param iCustomerOrder CustomerOrder to remove line from
+	 * @param iCustomerOrderLine CustomerOrderLine to remove
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	void removeOrderLine(CustomerOrder iCustomerOrder, CustomerOrderLine iCustomerOrderLine);
 
 }
