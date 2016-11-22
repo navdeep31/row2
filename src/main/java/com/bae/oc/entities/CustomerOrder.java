@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
  * Represents a customer order, using a list of customer order lines
  * 
  * @author Alex Dawson
- * @version 0.3 16/11/2016
+ * @version 0.4 22/11/2016
  *
  */
 @Entity
@@ -50,6 +50,8 @@ public class CustomerOrder {
 	
 	/**
 	 * Default constructor
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
 	CustomerOrder() {
 		//TODO Keep this or not?
@@ -61,6 +63,8 @@ public class CustomerOrder {
 	 * @param iOrderLines List of Order Lines
 	 * @param iDeliveryAddress Delivery Address (Address Object)
 	 * @param iBillingAddress Billing Address (Address Object)
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
 	CustomerOrder(List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
 		this.id = ++idCount;
@@ -76,6 +80,8 @@ public class CustomerOrder {
 	 * @param iOrderLines List of Order Lines
 	 * @param iDeliveryAddress Delivery Address (Address Object)
 	 * @param iBillingAddress Billing Address (Address Object)
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
 	CustomerOrder(int iId, List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
 		this.id = iId;
