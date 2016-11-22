@@ -87,43 +87,113 @@ public class CustomerOrder {
 
 	////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 
+	/**
+	 * Returns Customer Order ID
+	 * 
+	 * @return Customer Order ID
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * Sets Customer Order ID
+	 * 
+	 * @param iId Customer Order ID to set
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public void setId(int iId) {
 		this.id = iId;
 		//TODO Check non-conflicting?
 	}
 
+	/**
+	 * Returns ArrayList of Order Lines
+	 * 
+	 * @return Order Lines (ArrayList)
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public List<CustomerOrderLine> getOrderLines() {
 		return new ArrayList<CustomerOrderLine>(orderLines);
 	}
 
+	/**
+	 * Sets List of Order Lines
+	 * 
+	 * @param iOrderLines List of Order Lines
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public void setOrderLines(List<CustomerOrderLine> iOrderLines) {
 		this.orderLines = iOrderLines;
 	}
 
+	/**
+	 * Returns Delivery Address (Address Object)
+	 * 
+	 * @return Delivery Address (Address Object)
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public Address getDeliveryAddress() {
 		return deliveryAddress;
 	}
 
+	/**
+	 * Sets Delivery Address (Address Object)
+	 * 
+	 * @param iDeliveryAddress Delivery Address to set (Address Object)
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public void setDeliveryAddress(Address iDeliveryAddress) {
 		this.deliveryAddress = iDeliveryAddress;
 	}
 
+	/**
+	 * Returns Billing Address (Address Object)
+	 * 
+	 * @return Billing Address (Address Object)
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public Address getBillingAddress() {
 		return billingAddress;
 	}
 
+	/**
+	 * Sets Billing Address (Address Object)
+	 * 
+	 * @param iBillingAddress Billing Address to set (Address Object)
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public void setBillingAddress(Address iBillingAddress) {
 		this.billingAddress = iBillingAddress;
 	}
 
+	/**
+	 * Returns ID Count
+	 * 
+	 * @return ID Count
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public static int getIdCount() {
 		return idCount;
 	}
 
+	/**
+	 * Sets ID Count
+	 * 
+	 * @return ID Count to set
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public static void setIdCount(int iIdCount) {
 		CustomerOrder.idCount = iIdCount;
 	}
