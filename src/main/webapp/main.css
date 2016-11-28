@@ -5,3 +5,8 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+
+.navbar-toggle.navbar-left {
+  float: left;
+  margin-left: 10px;
+}
