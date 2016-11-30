@@ -3,26 +3,36 @@ body {
 }
 
 .navbar {
-	background-color: #325c57;
-	color: #d9d9d9;
+	background-color: rgb(149,179,215); /* green #325c57; */
+	color: #ffffff; /* grey #d9d9d9; */
 }
 
 .navbar-default .navbar-brand {
-	color: #d9d9d9;
+	color: #ffffff; /* grey #d9d9d9; */
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: #d9d9d9;
+	color: #ffffff; /* grey #d9d9d9; */
+}
+
+.navbar > .container .navbar-brand {
+	margin: 0
+}
+
+.btn-default {
+	background-color: transparent;
+	border-color: transparent;
+	color: #ffffff; /* grey #d9d9d9; */
 }
 
 .dropdown-menu {
-	background-color: #d9d9d9;
-	color: #325c57;
-	border: 2px solid #325c57;
+	background-color: rgb(149,179,215); /* #f0f0f0; */ /* mid grey #d9d9d9; */
+	color: #ffffff; /* green #325c57; */
+	border: 2px solid #ffffff; /* green #325c57; */
 }
 
 .dropdown-menu > li > a {
-	color: #325c57;
+	color: #ffffff; /* green #325c57; */
 }
 
 .footer {
