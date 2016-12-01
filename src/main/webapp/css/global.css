@@ -41,6 +41,12 @@ body {
 	color: #444;
 	background: #fcfcfc;
 }
+#navigation .navbar-form input{
+	background-color: #ffffff;
+	broder-colour:#fcfcfc;;
+	color:#ffffff;;
+}
+
 
 #heading {
 	display: block;
