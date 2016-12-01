@@ -41,14 +41,18 @@ body {
 	color: #444;
 	background: #fcfcfc;
 }
+#navigation .navbar-form input{
+	background-color: #ffffff;
+	broder-colour:#fcfcfc;;
+	color:#ffffff;;
+}
+
 
 #heading {
 	display: block;
 	width: 100%;
 	height: 380px;
 	padding: 20px 0;
-	background: url('../images/Christmas-background.jpg') no-repeat center
-		center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
