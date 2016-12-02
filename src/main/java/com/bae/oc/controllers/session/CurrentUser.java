@@ -7,17 +7,16 @@ import javax.inject.Named;
 
 import com.bae.oc.entities.Customer;
 
+@Named("user")
 @SessionScoped
-@Named(value="user")
-
 public class CurrentUser implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4885675902227807135L;
-	private Customer customer = null;
 	
+	private Customer customer = null;
+
+	public boolean isLoggedIn() {
+		return (customer == null) ? false : true;
+	}
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -25,11 +24,4 @@ public class CurrentUser implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
-	
-	public boolean isLoggedIn(){
-		return (customer == null) ? false : true;
-	}
-
-
 }
