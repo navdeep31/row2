@@ -1,49 +1,5 @@
-@font-face {
-   font-family: HelveticaNeue Light;
-   src: url(font\HelveticaNeue Light.ttf);
-}
+
 
 #heading {
-	font-family: "HelveticaNeue Light";
-	font-size: 1.5em;
-	background: none;
-	display: block;
-	width: auto;
-	height: auto;
-	padding: 20px 0;
-	box-shadow: none;
-}
-
-#heading p {
-		text-shadow: none;
-}
-
-hr {
-	border-top-color: black;
-}
-
-.well{
-	font-family: "HelveticaNeue Light";
-	background: #ffffff;
-	border-style: solid;
-	border-color: rgb(50,92,87);
-    position: relative;
-    top: 50%;
-    left: 50%;
-    width: 20em;
-    margin-left: -10em;	
-    padding: 30px;
-}
-
-a:link {
-	color: rgb(50,92,87);	
-}
-
-a:visited {
-	color: rgb(50,92,87);	
-}
-
-.btn-info {
-	background-color: rgb(50,92,87);
-	border-color: rgb(50,92,87);
+	    background-color: #ffffff;
 }

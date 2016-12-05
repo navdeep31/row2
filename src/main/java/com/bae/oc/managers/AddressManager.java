@@ -1,6 +1,4 @@
-package com.bae.oc.managers;
-
-import com.bae.oc.entities.Address;
+package jar;
 
 public interface AddressManager {
 
