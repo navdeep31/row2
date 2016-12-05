@@ -1,3 +1,8 @@
+/**
+ * @author N GILL
+ *
+ */
+
 package com.bae.oc.managers.offline;
 
 import java.time.LocalDate;
@@ -57,7 +62,6 @@ public class ProductManagerOffline implements ProductManager {
 	}
 
 	@Override
-	// TODO get category from mongo?
 	public List<Product> findProductByCategory(String category) {
 		List<Product> productsFound = new ArrayList<Product>();
 		for (Product product : testData.getProducts())

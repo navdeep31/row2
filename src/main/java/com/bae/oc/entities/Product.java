@@ -1,3 +1,8 @@
+/**
+ * Represents NB's products and their attributes for the online catalogue
+ * @author N GILL
+ * @version 0.2 05/12/2016
+ */
 
 package com.bae.oc.entities;
 import javax.persistence.*;
@@ -16,6 +21,8 @@ import java.time.LocalDate;
 })
 
 public class Product {
+	
+	/////////////////////FIELDS/////////////////////////
 	
 	@Id
 	@Column(name = "id", nullable=false, unique = true)
@@ -58,10 +65,20 @@ public class Product {
 	@NotNull
 	private LocalDate dateAdded;
 	
+	@Column(name="category")
+	@NotNull
+	private String category;
 	
-	//Constructors
+	
+	/////////////////////CONSTRUCTOR/////////////////////////
+	
+	/**
+	 * Constructor
+	 * 
+	 * @MethodAuthor N GILL
+	 */
 	public Product(long productID, long stockID, String name, String description, int quantity, int rrp,
-			int currentPrice, String status, LocalDate dateAdded) {
+			int currentPrice, String status, LocalDate dateAdded, String category) {
 		super();
 		this.productID = productID;
 		this.stockID = stockID;
@@ -72,11 +89,19 @@ public class Product {
 		this.currentPrice = currentPrice;
 		this.status = status;
 		this.dateAdded = dateAdded;
+		this.category = category;
 	}
 
 
 
-	//Getters and Setters
+	/////////////////////Getters and Setters/////////////////////////
+	/**
+	 * Returns Product ID
+	 * 
+	 * @return Product ID
+	 * 
+	 * @MethodAuthor N GILL
+	 */
 	public long getProductID() {
 		return productID;
 	}
@@ -87,6 +112,14 @@ public class Product {
 		this.productID = productID;
 	}
 
+	
+	/**
+	 * Returns Stock ID
+	 * 
+	 * @return Stock ID
+	 * 
+	 * @MethodAuthor N GILL
+	 */
 	public long getStockID() {
 		return stockID;
 	}
@@ -97,6 +130,14 @@ public class Product {
 		this.stockID = stockID;
 	}
 
+	
+	/**
+	 * Returns Product Name
+	 * 
+	 * @return Product Name
+	 * 
+	 * @MethodAuthor N GILL
+	 */
 	public String getName() {
 		return name;
 	}
@@ -108,7 +149,13 @@ public class Product {
 	}
 
 
-
+	/**
+	 * Returns Product Description
+	 * 
+	 * @return Product Description
+	 * 
+	 * @MethodAuthor N GILL
+	 */
 	public String getDescription() {
 		return description;
 	}
@@ -120,7 +167,13 @@ public class Product {
 	}
 
 
-
+	/**
+	 * Returns Product Quantity
+	 * 
+	 * @return Product Quantity
+	 * 
+	 * @MethodAuthor N GILL
+	 */
 	public int getQuantity() {
 		return quantity;
 	}
@@ -132,7 +185,13 @@ public class Product {
 	}
 
 
-
+	/**
+	 * Returns Product Recommended Retail Price
+	 * 
+	 * @return Product Recommended Retail Price
+	 * 
+	 * @MethodAuthor N GILL
+	 */
 	public double getRrp() {
 		return rrp;
 	}
@@ -144,7 +203,13 @@ public class Product {
 	}
 
 
-
+	/**
+	 * Returns Product Current Price
+	 * 
+	 * @return Product Current Price
+	 * 
+	 * @MethodAuthor N GILL
+	 */
 	public double getCurrentPrice() {
 		return currentPrice;
 	}
@@ -156,7 +221,13 @@ public class Product {
 	}
 
 
-
+	/**
+	 * Returns Product Status
+	 * 
+	 * @return Product Status
+	 * 
+	 * @MethodAuthor N GILL
+	 */
 	public String getStatus() {
 		return status;
 	}
@@ -168,7 +239,13 @@ public class Product {
 	}
 
 
-
+	/**
+	 * Returns Product Date Added
+	 * 
+	 * @return Product Date Added
+	 * 
+	 * @MethodAuthor N GILL
+	 */
 	public LocalDate getDateAdded() {
 		return dateAdded;
 	}
@@ -177,6 +254,24 @@ public class Product {
 
 	public void setDateAdded(LocalDate dateAdded) {
 		this.dateAdded = dateAdded;
+	}
+	
+	
+	/**
+	 * Returns Product Category
+	 * 
+	 * @return Product Category
+	 * 
+	 * @MethodAuthor N GILL
+	 */
+	public String getCategory() {
+		return category;
+	}
+
+
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 	
