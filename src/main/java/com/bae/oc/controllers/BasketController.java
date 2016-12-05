@@ -25,14 +25,25 @@ public class BasketController {
 	private CurrentUser currentUser;
 	private List<ProductItem> basket;
 
-}
+
 
 	public void addToBasket(long id) {
-		if (currentUser.isLoggedIn()) {
-			BasketService.addToBasekt(currentUser.getCustomer().getId(), id);
+		/*if (currentUser.isLoggedIn()) {
+			basketService.addToBasket(currentUser.getCustomer().getId(), id);*/
 		}
-	}
+	
 	
 	public String removeItem(long id) {
-		basketService.removeFromBasket(currentUser.getCustomer().get())
+		return null;
+		/*basketService.removeFromBasket(currentUser.getCustomer().get());
+		return "basket";*/
+	}
+	
+	public List<ProductItem> getBasket() {
+		/*if(basket==null) {
+			basket = basketService.getBasket(currentUser.getCustomer().get());
+		}*/
+		return basket; 
+		
+	}
 }
