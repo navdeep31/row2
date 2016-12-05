@@ -44,7 +44,7 @@ public class BasketManagerOffline implements BasketManager {
 			if(customer.getId() == customerId) {
 				//customer.setBasket(basket);
 				//Will need to be added once customer entity updated
-			}
+			}   
 		}
 		
 	}
