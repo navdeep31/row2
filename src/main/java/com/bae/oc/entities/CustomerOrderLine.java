@@ -9,7 +9,8 @@ import javax.validation.constraints.*;
  * @author Alex Dawson
  * @version 0.4 22/11/2016
  * 
- * @author Tim Spencer/Andrew Claybrook
+ * @author Tim Spencer
+ * @author Andrew Claybrook
  * @version 0.5 06/12/2016
  *
  */
@@ -18,7 +19,8 @@ import javax.validation.constraints.*;
 @NamedQueries({
 	
 	/**
-	 * @author Tim Spencer/Andrew Claybrook
+	 * @author Tim Spencer
+	 * @author Andrew Claybrook
 	 * Named queries set for review
 	 */
 	@NamedQuery(name="CustomerOrderLine.findAll", query="SELECT col FROM customer_order_line col"),
@@ -70,7 +72,8 @@ public class CustomerOrderLine {
 	 * @MethodAuthor Alex Dawson
 	 * @version 0.4
 	 * 
-	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
 	 * @version 0.5
 	 */
 	CustomerOrderLine(int customerOrderId, Product iProduct, int iQuantity) {
@@ -92,7 +95,8 @@ public class CustomerOrderLine {
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 * 
-	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
 	 * @version 0.5
 	 */
 	CustomerOrderLine(int customerOrderId, int iLineNumber, Product iProduct, int iQuantity)	{

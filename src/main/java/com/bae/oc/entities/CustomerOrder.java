@@ -12,7 +12,8 @@ import com.bae.oc.enums.Status;
  * @author Alex Dawson
  * @version 0.4 22/11/2016
  * 
- * @author Tim Spencer/Andrew Claybrook
+ * @author Tim Spencer
+ * @author Andrew Claybrook
  * @version 0.5 06/12/2016 
  * Added status to order
  */
@@ -24,7 +25,8 @@ import com.bae.oc.enums.Status;
 	@NamedQuery(name="CustomerOrder.findByStatus", query="SELECT co FROM customer_order co WHERE co.status = :status"),
 	
 	/**
-	 * @author Tim Spencer/Andrew Claybrook
+	 * @author Tim Spencer
+	 * @author Andrew Claybrook
 	 * Code needs examining when database set up, and address class finalised.  
 	 */
 	@NamedQuery(name="CustomerOrder.findByAddressId", query="SELECT co FROM customer_order co WHERE co.address_Id = :addressId")
@@ -38,12 +40,17 @@ public class CustomerOrder {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Id
+	/* 
+	 * @author Andrew Claybrook
+	 * @author Tim Spencer
+	 * Customer temporarily removed as will depend on how we construct SQL
+	 * 
+	 * @Id
 	@JoinTable(name="customer",
 		joinColumns=
 			@JoinColumn(name="id", referencedColumnName="customer-id")
 			)
-	private Customer customer; 
+	private Customer customer; */
 		
 	/**
 	 *  Below variable used to signify status, be that basket, order or finished order
@@ -86,16 +93,17 @@ public class CustomerOrder {
 	 * @MethodAuthor Alex Dawson
 	 * @version 0.4
 	 * 
-	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
 	 * @version 0.5
 	 * 
 	 */
-	CustomerOrder(Customer customer, List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
+	CustomerOrder(List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
 		this.id = ++idCount;
 		this.orderLines = iOrderLines;
 		this.deliveryAddress = iDeliveryAddress;
 		this.billingAddress = iBillingAddress;
-		this.customer = customer;
+	//	this.customer = customer;
 	}
 	
 	/**
@@ -109,13 +117,13 @@ public class CustomerOrder {
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
-	CustomerOrder(Customer customer, int iId, List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
+	CustomerOrder(int iId, List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
 		this.id = iId;
 		//TODO Logic to check non-conflicting id?
 		this.orderLines = iOrderLines;
 		this.deliveryAddress = iDeliveryAddress;
 		this.billingAddress = iBillingAddress;
-		this.customer = customer;
+	//	this.customer = customer;
 	}
 
 	////////////////////////////////////////METHODS/////////////////////////////////////////////////////
@@ -237,7 +245,8 @@ public class CustomerOrder {
 	 * 
 	 * @return status
 	 * 
-	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
 	 */
 	
 	public Status getStatus() {
@@ -248,7 +257,8 @@ public class CustomerOrder {
 	 * Set status
 	 * @param status
 	 * 
-	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
 	 */
 	
 	public void setStatus(Status status) {
@@ -259,28 +269,26 @@ public class CustomerOrder {
 	 * Set status
 	 * @param status
 	 * 
-	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
 	 */
 	
 	
-	public Customer getCustomer() {
+	/* public Customer getCustomer() {
 		return customer;
-	}
+	} */
 	
 	/**
 	 * Set status
 	 * @param status
 	 * 
-	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
 	 */
 
+	/*
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
-	}
-
-	
-
-
-
+	} */
 
 }

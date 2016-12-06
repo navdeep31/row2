@@ -32,6 +32,9 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 	 * @param iCustomerOrder CustomerOrder
 	 * 
 	 * @MethodAuthor Alex Dawson
+	 * 
+	 * NOTE: Possible validation check needed for duplicate orders being 
+	 * added in a service.
 	 */
 	@Override
 	public void createCustomerOrder(Customer iCustomer, CustomerOrder iOrder) {
