@@ -10,6 +10,11 @@ import com.bae.oc.services.LoginService;
 @RequestScoped
 @Named(value="login")
 
+/**
+ * 
+ * @author Andrew Claybrook
+ * @version 0.1 02/12/2016
+ */
 public class LoginController {
 	@Inject
 	private CurrentUser currentUser;

@@ -10,7 +10,8 @@ import com.bae.oc.services.CustomerService;
 /**
  * Controller handling the editing of customer details
  * 
- * @author Administrator
+ * @author Alex Dawson
+ * @version 0.1 06/12/2016
  *
  */
 @Named("customer")

@@ -13,6 +13,7 @@ import com.bae.oc.managers.CustomerManager;
  * In particular editing customer details
  * 
  * @author Alex Dawson
+ * @version 0.1 06/12/2016
  *
  */
 @Stateless

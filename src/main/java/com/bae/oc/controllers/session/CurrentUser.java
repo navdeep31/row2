@@ -12,6 +12,7 @@ import com.bae.oc.entities.Customer;
  * 
  * @author Andrew Claybrook
  * @author Alex Dawson
+ * @version 0.2 06/12/2016
  *
  */
 @Named("user")

@@ -10,10 +10,14 @@ import com.bae.oc.managers.CustomerManager;
 
 
 /**
- * @author Alex Dawson, Josh Stanley, Andy Claybrook
- *
  * Login Service deals with the business logic for loggging
  * methods for validating the customer and retrieving the customer
+ * 
+ * @author Andrew Claybrook
+ * @author Alex Dawson
+ * @author Josh Stanley
+ * @version 0.2 06/12/2016
+ *
  */
 
 @Stateless

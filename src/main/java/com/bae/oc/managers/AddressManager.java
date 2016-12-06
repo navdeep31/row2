@@ -9,7 +9,7 @@ import com.bae.oc.entities.Address;
  * 
  * @author Josh Stanley
  * @author Alex Dawson
- *
+ * @version 0.2 06/12/2016
  */
 public interface AddressManager {
 	
