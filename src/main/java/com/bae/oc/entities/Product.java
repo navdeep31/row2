@@ -50,10 +50,13 @@ public class Product {
 	
 	@Column
 	@NotNull
+	//Assume Product in pence hence integer
 	private int rrp;
+	
 	
 	@Column(name="current_price")
 	@NotNull
+	//Assume Product in pence hence integer
 	private int currentPrice;
 	
 	@Column(length=225)

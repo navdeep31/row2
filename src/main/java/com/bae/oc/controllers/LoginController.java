@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bae.oc.controllers.session.CurrentUser;
+import com.bae.oc.services.LoginService;
 
 @RequestScoped
 @Named(value="login")
@@ -13,7 +14,7 @@ public class LoginController {
 	@Inject
 	private CurrentUser currentUser;
 	@Inject
-	private Login login;
+	private LoginService login;
 	
 	private String email = "";
 	private String password = "";
