@@ -45,6 +45,7 @@ public class RegistrationService {
 
 		return customer;
 	}
+	//TODO add exceptions
 	
 /**
  * Customer registration
@@ -71,6 +72,7 @@ public class RegistrationService {
 
 		return customer;
 	}
+	//TODO add exceptions
 
 /**
  * Sets the DateAdded attribute for the customer
