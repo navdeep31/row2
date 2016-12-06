@@ -2,7 +2,6 @@ package com.bae.oc.entities;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import javax.mail.Address;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
