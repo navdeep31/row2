@@ -69,12 +69,11 @@ public class CustomerOrder {
 	
 	@ManyToOne
 	@JoinColumn(name="address_id", nullable=false)
-	@NotNull
 	private Address deliveryAddress;
 	
 	@ManyToOne
 	@JoinColumn(name="address_id", nullable=false)
-	@NotNull
+	
 	private Address billingAddress;
 	
 	private static int idCount = 0;
@@ -98,11 +97,9 @@ public class CustomerOrder {
 	 * @version 0.5
 	 * 
 	 */
-	CustomerOrder(List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
+	CustomerOrder(List<CustomerOrderLine> iOrderLines) {
 		this.id = ++idCount;
 		this.orderLines = iOrderLines;
-		this.deliveryAddress = iDeliveryAddress;
-		this.billingAddress = iBillingAddress;
 	//	this.customer = customer;
 	}
 	
@@ -117,12 +114,10 @@ public class CustomerOrder {
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
-	CustomerOrder(int iId, List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
+	CustomerOrder(int iId, List<CustomerOrderLine> iOrderLines) {
 		this.id = iId;
 		//TODO Logic to check non-conflicting id?
 		this.orderLines = iOrderLines;
-		this.deliveryAddress = iDeliveryAddress;
-		this.billingAddress = iBillingAddress;
 	//	this.customer = customer;
 	}
 
