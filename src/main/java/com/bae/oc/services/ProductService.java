@@ -60,6 +60,8 @@ public class ProductService {
 	}
 	
 	
+	
+	
 //	No longer using PID like - could potentially return all products. see ProductManager	
 //	/**
 //	 * find all products with similar Product ID where PID is a string (overloaded)
