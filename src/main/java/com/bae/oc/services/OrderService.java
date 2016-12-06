@@ -36,8 +36,6 @@ public class OrderService {
 	private CustomerOrderManager customerOrderManager;
 	@Inject
 	private ProductManager productManager;
-	@Inject
-	private ProductService productService;
 	
 	/**
 	 * Validate's information within the order prior to confirmation.
@@ -89,8 +87,9 @@ public class OrderService {
 	 * @return CustomerOrder
 	 * 
 	 */
-	public CustomerOrder getBasket(Customer customer) {
+	public CustomerOrder getBasket(long customerId) {
 		CustomerOrder basket = null;
+		Customer customer = customerManager.findById(customerId); 
 		
 		for(CustomerOrder custOrders : customer.getOrders())
 		{
@@ -191,8 +190,9 @@ public class OrderService {
 	 * 
 	 */
 	
-	public void updateQuantity(CustomerOrder customerOrder, long productId, int quantity){
+	public void updateQuantity(long customerOrderId, long productId, int quantity){
 		boolean isInBasket = false;
+		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
 		
 		if(quantity <= 0){
 			// TODO add Exception
@@ -234,9 +234,10 @@ public class OrderService {
 	 */
 	
 	
-	public List<CustomerOrder> getOrderHistory(Customer customer) {
+	public List<CustomerOrder> getOrderHistory(long customerId) {
 		List<CustomerOrder> orderHistory = new ArrayList<CustomerOrder>(); 
-	
+		Customer customer = customerManager.findById(customerId); 		
+		
 		for(CustomerOrder custOrders : customer.getOrders())
 		{
 			if(custOrders.getStatus() != Status.BASKET)
