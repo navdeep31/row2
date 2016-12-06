@@ -12,18 +12,31 @@ import com.bae.oc.util.TestData;
 @Stateless
 @Default
 
+/**
+ * Implements an Address Manager with Test Data (without a database)
+ * 
+ * @author Josh Stanley
+ * @author Alex Dawson
+ *
+ */
 public class AddressManagerOffline implements AddressManager {
 	@Inject
 	private TestData testData;
 	
-	
+	/**
+	 * Creates a new address, adding it to test data
+	 * 
+	 *@MethodAuthor Josh Stanley
+	 *@MethodAuthor Alex Dawson
+	 */
 	@Override
 	public void createAddress(Address address) {
 		
-		List<Address> addresses = testData.getAddress();
+		List<Address> addresses = testData.getAddresses();
 		address.setId(addresses.size()+1);
+		//TODO Consider ID issues
 		addresses.add(address);
-		testData.setAddress(addresses);
+		testData.setAddresses(addresses);
 	}
 
 }

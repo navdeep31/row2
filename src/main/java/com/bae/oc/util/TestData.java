@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.*;
 
+import com.bae.oc.entities.Address;
 import com.bae.oc.entities.Customer;
 import com.bae.oc.entities.Employee;
 import com.bae.oc.entities.Product;
@@ -19,6 +20,7 @@ public class TestData {
 	private List<Customer> customers;
 	private List<Employee> employees;
 	private List<PurchaseOrder> purchaseOrders;
+	private List<Address> addresses;
 
 	@PostConstruct
 	private void setupData() {
@@ -70,5 +72,27 @@ public class TestData {
 	public void setPurchaseOrders(List<PurchaseOrder> iPurchaseOrders)
 	{
 		this.purchaseOrders = iPurchaseOrders;
+	}
+	
+	/**
+	 * Returns the test data addresses
+	 * 
+	 * @return List of Addresses
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public List<Address> getAddresses() {
+		return this.addresses;
+	}
+	
+	/**
+	 * Sets the test data addresses
+	 * 
+	 * @param iAddresses List of Addresses
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public void setAddresses(List<Address> iAddresses) {
+		this.addresses = iAddresses;
 	}
 }
