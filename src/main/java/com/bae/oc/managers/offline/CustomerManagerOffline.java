@@ -57,7 +57,7 @@ public class CustomerManagerOffline implements CustomerManager {
 	@Override
 	public Customer orderBySurname(String lastname) {
 		for (Customer customer : testData.getCustomers())
-			if (customer.getLastname().equalsIgnoreCase(lastname))
+			if (customer.getLastName().equalsIgnoreCase(lastname))
 				return customer;
 		return null;
 	}
