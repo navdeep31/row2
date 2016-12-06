@@ -48,8 +48,10 @@ public class OrderService {
 	 * @MethodAuthor Tim Spencer
 	 *  
 	 */
-	public void confirmOrder(CustomerOrder customerOrder) {
+	public void confirmOrder(long customerOrderId) {
 
+		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
+		
 		if(customerOrder.getOrderLines().size()!=0) {
 			
 			if(customerOrder.getCost() <= 10000.00) {
@@ -121,8 +123,9 @@ public class OrderService {
 	
 	// Depending on how Product is built Product may change to just the product ID being passed as an argument.
 	
-	public void addToBasket(CustomerOrder customerOrder, long productId){
+	public void addToBasket (long customerOrderId, long productId){
 		Product product = productManager.findProductByPId(productId);
+		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
 		boolean isAlreadyInBasket = false;
 				
 		for(CustomerOrderLine custOrderLine : customerOrder.getOrderLines())
@@ -157,8 +160,9 @@ public class OrderService {
 	
 	// Depending on how Product is built Product may change to just the product ID being passed as an argument.
 	
-	public void removeFromBasket(CustomerOrder customerOrder, long productId){
+	public void removeFromBasket(long customerOrderId, long productId){
 		boolean isInBasket = false;
+		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
 		
 		for(CustomerOrderLine custOrderLine : customerOrder.getOrderLines())
 		{

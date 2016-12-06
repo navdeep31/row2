@@ -83,4 +83,10 @@ public class CustomerManagerOffline implements CustomerManager {
 				return customer;
 		return null;
 	}
+
+	@Override
+	public Customer findById(long Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

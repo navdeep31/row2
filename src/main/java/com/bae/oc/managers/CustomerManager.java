@@ -17,6 +17,8 @@ public interface CustomerManager {
 	
 	public Customer findByEmail(String email);
 	
+	public Customer findById(long Id);
+	
 	/**
 	 * Creates new customer, adding it to data
 	 * 

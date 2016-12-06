@@ -113,6 +113,12 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 		orderLines.remove(iOrderLine);
 	}
 
+	@Override
+	public CustomerOrder findByOrderId(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

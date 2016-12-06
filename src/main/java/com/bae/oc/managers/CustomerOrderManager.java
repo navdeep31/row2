@@ -1,5 +1,8 @@
 package com.bae.oc.managers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bae.oc.entities.Customer;
 import com.bae.oc.entities.CustomerOrder;
 import com.bae.oc.entities.CustomerOrderLine;
@@ -32,6 +35,7 @@ public interface CustomerOrderManager {
 	 * @MethodAuthor Alex Dawson
 	 */
 
+	
 	
 	void updateCustomerOrder(Customer iCustomer, CustomerOrder iCustomerOrder);
 	
@@ -68,5 +72,13 @@ public interface CustomerOrderManager {
 	 * @MethodAuthor Alex Dawson
 	 */
 	void removeOrderLine(CustomerOrder iCustomerOrder, CustomerOrderLine iCustomerOrderLine);
+	
+	/**
+	 * Find an order by it's id
+	 * @param id
+	 * @return
+	 * @MethodAuthor Tim Spencer
+	 */
+	CustomerOrder findByOrderId(long id);
 
 }
