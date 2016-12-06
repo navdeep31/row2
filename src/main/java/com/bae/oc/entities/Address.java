@@ -72,21 +72,21 @@ public class Address {
 	 * Constructor for new address which will be added to customer data
 	 * 
 	 * 
-	 * @param id - Address ID
-	 * @param line1 - Address Line 1
-	 * @param line2 - Address Line 2
-	 * @param postcode -  Address Postcode
-	 * @param city - Address City
+	 * @param iId - Address ID
+	 * @param iLine1 - Address Line 1
+	 * @param iLine2 - Address Line 2
+	 * @param iPostcode -  Address Postcode
+	 * @param iCity - Address City
 	 * 
 	 * @MethodAuthor Josh Stanley
 	 */
 
-	public Address(int id, String line1, String line2, String postcode, String city) {
-		this.id = id;
-		this.line1 = line1;
-		this.line2 = line2;
-		this.postcode = postcode;
-		this.city = city;
+	public Address(int iId, String iLine1, String iLine2, String iPostcode, String iCity) {
+		this.id = iId;
+		this.line1 = iLine1;
+		this.line2 = iLine2;
+		this.postcode = iPostcode;
+		this.city = iCity;
 
 	}
 

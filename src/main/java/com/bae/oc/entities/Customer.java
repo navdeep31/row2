@@ -167,6 +167,27 @@ public class Customer {
 		this.orders = iOrders;
 	}
 	
+	/**
+	 * Constructor for registering a new customer
+	 * Uses all the need information (name, email, password and date added)
+	 * 
+	 * @param iFirstName - First Name
+	 * @param iLastName - Last Name
+	 * @param iEmail - Email
+	 * @param iPassword - Password
+	 * @param iAddress - Address
+	 * @param iDateAdded - Date Added (related to getCurrentDate Method within RegistrationService class)
+	 * 
+	 * @MethodAuthor Josh Stanley
+	 */
+	public Customer(String iFirstName, String iLastName, String iEmail, String iPassword, Address iAddress, LocalDate iDateAdded) {
+		this.firstName = iFirstName;
+		this.lastName = iLastName;
+		this.email = iEmail;
+		this.password = iPassword;
+		this.address = iAddress;
+		this.dateAdded = iDateAdded;
+	
 	////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 
 	/**
