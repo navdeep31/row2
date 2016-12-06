@@ -74,6 +74,7 @@ public class LoginController {
 	
 	/**
 	 * Sets email
+	 * 
 	 * @param iEmail Email passed from form
 	 * 
 	 * @MethodAuthor Alex Dawson
