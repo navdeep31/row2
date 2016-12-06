@@ -19,6 +19,7 @@ import javax.inject.Inject;
 
 import com.bae.oc.entities.Customer;
 import com.bae.oc.entities.CustomerOrder;
+import com.bae.oc.entities.CustomerOrderLine;
 import com.bae.oc.entities.Product;
 import com.bae.oc.enums.Status;
 import com.bae.oc.managers.CustomerManager;
@@ -47,6 +48,31 @@ public class OrderService {
 	 *  
 	 */
 	public void confirmOrder(CustomerOrder customerOrder) {
+
+		if(customerOrder.getOrderLines().size()!=0) {
+			
+			if(customerOrder.getCost() <= 10000.00) {
+				
+				if(customerOrder.getStatus().equals(Status.BASKET)) {
+					
+					for(CustomerOrderLine customerOrderLine: customerOrder.getOrderLines()) {
+						customerOrderLine.setItemPrice(customerOrderLine.getProduct().getCurrentPrice());
+						customerOrderLine.setStatus(Status.ORDER);
+						//May need to get rid of above line if not needed
+					}
+					customerOrder.setStatus(Status.ORDER);
+				}
+				else {
+					//TODO add exception
+				}
+			}
+			else {
+				//TODO add exception
+			}
+		}
+		else {
+			//TODO add exception
+		}
 	}
 	
 	/**
@@ -78,7 +104,7 @@ public class OrderService {
 	
 	// Depending on how Product is built Product may change to just the product ID being passed as an argument.
 	
-	public void addToBasket(CustomerOrder customerOrder, Product product){
+	public void addToBasket(CustomerOrder customerOrder, long product_id){
 	}
 	
 	/**
@@ -95,7 +121,7 @@ public class OrderService {
 	
 	// Depending on how Product is built Product may change to just the product ID being passed as an argument.
 	
-	public void removeFromBasket(CustomerOrder customerOrder, Product product){
+	public void removeFromBasket(CustomerOrder customerOrder, long product_id){
 	}
 	
 	/**
@@ -118,7 +144,7 @@ public class OrderService {
 		return false;
 	} */
 	
-	public List<CustomerOrder> getOrderHistory(Customer customer) throws NullPointerException {
+	public List<CustomerOrder> getOrderHistory(Customer customer) {
 		return null;
 	}
 	

@@ -74,6 +74,8 @@ public class CustomerOrder {
 	@ManyToOne
 	@JoinColumn(name="address_id", nullable=false)
 	
+
+	
 	private Address billingAddress;
 	
 	private static int idCount = 0;
@@ -285,5 +287,14 @@ public class CustomerOrder {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	} */
+	
+	public double getCost() {
+		double cost = 0;
+		for(CustomerOrderLine cusOrderLine: orderLines) {
+			cost += cusOrderLine.getProduct().getCurrentPrice(); 
+		}
+	
+		return cost;		
+	}
 
 }

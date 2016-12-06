@@ -111,4 +111,6 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 		orderLines.remove(iOrderLine);
 	}
 
+
+
 }

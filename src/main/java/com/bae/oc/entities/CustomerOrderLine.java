@@ -3,6 +3,8 @@ package com.bae.oc.entities;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import com.bae.oc.enums.Status;
+
 /**
  * Represents a Customer Order Line, with a single product and quantity
  * 
@@ -48,6 +50,27 @@ public class CustomerOrderLine {
 	@NotNull
 	private int quantity;
 	
+	/**
+	 * This adds a price once the order is confirmed. Will use a getter method in customerOrder entity to work it out. 
+	 * @author Tim Spencer
+	 * @author Andrew Claybrook
+	 */
+	
+	@Column(name="item_Price")
+	private double itemPrice;
+
+	/*@Column(name="order_confirmation", nullable=false)
+	@NotNull
+	private boolean isConfirmed; */
+	
+	@OneToOne
+	@JoinTable(name="customer_order",
+		joinColumns=
+			@JoinColumn(name="id", referencedColumnName="customer_order_id")
+			)
+	private Status status; 
+	
+	
 	private static int lineNumberCount = 0;
 	//TODO Possibly rename as id? Doesn't set line numbers from 1 per order currently
 	//TODO Possibly needs a rethink with database integration? (unless stored in database?)
@@ -76,11 +99,12 @@ public class CustomerOrderLine {
 	 * @MethodAuthor Andrew Claybrook
 	 * @version 0.5
 	 */
-	CustomerOrderLine(int customerOrderId, Product iProduct, int iQuantity) {
+	CustomerOrderLine(int customerOrderId, Product iProduct, int iQuantity, Status status) {
 		this.lineNumber = ++lineNumberCount;
 		this.product = iProduct;
 		this.quantity = iQuantity;
 		this.customerorderId = customerOrderId;
+		this.status = status; 
 		//TODO Check positive?
 	}
 	
@@ -99,12 +123,13 @@ public class CustomerOrderLine {
 	 * @MethodAuthor Andrew Claybrook
 	 * @version 0.5
 	 */
-	CustomerOrderLine(int customerOrderId, int iLineNumber, Product iProduct, int iQuantity)	{
+	CustomerOrderLine(int customerOrderId, int iLineNumber, Product iProduct, int iQuantity, Status status)	{
 		this.lineNumber = iLineNumber;
 		//TODO Check non-conflicting?
 		this.product = iProduct;
 		this.quantity = iQuantity;
 		this.customerorderId = customerOrderId;
+		this.status = status; 
 		//TODO Check non-negative?
 	}
 	
@@ -177,7 +202,67 @@ public class CustomerOrderLine {
 		this.quantity = iQuantity;
 		//TODO Check positive?
 	}
-	
-	
 
+	/**
+	 *
+	 * Gets a single item's price
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
+	 * @return itemPrice
+	 */
+	
+	public double getItemPrice() {
+		return itemPrice;
+	}
+
+	/**
+	 *
+	 * Gets total price for line by multiplying item price vs. quantity
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
+	 * @return itemPrice
+	 * 
+	 */
+	
+	public double getTotalLinePrice() {
+		return itemPrice*quantity; 
+	}
+	
+	/**
+	 *
+	 * Sets a single item's price - after orders are not baskets, this number cannot be changed. 
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
+	 * @param itemPrice
+	 * 
+	 */
+	
+	public void setItemPrice(double itemPrice) {
+		if(status.equals(Status.BASKET)) this.itemPrice = itemPrice;
+	}
+
+	/**
+	 * Don't know if required - may change status during runtime
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
+	 */
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	/**
+	 *
+	 * Get Customer Order Id
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
+	 * @return customerOrderId
+	 * 
+	 */
+	
+	public int getCustomerorderId() {
+		return customerorderId;
+	}
+	
+	
 }
