@@ -25,6 +25,8 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 	@Inject
 	private TestData testData;
 	
+	//TODO Remove test data if unnecessary?
+	
 	/**
 	 * Creates a new Customer Order
 	 * 

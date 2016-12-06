@@ -13,9 +13,21 @@ import com.bae.oc.entities.Product;
  *
  */
 public interface CustomerManager {
-		
+	
 	public Customer findByEmail(String email);
+	
+	/**
+	 * Creates new customer, adding it to data
+	 * 
+	 * Returns the newly added customer to streamline Service methods
+	 * 
+	 * @param customer Customer to create
+	 * @return Created Customer
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
 	public Customer createNewCustomer(Customer customer);
+	
 	public Customer orderBySurname(String lastname);
 	public Customer orderByDate(LocalDate dateAdded);
 	public void updateCustomer(Customer customer);

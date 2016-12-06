@@ -12,6 +12,13 @@ import com.bae.oc.entities.Product;
 import com.bae.oc.managers.CustomerManager;
 import com.bae.oc.util.TestData;
 
+/**
+ * Implements a Customer with Test Data (without a database)
+ * 
+ * @author Conor White
+ * @author Alex Dawson
+ *
+ */
 @Stateless
 @Default
 public class CustomerManagerOffline implements CustomerManager {
@@ -19,12 +26,18 @@ public class CustomerManagerOffline implements CustomerManager {
 	@Inject
 	private TestData testData;
 
+	/**
+	 * 
+	 * @MethodAuthor Conor White
+	 * @MethodAuthor Alex Dawson
+	 */
 	@Override
-	public void createNewCustomer(Customer customer) {
+	public Customer createNewCustomer(Customer customer) {
 		List<Customer> customers = testData.getCustomers();
 		customer.setId(customers.size() + 1);
 		customers.add(customer);
 		testData.setCustomers(customers);
+		return customer;
 
 	}
 
