@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bae.oc.controllers.session.CurrentUser;
-import com.bae.oc.util.LoginService;
+import com.bae.oc.services.LoginService;
 
 @RequestScoped
 @Named(value="login")

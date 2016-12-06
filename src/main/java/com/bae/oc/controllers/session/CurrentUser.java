@@ -11,6 +11,10 @@ import com.bae.oc.entities.Customer;
 @SessionScoped
 public class CurrentUser implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8724888548903959495L;
 	private Customer customer = null;
 
 	public boolean isLoggedIn() {
