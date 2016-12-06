@@ -99,7 +99,7 @@ public class CustomerOrder {
 	 * @version 0.5
 	 * 
 	 */
-	CustomerOrder(List<CustomerOrderLine> iOrderLines) {
+	public CustomerOrder(List<CustomerOrderLine> iOrderLines) {
 		this.id = ++idCount;
 		this.orderLines = iOrderLines;
 	//	this.customer = customer;
@@ -116,7 +116,7 @@ public class CustomerOrder {
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
-	CustomerOrder(int iId, List<CustomerOrderLine> iOrderLines) {
+	public CustomerOrder(int iId, List<CustomerOrderLine> iOrderLines) {
 		this.id = iId;
 		//TODO Logic to check non-conflicting id?
 		this.orderLines = iOrderLines;

@@ -99,12 +99,12 @@ public class CustomerOrderLine {
 	 * @MethodAuthor Andrew Claybrook
 	 * @version 0.5
 	 */
-	CustomerOrderLine(int customerOrderId, Product iProduct, int iQuantity, Status status) {
+	public CustomerOrderLine(int customerOrderId, Product iProduct, int iQuantity) {
 		this.lineNumber = ++lineNumberCount;
 		this.product = iProduct;
 		this.quantity = iQuantity;
 		this.customerorderId = customerOrderId;
-		this.status = status; 
+		this.status = Status.BASKET;
 		//TODO Check positive?
 	}
 	
