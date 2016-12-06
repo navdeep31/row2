@@ -39,6 +39,7 @@ public class CustomerController {
 	 * @MethodAuthor Alex Dawson
 	 */
 	public String updateCustomer() {
+		//TODO Check not all elements are empty? / raise exception
 		currentUser.setCustomer(customerService.updateCustomer(currentUser.getCustomer(), firstName, lastName, password, email, line1, line2, postcode, city) );
 		//TODO Check page name
 		return "customer-edit";
