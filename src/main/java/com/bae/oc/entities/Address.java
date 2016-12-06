@@ -18,12 +18,14 @@ public class Address {
 	/////////////////////////////////////////// Constructor////////////////////////////////////////////////////////
 
 	/**
+	 * Constructor for new address which will be added to customer data
 	 * 
-	 * @param id Address ID
-	 * @param line1
-	 * @param line2
-	 * @param postcode
-	 * @param city
+	 * 
+	 * @param id - Address ID
+	 * @param line1 - Address Line 1
+	 * @param line2 - Address Line 2
+	 * @param postcode -  Address Postcode
+	 * @param city - Address City
 	 * 
 	 * @MethodAuthor Josh Stanley
 	 */

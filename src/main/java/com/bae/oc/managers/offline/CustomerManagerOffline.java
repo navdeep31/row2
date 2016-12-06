@@ -15,60 +15,59 @@ import com.bae.oc.util.TestData;
 @Stateless
 @Default
 public class CustomerManagerOffline implements CustomerManager {
-	
 
-@Inject
-private TestData testData;
+	@Inject
+	private TestData testData;
 
-@Override
-public void createNewCustomer(Customer customer) {
-List <Customer> customers = testData.getCustomers();
-customer.setId(customers.size()+1);
-customers.add(customer);
-testData.setCustomers(customers);
+	@Override
+	public void createNewCustomer(Customer customer) {
+		List<Customer> customers = testData.getCustomers();
+		customer.setId(customers.size() + 1);
+		customers.add(customer);
+		testData.setCustomers(customers);
 
-}
+	}
 
-@Override
-public Customer findByEmail(String email) {
-for(Customer customer : testData.getCustomers())
-if(customer.getEmail().equalsIgnoreCase(email))
-return customer;
-return null;
-}
+	@Override
+	public Customer findByEmail(String email) {
+		for (Customer customer : testData.getCustomers())
+			if (customer.getEmail().equalsIgnoreCase(email))
+				return customer;
+		return null;
+	}
 
-@Override
-public void updateCustomer(Customer customer){
-	for(Customer customers : testData.getCustomers())
-		if(customers.getId() == customer.getId())
-			customers = customer;	
-}
+	@Override
+	public void updateCustomer(Customer customer) {
+		for (Customer customers : testData.getCustomers())
+			if (customers.getId() == customer.getId())
+				customers = customer;
+	}
 
-@Override
-public void addToWishList(Product product, Customer customer){
+	@Override
+	public void addToWishList(Product product, Customer customer) {
 		customer.getWishlist().add(product);
 
-}
+	}
 
-@Override
-public void removeFromWishList(Product product, Customer customer){
-	customer.getWishlist().remove(product);
-}
+	@Override
+	public void removeFromWishList(Product product, Customer customer) {
+		customer.getWishlist().remove(product);
+	}
 
-@Override
-public Customer orderBySurname(String lastname) {
-	for(Customer customer : testData.getCustomers())
-		if(customer.getLastname().equalsIgnoreCase(lastname))
-			return customer;
-	return null;
-}
+	@Override
+	public Customer orderBySurname(String lastname) {
+		for (Customer customer : testData.getCustomers())
+			if (customer.getLastname().equalsIgnoreCase(lastname))
+				return customer;
+		return null;
+	}
 
-@Override
-public Customer orderByDate(LocalDate dateAdded) {
-	// TODO 
-	for(Customer customer : testData.getCustomers())
-		if(customer.getDateAdded().equals(dateAdded))
-			return customer;
-	return null;
-}
+	@Override
+	public Customer orderByDate(LocalDate dateAdded) {
+		// TODO
+		for (Customer customer : testData.getCustomers())
+			if (customer.getDateAdded().equals(dateAdded))
+				return customer;
+		return null;
+	}
 }
