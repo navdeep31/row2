@@ -5,9 +5,15 @@ import java.time.LocalDate;
 import com.bae.oc.entities.Customer;
 import com.bae.oc.entities.Product;
 
+/**
+ * Interface specification for Customer Managers
+ * 
+ * @author Conor White
+ * @author Alex Dawson
+ *
+ */
 public interface CustomerManager {
-	
-	
+		
 	public Customer findByEmail(String email);
 	public void createNewCustomer(Customer customer);
 	public Customer orderBySurname(String lastname);

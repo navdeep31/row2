@@ -5,7 +5,6 @@ import java.util.List;
 import javax.mail.Address;
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import javax.xml.ws.RespectBinding;
 
 /**
  * Represents a customer.
