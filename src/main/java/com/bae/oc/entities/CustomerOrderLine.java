@@ -8,17 +8,29 @@ import javax.validation.constraints.*;
  * 
  * @author Alex Dawson
  * @version 0.4 22/11/2016
+ * 
+ * @author Tim Spencer/Andrew Claybrook
+ * @version 0.5 06/12/2016
  *
  */
 @Entity
 @Table(name="customer_order_line")
 @NamedQueries({
+	
+	/**
+	 * @author Tim Spencer/Andrew Claybrook
+	 * Named queries set for review
+	 */
 	@NamedQuery(name="CustomerOrderLine.findAll", query="SELECT col FROM customer_order_line col"),
 	@NamedQuery(name="CustomerOrderLine.findByCustomerOrder", query="SELECT col FROM customer_order_line co WHERE col.customer_order_id = :id")
 })
 public class CustomerOrderLine {
 	
 	/////////////////////////////////////////////FIELDS//////////////////////////////////////////////////
+	
+	@Id
+	@Column(name="customer_order_id", nullable=false)
+	private int customerorderId; 
 	
 	@Id
 	@Column(name="number", nullable=false)
@@ -46,9 +58,6 @@ public class CustomerOrderLine {
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
-	CustomerOrderLine() {
-		//TODO Keep this or not?
-	}
 	
 	/**
 	 * Constructor without line number
@@ -56,13 +65,19 @@ public class CustomerOrderLine {
 	 * 
 	 * @param iProduct Product (Object)
 	 * @param iQuantity Quantity (assumed positive)
+	 * @param customerOrderId
 	 * 
 	 * @MethodAuthor Alex Dawson
+	 * @version 0.4
+	 * 
+	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 * @version 0.5
 	 */
-	CustomerOrderLine(Product iProduct, int iQuantity) {
+	CustomerOrderLine(int customerOrderId, Product iProduct, int iQuantity) {
 		this.lineNumber = ++lineNumberCount;
 		this.product = iProduct;
 		this.quantity = iQuantity;
+		this.customerorderId = customerOrderId;
 		//TODO Check positive?
 	}
 	
@@ -72,14 +87,20 @@ public class CustomerOrderLine {
 	 * @param iLineNumber Line number
 	 * @param iProduct Product (Object)
 	 * @param iQuantity Quantity (assumed positive)
+	 * @param customerOrderId
+	 * 
 	 * 
 	 * @MethodAuthor Alex Dawson
+	 * 
+	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 * @version 0.5
 	 */
-	CustomerOrderLine(int iLineNumber, Product iProduct, int iQuantity)	{
+	CustomerOrderLine(int customerOrderId, int iLineNumber, Product iProduct, int iQuantity)	{
 		this.lineNumber = iLineNumber;
 		//TODO Check non-conflicting?
 		this.product = iProduct;
 		this.quantity = iQuantity;
+		this.customerorderId = customerOrderId;
 		//TODO Check non-negative?
 	}
 	

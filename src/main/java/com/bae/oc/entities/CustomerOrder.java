@@ -11,13 +11,23 @@ import com.bae.oc.enums.Status;
  * 
  * @author Alex Dawson
  * @version 0.4 22/11/2016
- *
+ * 
+ * @author Tim Spencer/Andrew Claybrook
+ * @version 0.5 06/12/2016 
+ * Added status to order
  */
 @Entity
 @Table(name="customer_order")
 @NamedQueries({
 	@NamedQuery(name="CustomerOrder.findAll", query="SELECT co FROM customer_order co"),
-	@NamedQuery(name="CustomerOrder.findByCustomer", query="SELECT co FROM customer_order co WHERE co.customer_id = :id")
+	@NamedQuery(name="CustomerOrder.findByCustomer", query="SELECT co FROM customer_order co WHERE co.customer_id = :id"),
+	@NamedQuery(name="CustomerOrder.findByStatus", query="SELECT co FROM customer_order co WHERE co.status = :status"),
+	
+	/**
+	 * @author Tim Spencer/Andrew Claybrook
+	 * Code needs examining when database set up, and address class finalised.  
+	 */
+	@NamedQuery(name="CustomerOrder.findByAddressId", query="SELECT co FROM customer_order co WHERE co.address_Id = :addressId")
 })
 public class CustomerOrder {
 	
@@ -28,12 +38,20 @@ public class CustomerOrder {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@Id
+	@JoinTable(name="customer",
+		joinColumns=
+			@JoinColumn(name="id", referencedColumnName="customer-id")
+			)
+	private Customer customer; 
+		
 	/**
 	 *  Below variable used to signify status, be that basket, order or finished order
 	 */
 	
-	@Column(name="status", nullable=false, unique=true)
-	private Status status; 
+	@Column(name="status", nullable=false)
+	@NotNull
+	private Status status = Status.BASKET; 
 	
 	@OneToMany
 	@JoinTable(name="customer_order_lines",
@@ -58,28 +76,26 @@ public class CustomerOrder {
 	/////////////////////////////////////////CONSTRUCTORS///////////////////////////////////////////////
 	
 	/**
-	 * Default constructor
-	 * 
-	 * @MethodAuthor Alex Dawson
-	 */
-	CustomerOrder() {
-		//TODO Keep this or not?
-	}
-	
-	/**
 	 * Constructor without id. Automatically sets id as next idCount
 	 * 
 	 * @param iOrderLines List of Order Lines
 	 * @param iDeliveryAddress Delivery Address (Address Object)
 	 * @param iBillingAddress Billing Address (Address Object)
+	 * @param Customer customer
 	 * 
 	 * @MethodAuthor Alex Dawson
+	 * @version 0.4
+	 * 
+	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 * @version 0.5
+	 * 
 	 */
-	CustomerOrder(List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
+	CustomerOrder(Customer customer, List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
 		this.id = ++idCount;
 		this.orderLines = iOrderLines;
 		this.deliveryAddress = iDeliveryAddress;
 		this.billingAddress = iBillingAddress;
+		this.customer = customer;
 	}
 	
 	/**
@@ -89,15 +105,17 @@ public class CustomerOrder {
 	 * @param iOrderLines List of Order Lines
 	 * @param iDeliveryAddress Delivery Address (Address Object)
 	 * @param iBillingAddress Billing Address (Address Object)
+	 * @param Customer customer
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
-	CustomerOrder(int iId, List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
+	CustomerOrder(Customer customer, int iId, List<CustomerOrderLine> iOrderLines, Address iDeliveryAddress, Address iBillingAddress) {
 		this.id = iId;
 		//TODO Logic to check non-conflicting id?
 		this.orderLines = iOrderLines;
 		this.deliveryAddress = iDeliveryAddress;
 		this.billingAddress = iBillingAddress;
+		this.customer = customer;
 	}
 
 	////////////////////////////////////////METHODS/////////////////////////////////////////////////////
@@ -213,14 +231,56 @@ public class CustomerOrder {
 		CustomerOrder.idCount = iIdCount;
 	}
 
+	/**
+	 * 
+	 * Get status
+	 * 
+	 * @return status
+	 * 
+	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 */
+	
 	public Status getStatus() {
 		return status;
 	}
 
+	/**
+	 * Set status
+	 * @param status
+	 * 
+	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 */
+	
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+
+	/**
+	 * Set status
+	 * @param status
+	 * 
+	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 */
 	
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	/**
+	 * Set status
+	 * @param status
+	 * 
+	 * @MethodAuthor Tim Spencer/Andrew Claybrook
+	 */
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	
+
+
 
 
 }
