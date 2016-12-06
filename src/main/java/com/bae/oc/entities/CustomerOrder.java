@@ -4,6 +4,8 @@ import java.util.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import com.bae.oc.enums.Status;
+
 /**
  * Represents a customer order, using a list of customer order lines
  * 
@@ -25,6 +27,13 @@ public class CustomerOrder {
 	@Column(name="id", nullable=false, unique=true)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	/**
+	 *  Below variable used to signify status, be that basket, order or finished order
+	 */
+	
+	@Column(name="status", nullable=false, unique=true)
+	private Status status; 
 	
 	@OneToMany
 	@JoinTable(name="customer_order_lines",
@@ -202,6 +211,14 @@ public class CustomerOrder {
 	 */
 	public static void setIdCount(int iIdCount) {
 		CustomerOrder.idCount = iIdCount;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 	
 
