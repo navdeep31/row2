@@ -14,9 +14,60 @@ public class Address {
 	private String line2;
 	private String postcode;
 	private String city;
+	private static int idCount = 0;
+	//TODO Refactor for database ID
 
 	/////////////////////////////////////////// Constructor////////////////////////////////////////////////////////
 
+	/**
+	 * Constructor without ID
+	 * 
+	 * Automatically sets next ID
+	 * 
+	 * @param iLine1 Address Line 1
+	 * @param iLine2 Address Line 2
+	 * @param iPostcode Postcode
+	 * @param iCity City
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public Address(String iLine1, String iLine2, String iPostcode, String iCity) {
+		this(++idCount, iLine1, iLine2, iPostcode, iCity);
+	}
+	
+	/**
+	 * Constructor without ID & Line 2
+	 * 
+	 * Automatically sets next ID
+	 * 
+	 * @param iLine1 Address Line 1
+	 * @param iLine2 Address Line 2
+	 * @param iPostcode Postcode
+	 * @param iCity City
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public Address(String iLine1, String iPostcode, String iCity) {
+		this(++idCount, iLine1, iPostcode, iCity);
+	}
+	
+	/**
+	 * Constructor without Line 2
+	 * 
+	 * @param iId
+	 * @param iLine1 Address Line 1
+	 * @param iPostcode Postcode
+	 * @param iCity City
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public Address(int iId, String iLine1, String iPostcode, String iCity) {
+		this.id = iId;
+		this.line1 = iLine1;
+		this.postcode = iPostcode;
+		this.city = iCity;
+	}
+	
 	/**
 	 * Constructor for new address which will be added to customer data
 	 * 
