@@ -32,7 +32,7 @@ public class ProductManagerOffline implements ProductManager {
 	}
 
 	@Override
-	public List<Product> findProductByName(String name) {
+	public List<Product> findProductByNameLike(String name) {
 		List<Product> productsFound = new ArrayList<Product>();
 		for (Product product : testData.getProducts())
 			if (product.getName().equalsIgnoreCase(name)) {
@@ -40,6 +40,7 @@ public class ProductManagerOffline implements ProductManager {
 			}
 		return productsFound;
 	}
+
 
 	@Override
 	public List<Product> findProductByDate(LocalDate date) {
@@ -83,7 +84,7 @@ public class ProductManagerOffline implements ProductManager {
 	}
 
 	@Override
-	public List<Product> findProductByDescription(String description) {
+	public List<Product> findProductByDescriptionLike(String description) {
 		List<Product> productsFound = new ArrayList<Product>();
 		for (Product product : testData.getProducts())
 			if (product.getDescription().equalsIgnoreCase(description)){
@@ -119,14 +120,26 @@ public class ProductManagerOffline implements ProductManager {
 	}
 	
 	@Override
-	public List<Product> findProductByPId(long productID){
-		List<Product> productsFound = new ArrayList<Product>();
+	public Product findProductByPId(long productID){
+		Product productFound = new Product();
 		for (Product product : testData.getProducts())
 			if (product.getProductID()==(productID)){
-				productsFound.add(product);
+				productFound = product;
+				break;
 			}
-		return productsFound;		
+		return productFound;		
 	}
+	
+//	No longer using PID like - could potentially return all products. see ProductManager
+//	@Override
+//	public List<Product> findProductByPIdLike(long productID){
+//		List<Product> productsFound = new ArrayList<Product>();
+//		for (Product product : testData.getProducts())
+//			if (product.getProductID()==(productID)){
+//				productsFound.add(product);
+//			}
+//		return productsFound;		
+//	}
 	
 	@Override
 	public List<Product> findProductBySId(long stockID){

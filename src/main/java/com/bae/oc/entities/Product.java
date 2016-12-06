@@ -80,6 +80,8 @@ public class Product {
 	 * 
 	 * @MethodAuthor N GILL
 	 */
+	public Product(){}
+	
 	public Product(long productID, long stockID, String name, String description, int quantity, int rrp,
 			int currentPrice, String status, LocalDate dateAdded, String category) {
 		super();

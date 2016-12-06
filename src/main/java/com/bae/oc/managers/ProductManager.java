@@ -17,7 +17,7 @@ public interface ProductManager {
 	
 	public void removeProduct(Product product);
 	
-	public List<Product> findProductByName(String name);
+	public List<Product> findProductByNameLike(String name);
 	
 	public List<Product> findProductByDate(LocalDate date);
 	
@@ -28,11 +28,14 @@ public interface ProductManager {
 	//Assume Product in pence hence integer
 	public List<Product> findProductByPrice(int price);
 	
-	public List<Product> findProductByDescription(String description);
+	public List<Product> findProductByDescriptionLike(String description);
 	
 	public List<Product> findAllProducts();
 	
-	public List<Product> findProductByPId(long productID);
+	public Product findProductByPId(long productID);
+	
+//	No longer using PID like - could potentially return all products.
+//	public List<Product> findProductByPIdLike(long productID);
 	
 	public List<Product> findProductBySId(long stockID);
 	

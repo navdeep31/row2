@@ -36,12 +36,11 @@ public class ProductService {
 	/**
 	 * find product by Product ID where PID is a string (overloaded)
 	 * 
-	 * @return List of found products
+	 * @return Matching product
 	 * 
 	 * @MethodAuthor N GILL
 	 */
-	//TODO Doesn't need to return list - should only find 1 product - change return type in Product Manager
-	public List<Product> findProductByPId(String productId){
+	public Product findProductByPId(String productId){
 		try{
 			return findProductByPId(Long.parseLong(productId));
 		} catch (Exception e){
@@ -52,18 +51,41 @@ public class ProductService {
 	/**
 	 * find product by Product ID where PID is a long (overloaded)
 	 * 
-	 * @return List of found products
+	 * @return Matching product
 	 * 
 	 * @MethodAuthor N GILL
 	 */
-	//TODO Doesn't need to return list - should only find 1 product - change return type in Product Manager
-	public List<Product> findProductByPId(long productId){
+	public Product findProductByPId(long productId){
 		return productManager.findProductByPId(productId);
 	}
 	
 	
-	
-	
+//	No longer using PID like - could potentially return all products. see ProductManager	
+//	/**
+//	 * find all products with similar Product ID where PID is a string (overloaded)
+//	 * 
+//	 * @return List of found products
+//	 * 
+//	 * @MethodAuthor N GILL
+//	 */
+//	public List<Product> findProductByPIdLike(String productId){
+//		try{
+//			return findProductByPIdLike(Long.parseLong(productId));
+//		} catch (Exception e){
+//			return null;
+//		}
+//	}
+//	
+//	/**
+//	 * find product with similar Product ID where PID is a long (overloaded)
+//	 * 
+//	 * @return List of found products
+//	 * 
+//	 * @MethodAuthor N GILL
+//	 */
+//	public List<Product> findProductByPIdLike(long productId){
+//		return productManager.findProductByPIdLike(productId);
+//	}
 	
 	
 	
@@ -83,7 +105,7 @@ public class ProductService {
 	 */
 	public List<Product> findProductBySId(String stockId){
 		try{
-			return findProductByPId(Long.parseLong(stockId));
+			return findProductBySId(Long.parseLong(stockId));
 		} catch (Exception e){
 			return null;
 		}
@@ -100,7 +122,7 @@ public class ProductService {
 	 * @MethodAuthor N GILL
 	 */
 	public List<Product> findProductBySId(long stockId){
-		return productManager.findProductByPId(stockId);
+		return productManager.findProductBySId(stockId);
 	}
 	
 	
@@ -116,7 +138,7 @@ public class ProductService {
 	 * @MethodAuthor N GILL
 	 */
 	public List<Product> findProductByName(String name){
-		return productManager.findProductByName(name);
+		return productManager.findProductByNameLike(name);
 	}
 	
 	
@@ -184,7 +206,7 @@ public class ProductService {
 	 * @MethodAuthor N GILL
 	 */
 	public List<Product> findProductByDescription(String description){
-		return productManager.findProductByDescription(description);
+		return productManager.findProductByDescriptionLike(description);
 	}
 	
 
