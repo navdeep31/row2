@@ -24,7 +24,7 @@ public class CustomerService {
 	/**
 	 * Updates Customer when attributes are edited
 	 * 
-	 * Assumes non-edited fields are passed in as null
+	 * Assumes non-edited fields are passed in as empty strings
 	 * 
 	 * @param iCustomer Customer to be updated
 	 * @param iFirstName Updated First Name
@@ -41,13 +41,13 @@ public class CustomerService {
 	 */
 	//TODO Check if appropriate to set return type as Customer?
 	public Customer updateCustomer(Customer iCustomer, String iFirstName, String iLastName, String iEmail, String iPassword, String iLine1, String iLine2, String iPostcode, String iCity) {
-		if(iFirstName != null) iCustomer.setFirstName(iFirstName);
-		if(iLastName != null) iCustomer.setFirstName(iLastName);
-		if(iEmail != null) iCustomer.setFirstName(iEmail);
-		if(iPassword != null) iCustomer.setFirstName(iPassword);
+		if(!iFirstName.isEmpty()) iCustomer.setFirstName(iFirstName);
+		if(iLastName.isEmpty()) iCustomer.setFirstName(iLastName);
+		if(iEmail.isEmpty()) iCustomer.setFirstName(iEmail);
+		if(iPassword.isEmpty()) iCustomer.setFirstName(iPassword);
 		//TODO Consider raising exception for incorrect combination of Address updates?
-		if(iLine1 != null && iPostcode != null &&iCity != null) {
-			if(iLine2 != null) {
+		if(iLine1.isEmpty() && iPostcode.isEmpty() &&iCity.isEmpty()) {
+			if(iLine2.isEmpty()) {
 				iCustomer.setAddress(new Address(iLine1, iLine2, iPostcode, iCity) );
 			} else {
 				iCustomer.setAddress(new Address(iLine1, iPostcode, iCity) );
