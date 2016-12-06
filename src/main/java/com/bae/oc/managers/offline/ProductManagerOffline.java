@@ -117,5 +117,24 @@ public class ProductManagerOffline implements ProductManager {
 		}
 		
 	}
-
+	
+	@Override
+	public List<Product> findProductByPId(long productID){
+		List<Product> productsFound = new ArrayList<Product>();
+		for (Product product : testData.getProducts())
+			if (product.getProductID()==(productID)){
+				productsFound.add(product);
+			}
+		return productsFound;		
+	}
+	
+	@Override
+	public List<Product> findProductBySId(long stockID){
+		List<Product> productsFound = new ArrayList<Product>();
+		for (Product product : testData.getProducts())
+			if (product.getProductID()==(stockID)){
+				productsFound.add(product);
+			}
+		return productsFound;
+	}
 }
