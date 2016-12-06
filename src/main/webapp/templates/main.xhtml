@@ -47,13 +47,44 @@
         		<li class="dropdown">
           			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           				<span class="glyphicon glyphicon-user"></span>
-          				Account
+          				<ui:fragment rendered="#{user.loggedIn}">
+          					Account
+          				</ui:fragment>
+          				<ui:fragment rendered="#{!user.loggedIn}">
+          					Log In
+          				</ui:fragment>
           			</a>
           			<ul class="dropdown-menu">
-          				<h:outputLink rendered="#{user.loggedIn}" value="your-wishlist.xhtml">Your Wishlist</h:outputLink>
-            			<li><a href="#">Your Orders</a></li>
-            			<li role="separator" class="divider"></li>
-            			<li><a href="#">Your Details</a></li>
+          				<ui:fragment rendered="#{user.loggedIn}">
+          					<li><a href="#">Your Wishlist</a></li>
+            				<li><a href="#">Your Orders</a></li>
+            				<li role="separator" class="divider"></li>
+            				<li><a href="#">Your Details</a></li>
+          				</ui:fragment>
+          				<ui:fragment rendered="#{!user.loggedIn}">
+          				<div class="col-md-4">
+          				<h:form>
+          					<div class="form-group">
+          						<label for="inputEmail">Email Address</label>
+          						<h:inputText value="#{login.email}" class="form-control">
+          							<f:passThroughAttribute name="type" value="email" />
+          							<f:passThroughAttribute name="placeholder" value="email..." />
+          							<f:passThroughAttribute name="alt" value="Email" />
+          						</h:inputText>
+          					</div>
+          					<div class="form-group">
+          						<h:inputText value="#{login.password}" class="form-control">
+          							<f:passThroughAttribute name="type" value="password" />
+          							<f:passThroughAttribute name="placeholder" value="password..." />
+          							<f:passThroughAttribute name="alt" value="Password" />
+          						</h:inputText>
+          					</div>
+          					<h:commandButton action="#{login.login}" value="login" class="btn btn-success">
+          						
+          					</h:commandButton>
+          				</h:form>
+          				</div>
+          				</ui:fragment>
           			</ul>
         		</li>        		
         		<li><a href="#">

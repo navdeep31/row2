@@ -25,6 +25,23 @@ public class CustomerManagerOffline implements CustomerManager {
 
 	@Inject
 	private TestData testData;
+	
+	/**
+	 * Returns the customer in test data with a given ID
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	@Override
+	public Customer findById(long iId) {
+		List<Customer> customers = testData.getCustomers();
+		for(Customer customer: testData.getCustomers()){
+			if(customer.getId() == iId) {
+				return customer;
+			}
+		}
+		//TODO Add exception for no customer?
+		return null;
+	}
 
 	/**
 	 * 
@@ -84,9 +101,5 @@ public class CustomerManagerOffline implements CustomerManager {
 		return null;
 	}
 
-	@Override
-	public Customer findById(long Id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }
