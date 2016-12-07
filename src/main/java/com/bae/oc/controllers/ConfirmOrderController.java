@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bae.oc.controllers.session.CurrentUser;
+import com.bae.oc.entities.CustomerOrder;
 import com.bae.oc.services.AddressService;
 import com.bae.oc.services.OrderService;
 
@@ -21,19 +22,22 @@ public class ConfirmOrderController {
 	@Inject
 	private AddressService addressService;
 	
-	private long customerOrderId;
+	private CustomerOrder customerOrder;
+	
 	
 	/**
 	 *
 	 * Method checks if user is logged in.
-	 * If so, gets the basket from the current user.
+	 * If so, gets the basket from the current user, and adds it to temporary memory.
 	 * Then checks that basket if it follows the business rules.
 	 * If no exception is thrown, it returns the order details page.
+	 * Exceptions caught and dealt with (will need to be looked over once exceptions are created)
+	 *
 	 *
 	 *@MethodAuthor Andrew Claybrook
 	 *@MethodAuthor Tim Spencer
 	 *@return String
-	 */
+	 */	
 	
 	public String goToOrderDetails(){
 		if(currentUser.isLoggedIn() == false) {
@@ -41,8 +45,8 @@ public class ConfirmOrderController {
 		}
 		
 		try{
-			customerOrderId = orderService.getBasket(currentUser.getCustomer().getId()).getId();
-			orderService.checkBasket(customerOrderId);
+			customerOrder = orderService.getBasket(currentUser.getCustomer().getId());
+			orderService.checkBasket(customerOrder.getId());
 			return "orderdetails";
 		} catch (Exception e) {
 			return null;
@@ -58,6 +62,5 @@ public class ConfirmOrderController {
 		return null;
 		
 	}
-	
 	
 }
