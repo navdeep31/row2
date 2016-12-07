@@ -39,4 +39,16 @@ public class AddressManagerOffline implements AddressManager {
 		testData.setAddresses(addresses);
 	}
 
+	@Override
+	public List<Address> findAllAddresses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Address findAddressById() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

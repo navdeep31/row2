@@ -1,8 +1,13 @@
 package com.bae.oc.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import com.bae.oc.entities.Address;
+import com.bae.oc.managers.AddressManager;
 
 /**
  * Deals with business logic for validating addresses
@@ -12,6 +17,9 @@ import com.bae.oc.entities.Address;
  */
 @Stateless
 public class AddressService {
+	
+	@Inject
+	AddressManager addressManager; 
 	
 	/**
 	 * Overloading for no-line-2 attribute parameter input
@@ -64,6 +72,33 @@ public class AddressService {
 		//TODO Validation for matching line1 and postcode
 		
 		return true;
+	}
+	
+	/**
+	 * Checks if an address entered already exists on system
+	 * 
+	 * Populates a List of all addresses stored in the Address Manager.
+	 * This is iterated through to find a match that equals that address, if so then the original address is returned
+	 * If no address is found then the address passed is new so this is returned.	 * 
+	 * 
+	 * @param iAddress Address 
+	 * @return Address 
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Andrew Claybrook
+	 */
+	public Address checkAddressExists(Address iAddress) {
+		List<Address> addresses = addressManager.findAllAddresses();
+			
+		for(Address address : addresses){
+			if(iAddress.getLine1().equals(address.getLine1()) && iAddress.getPostcode().equals(address.getPostcode()) 
+					&& iAddress.getCity().equals(address.getCity())){
+				return address;
+			}
+		}
+		
+		return iAddress;
+		
+		
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.bae.oc.managers;
 
+import java.util.List;
+
 import com.bae.oc.entities.Address;
 
 //TODO Consider if Address managers are needed?
@@ -14,4 +16,8 @@ import com.bae.oc.entities.Address;
 public interface AddressManager {
 	
 	public void createAddress(Address address);
+	
+	public List<Address> findAllAddresses();
+	
+	public Address findAddressById();
 }
