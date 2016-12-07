@@ -34,7 +34,7 @@ public class CustomerOrderLine {
 	
 	@Id
 	@Column(name="customer_order_id", nullable=false)
-	private int customerorderId; 
+	private long customerorderId; 
 	
 	@Id
 	@Column(name="number", nullable=false)
@@ -99,7 +99,7 @@ public class CustomerOrderLine {
 	 * @MethodAuthor Andrew Claybrook
 	 * @version 0.5
 	 */
-	public CustomerOrderLine(int customerOrderId, Product iProduct, int iQuantity) {
+	public CustomerOrderLine(long customerOrderId, Product iProduct, int iQuantity) {
 		this.lineNumber = ++lineNumberCount;
 		this.product = iProduct;
 		this.quantity = iQuantity;
@@ -123,7 +123,7 @@ public class CustomerOrderLine {
 	 * @MethodAuthor Andrew Claybrook
 	 * @version 0.5
 	 */
-	CustomerOrderLine(int customerOrderId, int iLineNumber, Product iProduct, int iQuantity, Status status)	{
+	CustomerOrderLine(long customerOrderId, int iLineNumber, Product iProduct, int iQuantity, Status status)	{
 		this.lineNumber = iLineNumber;
 		//TODO Check non-conflicting?
 		this.product = iProduct;
@@ -260,7 +260,7 @@ public class CustomerOrderLine {
 	 * 
 	 */
 	
-	public int getCustomerorderId() {
+	public long getCustomerorderId() {
 		return customerorderId;
 	}
 	

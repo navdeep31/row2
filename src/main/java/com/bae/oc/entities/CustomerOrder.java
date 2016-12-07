@@ -38,7 +38,7 @@ public class CustomerOrder {
 	@Id
 	@Column(name="id", nullable=false, unique=true)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	
 	/* 
 	 * @author Andrew Claybrook
@@ -132,7 +132,7 @@ public class CustomerOrder {
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -143,7 +143,7 @@ public class CustomerOrder {
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
-	public void setId(int iId) {
+	public void setId(long iId) {
 		this.id = iId;
 		//TODO Check non-conflicting?
 	}
