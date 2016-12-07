@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.bae.oc.enums.ProductStatus;
+
 import java.time.LocalDate;
 
 @Entity
@@ -51,18 +53,18 @@ public class Product {
 	@Column
 	@NotNull
 	//Assume Product in pence hence integer
-	private int rrp;
+	private double rrp;
 	
 	
 	@Column(name="current_price")
 	@NotNull
 	//Assume Product in pence hence integer
-	private int currentPrice;
+	private double currentPrice;
 	
 	@Column(length=225)
 	@Size(max=225)
 	@NotNull
-	private String status;
+	private ProductStatus status;
 	
 	@Column(name="date_added")
 	@NotNull
@@ -79,11 +81,12 @@ public class Product {
 	 * Constructor
 	 * 
 	 * @MethodAuthor N GILL
+	 * @MethodAuthor Andrew Claybrook
 	 */
 	public Product(){}
 	
-	public Product(long productID, long stockID, String name, String description, int quantity, int rrp,
-			int currentPrice, String status, LocalDate dateAdded, String category) {
+	public Product(long productID, long stockID, String name, String description, int quantity, double rrp,
+			double currentPrice, ProductStatus status, LocalDate dateAdded, String category) {
 		super();
 		this.productID = productID;
 		this.stockID = stockID;
@@ -233,13 +236,13 @@ public class Product {
 	 * 
 	 * @MethodAuthor N GILL
 	 */
-	public String getStatus() {
+	public ProductStatus getStatus() {
 		return status;
 	}
 
 
 
-	public void setStatus(String status) {
+	public void setStatus(ProductStatus status) {
 		this.status = status;
 	}
 
