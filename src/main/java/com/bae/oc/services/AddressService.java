@@ -19,6 +19,8 @@ public class AddressService {
 	 * @param iPostcode
 	 * @param iCity
 	 * @return
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
 	public boolean isValidAddress(String iLine1, String iLine2, String iPostcode, String iCity) {
 		
