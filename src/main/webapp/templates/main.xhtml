@@ -32,12 +32,14 @@
 						Menu
 					</a>
        				<ul class="dropdown-menu">
+       				<li><a href="categories.xhtml"><strong>Categories</strong></a></li>
             			<li><a href="#">Gnomes</a></li>
             			<li><a href="#">Ornaments</a></li>
             			<li><a href="#">Equipment</a></li>
+            			<li><a href="#">Hot Tubs</a></li>
             			<li role="separator" class="divider"></li>
-            			<li><a href="#">Home</a></li>
-            			<li><a href="#">Checkout</a></li>
+            			<li><a href="home.xhtml">Home</a></li>
+            			<li><a href="#">My Account</a></li>
             			<li><a href="#">Help</a></li>
           			</ul>
         		</li>
@@ -48,7 +50,7 @@
           			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           				<span class="glyphicon glyphicon-user"></span>
           				<ui:fragment rendered="#{user.loggedIn}">
-          					Account
+          					My Account
           				</ui:fragment>
           				<ui:fragment rendered="#{!user.loggedIn}">
           					Log In
@@ -56,10 +58,10 @@
           			</a>
           			<ul class="dropdown-menu">
           				<ui:fragment rendered="#{user.loggedIn}">
-          					<li><a href="#">Your Wishlist</a></li>
-            				<li><a href="#">Your Orders</a></li>
+          					<li><a href="#">My Wishlist</a></li>
+            				<li><a href="#">My Orders</a></li>
             				<li role="separator" class="divider"></li>
-            				<li><a href="#">Your Details</a></li>
+            				<li><a href="#">My Details</a></li>
           				</ui:fragment>
           				<ui:fragment rendered="#{!user.loggedIn}">
           				<h:form>
@@ -138,7 +140,7 @@
 					<a href="#">Cookie Policy</a>
 					<a href="#">Privacy Policy</a>
 					<a href="#">Terms &amp; Conditions</a>
-					© Alex Dawson.
+					© Alex Dawson and the Wizard Cows.
 				</span>			
 			</div>
 		</div>
