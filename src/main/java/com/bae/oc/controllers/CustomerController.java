@@ -1,5 +1,6 @@
 package com.bae.oc.controllers;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -46,5 +47,24 @@ public class CustomerController {
 		return "customer-edit";
 	}
 	
+	/**
+	 * Fills CustomerController attributes with Current User values when loading My Account Details Page
+	 * 
+	 * @return String of next page to visit (My Account Details)
+	 */
+	@PostConstruct
+	public String getCustomerDetails() {
+		if(currentUser != null) {
+			this.firstName = currentUser.getCustomer().getFirstName();
+			this.lastName = currentUser.getCustomer().getLastName();
+			this.email = currentUser.getCustomer().getEmail();
+			this.password = currentUser.getCustomer().getPassword();
+			this.line1 = currentUser.getCustomer().getAddress().getLine1();
+			this.line2 = currentUser.getCustomer().getAddress().getLine2();
+			this.postcode = currentUser.getCustomer().getAddress().getPostcode();
+			this.city = currentUser.getCustomer().getAddress().getCity();
+		}
+		return "account-details";
+	}
 	
 }

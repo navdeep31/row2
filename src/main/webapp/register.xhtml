@@ -1,0 +1,56 @@
+<ui:composition xmlns="https://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="templates/main.xhtml">
+	<meta charset="utf-8" />
+	
+	<ui:define name="pageTitle">NB Gardens Registration</ui:define>
+	
+	<ui:define name="mainContent">
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					
+					<h2>Create Account</h2>
+					
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="inputFirstName" class="col-md-2 control-label">First Name</label>
+						    <div class="col-md-4">
+						    	<input type="text" class="form-control" id="inputFirstName" placeholder="First Name" />
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="inputLastName" class="col-md-2 control-label">Last Name</label>
+						    <div class="col-md-4">
+						    	<input type="text" class="form-control" id="inputLastName" placeholder="Last Name" />
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="col-md-2 control-label">Email</label>
+						    <div class="col-md-4">
+						    	<input type="email" class="form-control" id="inputEmail" placeholder="Email" />
+						    </div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword" class="col-md-2 control-label">Password</label>
+						    <div class="col-md-4">
+						    	<input type="password" class="form-control" id="inputPassword" placeholder="Password" />
+						    </div>
+						</div>
+						<div class="form-group">
+						    <div class="col-sm-offset-2 col-sm-10">
+						    	<button type="submit" class="btn btn-default">Sign in</button>
+						    </div>
+						</div>
+					</form>
+					
+				</div>				
+			</div>
+		</div>
+	
+	</ui:define>
+	
+</ui:composition>
