@@ -83,10 +83,8 @@ public class BasketController implements Serializable {
 	}
 
 	/**
-	 *Method firstly uses the isLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. If not they are returned to the login page
-	 *productId and customerOrderId are set from calling the getProductID() getter from selectedProduct session controller and getBasket() method from the orderService
-	 *
-	 *Once this is set then the addToBasket() is called passing the productId and customerOrderId variables
+	 *Method firstly uses the isLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. 
+	 *This method then sets the basket attribute from the current user's id and calling orderService's get basket method.
 	 *
 	 *@MethodAuthor Andrew Claybrook
 	 *@MethodAuthor Tim Spencer
@@ -102,7 +100,9 @@ public class BasketController implements Serializable {
 		return null;
 		}
 	}
-	
+	/*
+	 * May be used later, used specifically for gatekeeping use of the basket button. Redundant now thanks to above method. 
+	 * 
 	public String checkBasketButton() {
 		if(currentUser.isLoggedIn() == false) {
 			return "login";
@@ -110,12 +110,29 @@ public class BasketController implements Serializable {
 			return "basket";
 		}
 	}
+	*/
 	
-	public String updateQuantity(int quantity) {
-		
-		
-		
-		return null;
+	
+	/**
+	 *Method firstly uses the isLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. 
+	 *This method then sets the basket attribute from the current user's id and calling orderService's get basket method.
+	 *
+	 *@MethodAuthor Andrew Claybrook
+	 *@MethodAuthor Tim Spencer
+	 *@param String
+	 *@return String
+	 */
+	public String updateQuantity(String quantity) {
+		if(currentUser.isLoggedIn() == false) {
+			return "login";
+		}
+		try{
+			orderService.updateQuantity(orderService.getBasket(currentUser.getCustomer().getId()).getId(), selectedProduct.getProduct().getProductID(), quantity);
+			return "basket";
+		} catch(Exception e) {
+			return "placeholder";
+		}
+	
 	
 	}
 	

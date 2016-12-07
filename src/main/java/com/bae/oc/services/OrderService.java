@@ -177,10 +177,8 @@ public class OrderService {
 	}
 	
 	/**
-	 * 
-	 * Iterates through the Customer Order Line attached to the Customer Order that has being passed to check if the Product ID passed exists within the Customer Order Line
-	 * If this check is successful this sets the quantity to the value that has been passed.
-	 * If this check is not successful an exception is thrown
+	 * First it parses an overloaded method of updateQuantity (which takes a string) which parses that string into a int. If that is successful, calls the original method updateQuantity as below.
+	 * If this check is not successful, an exception is thrown. 
 	 * 
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
@@ -188,6 +186,32 @@ public class OrderService {
 	 * @param product
 	 * 
 	 */
+	
+	public void updateQuantity(long customerOrderId, long productId, String quantity) {
+		try{
+			int quantityInt = Integer.parseInt(quantity); 
+			updateQuantity(customerOrderId, productId, quantityInt);
+		}
+		catch(NumberFormatException e){
+			//TODO Exception
+		}
+		
+		
+	}
+	
+	/**
+	 * Iterates through the Customer Order Line attached to the Customer Order that has being passed to check if the Product ID passed exists within the Customer Order Line
+	 * If this check is successful this sets the quantity to the value that has been passed.
+	 * If this check is not successful an exception is thrown.
+	 * 
+	 * 
+	 * @MethodAuthor Andrew Claybrook
+	 * @MethodAuthor Tim Spencer
+	 * @param customerOrder
+	 * @param product
+	 * 
+	 */
+	
 	
 	public void updateQuantity(long customerOrderId, long productId, int quantity){
 		boolean isInBasket = false;
