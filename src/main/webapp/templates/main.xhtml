@@ -39,18 +39,18 @@
 					</a>
        				<ul class="dropdown-menu">
        				<li><a href="categories.xhtml"><strong>Categories</strong></a></li>
-            			<li><a href="#">Gnomes</a></li>
-            			<li><a href="#">Ornaments</a></li>
-            			<li><a href="#">Equipment</a></li>
-            			<li><a href="#">Hot Tubs</a></li>
+            			<li><a href="gnomes.xhtml">Gnomes</a></li>
+            			<li><a href="ornaments.xhtml">Ornaments</a></li>
+            			<li><a href="equipment.xhtml">Equipment</a></li>
+            			<li><a href="hottubs.xhtml">Hot Tubs</a></li>
             			<li role="separator" class="divider"></li>
             			<li><a href="home.xhtml">Home</a></li>
-            			<li><a href="#">My Account</a></li>
-            			<li><a href="#">Help</a></li>
+            			<li><a href="myaccount.xhtml">My Account</a></li>
+            			<li><a href="help.xhtml">Help</a></li>
           			</ul>
         		</li>
       		</ul>      		
-			<a class="navbar-brand" href="#">NB Gardens</a>
+			<a class="navbar-brand" href="home.xhtml">NB Gardens</a>
       		<ul class="nav navbar-nav navbar-right">
         		<li class="dropdown">
           			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -64,10 +64,10 @@
           			</a>
           			<ul class="dropdown-menu">
           				<ui:fragment rendered="#{user.loggedIn}">
-          					<li><a href="#">My Wishlist</a></li>
-            				<li><a href="#">My Orders</a></li>
+          					<li><a href="wishlist.xhtml">My Wishlist</a></li>
+            				<li><a href="your-orders.xhtml">My Orders</a></li>
             				<li role="separator" class="divider"></li>
-            				<li><a href="#">My Details</a></li>
+            				<li><a href="mydetails.xhtml">My Details</a></li>
           				</ui:fragment>
           				<ui:fragment rendered="#{!user.loggedIn}">
           				<h:form>
@@ -93,7 +93,7 @@
           				</ui:fragment>
           			</ul>
         		</li>        		
-        		<li><a href="#">
+        		<li><a href="basket.xhtml">
         			<span class="glyphicon glyphicon-shopping-cart"></span>
         			Basket
         		</a></li>
