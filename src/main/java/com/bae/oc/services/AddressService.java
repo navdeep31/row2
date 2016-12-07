@@ -2,6 +2,8 @@ package com.bae.oc.services;
 
 import javax.ejb.Stateless;
 
+import com.bae.oc.entities.Address;
+
 /**
  * Deals with business logic for validating addresses
  * 
@@ -12,20 +14,48 @@ import javax.ejb.Stateless;
 public class AddressService {
 	
 	/**
-	 * Checks if given address is valid
+	 * Overloading for no-line-2 attribute parameter input
 	 * 
-	 * @param iLine1
-	 * @param iLine2
-	 * @param iPostcode
-	 * @param iCity
-	 * @return
+	 * @param iLine1 Line 1 of Address
+	 * @param iPostcode Postcode
+	 * @param iCity City
+	 * @return boolean of whether address is valid
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public boolean isValidAddress(String iLine1, String iPostcode, String iCity) {
+		
+		return isValidAddress(new Address(iLine1, iPostcode, iCity));
+	}
+	
+	/**
+	 * Overloading for full attribute parameter input
+	 * 
+	 * @param iLine1 Line 1 of Address
+	 * @param iLine2 Line 2 of Address
+	 * @param iPostcode Postcode
+	 * @param iCity City
+	 * @return boolean of whether address is valid
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
 	public boolean isValidAddress(String iLine1, String iLine2, String iPostcode, String iCity) {
 		
+		return isValidAddress(new Address(iLine1, iLine2, iPostcode, iCity));
+	}
+	
+	/**
+	 * Checks if given address is valid
+	 * 
+	 * @param iAddress Address (Object)
+	 * @return boolean of whether address is valid
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public boolean isValidAddress(Address iAddress) {
+		
 		// invalid if no line1 or postcode
-		if(iLine1.isEmpty() || iPostcode.isEmpty()) {
+		if(iAddress.getLine1().isEmpty() || iAddress.getPostcode().isEmpty()) {
 			return false;
 		}
 		
