@@ -27,8 +27,8 @@ public class TestData {
 		setProducts(new ArrayList<>());
 		setStocks(new ArrayList<>());
 		setCustomers(new ArrayList<>());
-		setEmployees(new ArrayList<>());
-		setPurchaseOrders(new ArrayList<PurchaseOrder>());
+		// setEmployees(new ArrayList<>());
+		// setPurchaseOrders(new ArrayList<PurchaseOrder>());
 		// TODOadd data
 	}
 	// TODOgetters & setters
