@@ -1,4 +1,4 @@
- package com.bae.oc.services;
+package com.bae.oc.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,57 +28,72 @@ import com.bae.oc.managers.ProductManager;
 
 @Stateless
 public class OrderService {
-	
+
 	@Inject
 	private CustomerManager customerManager;
 	@Inject
 	private CustomerOrderManager customerOrderManager;
 	@Inject
 	private ProductManager productManager;
-	
+
 	/**
-	 * Validate's information within the order prior to confirmation.
-	 * Will change status of order
+	 * Checks the basket for the business rules; if any fail it throws an exception; Otherwise it throws an exception. 
 	 * 
 	 * @param customerOrder
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
-	 *  
+	 * 
 	 */
-	public void confirmOrder(long customerOrderId) {
+
+	public void checkBasket(long customerOrderId) {
 
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
-		
-		if(customerOrder.getOrderLines().size()!=0) {
-			
-			if(customerOrder.getCost() <= 10000.00) {
-				
-				if(customerOrder.getStatus().equals(Status.BASKET)) {
+		if (customerOrder.getStatus().equals(Status.BASKET)) {
+			if (customerOrder.getOrderLines().size() != 0) {
+				if (customerOrder.getCost() <= 10000.00) {
 					
-					for(CustomerOrderLine customerOrderLine: customerOrder.getOrderLines()) {
-						customerOrderLine.setItemPrice(customerOrderLine.getProduct().getCurrentPrice());
-						customerOrderLine.setStatus(Status.ORDER);
-						//May need to get rid of above line if not needed
-					}
-					customerOrder.setStatus(Status.ORDER);
+				} else {
+					// TODO add exception
 				}
-				else {
-					//TODO add exception
-				}
+			} else {
+				// TODO add exception
 			}
-			else {
-				//TODO add exception
-			}
+		} else {
+			// TODO add exception
 		}
-		else {
+	}
+
+	/**
+	 * Validate's if something is a basket; if it is, change the order to Status.Order. 
+	 * If not, throws exception.
+	 * 
+	 * @param customerOrder
+	 * @MethodAuthor Andrew Claybrook
+	 * @MethodAuthor Tim Spencer
+	 * 
+	 */
+
+	
+	public void confirmOrder(long customerOrderId) {
+		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
+		
+		if (customerOrder.getStatus().equals(Status.BASKET)) {
+
+			for (CustomerOrderLine customerOrderLine : customerOrder.getOrderLines()) {
+				customerOrderLine.setItemPrice(customerOrderLine.getProduct().getCurrentPrice());
+				customerOrderLine.setStatus(Status.ORDER);
+			}
+			customerOrder.setStatus(Status.ORDER);
+		} else {
 			//TODO add exception
 		}
 	}
-	
+
 	/**
 	 * 
-	 * Checks if customer has an open basket. If they do, the open basket is returned.
-	 * If not then a new empty basket is created for the customer and returned.
+	 * Checks if customer has an open basket. If they do, the open basket is
+	 * returned. If not then a new empty basket is created for the customer and
+	 * returned.
 	 * 
 	 * @param customer
 	 * @MethodAuthor Andrew Claybrook
@@ -88,29 +103,28 @@ public class OrderService {
 	 */
 	public CustomerOrder getBasket(long customerId) {
 		CustomerOrder basket = null;
-		Customer customer = customerManager.findById(customerId); 
-		
-		for(CustomerOrder custOrders : customer.getOrders())
-		{
-			if(custOrders.getStatus().equals(Status.BASKET))
-			{
+		Customer customer = customerManager.findById(customerId);
+
+		for (CustomerOrder custOrders : customer.getOrders()) {
+			if (custOrders.getStatus().equals(Status.BASKET)) {
 				basket = custOrders;
 			}
 		}
-		
-		if(basket == null)
-		{
+
+		if (basket == null) {
 			basket = new CustomerOrder(new ArrayList<CustomerOrderLine>());
 		}
-		
-	return basket;
+
+		return basket;
 	}
-	
+
 	/**
 	 * 
-	 * Matches and gets product object from ProductManager.
-	 * Iterates through the Customer Order's Customer Order Line to check if the Product ID already exists within, if so an exception will be thrown.
-	 * After iteration if boolean isAlreadyInBasket is proven to be still false then new Customer Order Line entry is created and added back to the Customer Order
+	 * Matches and gets product object from ProductManager. Iterates through the
+	 * Customer Order's Customer Order Line to check if the Product ID already
+	 * exists within, if so an exception will be thrown. After iteration if
+	 * boolean isAlreadyInBasket is proven to be still false then new Customer
+	 * Order Line entry is created and added back to the Customer Order
 	 * 
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
@@ -118,36 +132,35 @@ public class OrderService {
 	 * @param productId
 	 * 
 	 */
-	
-	// Depending on how Product is built Product may change to just the product ID being passed as an argument.
-	
-	public void addToBasket (long customerOrderId, long productId){
+
+	// Depending on how Product is built Product may change to just the product
+	// ID being passed as an argument.
+
+	public void addToBasket(long customerOrderId, long productId) {
 		Product product = productManager.findProductByPId(productId);
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
 		boolean isAlreadyInBasket = false;
-				
-		for(CustomerOrderLine custOrderLine : customerOrder.getOrderLines())
-		{
-			if(custOrderLine.getProduct().getProductID() ==  productId)
-			{
+
+		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
+			if (custOrderLine.getProduct().getProductID() == productId) {
 				isAlreadyInBasket = true;
 				// TODO add Exception
 			}
 		}
-		
-		if(!isAlreadyInBasket)
-		{
+
+		if (!isAlreadyInBasket) {
 
 			customerOrder.getOrderLines().add(new CustomerOrderLine(customerOrder.getId(), product, 1));
 		}
-		
+
 	}
-	
+
 	/**
 	 * 
-	 * Iterates through the Customer Order Line attached to the Customer Order that has being passed to check if the Product ID passed exists within the Customer Order Line
-	 * If this check is successful this removes the Customer Order Line.
-	 * If this check is not successful an exception is thrown
+	 * Iterates through the Customer Order Line attached to the Customer Order
+	 * that has being passed to check if the Product ID passed exists within the
+	 * Customer Order Line If this check is successful this removes the Customer
+	 * Order Line. If this check is not successful an exception is thrown
 	 * 
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
@@ -155,30 +168,31 @@ public class OrderService {
 	 * @param product
 	 * 
 	 */
-	
-	// Depending on how Product is built Product may change to just the product ID being passed as an argument.
-	
-	public void removeFromBasket(long customerOrderId, long productId){
+
+	// Depending on how Product is built Product may change to just the product
+	// ID being passed as an argument.
+
+	public void removeFromBasket(long customerOrderId, long productId) {
 		boolean isInBasket = false;
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
-		
-		for(CustomerOrderLine custOrderLine : customerOrder.getOrderLines())
-		{
-			if(custOrderLine.getProduct().getProductID() ==  productId)
-			{
+
+		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
+			if (custOrderLine.getProduct().getProductID() == productId) {
 				isInBasket = true;
 				customerOrder.getOrderLines().remove(custOrderLine);
 			}
 		}
-		
-		if(!isInBasket){
+
+		if (!isInBasket) {
 			// TODO add Exception
 		}
 	}
-	
+
 	/**
-	 * First it parses an overloaded method of updateQuantity (which takes a string) which parses that string into a int. If that is successful, calls the original method updateQuantity as below.
-	 * If this check is not successful, an exception is thrown. 
+	 * First it parses an overloaded method of updateQuantity (which takes a
+	 * string) which parses that string into a int. If that is successful, calls
+	 * the original method updateQuantity as below. If this check is not
+	 * successful, an exception is thrown.
 	 * 
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
@@ -186,23 +200,23 @@ public class OrderService {
 	 * @param product
 	 * 
 	 */
-	
+
 	public void updateQuantity(long customerOrderId, long productId, String quantity) {
-		try{
-			int quantityInt = Integer.parseInt(quantity); 
+		try {
+			int quantityInt = Integer.parseInt(quantity);
 			updateQuantity(customerOrderId, productId, quantityInt);
+		} catch (NumberFormatException e) {
+			// TODO Exception
 		}
-		catch(NumberFormatException e){
-			//TODO Exception
-		}
-		
-		
+
 	}
-	
+
 	/**
-	 * Iterates through the Customer Order Line attached to the Customer Order that has being passed to check if the Product ID passed exists within the Customer Order Line
-	 * If this check is successful this sets the quantity to the value that has been passed.
-	 * If this check is not successful an exception is thrown.
+	 * Iterates through the Customer Order Line attached to the Customer Order
+	 * that has being passed to check if the Product ID passed exists within the
+	 * Customer Order Line If this check is successful this sets the quantity to
+	 * the value that has been passed. If this check is not successful an
+	 * exception is thrown.
 	 * 
 	 * 
 	 * @MethodAuthor Andrew Claybrook
@@ -211,43 +225,41 @@ public class OrderService {
 	 * @param product
 	 * 
 	 */
-	
-	
-	public void updateQuantity(long customerOrderId, long productId, int quantity){
+
+	public void updateQuantity(long customerOrderId, long productId, int quantity) {
 		boolean isInBasket = false;
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
-		
-		if(quantity <= 0){
+
+		if (quantity <= 0) {
 			// TODO add Exception
 		}
-		
-		for(CustomerOrderLine custOrderLine : customerOrder.getOrderLines())
-		{
-			if(custOrderLine.getProduct().getProductID() ==  productId)
-			{
+
+		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
+			if (custOrderLine.getProduct().getProductID() == productId) {
 				isInBasket = true;
 				custOrderLine.setQuantity(quantity);
 				break;
 			}
 		}
-		
-		if(!isInBasket){
-			
+
+		if (!isInBasket) {
+
 			// TODO add Exception
 		}
-		
+
 	}
-	
-	/* When Customers & Addresses are finalised build create validation for addresses
-	public boolean hasAddress(Customer customer){
-		return false;
-	} */
-	
+
+	/*
+	 * When Customers & Addresses are finalised build create validation for
+	 * addresses public boolean hasAddress(Customer customer){ return false; }
+	 */
+
 	/**
 	 * 
-	 * A blank List of type CustomerOrder is created to allow adding of Customer Order objects.
-	 * The Customer Order objects attached to the Customer are then iterated through to check the status does not equal BASKET.
-	 * If this check is successful an exception is thrown
+	 * A blank List of type CustomerOrder is created to allow adding of Customer
+	 * Order objects. The Customer Order objects attached to the Customer are
+	 * then iterated through to check the status does not equal BASKET. If this
+	 * check is successful an exception is thrown
 	 * 
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
@@ -255,25 +267,21 @@ public class OrderService {
 	 * @param orderHistory
 	 * 
 	 */
-	
-	
+
 	public List<CustomerOrder> getOrderHistory(long customerId) {
-		List<CustomerOrder> orderHistory = new ArrayList<CustomerOrder>(); 
-		Customer customer = customerManager.findById(customerId); 		
-		
-		for(CustomerOrder custOrders : customer.getOrders())
-		{
-			if(custOrders.getStatus() != Status.BASKET)
-			{
+		List<CustomerOrder> orderHistory = new ArrayList<CustomerOrder>();
+		Customer customer = customerManager.findById(customerId);
+
+		for (CustomerOrder custOrders : customer.getOrders()) {
+			if (custOrders.getStatus() != Status.BASKET) {
 				orderHistory.add(custOrders);
 			}
 		}
-					
-		if(customer.getOrders().size() == 0 || orderHistory.size() == 0)
-		{
+
+		if (customer.getOrders().size() == 0 || orderHistory.size() == 0) {
 			// TODO add Exception
 		}
 		return orderHistory;
 	}
-		
+
 }

@@ -31,6 +31,7 @@ public class BasketController implements Serializable {
 	private CurrentUser currentUser;
 	@Inject
 	private SelectedProduct selectedProduct;
+	
 	private CustomerOrder basket;
 	
 	/**
