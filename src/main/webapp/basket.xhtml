@@ -4,6 +4,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	template="templates/main.xhtml">
 	<meta charset="utf-8" />
+	<author>Tim Spencer</author>
 
 	<ui:define name="pageTitle">My Basket</ui:define>
 
@@ -11,12 +12,50 @@
 		<link type="text/css" rel="stylesheet" href="css/basket.css" />
 		<div class="container">
 			<div class="row">
-			
-				<div class="col-md-2 main">
+
+				<div class="col-md-12 main" align="left">
 
 					<header id="heading">
-						<h1>Basket</h1>
+						
+						<h1>
+							<h:outputText value="#{user.getCustomer().getFirstName()}" />
+							's Basket
+						</h1>
+
 					</header>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-sm-4" align="left">
+					<img class="img-responsive" src="images/CatTools.png" width="auto"
+						height="auto" />
+				</div>
+				<div class="col-sm-8" align="left">
+					<h3>Product: Garden Stuff</h3>
+
+					<p>
+						<strong> Description </strong>: Integer ut nibh eget nisi viverra
+						dictum eu vitae erat. Sed convallis libero non aliquet fringilla.
+						Vivamus iaculis augue et nulla consectetur malesuada at vitae
+						lectus.
+					</p>
+
+					<hr />
+					<container> <div class="col-sm-4">
+					<p>
+						<strong>Item Cost</strong>: 
+						
+					</p>
+					<p>
+						<strong>Total Cost</strong> £315.99
+					</p>
+					</div>
+					<div class="col-sm-8" align="right">
+						<p><strong>Quantity:</strong></p>
+					</div> </container>
+
+
 				</div>
 
 

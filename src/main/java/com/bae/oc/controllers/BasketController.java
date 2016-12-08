@@ -98,7 +98,7 @@ public class BasketController implements Serializable {
 			return "login";
 		} else {		
 		basket = orderService.getBasket(currentUser.getCustomer().getId());		
-		return null;
+		return "hello";
 		}
 	}
 	/*
