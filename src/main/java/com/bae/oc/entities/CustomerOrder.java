@@ -295,7 +295,7 @@ public class CustomerOrder {
 	public double getCost() {
 		double cost = 0;
 		for(CustomerOrderLine cusOrderLine: orderLines) {
-			cost += cusOrderLine.getProduct().getCurrentPrice(); 
+			cost += cusOrderLine.getTotalLinePrice(); 
 		}
 	
 		return cost;		
