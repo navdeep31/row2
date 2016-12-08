@@ -53,7 +53,7 @@ public class CustomerController {
 	 * @return String of next page to visit (My Account Details)
 	 */
 	@PostConstruct
-	public String getCustomerDetails() {
+	public void getCustomerDetails() {
 		if(currentUser != null) {
 			this.firstName = currentUser.getCustomer().getFirstName();
 			this.lastName = currentUser.getCustomer().getLastName();
@@ -64,7 +64,6 @@ public class CustomerController {
 			this.postcode = currentUser.getCustomer().getAddress().getPostcode();
 			this.city = currentUser.getCustomer().getAddress().getCity();
 		}
-		return "account-details";
 	}
 	
 }
