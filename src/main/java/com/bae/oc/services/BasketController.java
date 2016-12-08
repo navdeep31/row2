@@ -32,6 +32,7 @@ public class BasketController implements Serializable {
 	private SelectedProduct selectedProduct;
 	
 	private CustomerOrder basket;
+	private int quantity;
 	
 	/**
 	 *Method firstly uses the isLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. If not they are returned to the login page
@@ -159,6 +160,12 @@ public class BasketController implements Serializable {
 	public String getItemPrice() {
 		return "" + basket.getOrderLines().get(0).getProduct().getCurrentPrice();
 	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	
 	
 	
 	

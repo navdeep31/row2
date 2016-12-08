@@ -11,8 +11,8 @@
 	<ui:define name="mainContent">
 		<h:outputText value="#{basket.setBasket()}"/>
 		<link type="text/css" rel="stylesheet" href="css/basket.css" />
-		<div class="container">
-			<div class="row">
+		<div class="container" id="basket">
+			<div class="row" id="baskettitle">
 
 				<div class="col-md-12 main" align="left">
 
@@ -26,13 +26,13 @@
 				</div>
 
 			</div>
-			<div class="row">
+			<div class="row" id="orderline">
 				<div class="col-sm-4" align="left">
 					<img class="img-responsive" src="images/CatTools.png" width="auto"
 						height="auto" />
 				</div>
 				<div class="col-sm-8" align="left">
-					<h3>Product: <h:outputText value="#{basket.getProductName()}" /></h3>
+					<h3><h:outputText value="#{basket.getProductName()}" /></h3>
 
 					<p>
 						<strong> Description </strong>: Integer ut nibh eget nisi viverra
@@ -42,18 +42,26 @@
 					</p>
 
 					<hr />
-					<container> <div class="col-sm-4">
-					<p>
-						<strong>Item Cost</strong>:  <h:outputText value="#{basket.getLineCost()}" />
+					<div class="row" id="totalsbox"> <div class="col-sm-4" >
+					<p><strong>Item Cost</strong>:  <h:outputText value="#{basket.getLineCost()}" />
 						
 					</p>
-					<p>
-						<strong>Total Cost</strong>: <h:outputText value="#{basket.getTotalCost()}" />
+					<p><strong>Total Cost</strong>: <h:outputText value="#{basket.getTotalCost()}" />
 					</p>
 					</div>
 					<div class="col-sm-8" align="right">
-						<p><strong>Quantity</strong>: <h:outputText value="#{basket.getQuantity()}" /></p>
-					</div> </container>
+						
+						
+						<div class="form-group">
+							<label for="updateQuantity" class="control-label"><strong>Quantity</strong>:</label>
+						    <h:inputText value="#{basket.quantity}" class="form-control">
+								<f:passThroughAttribute name="Enter Quantity" value="text" />
+								<f:passThroughAttribute name="alt" value="First Name" />
+								<f:passThroughAttribute name="required" value="true" />
+							</h:inputText>
+						</div>
+					</div>
+					</div>
 
 
 				</div>
