@@ -70,7 +70,9 @@
             				<li><a href="mydetails.xhtml">My Details</a></li>
             				<li role="separator" class="divider"></li>
             				<li>
-            					<h:commandButton action="#{login.logout}" value="Log out" class="btn btn-success" />
+            					<h:form>
+            						<h:commandButton action="#{login.logout}" value="Log Out" class="btn btn-success btn-block" />
+            					</h:form>            					
             				</li>
           				</ui:fragment>
           				<ui:fragment rendered="#{!user.loggedIn}">
