@@ -83,6 +83,10 @@ public class CustomerOrder {
 	
 	/////////////////////////////////////////CONSTRUCTORS///////////////////////////////////////////////
 	
+	public CustomerOrder(){
+		this.orderLines = new ArrayList<CustomerOrderLine>(); 
+	}
+	
 	/**
 	 * Constructor without id. Automatically sets id as next idCount
 	 * 

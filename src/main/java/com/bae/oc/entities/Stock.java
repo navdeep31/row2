@@ -2,6 +2,8 @@ package com.bae.oc.entities;
 
 import javax.persistence.*;
 
+import com.bae.oc.enums.ProductStatus;
+
 @Entity
 @Table(name="stock")
 public class Stock {
@@ -9,31 +11,32 @@ public class Stock {
 	@Id
 	@Column(name="id", nullable =false, unique=true)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	
 	@Column
-	private String status; 
+	private ProductStatus status; 
 	
 	
-	public String getStatus() {
+	public ProductStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(ProductStatus status) {
 		this.status = status;
 	}
 
 	//Stock constructor
-	public Stock(int id) {
-		
+	public Stock(long id, ProductStatus status) {
+		this.id = id;
+		this.status = status;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
 	//Getters and setters
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 

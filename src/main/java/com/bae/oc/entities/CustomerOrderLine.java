@@ -123,7 +123,7 @@ public class CustomerOrderLine {
 	 * @MethodAuthor Andrew Claybrook
 	 * @version 0.5
 	 */
-	CustomerOrderLine(long customerOrderId, int iLineNumber, Product iProduct, int iQuantity, Status status)	{
+	public CustomerOrderLine(long customerOrderId, int iLineNumber, Product iProduct, int iQuantity, Status status)	{
 		this.lineNumber = iLineNumber;
 		//TODO Check non-conflicting?
 		this.product = iProduct;
