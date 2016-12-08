@@ -1,5 +1,6 @@
 package com.bae.oc.controllers;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.ConversationScoped;
@@ -21,8 +22,12 @@ import com.bae.oc.services.OrderService;
 
 @ConversationScoped
 @Named("orderhistory")
-public class OrderHistoryController {
+public class OrderHistoryController implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7077424126556958734L;
 	@Inject
 	private OrderService orderService;
 	@Inject

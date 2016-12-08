@@ -1,5 +1,7 @@
 package com.bae.oc.controllers;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,8 +23,12 @@ import com.bae.oc.services.OrderService;
 
 @Named("confirmorder")
 @ConversationScoped
-public class ConfirmOrderController {
+public class ConfirmOrderController implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8356976070003181219L;
 	@Inject
 	private OrderService orderService;
 	@Inject
