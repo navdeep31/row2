@@ -1,0 +1,78 @@
+<ui:composition xmlns="https://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="templates/main.xhtml">
+	<meta charset="utf-8" />
+
+
+
+
+	<ui:define name="pageTitle"> "#{product.name}"</ui:define>
+
+	<ui:define name="mainContent">
+		<link rel="stylesheet" type="text/css" media="all"
+			href="css/productPage.css"></link>
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-4">
+					<!-- Product IMG -->
+					<img src="images/gnome.jpg" style="width: 100%; height: 100%;" />
+				</div>
+				<!-- End Product IMG -->
+
+
+
+				<div class="col-md-3 col-md-offset-1 details">
+					<!-- Product Details -->
+					<h1>value = Product Name "#{product.name}"</h1>
+
+					<p>Rating *****</p>
+					<p>value = Price "#{product.currentPrice}"</p>
+					<p>value = Stock Status "#{product.status}"</p>
+
+					<button type="button">Add to Wishlist</button>
+
+					<button type="button">Add to Basket</button>
+
+
+				</div>
+				<!-- End Product Details -->
+
+
+				<div class="col-md-3 col-md-offset-1 ">
+					<!-- Product Description -->
+
+					<h1>Description</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Praesent at augue condimentum, cursus neque a, bibendum erat.
+						Maecenas at sollicitudin nibh. Nunc non sodales nulla. Nam
+						vulputate maximus ex non hendrerit. Pellentesque ultricies odio in
+						ligula condimentum iaculis vitae ut mauris. Mauris faucibus nulla
+						a lacus sodales, a pellentesque ante pellentesque. In venenatis
+						ullamcorper accumsan. Curabitur cursus, nulla ac euismod tempor,
+						leo elit fermentum sapien, ut tincidunt turpis nisl in dolor. Nam
+						volutpat laoreet mi eget ultricies. Nunc accumsan, felis id
+						feugiat tempor, quam nisl vulputate dui, sit amet laoreet sem
+						metus non nulla. Aliquam bibendum lobortis mauris, ut rhoncus
+						massa convallis vel. Vivamus efficitur diam a augue malesuada
+						laoreet.
+						"#{product.name}"</p>
+
+				</div>
+				<!-- End Product Description -->
+
+
+
+			</div>
+			<!-- End row -->
+		</div>
+		<!-- End Container -->
+
+
+	</ui:define>
+
+
+</ui:composition>
