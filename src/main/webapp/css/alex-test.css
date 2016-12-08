@@ -37,8 +37,8 @@ body {
 .col-xs-4 col-md-3 > a >img {
 	hover:;
 }
-u {
-	text-decoration: underline;
+c {
+	color: rgb(137,191,245);
 }
 .footer {
 	background-color: #d9d9d9;
