@@ -37,6 +37,9 @@ body {
 .col-xs-4 col-md-3 > a >img {
 	hover:;
 }
+u {
+	text-decoration: underline;
+}
 .footer {
 	background-color: #d9d9d9;
 }
