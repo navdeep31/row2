@@ -34,7 +34,9 @@ body {
 .dropdown-menu > li > a {
 	color: #ffffff; /* green #325c57; */
 }
-
+.col-xs-4 col-md-3 > a >img {
+	hover:;
+}
 .footer {
 	background-color: #d9d9d9;
 }
