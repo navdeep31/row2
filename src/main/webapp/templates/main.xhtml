@@ -68,6 +68,12 @@
             				<li><a href="your-orders.xhtml">My Orders</a></li>
             				<li role="separator" class="divider"></li>
             				<li><a href="mydetails.xhtml">My Details</a></li>
+            				<li role="separator" class="divider"></li>
+            				<li>
+            					<h:form>
+            						<h:commandButton action="#{login.logout}" value="Log Out" class="btn btn-success btn-block" />
+            					</h:form>            					
+            				</li>
           				</ui:fragment>
           				<ui:fragment rendered="#{!user.loggedIn}">
           				<h:form>
@@ -91,6 +97,9 @@
           					</h:commandButton>
           				</h:form>
           				</ui:fragment>
+          				<p>
+							Don't have an account? <a href="register.xhtml">Sign up</a>
+						</p>
           			</ul>
         		</li>        		
         		<li><a href="basket.xhtml">
