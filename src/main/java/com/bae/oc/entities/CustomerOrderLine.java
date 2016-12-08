@@ -225,7 +225,12 @@ public class CustomerOrderLine {
 	 */
 	
 	public double getTotalLinePrice() {
+		if(itemPrice!=0) {
+		
 		return itemPrice*quantity; 
+		} else {
+			return quantity*product.getCurrentPrice();
+		}
 	}
 	
 	/**

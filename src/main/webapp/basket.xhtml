@@ -10,7 +10,6 @@
 
 	<ui:define name="mainContent">
 		<h:outputText value="#{basket.setBasket()}"/>
-		<h:inputText value="#{basket.getProductName()}"/>
 		<link type="text/css" rel="stylesheet" href="css/basket.css" />
 		<div class="container">
 			<div class="row">
@@ -45,7 +44,7 @@
 					<hr />
 					<container> <div class="col-sm-4">
 					<p>
-						<strong>Item Cost</strong>: 345 
+						<strong>Item Cost</strong>:  <h:outputText value="#{basket.getLineCost()}" />
 						
 					</p>
 					<p>
@@ -53,7 +52,7 @@
 					</p>
 					</div>
 					<div class="col-sm-8" align="right">
-						<p><strong>Quantity:</strong></p>
+						<p><strong>Quantity</strong>: <h:outputText value="#{basket.getQuantity()}" /></p>
 					</div> </container>
 
 

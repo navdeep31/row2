@@ -1,4 +1,4 @@
-package com.bae.oc.controllers;
+package com.bae.oc.services;
 
 import java.io.Serializable;
 
@@ -9,7 +9,6 @@ import javax.inject.Named;
 import com.bae.oc.controllers.session.CurrentUser;
 import com.bae.oc.controllers.session.SelectedProduct;
 import com.bae.oc.entities.CustomerOrder;
-import com.bae.oc.services.OrderService;
 
 /**
  * 
@@ -93,12 +92,12 @@ public class BasketController implements Serializable {
 	 */
 	
 	
-	public String getBasket() {
+	public String setBasket() {
 		if(currentUser.isLoggedIn() == false) {
 			return "login";
 		} else {		
 		basket = orderService.getBasket(currentUser.getCustomer().getId());		
-		return "hello";
+		return "";
 		}
 	}
 	/*
@@ -136,5 +135,31 @@ public class BasketController implements Serializable {
 	
 	
 	}
+
+	public CustomerOrder getBasket() {
+		return basket;
+	}
+	
+	public String getProductName() {
+		return basket.getOrderLines().get(0).getProduct().getName();
+	}
+	
+	public String getTotalCost() {
+		return "" + basket.getCost(); 
+	}
+	
+	public String getLineCost() {
+		return "" + basket.getOrderLines().get(0).getTotalLinePrice();
+	}
+	
+	public String getQuantity() {
+		return "" + basket.getOrderLines().get(0).getQuantity();
+	}
+	
+	public String getItemPrice() {
+		return "" + basket.getOrderLines().get(0).getProduct().getCurrentPrice();
+	}
+	
+	
 	
 }

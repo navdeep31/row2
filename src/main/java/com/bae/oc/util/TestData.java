@@ -70,16 +70,13 @@ public class TestData {
 		addresses.add(new Address("30 Testing Road", "GN2 8ME", "Debug City"));
 		
 		customerOrder.add(new CustomerOrder());
-		
-		customerOrder.get(0).getOrderLines().add(new CustomerOrderLine(1l,1 , products.get(0), 2, Status.BASKET));
-		customerOrder.get(0).getOrderLines().add(new CustomerOrderLine(2l,2 , products.get(1), 1, Status.BASKET));
-		customerOrder.get(0).getOrderLines().add(new CustomerOrderLine(11l,3 , products.get(10), 1, Status.BASKET));
+				
+		customerOrderLine = new ArrayList<>();
+		customerOrderLine.add(new CustomerOrderLine(1l,1 , products.get(0), 2, Status.BASKET));
+		customerOrder.get(0).setOrderLines(customerOrderLine);
+		customerOrder.get(0).setStatus(Status.BASKET);
 		
 		customerOrder.add(new CustomerOrder());
-		
-	//	customerOrder.get(1).getOrderLines().add(new CustomerOrderLine(1l,1 , products.get(0), 2, Status.ORDER));
-	//	customerOrder.get(1).getOrderLines().add(new CustomerOrderLine(2l,2 , products.get(1), 1, Status.ORDER));
-	//	customerOrder.get(1).getOrderLines().add(new CustomerOrderLine(11l,3 , products.get(10), 1, Status.ORDER));
 		
 		customerOrderLine = new ArrayList<>();
 		customerOrderLine.add(new CustomerOrderLine(1l,1 , products.get(0), 2, Status.ORDER));
