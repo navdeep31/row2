@@ -37,6 +37,14 @@ public class LoginService {
 	 */
 	public boolean validLogin(String email, String password){
 		Customer customer = customerManager.findByEmail(email);
+		
+		// If customer is null maybe raise different exception to relay to user?
+		// For now return false (invalid login)
+		if (customer == null) {
+			return false;
+		}
+		
+		
 		return (customer.getPassword().equals(password)) ? true : false;	
 	}
 	//TODO handle exception if email/ password not found
