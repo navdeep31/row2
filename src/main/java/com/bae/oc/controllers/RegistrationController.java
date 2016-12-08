@@ -1,5 +1,6 @@
 package com.bae.oc.controllers;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,9 +19,7 @@ import com.bae.oc.services.RegistrationService;
 @RequestScoped
 public class RegistrationController {
 	
-	/**
-	 * 
-	 */
+	//////////////////////////////////////////INJECTIONS////////////////////////////////////////////////////
 
 	@Inject
 	private RegistrationService registrationService;
@@ -28,6 +27,8 @@ public class RegistrationController {
 	@Inject
 	private CurrentUser currentUser;
 
+	
+	//////////////////////////////////////////ATTRIBUTES///////////////////////////////////////////////////
 	
 	/**
 	 * These are temporary attributes not associated with the customer entity
@@ -44,6 +45,8 @@ public class RegistrationController {
 	private String postcode = "";
 	private String city = "";
 
+	//////////////////////////////////////////METHODS//////////////////////////////////////////////////////////////////
+	
 	/**
 	 * 
 	 * Method to allow the inputs of the user

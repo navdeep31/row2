@@ -45,7 +45,9 @@ public class LoginController {
 				return "home";
 			}
 		}
-		return "home";
+		
+		// If login unsuccessful don't move?
+		return "_blank";
 	}
 	
 	/**
