@@ -34,8 +34,10 @@ body {
 .dropdown-menu > li > a {
 	color: #ffffff; /* green #325c57; */
 }
-.col-xs-4 col-md-3 > a >img {
-	hover:;
+img:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+   
 }
 c {
 	color: rgb(137,191,245);
