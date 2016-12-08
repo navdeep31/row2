@@ -56,7 +56,7 @@ public class ProductManagerOffline implements ProductManager {
 	public List<Product> findProductByStatus(String status) {
 		List<Product> productsFound = new ArrayList<Product>();
 		for (Product product : testData.getProducts())
-			if (product.getStatus().equalsIgnoreCase(status)){
+			if (product.getStatus().equals(status)){
 				productsFound.add(product);
 			}
 		return productsFound;
