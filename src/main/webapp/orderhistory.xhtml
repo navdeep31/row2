@@ -6,7 +6,34 @@
 	<meta charset="utf-8" />
 
 	<ui:define name="pageTitle">Order History</ui:define>
+	<ui:define name="mainContent">
+	<link type="text/css" rel="stylesheet" href="css/orderhistory.css" />
 	
-		</ui:define>
+	<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Your Account</a></li>
+  <li class="breadcrumb-item active"><h:outputText value="#{user.getCustomer().getFirstName()}" />'s Order History</li>
+	</ol>
+	
+		<div class="container">
+			<div class="row">
 
+				<div class="col-md-12 content-head" align="left">
+
+					<header id="heading">
+						
+						<h1>
+							TEST
+						</h1>
+
+					</header>
+				</div>
+				<h:outputText value="#{orderhistory.getOrderHistory().get(0).getStatus()}" />
+				<h:outputText value="#{orderhistory.getOrderHistory().get(0).getCost()}" />
+				<h:outputText value="#{orderhistory.getOrderHistory().get(0).getOrderLines()}" />
+			</div>
+			
+		</div>
+	
+	
+</ui:define>
 </ui:composition>

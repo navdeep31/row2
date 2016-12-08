@@ -75,11 +75,25 @@ public class TestData {
 		customerOrder.get(0).getOrderLines().add(new CustomerOrderLine(2l,2 , products.get(1), 1, Status.BASKET));
 		customerOrder.get(0).getOrderLines().add(new CustomerOrderLine(11l,3 , products.get(10), 1, Status.BASKET));
 		
+		customerOrder.add(new CustomerOrder());
+		
+	//	customerOrder.get(1).getOrderLines().add(new CustomerOrderLine(1l,1 , products.get(0), 2, Status.ORDER));
+	//	customerOrder.get(1).getOrderLines().add(new CustomerOrderLine(2l,2 , products.get(1), 1, Status.ORDER));
+	//	customerOrder.get(1).getOrderLines().add(new CustomerOrderLine(11l,3 , products.get(10), 1, Status.ORDER));
+		
+		customerOrderLine = new ArrayList<>();
+		customerOrderLine.add(new CustomerOrderLine(1l,1 , products.get(0), 2, Status.ORDER));
+		customerOrder.get(1).setOrderLines(customerOrderLine);
+		customerOrder.get(1).setStatus(Status.ORDER);
+		
 		customers.add(new Customer(1l, "Joe", "Bloggs", "j.bloggs@example.com", "qwerty", addresses.get(0)));
 		customers.add(new Customer(2l, "Mr", "Robot", "elliot@fsociety.com", "password1", addresses.get(1)));
 	
 		customers.get(0).getOrders().add(new CustomerOrder());
 		customers.get(0).getOrders().add(customerOrder.get(0));
+		
+		customers.get(1).getOrders().add(new CustomerOrder());
+		customers.get(1).getOrders().add(customerOrder.get(1));
 		
 		// TODO Add Employee and PurchaseOrders data when IMS testing begins
 		// setEmployees(new ArrayList<>());

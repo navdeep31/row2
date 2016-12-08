@@ -46,7 +46,7 @@ public class OrderHistoryController implements Serializable{
 	public List<CustomerOrder> getOrderHistory() {
 		return orderService.getOrderHistory(currentUser.getCustomer().getId());
 	}
-	
+		
 	/**
 	 *
 	 * Gets order selected by comparing orderID passed with orderID from order history of the current user ( obtained from getOrderHistory() ).
