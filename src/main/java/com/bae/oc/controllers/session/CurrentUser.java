@@ -23,7 +23,8 @@ public class CurrentUser implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 8724888548903959495L;
-	private Customer customer = null;
+//	private Customer customer = null;
+	private Customer customer = new Customer("Debug","Debugger","haveyoutriedturningitoffandonagain@itcrowd.com","password",null);
 
 	/**
 	 * Checks whether a customer is currently logged in

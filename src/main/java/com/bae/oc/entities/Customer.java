@@ -88,14 +88,6 @@ public class Customer {
 	
 	/////////////////////////////////////////CONSTRUCTORS///////////////////////////////////////////////
 	
-	/**
-	 * Default constructor
-	 * 
-	 * @MethodAuthor Alex Dawson
-	 */
-	public Customer() {
-		
-	}
 	
 	//TODO Write constructors for final attributes
 	

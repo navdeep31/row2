@@ -1,5 +1,7 @@
 package com.bae.oc.util;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -11,6 +13,7 @@ import com.bae.oc.entities.Employee;
 import com.bae.oc.entities.Product;
 import com.bae.oc.entities.PurchaseOrder;
 import com.bae.oc.entities.Stock;
+import com.bae.oc.enums.ProductStatus;
 
 @Startup
 @Singleton
@@ -24,11 +27,19 @@ public class TestData {
 
 	@PostConstruct
 	private void setupData() {
-		setProducts(new ArrayList<>());
-		setStocks(new ArrayList<>());
-		setCustomers(new ArrayList<>());
-		setEmployees(new ArrayList<>());
-		setPurchaseOrders(new ArrayList<PurchaseOrder>());
+		products = new ArrayList<>();
+		stocks = new ArrayList<>();
+		customers = new ArrayList<>();
+		addresses = new ArrayList<>();
+		
+		products.add(new Product(1l,1l,"Kimberley Gnome","Scotland's finest Kimberley gnome", 12, 19.99, 16.99, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
+		products.add(new Product(2l,2l,"Garden Gnome","Our famous original garden gnome", 8, 15.99, 14.99, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
+		products.add(new Product(3l,3l,"Fishing Gnome","Gone fishin", 8, 15.99, 14.99, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
+		
+		// TODO Add Employee and PurchaseOrders data when IMS testing begins
+		// setEmployees(new ArrayList<>());
+		// setPurchaseOrders(new ArrayList<PurchaseOrder>());
+
 		
 		
 	}
