@@ -36,7 +36,7 @@ public class TestData {
 		stock = new ArrayList<>();
 		customers = new ArrayList<>();
 		addresses = new ArrayList<>();
-		
+		customerOrder = new ArrayList<>();
 		
 		products.add(new Product(1l,1l,"Kimberley Gnome","Scotland's finest Kimberley gnome", 12, 19.99, 16.99, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
 		products.add(new Product(2l,2l,"Garden Gnome","Our famous original garden gnome", 8, 15.99, 14.99, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
