@@ -15,38 +15,66 @@
 			href="css/productPage.css"></link>
 		<div class="container">
 
-			<div class="row">
+			<div> <!--class="row row-eq-height"> --> 
 
-				<div class="col-md-4">
+				<div class="col-md-4 productImage">
 					<!-- Product IMG -->
-					<img src="images/gnome.jpg" style="width: 100%; height: 100%;" />
+					<img src="images/gnome.jpg" style="width: 100%; " />
 				</div>
 				<!-- End Product IMG -->
 
 
 
-				<div class="col-md-3 col-md-offset-1 details">
+				<div class="col-md-3 col-md-offset-1 productDetails">
 					<!-- Product Details -->
-					<h1>value = Product Name "#{product.name}"</h1>
+					<h1 align="center">Product Name</h1>
 
-					<p>Rating *****</p>
-					<p>value = Price "#{product.currentPrice}"</p>
-					<p>value = Stock Status "#{product.status}"</p>
+					<div class="productContent">
+						
+						<div class="rating">
+							<p>
+								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+							</p>
+						</div> <!-- End Rating -->
+						
+						
+						<div class="productPrice">
+						
+							<p>£9.99</p>
+							
+						</div>
+						
+						<div class="productStock">
+							
+							<p>In Stock</p>
+							
+						</div>
 
-					<button type="button">Add to Wishlist</button>
+						<div align="center">
+							<button type="button" class="btn btn-lg btn-wishlist " >Add to Wishlist
+								<span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
+							</button>
+					
+							<button type="button" class="btn btn-lg btn-basket">Add to Basket
+								<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+							</button>
+						</div> <!-- End Align Center -->	
+					</div> <!-- End productContent -->
+				</div> <!-- End Product Details -->
+				
 
-					<button type="button">Add to Basket</button>
 
+				<div class="col-md-3 col-md-offset-1 productDetails"> <!-- Product Description -->
+					
 
-				</div>
-				<!-- End Product Details -->
-
-
-				<div class="col-md-3 col-md-offset-1 ">
-					<!-- Product Description -->
-
-					<h1>Description</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					<h1 align="center">Description</h1>
+					
+					<div class="productContent">
+					<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Praesent at augue condimentum, cursus neque a, bibendum erat.
 						Maecenas at sollicitudin nibh. Nunc non sodales nulla. Nam
 						vulputate maximus ex non hendrerit. Pellentesque ultricies odio in
@@ -54,15 +82,12 @@
 						a lacus sodales, a pellentesque ante pellentesque. In venenatis
 						ullamcorper accumsan. Curabitur cursus, nulla ac euismod tempor,
 						leo elit fermentum sapien, ut tincidunt turpis nisl in dolor. Nam
-						volutpat laoreet mi eget ultricies. Nunc accumsan, felis id
-						feugiat tempor, quam nisl vulputate dui, sit amet laoreet sem
-						metus non nulla. Aliquam bibendum lobortis mauris, ut rhoncus
-						massa convallis vel. Vivamus efficitur diam a augue malesuada
-						laoreet.
-						"#{product.name}"</p>
-
-				</div>
-				<!-- End Product Description -->
+						volutpat laoreet mi eget ultricies.
+						</p>
+					</div> <!-- End productContent -->
+					
+				</div> <!-- End Product Description -->
+				
 
 
 
