@@ -68,6 +68,10 @@
             				<li><a href="your-orders.xhtml">My Orders</a></li>
             				<li role="separator" class="divider"></li>
             				<li><a href="mydetails.xhtml">My Details</a></li>
+            				<li role="separator" class="divider"></li>
+            				<li>
+            					<h:commandButton action="#{login.logout}" value="Log out" class="btn btn-success" />
+            				</li>
           				</ui:fragment>
           				<ui:fragment rendered="#{!user.loggedIn}">
           				<h:form>

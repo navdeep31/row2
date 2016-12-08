@@ -40,6 +40,8 @@ public class LoginController {
 		if(!email.isEmpty() && !password.isEmpty()){
 			if(loginService.validLogin(this.email, this.password)) {
 				currentUser.setCustomer(loginService.loginUser(email));
+				
+				// If login successful 
 				return "home";
 			}
 		}

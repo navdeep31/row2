@@ -69,10 +69,16 @@ public class RegistrationController {
 				currentUser.setCustomer(
 						registrationService.register(firstName, lastName, email, password, line1, postcode, city));
 			}
+			
+			// Go to registration confirmation page if form correctly registers
+			return "registration-confirmation";
 
 		}
+		
+		// Stay on registration page if form incomplete
+		return "register";
 
-		return "home";
+		
 
 	}
 
