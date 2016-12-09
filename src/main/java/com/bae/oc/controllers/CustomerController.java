@@ -117,7 +117,15 @@ public class CustomerController {
 		this.email = email;
 	}
 
+	
+	
+	////////////////////////////////////////////////////////////Address getters and setter/////////////////////////
+	
+	
 	public String getLine1() {
+		if(line1.isEmpty()) {
+			this.line1 = currentUser.getCustomer().getAddress().getLine1();
+		}
 		return line1;
 	}
 
@@ -126,6 +134,12 @@ public class CustomerController {
 	}
 
 	public String getLine2() {
+		if(line2.isEmpty()) {
+			this.line2 = currentUser.getCustomer().getAddress().getLine2();
+		}
+		if(line2 == null){
+			line2 = "";
+		}
 		return line2;
 	}
 
@@ -134,6 +148,9 @@ public class CustomerController {
 	}
 
 	public String getPostcode() {
+		if(postcode.isEmpty()) {
+			this.postcode = currentUser.getCustomer().getAddress().getPostcode();
+		}
 		return postcode;
 	}
 
@@ -142,6 +159,9 @@ public class CustomerController {
 	}
 
 	public String getCity() {
+		if(city.isEmpty()) {
+			this.city = currentUser.getCustomer().getAddress().getCity();
+		}
 		return city;
 	}
 
