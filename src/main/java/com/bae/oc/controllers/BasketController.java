@@ -89,19 +89,18 @@ public class BasketController implements Serializable {
 	 *@return String
 	 */
 	
-	public String removeFromBasket(String productIdString) {
-		long productId = 0;
+	public String removeFromBasket(Long productId) {
 		if(currentUser.isLoggedIn() == false) {
 			return "login";
 		}
 		try {
-			productId = new Long(productIdString);
+			
 		} catch (Exception e) {
 			return "home"; 
 		}
 		
-		long customerOrderId = currentUser.getCustomer().getId();
-		
+		long customerOrderId = basket.getId();
+		System.out.println("remove from basket");
 		orderService.removeFromBasket(customerOrderId, productId);
 		
 		return "basket";
@@ -245,6 +244,11 @@ public class BasketController implements Serializable {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	
+	public void getProductId() {
+		System.out.println("getting product id");
+		basket.getOrderLines().get(lineNumber).getProduct().getProductID();
 	}
 	
 	

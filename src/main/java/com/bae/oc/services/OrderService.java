@@ -182,14 +182,19 @@ public class OrderService {
 		boolean isInBasket = false;
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
 
-		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
+		List<CustomerOrderLine> customerOrderLines = customerOrder.getOrderLines();
+		
+		for (CustomerOrderLine custOrderLine : customerOrderLines) {
 			if (custOrderLine.getProduct().getProductID() == productId) {
 				isInBasket = true;
 				customerOrder.getOrderLines().remove(custOrderLine);
+				System.out.println("inbasket");
 			}
 		}
 
+		System.out.println("In the middle");
 		if (!isInBasket) {
+			System.out.println("notinbasket");
 			// TODO add Exception
 		}
 	}

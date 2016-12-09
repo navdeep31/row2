@@ -77,7 +77,7 @@
 									<form>
 										<h:commandButton class="btn btn-primary btn-block"
 											value="Remove From Basket"
-											action="#{basket.removeFromBasket(basket.basket.getOrderLines().get(basket.lineNumber).getProduct().getProductId)}" />
+											action="#{basket.removeFromBasket(basket.getProductId())}" />
 									</form>
 								</div>
 							</div>
