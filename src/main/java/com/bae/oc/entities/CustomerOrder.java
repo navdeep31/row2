@@ -84,6 +84,7 @@ public class CustomerOrder {
 	/////////////////////////////////////////CONSTRUCTORS///////////////////////////////////////////////
 	
 	public CustomerOrder(){
+		this.id = ++idCount;
 		this.orderLines = new ArrayList<CustomerOrderLine>(); 
 	}
 	
