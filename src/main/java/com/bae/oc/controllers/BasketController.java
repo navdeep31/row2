@@ -42,9 +42,7 @@ public class BasketController implements Serializable {
 			return lineNumber;
 		}
 		
-		return ++lineNumber;
-		
-				
+		return lineNumber++;		
 	}
 	
 	
@@ -198,7 +196,7 @@ public class BasketController implements Serializable {
 	 */
 	
 	public String getLineCost() {
-		return "" + basket.getOrderLines().get(0).getTotalLinePrice();
+		return "" + basket.getOrderLines().get(lineNumber).getTotalLinePrice();
 	}
 	
 	/**
@@ -210,7 +208,7 @@ public class BasketController implements Serializable {
 	 */
 	
 	public String getQuantity() {
-		return "" + basket.getOrderLines().get(0).getQuantity();
+		return "" + basket.getOrderLines().get(lineNumber).getQuantity();
 	}
 	
 	/**
@@ -222,7 +220,7 @@ public class BasketController implements Serializable {
 	 */
 	
 	public String getItemPrice() {
-		return "" + basket.getOrderLines().get(0).getProduct().getCurrentPrice();
+		return "" + basket.getOrderLines().get(lineNumber).getProduct().getCurrentPrice();
 	}
 	
 	/**

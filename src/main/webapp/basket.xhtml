@@ -19,8 +19,7 @@
 					<header id="heading">
 
 						<h1>
-							<h:outputText value="#{user.getCustomer().getFirstName()}" />
-							's Basket
+							<h:outputText value="#{user.getCustomer().getFirstName()}" />'s Basket
 						</h1>
 
 					</header>
@@ -35,7 +34,7 @@
 					</div>
 					<div class="col-sm-8" align="left">
 						<h3>
-							<h:outputText value="#{basket.basket.getOrderLines().get(basket.getLineNumber()).getProduct().getName()}" />
+							<h:outputText value="#{basket.basket.getOrderLines().get(basket.lineNumber).getProduct().getName()}" />
 						</h3>
 
 						<p>
@@ -56,6 +55,7 @@
 								<p>
 									<strong>Total Cost</strong>:
 									<h:outputText value="#{basket.getTotalCost()}" />
+									<h:outputText value="#{basket.basket.getOrderLines().get(basket.getLineNumber()).getProduct().getName()}" />
 								</p>
 							</div>
 							<div class="col-sm-8" align="right">
