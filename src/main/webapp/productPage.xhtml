@@ -63,10 +63,13 @@
 							<button type="button" class="btn btn-lg btn-wishlist " >Add to Wishlist
 								<span class="glyphicon glyphicon glyphicon-heart" aria-hidden="true"></span>
 							</button>
-					
-							<button type="button" class="btn btn-lg btn-basket">Add to Basket
+						<h:form>
+							<h:commandLink  class="btn btn-lg btn-basket" value="Add to Basket" action="#{basket.addToBasket()}">
 								<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-							</button>
+								<!-- type="button"  -->
+							</h:commandLink>
+						</h:form>
+							
 						</div> <!-- End Align Center -->	
 					</div> <!-- End productContent -->
 				</div> <!-- End Product Details -->
