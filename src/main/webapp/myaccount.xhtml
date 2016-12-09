@@ -4,60 +4,114 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	template="templates/main.xhtml">
 	<meta charset="utf-8" />
-	
-	<ui:define name="pageTitle">My Account</ui:define>
-	
-	<ui:define name="mainContent">
-	
-	                           <!-- Top bar -->
-	<section>
-	    
-	       
-                               <!-- Header -->
-    	 <div class="container">
-    	<h2>My Account</h2>
-   		 </div>
-        
-                             <!-- Order Buttons -->
-    	 <div class="container">
-   	 		<a><button type = "submit" value = "My Orders">My Orders </button></a>
-   		 </div>
-	</section>              <!-- End of Topbar -->
-	
 
-	
-		<div class="container">
-         
-         <ol><!-- Name details -->
-          <li><h4><Span> First Name </Span></h4></li>	
-          <li><p>First Name</p></li>
-  
-            <li><h4><Span> last Name </Span></h4></li>	
-          <li><p>last Name</p></li>
-	
-	      <li><h4><Span> Email </Span></h4></li>	
-            <li><p>Email Address</p></li>
-          </ol> 
-          <a><button type = "submit" value = "My Details">Edit Details</button></a> 
-          </div>
-          
-		<div class="container">
-	  <ol><!-- Address Details -->
-              <li><h4><Span> Addres Line 1 </Span></h4></li>	
-          <li><p>Line 1</p></li>
-           
-            <li><h4><Span> Address Line 2 </Span></h4></li>	
-          <li><p>Line 2</p></li>
-           
-            <li><h4><Span> Postcode </Span></h4></li>	
-          <li><p>Postcode</p></li>
-            
-            <li><h4><Span> City </Span></h4></li>	
-          <li><p>City</p></li>  
-     </ol>  	
-     <a><button type = "submit" value = "My Details">Edit My Address</button></a>
-		</div>
-	
+	<ui:define name="pageTitle">My Account</ui:define>
+
+	<ui:define name="mainContent">
+
+
+		<section class="container">
+			<div class="row">
+
+
+				<div class="col-md-3 col-md-offset-3 col-xs-6">
+					<a><Button type="button" class="btn btn-link"><h2>My Account</h2>
+						</Button></a>
+				</div>
+				<div class="col-md-3 col-xs-6">
+					<a><Button type="button" class="btn btn-link"><h2>My Orders</h2></Button></a>
+				</div>
+
+			</div>
+
+		</section>
+		<section class="container">
+
+			<div class="row">
+
+				<div class="col-md-3 col-md-offset-3 col-xs-6">
+					<h:form>
+						<div class="formgroup">
+							<label for="inputfirstname" class="control-label"> First
+								Name </label>
+							<h:inputText value="#{customerController.firstName}"
+								class="form-control">
+								<f:passThroughAttribute name="type" value="text" />
+								<f:passThroughAttribute name="alt" value="First Name" />
+								<f:passThroughAttribute name="required" value="true" />
+							</h:inputText>
+						</div>
+						
+							<div class="formgroup">
+							<label for="inputlastname" class="control-label"> Surname</label>
+							<h:inputText value="#{customerController.lastName}"
+								class="form-control">
+								<f:passThroughAttribute name="type" value="text" />
+								<f:passThroughAttribute name="alt" value="last Name" />
+								<f:passThroughAttribute name="required" value="true" />
+							</h:inputText>
+						</div>
+						<div class="formgroup">
+							<label for="inputfirstname" class="control-label"> Email
+							</label>
+							<h:inputText value="#{customerController.email}"
+								class="form-control">
+								<f:passThroughAttribute name="type" value="email" />
+								<f:passThroughAttribute name="alt" value="Email" />
+								<f:passThroughAttribute name="required" value="true" />
+							</h:inputText>
+						</div>
+						
+							<div class="formgroup">
+							<label for="inputpassword" class="control-label">password</label>
+							<h:inputText value="#{customerController.password}"
+								class="form-control">
+								<f:passThroughAttribute name="type" value="password" />
+								<f:passThroughAttribute name="alt" value="password" />
+								<f:passThroughAttribute name="required" value="true" />
+							</h:inputText>
+						</div>
+						
+							<div class="formgroup">
+							<label for="inputpassword" class="control-label">password</label>
+							<h:inputText value="#{customerController.password}"
+								class="form-control">
+								<f:passThroughAttribute name="type" value="password" />
+								<f:passThroughAttribute name="alt" value="password" />
+								<f:passThroughAttribute name="placeholder" value="Confirm Password"/>
+								<f:passThroughAttribute name="required" value="true" />
+							</h:inputText>
+						</div>
+
+
+
+					</h:form>
+				</div>
+				<!-- closes account details column -->
+
+
+				<div class="col-md-3 col-xs-6">
+					<h:form>
+
+
+
+
+
+
+					</h:form>
+				</div>
+				<!-- closes address column -->
+
+
+
+			</div>
+			<!-- Closes row -->
+		</section>
+
+
+
+
+
 	</ui:define>
-	
+
 </ui:composition>

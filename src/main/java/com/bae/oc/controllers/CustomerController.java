@@ -15,7 +15,7 @@ import com.bae.oc.services.CustomerService;
  * @version 0.1 06/12/2016
  *
  */
-@Named("customer")
+@Named("customerController")
 @RequestScoped
 public class CustomerController {
 	
@@ -54,7 +54,6 @@ public class CustomerController {
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
-	@PostConstruct
 	public void getCustomerDetails() {
 		if(currentUser != null) {
 			this.firstName = currentUser.getCustomer().getFirstName();
@@ -66,9 +65,18 @@ public class CustomerController {
 			this.postcode = currentUser.getCustomer().getAddress().getPostcode();
 			this.city = currentUser.getCustomer().getAddress().getCity();
 		}
+		
+		System.out.println("First Name : " + this.firstName);
 	}
-
+/**
+ * All the getters will retrieve customer details for the My Account page. it auto fills the details of the current user 
+ * @returns customer details for account details
+ * @MethodAuthor Alex Dawson(Figured out the code) Josh Stanley (Typed it)
+ */
 	public String getFirstName() {
+		if(firstName.isEmpty()) {
+			this.firstName = currentUser.getCustomer().getFirstName();
+		}
 		return firstName;
 	}
 
@@ -77,6 +85,9 @@ public class CustomerController {
 	}
 
 	public String getLastName() {
+		if(lastName.isEmpty()) {
+			this.lastName = currentUser.getCustomer().getLastName();
+		}
 		return lastName;
 	}
 
@@ -85,6 +96,9 @@ public class CustomerController {
 	}
 
 	public String getPassword() {
+		if(password.isEmpty()) {
+			this.password = currentUser.getCustomer().getPassword();
+		}
 		return password;
 	}
 
@@ -93,9 +107,12 @@ public class CustomerController {
 	}
 
 	public String getEmail() {
-		return email;
+		if(email.isEmpty()) {
+			this.email = currentUser.getCustomer().getEmail();
+		}
+		  return email;
 	}
-
+		
 	public void setEmail(String email) {
 		this.email = email;
 	}
