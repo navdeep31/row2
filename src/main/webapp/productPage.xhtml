@@ -8,7 +8,7 @@
 
 
 
-	<ui:define name="pageTitle"> "#{product.name}"</ui:define>
+	<ui:define name="pageTitle"><h:outputText value="#{selected.getProduct().getName()}"/></ui:define>
 
 	<ui:define name="mainContent">
 		<link rel="stylesheet" type="text/css" media="all"
@@ -27,7 +27,11 @@
 
 				<div class="col-md-3 col-md-offset-1 productDetails">
 					<!-- Product Details -->
-					<h1 align="center">Product Name</h1>
+					<h1 align="center" >
+					
+					<h:outputText value="#{selected.getProduct().getName()}"/>
+					
+					</h1>
 
 					<div class="productContent">
 						
@@ -44,15 +48,16 @@
 						
 						<div class="productPrice">
 						
-							<p>£9.99</p>
+							<h:outputText value="£#{selected.getProduct().getCurrentPrice()}"/>
 							
 						</div>
 						
-						<div class="productStock">
+						<!-- <div class="productStock"></div>  -->
 							
-							<p>In Stock</p>
+							<ui:fragment rendered="#{selected.getInStock()}"> <p class="productInStock">In Stock</p> </ui:fragment>
+							<ui:fragment rendered="#{!selected.getInStock()}"> <p class="productOutStock">Out of Stock</p> </ui:fragment>
 							
-						</div>
+						
 
 						<div align="center">
 							<button type="button" class="btn btn-lg btn-wishlist " >Add to Wishlist
@@ -74,15 +79,8 @@
 					<h1 align="center">Description</h1>
 					
 					<div class="productContent">
-					<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Praesent at augue condimentum, cursus neque a, bibendum erat.
-						Maecenas at sollicitudin nibh. Nunc non sodales nulla. Nam
-						vulputate maximus ex non hendrerit. Pellentesque ultricies odio in
-						ligula condimentum iaculis vitae ut mauris. Mauris faucibus nulla
-						a lacus sodales, a pellentesque ante pellentesque. In venenatis
-						ullamcorper accumsan. Curabitur cursus, nulla ac euismod tempor,
-						leo elit fermentum sapien, ut tincidunt turpis nisl in dolor. Nam
-						volutpat laoreet mi eget ultricies.
+					<p align="justify">
+					<h:outputText value="#{selected.getProduct().getDescription()}"/>
 						</p>
 					</div> <!-- End productContent -->
 					

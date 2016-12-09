@@ -8,7 +8,11 @@ package com.bae.oc.controllers;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.bae.oc.controllers.session.SelectedProduct;
 import com.bae.oc.entities.Product;
@@ -32,5 +36,12 @@ public class ProductController {
 			return "product";
 		}
 		return "browse";
+	}
+	
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Product select(@PathParam("id") String productId) {
+		return productService.findProductByPId(productId);
 	}
 }

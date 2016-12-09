@@ -63,10 +63,17 @@ body {
 	
 }
 
-.productStock{
+.productInStock{
 	font-size: 16pt;
 	text-align: center;
-	color: rgb(0, 179, 0)
+	color: rgb(0, 179, 0);
+	
+}
+
+.productOutStock{
+	font-size: 16pt;
+	text-align: center;
+	color: rgb(215, 0, 0);
 	
 }
 
