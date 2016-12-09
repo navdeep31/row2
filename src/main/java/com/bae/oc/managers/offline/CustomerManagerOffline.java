@@ -34,8 +34,9 @@ public class CustomerManagerOffline implements CustomerManager {
 	@Override
 	public Customer findById(long iId) {
 		List<Customer> customers = testData.getCustomers();
-		for(Customer customer: testData.getCustomers()){
+		for(Customer customer: customers){
 			if(customer.getId() == iId) {
+				System.out.println(customer.getId());
 				return customer;
 			}
 		}

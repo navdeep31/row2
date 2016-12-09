@@ -100,7 +100,7 @@ public class BasketController implements Serializable {
 			return "home"; 
 		}
 		
-		long customerOrderId = orderService.getBasket(currentUser.getCustomer().getId()).getId();
+		long customerOrderId = currentUser.getCustomer().getId();
 		
 		orderService.removeFromBasket(customerOrderId, productId);
 		

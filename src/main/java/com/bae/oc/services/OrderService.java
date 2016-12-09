@@ -104,15 +104,21 @@ public class OrderService {
 	public CustomerOrder getBasket(long customerId) {
 		CustomerOrder basket = null;
 		Customer customer = customerManager.findById(customerId);
+		System.out.println("currentUserId " + customerId);
 
-		for (CustomerOrder custOrders : customer.getOrders()) {
+		try { for (CustomerOrder custOrders : customer.getOrders()) {
 			if (custOrders.getStatus().equals(Status.BASKET)) {
 				basket = custOrders;
+				System.out.println("old basket");
 			}
 		}
-
+		}
+		catch (Exception e) {
+			System.out.println(customer.getId());
+		}
 		if (basket == null) {
-			basket = new CustomerOrder(new ArrayList<CustomerOrderLine>());
+			System.out.println("new basket");
+			basket = new CustomerOrder();
 		}
 
 		return basket;
