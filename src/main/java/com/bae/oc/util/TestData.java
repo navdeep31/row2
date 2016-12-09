@@ -73,6 +73,7 @@ public class TestData {
 				
 		customerOrderLine = new ArrayList<>();
 		customerOrderLine.add(new CustomerOrderLine(1l,1 , products.get(0), 2, Status.BASKET));
+		customerOrderLine.add(new CustomerOrderLine(1l,2 , products.get(1), 2, Status.BASKET));
 		customerOrder.get(0).setOrderLines(customerOrderLine);
 		customerOrder.get(0).setStatus(Status.BASKET);
 		

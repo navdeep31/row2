@@ -9,6 +9,7 @@ import javax.inject.Named;
 import com.bae.oc.controllers.session.CurrentUser;
 import com.bae.oc.controllers.session.SelectedProduct;
 import com.bae.oc.entities.CustomerOrder;
+import com.bae.oc.entities.CustomerOrderLine;
 
 /**
  * 
@@ -33,6 +34,18 @@ public class BasketController implements Serializable {
 	
 	private CustomerOrder basket;
 	private int quantity;
+	private int lineNumber = 0; 
+	
+	public int getLineNumber() {
+		if(lineNumber==basket.getOrderLines().size()-1)  {
+			return lineNumber;
+		}
+		
+		return ++lineNumber;
+		
+				
+	}
+	
 	
 	/**
 	 *Method firstly uses the isLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. If not they are returned to the login page
@@ -136,30 +149,88 @@ public class BasketController implements Serializable {
 	
 	
 	}
+	
+	/**
+	 *Method firstly uses the isLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. 
+	 *This method then sets the basket attribute from the current user's id and calling orderService's get basket method.
+	 *
+	 *@MethodAuthor Andrew Claybrook
+	 *@MethodAuthor Tim Spencer
+	 *@param String
+	 *@return String
+	 */
 
 	public CustomerOrder getBasket() {
 		return basket;
 	}
 	
+	/**
+	 *
+	 * Gets the first product in the list of products (currently)
+	 *
+	 *@MethodAuthor Tim Spencer
+	 *@return String
+	 */
+	
 	public String getProductName() {
 		return basket.getOrderLines().get(0).getProduct().getName();
 	}
+	
+	/**
+	 *
+	 * Turns the basket's total cost to a string
+	 *
+	 *@MethodAuthor Tim Spencer
+	 *@return String
+	 */
 	
 	public String getTotalCost() {
 		return "" + basket.getCost(); 
 	}
 	
+	/**
+	 * 
+	 * Turns the first line to a totalLinePrice
+	 * 
+	 *@MethodAuthor Tim Spencer
+	 *@return String
+	 */
+	
 	public String getLineCost() {
 		return "" + basket.getOrderLines().get(0).getTotalLinePrice();
 	}
+	
+	/**
+	 *Method firstly uses the isLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. 
+	 *This method then sets the basket attribute from the current user's id and calling orderService's get basket method.
+	 *
+	 *@MethodAuthor Tim Spencer
+	 *@return String
+	 */
 	
 	public String getQuantity() {
 		return "" + basket.getOrderLines().get(0).getQuantity();
 	}
 	
+	/**
+	 *Method firstly uses the isLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. 
+	 *This method then sets the basket attribute from the current user's id and calling orderService's get basket method.
+	 *
+	 *@MethodAuthor Tim Spencer
+	 *@return String
+	 */
+	
 	public String getItemPrice() {
 		return "" + basket.getOrderLines().get(0).getProduct().getCurrentPrice();
 	}
+	
+	/**
+	 *Method firstly uses the isLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. 
+	 *This method then sets the basket attribute from the current user's id and calling orderService's get basket method.
+	 *
+	 *@MethodAuthor Tim Spencer
+	 *@return String
+	 */
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
