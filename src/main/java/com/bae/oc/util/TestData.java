@@ -83,8 +83,8 @@ public class TestData {
 		customerOrder.get(1).setOrderLines(customerOrderLine);
 		customerOrder.get(1).setStatus(Status.ORDER);
 		
-		customers.add(new Customer(1l, "Joe", "Bloggs", "j.bloggs@example.com", "qwerty", addresses.get(0)));
-		customers.add(new Customer(2l, "Mr", "Robot", "elliot@fsociety.com", "password1", addresses.get(1)));
+		customers.add(new Customer("Joe", "Bloggs", "j.bloggs@example.com", "qwerty", addresses.get(0)));
+		customers.add(new Customer("Mr", "Robot", "elliot@fsociety.com", "password1", addresses.get(1)));
 	
 		customers.get(0).getOrders().add(new CustomerOrder());
 		customers.get(0).getOrders().add(customerOrder.get(0));
