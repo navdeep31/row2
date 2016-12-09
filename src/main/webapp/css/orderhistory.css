@@ -1,0 +1,29 @@
+.content-block {
+	background-color: #ffffff; /* grey #d9d9d9; */
+	
+	border-radius: 10px 10px 10px 10px;
+	
+	padding-top: 15px;
+}
+
+.content-head {
+	background-color: rgb(149,179,215);
+	color: #ffffff;
+	
+	border-radius: 10px 10px 10px 10px;
+}
+
+
+.content-bottom {
+	background-color: #ffffff; /* grey #d9d9d9; */
+	
+	border-radius: 0px 0px 10px 10px;
+	
+	padding-top: 15px;
+}
+
+.btn-blue {
+	background-color: rgb(149,179,215);
+	
+	color: #ffffff;
+}
