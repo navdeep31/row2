@@ -179,6 +179,8 @@ public class Customer {
 		this.password = iPassword;
 		this.address = iAddress;
 		this.dateAdded = iDateAdded;
+		this.wishlist = new ArrayList<Product>();
+		this.orders = new ArrayList<CustomerOrder>();
 	
 	}
 	

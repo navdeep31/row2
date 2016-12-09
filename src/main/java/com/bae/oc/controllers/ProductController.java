@@ -29,6 +29,15 @@ public class ProductController {
 	@Inject
 	private ProductService productService;
 
+	
+	/**
+	 * Sets the the selected product to the product accessed by user
+	 * 
+	 * @return A string to navigate to the correct web page
+	 * 
+	 * @MethodAuthor N Gill
+	 * 
+	 */
 	public String select(long productId){
 		Product product = productService.findProductByPId(productId);
 		if (product != null){
@@ -38,10 +47,10 @@ public class ProductController {
 		return "browse";
 	}
 	
-	@GET
+	/*@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Product select(@PathParam("id") String productId) {
 		return productService.findProductByPId(productId);
-	}
+	}*/
 }

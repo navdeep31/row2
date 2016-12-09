@@ -115,7 +115,19 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 
 	@Override
 	public CustomerOrder findByOrderId(long id) {
-		// TODO Auto-generated method stub
+		List<CustomerOrder> orders = new ArrayList<CustomerOrder>();
+		List<Customer> customers = testData.getCustomers();
+		
+		for(Customer customer: customers) {
+			List<CustomerOrder> custOrders = customer.getOrders();
+			orders.addAll(custOrders);
+		}
+		
+		for(CustomerOrder order: orders){
+			if(order.getId() == id) {
+				return order;
+			}
+		}
 		return null;
 	}
 

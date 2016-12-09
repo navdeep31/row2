@@ -1,3 +1,7 @@
+/**
+ * @author N GILL
+ *
+ */
 package com.bae.oc.controllers;
 
 import java.util.List;
@@ -23,6 +27,16 @@ public class SearchController {
 	private SearchResultsController searchResults;
 	private String term;
 	
+	/**
+	 * Puts search results into List
+	 * checks for no results 
+	 * if 1 product found takes you directly to product page and sets selected product
+	 * 
+	 * @return A string to navigate to the correct web page based on search results
+	 * 
+	 * @MethodAuthor N Gill
+	 * 
+	 */
 	public String search(){
 		List<Product> results = searchService.searchBy(term);
 		if (results != null){
