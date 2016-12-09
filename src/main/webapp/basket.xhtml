@@ -19,7 +19,8 @@
 					<header id="heading">
 
 						<h1>
-							<h:outputText value="#{user.getCustomer().getFirstName()}" />'s Basket
+							<h:outputText value="#{user.getCustomer().getFirstName()}" />
+							's Basket
 						</h1>
 
 					</header>
@@ -34,7 +35,8 @@
 					</div>
 					<div class="col-sm-8" align="left">
 						<h3>
-							<h:outputText value="#{basket.basket.getOrderLines().get(basket.lineNumber).getProduct().getName()}" />
+							<h:outputText
+								value="#{basket.basket.getOrderLines().get(basket.lineNumber).getProduct().getName()}" />
 						</h3>
 
 						<p>
@@ -48,14 +50,18 @@
 						<div class="row" id="totalsbox">
 							<div class="col-sm-4">
 								<p>
-									<strong>Item Cost</strong>:
+
+									<strong>Single Item Cost</strong>:
+									<h:outputText value="#{basket.getItemPrice()}" />
+								</p>
+								<p>
+									<strong>Line Cost</strong>:
 									<h:outputText value="#{basket.getLineCost()}" />
 
 								</p>
 								<p>
 									<strong>Total Cost</strong>:
 									<h:outputText value="#{basket.getTotalCost()}" />
-									<h:outputText value="#{basket.basket.getOrderLines().get(basket.getLineNumber()).getProduct().getName()}" />
 								</p>
 							</div>
 							<div class="col-sm-8" align="right">
@@ -68,15 +74,23 @@
 										<f:passThroughAttribute name="alt" value="First Name" />
 										<f:passThroughAttribute name="required" value="true" />
 									</h:inputText>
+									<form>
+										<h:commandButton class="btn btn-primary btn-block"
+											value="Remove From Basket"
+											action="#{basket.removeFromBasket(basket.basket.getOrderLines().get(basket.lineNumber).getProduct().getProductId)}" />
+									</form>
 								</div>
 							</div>
 						</div>
 
+						<h:outputText value="#{basket.ititerateLineNumber()}" />
 
 					</div>
 
 
 				</div>
+
+
 			</ui:repeat>
 
 

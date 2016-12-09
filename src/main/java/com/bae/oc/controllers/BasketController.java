@@ -37,17 +37,23 @@ public class BasketController implements Serializable {
 	private int quantity;
 	private int lineNumber = 0; 
 	
-	public int getLineNumber() {
+	public int getLineNumber(){
+		return lineNumber;
+	}
+	
+	public String ititerateLineNumber() {
 		if(lineNumber==basket.getOrderLines().size()-1)  {
-			return lineNumber;
+			
+		} else{
+			lineNumber++;
 		}
 		
-		return lineNumber++;		
+		return "";		
 	}
 	
 	
 	/**
-	 *Method firstly uses the isLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. If not they are returned to the login page
+	 *Method firstly uses theisLoggedIn() method from the CurrentUser Session Controller to determine if a user is logged in. If not they are returned to the login page
 	 *productId and customerOrderId are set from calling the getProductID() getter from selectedProduct session controller and getBasket() method from the orderService
 	 *
 	 *Once this is set then the addToBasket() is called passing the productId and customerOrderId variables
@@ -64,7 +70,8 @@ public class BasketController implements Serializable {
 		}
 		
 		long productId = selectedProduct.getProduct().getProductID();
-		long customerOrderId = orderService.getBasket(currentUser.getCustomer().getId()).getId();
+		long customerOrderId = currentUser.getCustomer().getId();
+		basket = orderService.getBasket(currentUser.getCustomer().getId());
 		
 		orderService.addToBasket(customerOrderId, productId);		
 		
@@ -82,12 +89,17 @@ public class BasketController implements Serializable {
 	 *@return String
 	 */
 	
-	public String removeFromBasket() {
+	public String removeFromBasket(String productIdString) {
+		long productId = 0;
 		if(currentUser.isLoggedIn() == false) {
 			return "login";
 		}
+		try {
+			productId = new Long(productIdString);
+		} catch (Exception e) {
+			return "home"; 
+		}
 		
-		long productId = selectedProduct.getProduct().getProductID();
 		long customerOrderId = orderService.getBasket(currentUser.getCustomer().getId()).getId();
 		
 		orderService.removeFromBasket(customerOrderId, productId);
