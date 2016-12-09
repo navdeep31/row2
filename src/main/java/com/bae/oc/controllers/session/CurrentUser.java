@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import com.bae.oc.entities.Address;
 import com.bae.oc.entities.Customer;
 
 /**
@@ -24,7 +25,7 @@ public class CurrentUser implements Serializable {
 	 */
 	private static final long serialVersionUID = 8724888548903959495L;
 //	private Customer customer = null;
-	private Customer customer = new Customer("Debug","Debugger","haveyoutriedturningitoffandonagain@itcrowd.com","password",null);
+	private Customer customer = new Customer("Debug","Debugger","haveyoutriedturningitoffandonagain@itcrowd.com","password",new Address("Street", "City", "AB1 2CD"));
 
 	/**
 	 * Checks whether a customer is currently logged in
