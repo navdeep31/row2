@@ -1,4 +1,4 @@
-package com.bae.oc.services;
+package com.bae.oc.controllers;
 
 import java.io.Serializable;
 
@@ -10,6 +10,7 @@ import com.bae.oc.controllers.session.CurrentUser;
 import com.bae.oc.controllers.session.SelectedProduct;
 import com.bae.oc.entities.CustomerOrder;
 import com.bae.oc.entities.CustomerOrderLine;
+import com.bae.oc.services.OrderService;
 
 /**
  * 
