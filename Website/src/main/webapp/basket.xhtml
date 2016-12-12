@@ -1,0 +1,101 @@
+<ui:composition xmlns="https://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="templates/main.xhtml">
+	<meta charset="utf-8" />
+	<author>Tim Spencer</author>
+
+	<ui:define name="pageTitle">My Basket</ui:define>
+
+	<ui:define name="mainContent">
+		<h:outputText value="#{basket.setBasket()}" />
+		<link type="text/css" rel="stylesheet" href="css/basket.css" />
+		<div class="container" id="basket">
+			<div class="row" id="baskettitle">
+
+				<div class="col-md-12 main" align="left">
+
+					<header id="heading">
+
+						<h1>
+							<h:outputText value="#{user.getCustomer().getFirstName()}" />
+							's Basket
+						</h1>
+
+					</header>
+				</div>
+
+			</div>
+			<ui:repeat var="orderLine" value="#{basket.basket.getOrderLines()}">
+				<div class="row" id="orderline">
+					<div class="col-sm-4" align="left">
+						<a href="#"> <img class="img-responsive"
+							src="images/CatTools.png" width="auto" height="auto" /></a>
+					</div>
+					<div class="col-sm-8" align="left">
+						<h3>
+							<h:outputText
+								value="#{basket.basket.getOrderLines().get(basket.lineNumber).getProduct().getName()}" />
+						</h3>
+
+						<p>
+							<strong> Description </strong>: Integer ut nibh eget nisi viverra
+							dictum eu vitae erat. Sed convallis libero non aliquet fringilla.
+							Vivamus iaculis augue et nulla consectetur malesuada at vitae
+							lectus.
+						</p>
+
+						<hr />
+						<div class="row" id="totalsbox">
+							<div class="col-sm-4">
+								<p>
+
+									<strong>Single Item Cost</strong>:
+									<h:outputText value="#{basket.getItemPrice()}" />
+								</p>
+								<p>
+									<strong>Line Cost</strong>:
+									<h:outputText value="#{basket.getLineCost()}" />
+
+								</p>
+								<p>
+									<strong>Total Cost</strong>:
+									<h:outputText value="#{basket.getTotalCost()}" />
+								</p>
+							</div>
+							<div class="col-sm-8" align="right">
+
+
+								<div class="form-group">
+									<label for="updateQuantity" class="control-label"><strong>Quantity</strong>:</label>
+									<h:inputText value="#{basket.quantity}" class="form-control">
+										<f:passThroughAttribute name="Enter Quantity" value="text" />
+										<f:passThroughAttribute name="alt" value="First Name" />
+										<f:passThroughAttribute name="required" value="true" />
+									</h:inputText>
+									<form>
+										<h:commandButton class="btn btn-primary btn-block"
+											value="Remove From Basket"
+											action="#{basket.removeFromBasket(basket.getProductId())}" />
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<h:outputText value="#{basket.ititerateLineNumber()}" />
+
+					</div>
+
+
+				</div>
+
+
+			</ui:repeat>
+
+
+		</div>
+
+	</ui:define>
+
+</ui:composition>

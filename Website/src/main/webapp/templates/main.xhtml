@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html
+	lang="en"
+	xmlns="https://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+
+	<head>
+		
+		<meta charset="utf-8" />
+		
+		<meta name="description" content="NB Gardens Online Catalogue" />
+		
+		<meta name="author" content="Alex Dawson" />
+	
+		<title>
+			<ui:insert name="pageTitle" />
+		</title>
+		
+		<link rel="stylesheet" type="text/css" media="all" href="css/bootstrap.min.css" ></link>		
+		<link rel="stylesheet" type="text/css" media="all" href="css/bootstrap-responsive.min.css" ></link>
+		<link rel="stylesheet" type="text/css" media="all" href="css/alex-test.css" ></link>
+		
+	</head>
+	
+	<body>
+	
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+      		<ul class="nav navbar-nav navbar-left">
+        		<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="glyphicon glyphicon-menu-hamburger"></span>
+						Menu
+					</a>
+       				<ul class="dropdown-menu">
+       				<li><a href="categories.xhtml"><strong>Categories</strong></a></li>
+            			<li><a href="ornaments.xhtml">Ornaments</a></li>
+            			<li><a href="equipment.xhtml">Equipment</a></li>
+            			<li><a href="hottubs.xhtml">Hot Tubs</a></li>
+            			<li><a href="plants.xhtml">Plants</a></li>
+            			<li role="separator" class="divider"></li>
+            			<li><a href="home.xhtml">Home</a></li>
+            			<li><a href="myaccount.xhtml">My Account</a></li>
+            			<li><a href="help.xhtml">Help</a></li>
+          			</ul>
+        		</li>
+      		</ul>      		
+			<a class="navbar-brand" href="home.xhtml">NB Gardens</a>
+      		<ul class="nav navbar-nav navbar-right">
+        		<li class="dropdown">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          				<span class="glyphicon glyphicon-user"></span>
+          				<ui:fragment rendered="#{user.loggedIn}">
+          					My Account
+          				</ui:fragment>
+          				<ui:fragment rendered="#{!user.loggedIn}">
+          					Log In
+          				</ui:fragment>
+          			</a>
+          			<ul class="dropdown-menu">
+          				<ui:fragment rendered="#{user.loggedIn}">
+          					<li><a href="wishlist.xhtml">My Wishlist</a></li>
+            				<li><a href="your-orders.xhtml">My Orders</a></li>
+            				<li role="separator" class="divider"></li>
+            				<li><a href="mydetails.xhtml">My Details</a></li>
+            				<li role="separator" class="divider"></li>
+            				<li>
+            					<h:form>
+            						<h:commandButton action="#{login.logout}" value="Log Out" class="btn btn-success btn-block" />
+            					</h:form>            					
+            				</li>
+          				</ui:fragment>
+          				<ui:fragment rendered="#{!user.loggedIn}">
+          				<h:form>
+          					<div class="form-group">
+          						<label for="inputEmail">Email Address</label>
+          						<h:inputText value="#{login.email}" class="form-control">
+          							<f:passThroughAttribute name="type" value="email" />
+          							<f:passThroughAttribute name="placeholder" value="email..." />
+          							<f:passThroughAttribute name="alt" value="Email" />
+          						</h:inputText>
+          					</div>
+          					<div class="form-group">
+          						<h:inputText value="#{login.password}" class="form-control">
+          							<f:passThroughAttribute name="type" value="password" />
+          							<f:passThroughAttribute name="placeholder" value="password..." />
+          							<f:passThroughAttribute name="alt" value="Password" />
+          						</h:inputText>
+          					</div>
+          					<h:commandButton action="#{login.login}" value="login" class="btn btn-success">
+          						
+          					</h:commandButton>
+          				</h:form>          				
+          				<p>
+							Don't have an account? <a href="register.xhtml">Sign up</a>
+						</p>
+          				</ui:fragment>
+          			</ul>
+        		</li>        		
+        		<li><a href="basket.xhtml">
+        			<span class="glyphicon glyphicon-shopping-cart"></span>
+        			Basket
+        		</a></li>
+      		</ul>
+      		<form class="navbar-form navbar-right">
+        		<div class="form-group">
+          			<input type="text" class="form-control" placeholder="Search"/>
+        		</div>
+        		<button type="submit" class="btn btn-default">
+        			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        		</button>
+      		</form>
+		</div>
+	</nav>
+	 
+	<ui:insert name="mainContent" />
+	
+	<hr />
+	
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					Customer Services
+					<ul>
+						<li><a href="faq.xhtml">FAQs</a></li>
+						<li><a href="contactus.xhtml">Contact us</a></li>
+						<li><a href="delivery-information.xhtml">Delivery information</a></li>
+						<li><a href="returns.xhtml">Returns &amp; refunds</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					About Us
+					<ul>
+						<li><a href="careers.xhtml">Careers</a></li>
+						<li><a href="press.xhtml">Press Enquiries</a></li>				
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<a href="https://www.facebook.com">Facebook</a>
+					<a href="https://www.twitter.com">Twitter</a>
+					<a href="https://www.youtube.com">Youtube</a>
+					<a href="https://www.plus.google.com">Google+</a>
+					<a href="https://www.pinterest.com">Pinterest</a>
+					<a href="https://www.instagram.com">Instagram</a>
+				</div>
+			</div>
+			<div class="row">
+				<span class="pull-right">
+					<a href="cookie-policy.xhtml">Cookie Policy</a>
+					<a href="privacy-policy.xhtml">Privacy Policy</a>
+					<a href="terms.xhtml">Terms &amp; Conditions</a>
+					© Alex Dawson and the Wizard Cows.
+				</span>			
+			</div>
+		</div>
+	</footer>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		
+	</body>
+	
+</html>

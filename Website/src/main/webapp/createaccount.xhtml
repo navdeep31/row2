@@ -1,0 +1,47 @@
+<ui:composition xmlns="https://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+template="templates/main.xhtml">
+<meta charset="utf-8" />
+
+<ui:define name="pageTitle">Create Account</ui:define>
+
+<ui:define name="mainContent">
+
+		<link type="text/css" rel="stylesheet" href="css/createaccount.css" />
+<header id="heading">
+		<div class="container">
+			<p>Create Account</p>
+			<hr/>
+		</div>
+	</header>
+
+	<div id="main-content">
+		<div class="container">
+			<div class="row">
+
+					<div class="well">
+						<form id="createAccount"><b>Your name</b><br/> <input type="text" name="yourname"/> <br/>
+							<br/><b>Email</b><br/> <input type="text" name="email"/>
+							<br/> <br/><b>Password</b><br/> <input type="password"
+								name="password"/> <br/> <br/><b>Confirm password</b><br/>
+							<input type="password" name="confirmpassword"/> <br/><br/>
+							<input type="submit" class="btn btn-info" value="Create Account"/>
+							<br/>
+						</form>
+						<br/>
+						<p>Terms and conditions here...</p>
+						<br/>
+						<p>Already have an account? <a href="#">Sign in</a></p>
+				</div>
+		
+			</div>
+
+		</div>
+
+	</div>
+
+</ui:define>
+
+</ui:composition>

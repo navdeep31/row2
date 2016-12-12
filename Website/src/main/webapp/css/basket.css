@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+
+#heading {
+	
+}
+
+#heading h1 {
+	font-size: 300%;
+	font-color: blue; 
+	font-style: italic;
+}
+
+.form-group {
+	
+}
+
+input.form-control {
+	width: 40px;
+	font-size: 150%;
+}
+
+#totalsbox {
+	padding-right: 10px;
+	border-radius: 10px 10px 10px 10px;
+	padding-top: 15px;
+	background-color: rgb(149,179,215);
+}
+
+#basket {
+	border-radius: 10px 10px 10px 10px;
+	background-color: #d9d9d9;
+	color: #ffffff;
+}
+
+#orderline {
+	margin-right: -1px;
+	margin-bottom: 10px;
+}
+
+#baskettitle {
+	border: 1px;
+	border-radius: 10px 10px 10px 10px;
+	background-color: rgb(149,179,215);
+	color: #ffffff;
+	margin-left: -13.1px;
+	
+}
