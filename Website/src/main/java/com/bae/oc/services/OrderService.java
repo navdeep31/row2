@@ -142,10 +142,14 @@ public class OrderService {
 	// Depending on how Product is built Product may change to just the product
 	// ID being passed as an argument.
 
-	public void addToBasket(long customerOrderId, long productId) {
+	public void addToBasket(long customerOrderId, long productId, Customer customer) {
 		Product product = productManager.findProductByPId(productId);
-		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
-		boolean isAlreadyInBasket = false;
+		CustomerOrder customerOrder = getBasket(customer.getId()); 
+		customerOrder.getOrderLines().add(new CustomerOrderLine(customerOrder.getId(), product, 1));
+		
+		customerOrderManager.updateCustomerOrder(customer, customerOrder);
+		
+		/*boolean isAlreadyInBasket = false;
 
 		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
 			if (custOrderLine.getProduct().getProductID() == productId) {
@@ -157,7 +161,7 @@ public class OrderService {
 		if (!isAlreadyInBasket) {
 
 			customerOrder.getOrderLines().add(new CustomerOrderLine(customerOrder.getId(), product, 1));
-		}
+		}*/
 		
 	}
 

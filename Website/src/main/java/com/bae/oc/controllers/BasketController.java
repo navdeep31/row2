@@ -77,7 +77,7 @@ public class BasketController implements Serializable {
 		long customerOrderId = currentUser.getCustomer().getId();
 		basket = orderService.getBasket(currentUser.getCustomer().getId());
 
-		orderService.addToBasket(customerOrderId, productId);
+		orderService.addToBasket(customerOrderId, productId, currentUser.getCustomer());
 
 		return null;
 	}
@@ -126,7 +126,10 @@ public class BasketController implements Serializable {
 		if (currentUser.isLoggedIn() == false) {
 			return "login";
 		} else {
+			
+			
 			basket = orderService.getBasket(currentUser.getCustomer().getId());
+			basket.getOrderLines().size();
 			lineNumber = 0;
 			return "";
 		}
