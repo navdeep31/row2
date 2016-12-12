@@ -15,7 +15,7 @@
 		<section class="container content-all">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4 col-xs-6 text-center">
-					<h1 class="header-font"><t>My Account</t></h1>
+					<h1 class="header-font">My Account</h1>
 
 				</div>
 			</div>
@@ -29,7 +29,7 @@
 
 				<div class="col-md-2 col-md-offset-3 col-xs-6 text-center content-head">
 					<a href="myaccount.xhtml"><Button type="button" class="btn btn-link" >
-							<t><h4 class="header-font">My Account Details</h4></t>
+							<h4 class="header-font">My Account Details</h4>
 						</Button></a>
 				</div>
 				<div class="col-md-2 col-md-offset-2 col-xs-6 content-head">
@@ -51,34 +51,32 @@
 		<section class="container content-all">
 
 			<div class="row">
-
+				<h:form>
 				<div class="col-md-4 col-md-offset-1 col-xs-6">
-					<h:form>
+					
 						<div class="form-group">
-							<label for="inputfirstname" class="control-label"> First
-								Name </label>
-							<h:inputText value="#{customerController.firstName}"
-								class="form-control">
+							<label for="inputFirstName" class="control-label"> First Name </label>
+							<h:inputText value="#{customerController.firstName}" class="form-control">
 								<f:passThroughAttribute name="type" value="text" />
+								<f:passThroughAttribute name="placeholder" value="First Name" />
 								<f:passThroughAttribute name="alt" value="First Name" />
 								<f:passThroughAttribute name="required" value="true" />
 							</h:inputText>
 						</div>
 
 						<div class="form-group">
-							<label for="inputlastname" class="control-label"> Surname</label>
-							<h:inputText value="#{customerController.lastName}"
-								class="form-control">
+							<label for="inputLastName" class="control-label"> Surname</label>
+							<h:inputText value="#{customerController.lastName}"	class="form-control">
 								<f:passThroughAttribute name="type" value="text" />
-								<f:passThroughAttribute name="alt" value="last Name" />
+								<f:passThroughAttribute name="placeholder" value="Last Name" />
+								<f:passThroughAttribute name="alt" value="Last Name" />
 								<f:passThroughAttribute name="required" value="true" />
 							</h:inputText>
 						</div>
 						<div class="form-group">
-							<label for="inputfirstname" class="control-label"> Email
+							<label for="inputEmail" class="control-label"> Email
 							</label>
-							<h:inputText value="#{customerController.email}"
-								class="form-control">
+							<h:inputText value="#{customerController.email}" class="form-control">
 								<f:passThroughAttribute name="type" value="email" />
 								<f:passThroughAttribute name="alt" value="Email" />
 								<f:passThroughAttribute name="required" value="true" />
@@ -86,33 +84,19 @@
 						</div>
 
 						<div class="form-group">
-							<label for="inputpassword" class="control-label">password</label>
-							<h:inputText value="#{customerController.password}"
-								class="form-control">
+							<label for="inputPassword" class="control-label">password</label>
+							<h:inputText value="#{customerController.password}"	class="form-control">
 								<f:passThroughAttribute name="type" value="password" />
 								<f:passThroughAttribute name="alt" value="password" />
 								<f:passThroughAttribute name="required" value="true" />
 							</h:inputText>
 						</div>
-
-						<div class="form-group">
-							<label for="inputpassword" class="control-label">password</label>
-							<h:inputText value="#{customerController.password}"
-								class="form-control">
-								<f:passThroughAttribute name="type" value="password" />
-								<f:passThroughAttribute name="alt" value="password" />
-								<f:passThroughAttribute name="placeholder"
-									value="Confirm Password" />
-								<f:passThroughAttribute name="required" value="true" />
-							</h:inputText>
-						</div>
-					</h:form>
+						<!-- Confirm password -->
 				</div>
 				<!-- closes account details column -->
 
 
 				<div class="col-md-4 col-md-offset-2 col-xs-6">
-					<h:form>
 						<div class="form-group">
 							<label for="inputAddressLine1" class="control-label">Address</label>
 							<h:inputText value="#{customerController.line1}"
@@ -127,7 +111,6 @@
 								<f:passThroughAttribute name="type" value="Address Line 2" />
 								<f:passThroughAttribute name="alt" value="Address Line 2" />
 								<f:passThroughAttribute name="placeholder" value="Address Line 2" />
-								<f:passThroughAttribute name="required" value="true" />
 							</h:inputText>
 
 							<h:inputText value="#{customerController.city}"
@@ -152,19 +135,20 @@
 						<br />
 						<br />
 						<br />
-					</h:form>
 					<div class="row">
 						<div class="col-md-2 col-md-offset-9 col-xs-6">
-							<h:form>
 
 								<h:commandButton action="#{customerController.updateCustomer}" value="Update" class="btn btn-info" />
 
-							</h:form>
+							
 
 						</div>
 					</div>
+					
+					
 
 				</div>
+				</h:form>
 				<!-- closes address column -->
 
 

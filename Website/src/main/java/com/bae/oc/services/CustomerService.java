@@ -41,14 +41,17 @@ public class CustomerService {
 	 * @MethodAuthor Alex Dawson
 	 */
 	//TODO Check if appropriate to set return type as Customer?
-	public Customer updateCustomer(Customer iCustomer, String iFirstName, String iLastName, String iEmail, String iPassword, String iLine1, String iLine2, String iPostcode, String iCity) {
+	public Customer updateCustomer(Customer iCustomer, String iFirstName, String iLastName, String iEmail, String iPassword, String iLine1, String iLine2, String iCity, String iPostcode) {
+		
+		System.out.println("Updating customer in service");
+		
 		if(!iFirstName.isEmpty()) iCustomer.setFirstName(iFirstName);
-		if(iLastName.isEmpty()) iCustomer.setFirstName(iLastName);
-		if(iEmail.isEmpty()) iCustomer.setFirstName(iEmail);
-		if(iPassword.isEmpty()) iCustomer.setFirstName(iPassword);
+		if(!iLastName.isEmpty()) iCustomer.setLastName(iLastName);
+		if(!iEmail.isEmpty()) iCustomer.setEmail(iEmail);
+		if(!iPassword.isEmpty()) iCustomer.setPassword(iPassword);
 		//TODO Consider raising exception for incorrect combination of Address updates?
-		if(iLine1.isEmpty() && iPostcode.isEmpty() &&iCity.isEmpty()) {
-			if(iLine2.isEmpty()) {
+		if(!iLine1.isEmpty() && iPostcode.isEmpty() &&iCity.isEmpty()) {
+			if(!iLine2.isEmpty()) {
 				iCustomer.setAddress(new Address(iLine1, iLine2, iPostcode, iCity) );
 			} else {
 				iCustomer.setAddress(new Address(iLine1, iPostcode, iCity) );

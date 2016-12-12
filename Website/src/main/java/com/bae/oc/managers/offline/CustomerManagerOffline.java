@@ -68,10 +68,15 @@ public class CustomerManagerOffline implements CustomerManager {
 	}
 
 	@Override
-	public void updateCustomer(Customer customer) {
-		for (Customer customers : testData.getCustomers())
-			if (customers.getId() == customer.getId())
-				customers = customer;
+	public void updateCustomer(Customer iCustomer) {
+		for (Customer customer : testData.getCustomers()) {
+			if (customer.getId() == iCustomer.getId()) {
+				customer = iCustomer;
+				System.out.println("Updated customer");
+			}
+				
+		}
+		System.out.println("Didn't update customer");
 	}
 
 	@Override

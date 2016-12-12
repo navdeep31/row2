@@ -19,10 +19,14 @@ import com.bae.oc.services.CustomerService;
 @RequestScoped
 public class CustomerController {
 	
+	//////////////////////////////////////////INJECTIONS////////////////////////////////////////////////////
+	
 	@Inject
 	private CustomerService customerService;
 	@Inject
 	private CurrentUser currentUser;
+	
+	//////////////////////////////////////////ATTRIBUTES///////////////////////////////////////////////////
 	
 	private String firstName = "";
 	private String lastName = "";
@@ -33,6 +37,8 @@ public class CustomerController {
 	private String postcode = "";
 	private String city = "";
 	
+	//////////////////////////////////////////METHODS//////////////////////////////////////////////////////////////////
+	
 	/**
 	 * Updates Customer Detail edits (on press of "update" button)
 	 * 
@@ -42,9 +48,10 @@ public class CustomerController {
 	 */
 	public String updateCustomer() {
 		//TODO Check not all elements are empty? / raise exception
-		currentUser.setCustomer(customerService.updateCustomer(currentUser.getCustomer(), firstName, lastName, password, email, line1, line2, postcode, city) );
+		System.out.println("Updating customer in controller");
+		currentUser.setCustomer(customerService.updateCustomer(currentUser.getCustomer(), firstName, lastName, email, password, line1, line2, city, postcode) );
 		//TODO Check page name
-		return "customer-edit";
+		return "myaccount";
 	}
 	
 	/**
