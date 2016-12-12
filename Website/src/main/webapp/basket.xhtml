@@ -68,21 +68,19 @@
 
 
 								<div class="form-group">
-									<form>
+									<h:form>
 										<label for="updateQuantity" class="control-label"><strong>Quantity</strong>:</label>
 										<h:inputText value="#{basket.quantity}" class="form-control">
 											<f:passThroughAttribute name="Enter Quantity" value="text" />
 											<f:passThroughAttribute name="alt" value="First Name" />
 											<f:passThroughAttribute name="required" value="true" />
 										</h:inputText>
-									</form>
-									</div>
-
-									<form>
+									</h:form>
+									<h:form>
 										<h:commandButton value="Remove From Basket"
 											action="#{basket.removeFromBasket(orderLine.getProduct().getProductID())}" />
-									</form>
-								
+									</h:form>
+								</div>
 							</div>
 						</div>
 
@@ -95,6 +93,7 @@
 
 
 			</ui:repeat>
+			
 
 
 		</div>
