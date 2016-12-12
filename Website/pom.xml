@@ -7,7 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>Row_2_Project</name>
+  <name>Row_2_Website</name>
   <url>http://maven.apache.org</url>
 
   <properties>
