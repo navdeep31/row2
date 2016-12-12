@@ -105,7 +105,7 @@ public class BasketController implements Serializable {
 
 			long customerOrderId = basket.getId();
 			System.out.println("remove from basket");
-			orderService.removeFromBasket(customerOrderId, productId);
+			orderService.removeFromBasket(customerOrderId, productId, currentUser.getCustomer());
 
 			return "basket";
 		}
@@ -127,6 +127,7 @@ public class BasketController implements Serializable {
 			return "login";
 		} else {
 			basket = orderService.getBasket(currentUser.getCustomer().getId());
+			lineNumber = 0;
 			return "";
 		}
 	}

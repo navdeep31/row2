@@ -68,18 +68,21 @@
 
 
 								<div class="form-group">
-									<label for="updateQuantity" class="control-label"><strong>Quantity</strong>:</label>
-									<h:inputText value="#{basket.quantity}" class="form-control">
-										<f:passThroughAttribute name="Enter Quantity" value="text" />
-										<f:passThroughAttribute name="alt" value="First Name" />
-										<f:passThroughAttribute name="required" value="true" />
-									</h:inputText>
 									<form>
-										<h:commandButton class="btn btn-primary btn-block"
-											value="Remove From Basket"
-											action="#{basket.removeFromBasket(basket.getProductId())}" />
+										<label for="updateQuantity" class="control-label"><strong>Quantity</strong>:</label>
+										<h:inputText value="#{basket.quantity}" class="form-control">
+											<f:passThroughAttribute name="Enter Quantity" value="text" />
+											<f:passThroughAttribute name="alt" value="First Name" />
+											<f:passThroughAttribute name="required" value="true" />
+										</h:inputText>
 									</form>
-								</div>
+									</div>
+
+									<form>
+										<h:commandButton value="Remove From Basket"
+											action="#{basket.removeFromBasket(orderLine.getProduct().getProductID())}" />
+									</form>
+								
 							</div>
 						</div>
 

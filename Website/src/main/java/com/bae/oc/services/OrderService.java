@@ -158,7 +158,7 @@ public class OrderService {
 
 			customerOrder.getOrderLines().add(new CustomerOrderLine(customerOrder.getId(), product, 1));
 		}
-
+		
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class OrderService {
 	// Depending on how Product is built Product may change to just the product
 	// ID being passed as an argument.
 
-	public void removeFromBasket(long customerOrderId, long productId) {
+	public void removeFromBasket(long customerOrderId, long productId, Customer customer) {
 		boolean isInBasket = false;
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
 		int counter = 0;
@@ -199,11 +199,15 @@ public class OrderService {
 			++counter; 
 		}
 		
+		customerOrderManager.updateCustomerOrder(customer, customerOrder);
+		
 		System.out.println("In the middle");
 		if (!isInBasket) {
 			System.out.println("notinbasket");
 			// TODO add Exception
 		}
+		
+		
 	}
 
 	/**
