@@ -65,12 +65,12 @@ public class RegistrationController {
 			if (!line2.isEmpty()) {
 
 				currentUser.setCustomer(registrationService.register(firstName, lastName, email, password, line1, line2,
-						postcode, city));
+						city, postcode));
 			}
 
 			else {
 				currentUser.setCustomer(
-						registrationService.register(firstName, lastName, email, password, line1, postcode, city));
+						registrationService.register(firstName, lastName, email, password, line1, city, postcode));
 			}
 			
 			// Go to registration confirmation page if form correctly registers

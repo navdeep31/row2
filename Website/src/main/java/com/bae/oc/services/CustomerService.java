@@ -50,7 +50,7 @@ public class CustomerService {
 		if(!iEmail.isEmpty()) iCustomer.setEmail(iEmail);
 		if(!iPassword.isEmpty()) iCustomer.setPassword(iPassword);
 		//TODO Consider raising exception for incorrect combination of Address updates?
-		if(!iLine1.isEmpty() && iPostcode.isEmpty() &&iCity.isEmpty()) {
+		if(!iLine1.isEmpty() && !iPostcode.isEmpty() && !iCity.isEmpty()) {
 			if(!iLine2.isEmpty()) {
 				iCustomer.setAddress(new Address(iLine1, iLine2, iPostcode, iCity) );
 			} else {

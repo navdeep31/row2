@@ -40,7 +40,7 @@ public class RegistrationService {
  * @MethodAuthor Josh Stanley
  */
 	public Customer register(String iFirstName, String iLastName, String iEmail, String iPassword, String iLine1,
-			String iLine2, String iPostcode, String iCity) {
+			String iLine2, String iCity, String iPostcode) {
 
 		Customer customer = customerManager.createNewCustomer(new Customer(iFirstName, iLastName, iEmail, iPassword,
 				new Address(iLine1, iLine2, iPostcode, iCity), getCurrentDate()));
@@ -67,7 +67,7 @@ public class RegistrationService {
  */
 	
 	public Customer register(String iFirstName, String iLastName, String iEmail, String iPassword, String iLine1,
-			String iPostcode, String iCity) {
+			String iCity, String iPostcode) {
 
 		Customer customer = customerManager.createNewCustomer(new Customer(iFirstName, iLastName, iEmail, iPassword,
 				new Address(iLine1, iPostcode, iCity), getCurrentDate()));
