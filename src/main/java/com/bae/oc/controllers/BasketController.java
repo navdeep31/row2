@@ -246,9 +246,9 @@ public class BasketController implements Serializable {
 		this.quantity = quantity;
 	}
 	
-	public void getProductId() {
+	public long getProductId() {
 		System.out.println("getting product id");
-		basket.getOrderLines().get(lineNumber).getProduct().getProductID();
+		return basket.getOrderLines().get(lineNumber).getProduct().getProductID();
 	}
 	
 	
