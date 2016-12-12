@@ -19,14 +19,35 @@
 					<header id="heading">
 
 						<h1>
-							<h:outputText value="#{user.getCustomer().getFirstName()}" />
-							's Basket
+							<h:outputText value="#{user.getCustomer().getFirstName()}" />'s Basket
 						</h1>
-
+						
+						
 					</header>
+					
+			
+					
 				</div>
 
 			</div>
+			
+					<div class="row" id="totalcost">
+					
+						<div class="col-sm-4" align="left">
+						<p><strong>Total Cost: </strong><h:outputText value="#{basket.getTotalCost()}"/></p>
+						<p><strong>Number of Items: </strong></p>
+						</div>
+						
+						<div class="col-sm-8" align="right">
+							<h:form>
+								<h:commandButton value="Go To Checkout"
+								action="#{basket.checkOutBasket()}" 
+								class="btn btn-primary btn-blue"/>
+							</h:form>
+						</div>
+						
+					</div>
+		
 			<ui:repeat var="orderLine" value="#{basket.basket.getOrderLines()}">
 				<div class="row" id="orderline">
 					<div class="col-sm-4" align="left">
@@ -59,10 +80,7 @@
 									<h:outputText value="#{basket.getLineCost()}" />
 
 								</p>
-								<p>
-									<strong>Total Cost</strong>:
-									<h:outputText value="#{basket.getTotalCost()}" />
-								</p>
+							
 							</div>
 							<div class="col-sm-8" align="right">
 

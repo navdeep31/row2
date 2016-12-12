@@ -64,22 +64,22 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 
 		System.out.println("removing");
 
-		List<CustomerOrder> orders = null;
 		List<Customer> customers = testData.getCustomers();
-		for (Customer customer : customers) {
-			if (customer.getId() == iCustomer.getId()) {
-				orders = customer.getOrders();
-				for (CustomerOrder order : orders) {
-
+		for (int j = 0; j < customers.size(); j++){
+			if (customers.get(j).getId() == iCustomer.getId()) {
+				for (CustomerOrder order : customers.get(j).getOrders()) {
+					
 					if (order.getId() == iOrder.getId()) {
-						System.out.println("removing two");
-						order = iOrder;
+						order = iOrder; 
+						System.out.println(iOrder.getOrderLines().size());
+						System.out.println(order.getOrderLines().size());
+						System.out.println("found order, updating");
+						System.out.println(order.getOrderLines().size());
 
 					}
 
 				}
-				customer.setOrders(orders);
-
+				
 			}
 		}
 
@@ -144,6 +144,10 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 		orderLines.remove(iOrderLine);
 	}
 
+	/**
+	 * Takes a order id
+	 */
+	
 	@Override
 	public CustomerOrder findByOrderId(long id) {
 		List<CustomerOrder> orders = new ArrayList<CustomerOrder>();

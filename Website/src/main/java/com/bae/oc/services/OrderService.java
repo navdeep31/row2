@@ -37,7 +37,8 @@ public class OrderService {
 	private ProductManager productManager;
 
 	/**
-	 * Checks the basket for the business rules; if any fail it throws an exception; Otherwise it throws an exception. 
+	 * Checks the basket for the business rules; if any fail it throws an
+	 * exception; Otherwise it throws an exception.
 	 * 
 	 * @param customerOrder
 	 * @MethodAuthor Andrew Claybrook
@@ -45,48 +46,56 @@ public class OrderService {
 	 * 
 	 */
 
-	public void checkBasket(long customerOrderId) {
+	public boolean checkBasket(long customerOrderId) {
 
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
 		if (customerOrder.getStatus().equals(Status.BASKET)) {
 			if (customerOrder.getOrderLines().size() != 0) {
 				if (customerOrder.getCost() <= 10000.00) {
-					
+					return true;
 				} else {
 					// TODO add exception
+					return false;
 				}
+			} else {
+				// TODO add exception
+				return false;
+			}
+		} else {
+			// TODO add exception
+			return false;
+		}
+	}
+
+	/**
+	 * Validate's if something is a basket; if it is, change the order to
+	 * Status.Order. If not, throws exception.
+	 * 
+	 * @param customerOrder
+	 * @MethodAuthor Andrew Claybrook
+	 * @MethodAuthor Tim Spencer
+	 * 
+	 */
+
+	public void confirmOrder(long customerOrderId) {
+		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
+
+		if (checkBasket(customerOrderId)) {
+
+			if (customerOrder.getStatus().equals(Status.BASKET)) {
+
+				for (CustomerOrderLine customerOrderLine : customerOrder.getOrderLines()) {
+					customerOrderLine.setItemPrice(customerOrderLine.getProduct().getCurrentPrice());
+					customerOrderLine.setStatus(Status.ORDER);
+				}
+				customerOrder.setStatus(Status.ORDER);
 			} else {
 				// TODO add exception
 			}
 		} else {
 			// TODO add exception
 		}
-	}
 
-	/**
-	 * Validate's if something is a basket; if it is, change the order to Status.Order. 
-	 * If not, throws exception.
-	 * 
-	 * @param customerOrder
-	 * @MethodAuthor Andrew Claybrook
-	 * @MethodAuthor Tim Spencer
-	 * 
-	 */
-
-	
-	public void confirmOrder(long customerOrderId) {
-		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
-		
-		if (customerOrder.getStatus().equals(Status.BASKET)) {
-
-			for (CustomerOrderLine customerOrderLine : customerOrder.getOrderLines()) {
-				customerOrderLine.setItemPrice(customerOrderLine.getProduct().getCurrentPrice());
-				customerOrderLine.setStatus(Status.ORDER);
-			}
-			customerOrder.setStatus(Status.ORDER);
-		} else {
-			//TODO add exception
-		}
 	}
 
 	/**
@@ -106,14 +115,14 @@ public class OrderService {
 		Customer customer = customerManager.findById(customerId);
 		System.out.println("currentUserId " + customerId);
 
-		try { for (CustomerOrder custOrders : customer.getOrders()) {
-			if (custOrders.getStatus().equals(Status.BASKET)) {
-				basket = custOrders;
-				System.out.println("old basket");
+		try {
+			for (CustomerOrder custOrders : customer.getOrders()) {
+				if (custOrders.getStatus().equals(Status.BASKET)) {
+					basket = custOrders;
+					System.out.println("old basket");
+				}
 			}
-		}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println(customer.getId());
 		}
 		if (basket == null) {
@@ -144,25 +153,29 @@ public class OrderService {
 
 	public void addToBasket(long customerOrderId, long productId, Customer customer) {
 		Product product = productManager.findProductByPId(productId);
-		CustomerOrder customerOrder = getBasket(customer.getId()); 
-		customerOrder.getOrderLines().add(new CustomerOrderLine(customerOrder.getId(), product, 1));
-		
+		CustomerOrder customerOrder = getBasket(customer.getId());
+		List<CustomerOrderLine> order = customerOrder.getOrderLines();
+
+		order.add(new CustomerOrderLine(customerOrder.getId(), product, 1));
+		customerOrder.setOrderLines(order);
+
+		System.out.println("pre update" + customerOrder.getOrderLines().size());
+
 		customerOrderManager.updateCustomerOrder(customer, customerOrder);
-		
-		/*boolean isAlreadyInBasket = false;
 
-		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
-			if (custOrderLine.getProduct().getProductID() == productId) {
-				isAlreadyInBasket = true;
-				// TODO add Exception
-			}
-		}
+		/*
+		 * boolean isAlreadyInBasket = false;
+		 * 
+		 * for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines())
+		 * { if (custOrderLine.getProduct().getProductID() == productId) {
+		 * isAlreadyInBasket = true; // TODO add Exception } }
+		 * 
+		 * if (!isAlreadyInBasket) {
+		 * 
+		 * customerOrder.getOrderLines().add(new
+		 * CustomerOrderLine(customerOrder.getId(), product, 1)); }
+		 */
 
-		if (!isAlreadyInBasket) {
-
-			customerOrder.getOrderLines().add(new CustomerOrderLine(customerOrder.getId(), product, 1));
-		}*/
-		
 	}
 
 	/**
@@ -186,32 +199,29 @@ public class OrderService {
 		boolean isInBasket = false;
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
 		int counter = 0;
-		
-		List<CustomerOrderLine> customerOrderLines = customerOrder.getOrderLines();
-		
-		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
-			if (custOrderLine.getProduct().getProductID() == productId) {
+
+		for (int i = 0; i < customerOrder.getOrderLines().size(); i++) {
+			if (customerOrder.getOrderLines().get(i).getProduct().getProductID() == productId) {
 				isInBasket = true;
-				
-				System.out.println(customerOrder.getOrderLines().get(counter));
-				customerOrder.getOrderLines().remove(counter);
-				System.out.println(customerOrder.getOrderLines().get(counter));
-				System.out.println("inbasket" + productId);
-				System.out.println("counter " + counter);
-				
+				System.out.println("in loop");
+				List<CustomerOrderLine> order = customerOrder.getOrderLines();
+				order.remove(i);
+				customerOrder.setOrderLines(order);
+
 			}
-			++counter; 
+			++counter;
 		}
-		
+
+		System.out.println("pre update " + customerOrder.getOrderLines().size());
+
 		customerOrderManager.updateCustomerOrder(customer, customerOrder);
-		
+
 		System.out.println("In the middle");
 		if (!isInBasket) {
 			System.out.println("notinbasket");
 			// TODO add Exception
 		}
-		
-		
+
 	}
 
 	/**

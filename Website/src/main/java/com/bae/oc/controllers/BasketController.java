@@ -67,6 +67,21 @@ public class BasketController implements Serializable {
 	 * @return String
 	 */
 
+	public String checkOutBasket() {
+		if (currentUser.isLoggedIn() == false) {
+			return "login";
+		}
+		
+		if(orderService.checkBasket(basket.getId())) {
+			return "orderdetails1";
+		} else {
+			
+		}
+		
+		
+		return null;
+	}
+	
 	public String addToBasket() {
 
 		if (currentUser.isLoggedIn() == false) {
@@ -124,7 +139,7 @@ public class BasketController implements Serializable {
 
 	public String setBasket() {
 		if (currentUser.isLoggedIn() == false) {
-			return "login";
+			return "register.xhtml";
 		} else {
 			
 			

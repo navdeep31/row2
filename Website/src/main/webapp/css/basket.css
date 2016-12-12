@@ -38,10 +38,35 @@ input.form-control {
 }
 
 #baskettitle {
+	
 	border: 1px;
 	border-radius: 10px 10px 10px 10px;
 	background-color: rgb(149,179,215);
 	color: #ffffff;
 	margin-left: -13.1px;
+	margin-bottom: 10px;
 	
+}
+
+#totalcost {
+	
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border: 1px;
+	border-radius: 10px 10px 10px 10px;
+	background-color: #b5b5b5;
+	font-size: 150%;
+}
+
+#j_idt30{
+	width: 400px;
+	border: 1px;
+	margin-top: 21px;
+}
+
+.btn-blue {
+	background-color: rgb(149,179,215);
+	
+	color: #ffffff;
 }
