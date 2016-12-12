@@ -42,7 +42,7 @@ public class AddressManagerOffline implements AddressManager {
 	@Override
 	public List<Address> findAllAddresses() {
 		// TODO Auto-generated method stub
-		return null;
+		return testData.getAddresses();
 	}
 
 	@Override

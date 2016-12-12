@@ -69,7 +69,7 @@ public class ConfirmOrderController implements Serializable {
 		try{
 			customerOrder = orderService.getBasket(currentUser.getCustomer().getId());
 			orderService.checkBasket(customerOrder.getId());
-			return "orderdetails";
+			return "order-details";
 		} catch (Exception e) {
 			return null;
 		}
@@ -105,7 +105,7 @@ public class ConfirmOrderController implements Serializable {
 		} else if (success) {
 			customerOrder.setBillingAddress(addressService.checkAddressExists(new Address(bLine1, bPostcode, bCity)));
 		} else {
-			return "orderdetails";
+			return "order-details";
 		}
 		
 		success = false;
@@ -120,11 +120,11 @@ public class ConfirmOrderController implements Serializable {
 		} else if (success) {
 			customerOrder.setDeliveryAddress(addressService.checkAddressExists(new Address(bLine1, bPostcode, bCity)));
 		} else {
-			return "orderdetails";
+			return "order-details";
 		}
 		
 		
-		return "confirmorder";
+		return "order-overview";
 		
 	}
 	
@@ -144,7 +144,7 @@ public class ConfirmOrderController implements Serializable {
 		}
 		
 		orderService.confirmOrder(customerOrder.getId());
-		return "accounts";
+		return "order-confirmation";
 		
 		// TODO If time create e-mail confirmation here
 		
