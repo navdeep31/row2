@@ -131,6 +131,12 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 		return null;
 	}
 
+	@Override
+	public void updateCustomerOrder(CustomerOrder customerOrder) {
+		
+		
+	}
+
 
 
 }

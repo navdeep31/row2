@@ -35,7 +35,7 @@ public interface CustomerOrderManager {
 	 * @MethodAuthor Alex Dawson
 	 */
 
-	
+	void updateCustomerOrder(CustomerOrder customerOrder); 
 	
 	void updateCustomerOrder(Customer iCustomer, CustomerOrder iCustomerOrder);
 	

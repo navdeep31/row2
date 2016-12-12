@@ -181,17 +181,24 @@ public class OrderService {
 	public void removeFromBasket(long customerOrderId, long productId) {
 		boolean isInBasket = false;
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
-
+		int counter = 0;
+		
 		List<CustomerOrderLine> customerOrderLines = customerOrder.getOrderLines();
 		
-		for (CustomerOrderLine custOrderLine : customerOrderLines) {
+		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
 			if (custOrderLine.getProduct().getProductID() == productId) {
 				isInBasket = true;
-				customerOrder.getOrderLines().remove(custOrderLine);
-				System.out.println("inbasket");
+				
+				System.out.println(customerOrder.getOrderLines().get(counter));
+				customerOrder.getOrderLines().remove(counter);
+				System.out.println(customerOrder.getOrderLines().get(counter));
+				System.out.println("inbasket" + productId);
+				System.out.println("counter " + counter);
+				
 			}
+			++counter; 
 		}
-
+		
 		System.out.println("In the middle");
 		if (!isInBasket) {
 			System.out.println("notinbasket");
