@@ -72,10 +72,16 @@ public class CustomerManagerOffline implements CustomerManager {
 		for (Customer customer : testData.getCustomers()) {
 			if (customer.getId() == iCustomer.getId()) {
 				customer = iCustomer;
+				
+				//TODO Comment out debug in final
+				//DEBUG
 				System.out.println("Updated customer");
+				return;
 			}
 				
 		}
+		//TODO Comment out debug in final
+		//DEBUG
 		System.out.println("Didn't update customer");
 	}
 

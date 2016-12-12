@@ -48,7 +48,11 @@ public class CustomerController {
 	 */
 	public String updateCustomer() {
 		//TODO Check not all elements are empty? / raise exception
+		
+		//TODO Comment out debug in final
+		//DEBUG
 		System.out.println("Updating customer in controller");
+		
 		currentUser.setCustomer(customerService.updateCustomer(currentUser.getCustomer(), firstName, lastName, email, password, line1, line2, city, postcode) );
 		//TODO Check page name
 		return "myaccount";

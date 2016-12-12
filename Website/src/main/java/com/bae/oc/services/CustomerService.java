@@ -43,6 +43,8 @@ public class CustomerService {
 	//TODO Check if appropriate to set return type as Customer?
 	public Customer updateCustomer(Customer iCustomer, String iFirstName, String iLastName, String iEmail, String iPassword, String iLine1, String iLine2, String iCity, String iPostcode) {
 		
+		//TODO Comment out debug in final
+		//DEBUG
 		System.out.println("Updating customer in service");
 		
 		if(!iFirstName.isEmpty()) iCustomer.setFirstName(iFirstName);
