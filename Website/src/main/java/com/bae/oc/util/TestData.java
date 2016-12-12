@@ -11,10 +11,7 @@ import com.bae.oc.entities.Address;
 import com.bae.oc.entities.Customer;
 import com.bae.oc.entities.CustomerOrder;
 import com.bae.oc.entities.CustomerOrderLine;
-import com.bae.oc.entities.Employee;
 import com.bae.oc.entities.Product;
-import com.bae.oc.entities.PurchaseOrder;
-import com.bae.oc.entities.Stock;
 import com.bae.oc.enums.ProductStatus;
 import com.bae.oc.enums.Status;
 
@@ -22,10 +19,8 @@ import com.bae.oc.enums.Status;
 @Singleton
 public class TestData {
 	private List<Product> products;
-	private List<Stock> stock;
+
 	private List<Customer> customers;
-	private List<Employee> employees;
-	private List<PurchaseOrder> purchaseOrders;
 	private List<Address> addresses;
 	private List<CustomerOrderLine> customerOrderLine;
 	private List<CustomerOrder> customerOrder;
@@ -33,7 +28,7 @@ public class TestData {
 	@PostConstruct
 	private void setupData() {
 		products = new ArrayList<>();
-		stock = new ArrayList<>();
+		
 		customers = new ArrayList<>();
 		addresses = new ArrayList<>();
 		customerOrder = new ArrayList<>();
@@ -52,19 +47,6 @@ public class TestData {
 		products.add(new Product(12l,12l,"Rake","TODO Rake description", 12, 11.99, 9.99, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
 		products.add(new Product(13l,13l,"Garden Gloves","TODO Garden Glove description", 6, 14.99, 14.99, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
 		
-		stock.add(new Stock(1l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(2l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(3l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(4l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(5l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(6l, ProductStatus.DISCONTINUED));
-		stock.add(new Stock(7l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(8l, ProductStatus.ON_HOLD));
-		stock.add(new Stock(9l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(10l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(11l, ProductStatus.ON_HOLD));
-		stock.add(new Stock(12l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(13l, ProductStatus.AVALIABLE));
 		
 		addresses.add(new Address("2 Example Drive", "EX1 8LE", "Atlantis"));
 		addresses.add(new Address("30 Testing Road", "GN2 8ME", "Debug City"));
@@ -110,13 +92,8 @@ public class TestData {
 		this.products = products;
 	}
 
-	public List<Stock> getStocks() {
-		return stock;
-	}
 
-	public void setStocks(List<Stock> stocks) {
-		this.stock = stocks;
-	}
+
 
 	public List<Customer> getCustomers() {
 		return customers;
@@ -126,23 +103,9 @@ public class TestData {
 		this.customers = customers;
 	}
 
-	public List<Employee> getEmployees() {
-		return employees;
-	}
 
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
-	}
 	
-	public List<PurchaseOrder> getPurchaseOrders() {
-		return purchaseOrders;
-	}
-	
-	public void setPurchaseOrders(List<PurchaseOrder> iPurchaseOrders)
-	{
-		this.purchaseOrders = iPurchaseOrders;
-	}
-	
+
 	/**
 	 * Returns the test data addresses
 	 * 
