@@ -23,7 +23,7 @@
 		<div class="container">
 			<div class="row">
 			<ui:repeat var="customerOrder" value="#{orderhistory.getOrderHistory()}" varStatus="loop">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-head" style="margin: 10px;">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-head">
 					<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">	
 					<header id="status-date">		
 						<h5><h:outputText value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getStatus()}" /></h5>
