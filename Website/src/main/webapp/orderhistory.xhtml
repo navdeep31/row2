@@ -7,87 +7,119 @@
 
 	<ui:define name="pageTitle">Order History</ui:define>
 	<ui:define name="mainContent">
-	<link type="text/css" rel="stylesheet" href="css/orderhistory.css" />
-	
-	
-	
-	<div class="container">
-	<ol class="breadcrumb">
-  <li class="breadcrumb-item"><a href="#">Your Account</a></li>
-  <li class="breadcrumb-item active"><h:outputText value="#{user.getCustomer().getFirstName()} " /> <h:outputText value="#{user.getCustomer().getLastName()}" />'s Order History</li>
-	</ol>
-	</div>
-	
-	
-	
+		<link type="text/css" rel="stylesheet" href="css/orderhistory.css" />
+
+
+
+		<div class="container">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Your Account</a></li>
+				<li class="breadcrumb-item active"><h:outputText
+						value="#{user.getCustomer().getFirstName()} " /> <h:outputText
+						value="#{user.getCustomer().getLastName()}" />'s Order History</li>
+			</ol>
+		</div>
+
+
+
 		<div class="container">
 			<div class="row">
-			<ui:repeat var="customerOrder" value="#{orderhistory.getOrderHistory()}" varStatus="loop">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-head">
-					<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">	
-					<header id="status-date">		
-						<h5><h:outputText value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getStatus()}" /></h5>
-						<h5>DATE HERE</h5>
-	
-					</header>
+				<ui:repeat var="customerOrder"
+					value="#{orderhistory.getOrderHistory()}" varStatus="loop">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-head">
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+							<header id="status-date">
+								<h5>
+									<h:outputText
+										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getStatus()}" />
+								</h5>
+								<h5>DATE HERE</h5>
+
+							</header>
+						</div>
+
+						<div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+							<header id="totalprice">
+								<H5>TOTAL</H5>
+								<H5>
+									<h:outputText
+										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getCost()}" />
+								</H5>
+							</header>
+						</div>
+
+						<div class="col-lg-3 col-md-3 col-sm-4 hidden-xs">
+							<header id="ordernumber">
+								<h5>ORDER NUMBER</h5>
+								<h5>
+									<h:outputText
+										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getId()}" />
+								</h5>
+							</header>
+						</div>
+
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" align="right">
+							<button type="button" class="btn btn-default btn-lg"
+								data-toggle="collapse" data-target="##{loop.index}"
+								aria-expanded="false" aria-controls="#{loop.index}">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							</button>
+						</div>
 					</div>
-					
-					<div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-					<header id="totalprice">
-					<H5>TOTAL</H5>
-					<H5><h:outputText value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getCost()}" /></H5>
-					</header>
+					<div class="collapse order-details content-block"
+						id="#{loop.index}">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-block">
+							<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6">
+								<h4>Expected DATE HERE</h4>
+								<h4>
+									<h:outputText
+										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getStatus()}" />
+								</h4>
+							</div>
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+								<h4>Dispatched To:</h4>
+								<h6>
+									<h:outputText
+										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getDeliveryAddress().getLine1()}" />
+								</h6>
+								<h6>
+									<h:outputText
+										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getDeliveryAddress().getCity()}" />
+								</h6>
+								<h6>
+									<h:outputText
+										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getDeliveryAddress().getPostcode()}" />
+								</h6>
+							</div>
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+								<button type="button" class="btn btn-lg btn-primary">Track
+									Order</button>
+								<button type="button" class="btn btn-lg btn-primary">Details</button>
+								<button type="button" class="btn btn-lg btn-primary">Invoice</button>
+							</div>
+
+							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+								<div class="progress">
+									<div
+										class="progress-bar progress-bar-success progress-bar-striped active"
+										role="progressbar" aria-valuenow="40" aria-valuemin="0"
+										aria-valuemax="100" style="width: 40%">
+										<span class="sr-only">40% Complete (success)</span>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					
-					<div class="col-lg-3 col-md-3 col-sm-4 hidden-xs">
-					<header id="ordernumber">
-					<h5>ORDER NUMBER</h5>
-					<h5><h:outputText value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getId()}" /></h5>
-					</header>
-					</div>
-					
-					<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" align="right" >
-					<button type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="##{loop.index}" aria-expanded="false" aria-controls="#{loop.index}">
-  					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
-					</div>
-				</div>
-				<div class="collapse order-details content-block" id="#{loop.index}" >
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-block">
-   				 <div class="col-lg-8 col-md-8 col-sm-4 col-xs-6">
-   				 <h4>Expected DATE HERE</h4>
-   				 <h4><h:outputText value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getStatus()}" /></h4>
- 				 </div>
- 				 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
- 				 <h4>Dispatched To: </h4>
- 				 <h6><h:outputText value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getDeliveryAddress().getLine1()}" /></h6>
- 				 <h6><h:outputText value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getDeliveryAddress().getCity()}" /></h6>
- 				 <h6><h:outputText value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getDeliveryAddress().getPostcode()}" /></h6>
- 				 </div>
- 				 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
- 				 <button type="button" class="btn btn-lg btn-primary">Track Order</button>
- 				 <button type="button" class="btn btn-lg btn-primary">Details</button>
- 				 <button type="button" class="btn btn-lg btn-primary">Invoice</button>
- 				 </div>
- 				 
- 				 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
- 				 <div class="progress">
- 				 <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-   				 <span class="sr-only">40% Complete (success)</span>
-   				 </div>
-  				 </div>
- 				 </div>
- 				 </div>
- 				 </div>
- 				 
- 				 <div class="px-auto" action="orderhistory.iterateLineNumber()"></div>
- 				 </ui:repeat>
+
+
+					<div class="px-auto" action="orderhistory.iterateLineNumber()"></div>
+				</ui:repeat>
 			</div>
-				
+
 		</div>
-			
-		
-	
-	
-</ui:define>
+
+
+
+
+	</ui:define>
 </ui:composition>
