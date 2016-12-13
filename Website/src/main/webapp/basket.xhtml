@@ -19,35 +19,41 @@
 					<header id="heading">
 
 						<h1>
-							<h:outputText value="#{user.getCustomer().getFirstName()}" />'s Basket
+							<h:outputText value="#{user.getCustomer().getFirstName()}" />
+							's Basket
 						</h1>
-						
-						
+
+
 					</header>
-					
-			
-					
+
+
+
 				</div>
 
 			</div>
-			
-					<div class="row" id="totalcost">
-					
-						<div class="col-sm-4" align="left">
-						<p><strong>Total Cost: </strong><h:outputText value="#{basket.getTotalCost()}"/></p>
-						<p><strong>Number of Items: </strong></p>
-						</div>
-						
-						<div class="col-sm-8" align="right">
-							<h:form>
-								<h:commandButton value="Go To Checkout"
-								action="#{basket.checkOutBasket()}" 
-								class="btn btn-primary btn-blue"/>
-							</h:form>
-						</div>
-						
-					</div>
-		
+
+			<div class="row" id="totalcost">
+
+				<div class="col-sm-4" align="left">
+					<p>
+						<strong>Total Cost: </strong>
+						<h:outputText value="#{basket.getTotalCost()}" />
+					</p>
+					<p>
+						<strong>Number of Items: </strong>
+					</p>
+				</div>
+
+				<div class="col-sm-8" align="right">
+					<h:form>
+						<h:commandButton value="Go To Checkout"
+							action="#{basket.checkOutBasket()}"
+							class="btn btn-primary btn-blue" />
+					</h:form>
+				</div>
+
+			</div>
+
 			<ui:repeat var="orderLine" value="#{basket.basket.getOrderLines()}">
 				<div class="row" id="orderline">
 					<div class="col-sm-4" align="left">
@@ -68,37 +74,57 @@
 						</p>
 
 						<hr />
-						<div class="row" id="totalsbox">
-							<div class="col-sm-4">
-								<p>
+						<div class="row" id="linestotalsbox">
+							<div class="row">
+								<div class="col-sm-4">
 
-									<strong>Single Item Cost</strong>:
-									<h:outputText value="#{basket.getItemPrice()}" />
-								</p>
-								<p>
-									<strong>Line Cost</strong>:
-									<h:outputText value="#{basket.getLineCost()}" />
+									<p>
 
-								</p>
-							
+										<strong>Single Item Cost</strong>:
+										<h:outputText value="#{basket.getItemPrice()}" />
+									</p>
+									<p>
+										<strong>Line Cost</strong>:
+										<h:outputText value="#{basket.getLineCost()}" />
+
+									</p>
+
+								</div>
+								<div class="col-sm-8" align="right">
+
+
+									<div class="form-group">
+										<h:form>
+											<label for="updateQuantity" class="control-label"><strong>Quantity</strong>:</label>
+											<h:inputText value="#{basket.quantity}" class="form-control">
+												<f:passThroughAttribute name="Enter Quantity" value="text" />
+												<f:passThroughAttribute name="alt" value="First Name" />
+												<f:passThroughAttribute name="required" value="true" />
+											</h:inputText>
+										</h:form>
+
+									</div>
+								</div>
 							</div>
-							<div class="col-sm-8" align="right">
 
 
-								<div class="form-group">
-									<h:form>
-										<label for="updateQuantity" class="control-label"><strong>Quantity</strong>:</label>
-										<h:inputText value="#{basket.quantity}" class="form-control">
-											<f:passThroughAttribute name="Enter Quantity" value="text" />
-											<f:passThroughAttribute name="alt" value="First Name" />
-											<f:passThroughAttribute name="required" value="true" />
-										</h:inputText>
-									</h:form>
+							<div class="row">
+								<div class="col-sm-4" align="left">
 									<h:form>
 										<h:commandButton value="Remove From Basket"
-											action="#{basket.removeFromBasket(orderLine.getProduct().getProductID())}" />
+											action="#{basket.removeFromBasket(orderLine.getProduct().getProductID())}"
+											class="btn btn-grey" />
 									</h:form>
+					
+	
 								</div>
+								<div class="col-sm-8" align="right">
+									<h:form>
+										<h:commandButton value="Update Quantity"
+											action="#{basket.removeFromBasket(orderLine.getProduct().getProductID())}"
+											class="btn btn-grey" />
+									</h:form>
+									</div>
 							</div>
 						</div>
 
@@ -111,7 +137,7 @@
 
 
 			</ui:repeat>
-			
+
 
 
 		</div>
