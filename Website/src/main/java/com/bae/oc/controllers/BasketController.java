@@ -88,7 +88,7 @@ public class BasketController implements Serializable {
 			return "login";
 		}
 
-		long productId = selectedProduct.getProduct().getProductID();
+		long productId = selectedProduct.getProduct().getId();
 		long customerOrderId = currentUser.getCustomer().getId();
 		basket = orderService.getBasket(currentUser.getCustomer().getId());
 
@@ -284,7 +284,7 @@ public class BasketController implements Serializable {
 
 	public long getProductId() {
 		System.out.println("getting product id");
-		return basket.getOrderLines().get(lineNumber).getProduct().getProductID();
+		return basket.getOrderLines().get(lineNumber).getProduct().getId();
 	}
 
 }
