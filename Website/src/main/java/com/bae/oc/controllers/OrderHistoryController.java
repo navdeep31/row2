@@ -32,7 +32,9 @@ public class OrderHistoryController implements Serializable{
 	private OrderService orderService;
 	@Inject
 	private CurrentUser currentUser;
+	private List<CustomerOrder> orderHistory;
 	private long orderId;
+	private int lineNumber = 0;
 	
 	/**
 	 *
@@ -44,7 +46,20 @@ public class OrderHistoryController implements Serializable{
 	 */	
 
 	public List<CustomerOrder> getOrderHistory() {
-		return orderService.getOrderHistory(currentUser.getCustomer().getId());
+
+		orderHistory = orderService.getOrderHistory(currentUser.getCustomer().getId());
+		
+		return orderHistory;
+				
+	}
+	
+	public String setOrderHistory(){
+		if(currentUser.isLoggedIn() == false) {
+			return "login";
+		} else {
+			orderHistory = orderService.getOrderHistory(currentUser.getCustomer().getId());
+			return "";
+		}
 	}
 		
 	/**
@@ -109,6 +124,21 @@ public class OrderHistoryController implements Serializable{
 		return orderId;
 	}
 	
+	
+	
+	public int getLineNumber() {
+		return lineNumber;
+	}
+
+	public void setLineNumber(int lineNumber) {
+		this.lineNumber = lineNumber;
+	}
+
+	public int iterateLineNumber() {	
+		return lineNumber++;
+		
+				
+	}
 	
 	
 }
