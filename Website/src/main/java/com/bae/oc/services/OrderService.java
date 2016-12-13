@@ -201,7 +201,7 @@ public class OrderService {
 		int counter = 0;
 
 		for (int i = 0; i < customerOrder.getOrderLines().size(); i++) {
-			if (customerOrder.getOrderLines().get(i).getProduct().getProductID() == productId) {
+			if (customerOrder.getOrderLines().get(i).getProduct().getId() == productId) {
 				isInBasket = true;
 				System.out.println("in loop");
 				List<CustomerOrderLine> order = customerOrder.getOrderLines();
@@ -272,8 +272,9 @@ public class OrderService {
 		}
 
 		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
-			System.out.println(productId + " " + custOrderLine.getProduct().getProductID());
-			if (custOrderLine.getProduct().getProductID() == productId) {
+
+			if (custOrderLine.getProduct().getId() == productId) {
+
 				isInBasket = true;
 				System.out.println("setting quantity");
 				custOrderLine.setQuantity(quantity);

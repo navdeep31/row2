@@ -47,35 +47,32 @@
 					</ul></li>
 			</ul>
 			<a class="navbar-brand" href="home.xhtml">NB Gardens</a>
-			<form class="navbar-form navbar-right">
-			<div class="form-group">
 			
+			
+			<!-- Search bar -->
 			<h:form class ="navbar-formnavbar-left">
+				<div class="form-group">
 				<h:inputText value ="#{search.term}" class="form-control">
 					<f:passThroughAttribute name ="type" value="text" />
 					<f:passThroughAttribute name ="placeholder" value="Search..." />
 					<f:passThroughAttribute name ="alt" value="Search" />
-					</h:inputText>
-					<h:commandButton action ="#{search.search}" value="Seach"
-						class="btnbtn-success">
-						<f:passThroughAttribute name ="style" value="display: none;" />
-						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						</h:commandButton>
-						</h:form>
-						</div>
-						</form>
-						
-						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false"> <span
-									class="glyphicon glyphicon-user"></span> <ui:fragment
-										rendered="#{user.loggedIn}">
-          					My Account
-          				</ui:fragment> <ui:fragment rendered="#{!user.loggedIn}">
-          					Log In
-          				</ui:fragment>
-							</a>
+				</h:inputText>
+				<h:commandButton action ="#{search.search}" value="Seach" class="btn btn-success">
+					<f:passThroughAttribute name ="style" value="display: none;" />
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</h:commandButton>
+				</div>
+			</h:form>
+			
+			<!-- Drop down Account / Login Menu -->					
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle"	data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="glyphicon glyphicon-user"></span>
+						<ui:fragment rendered="#{user.loggedIn}">My Account</ui:fragment>
+						<ui:fragment rendered="#{!user.loggedIn}">Log In</ui:fragment>
+					</a>
 								<ul class="dropdown-menu">
 									<ui:fragment rendered="#{user.loggedIn}">
 										<li><a href="wishlist.xhtml">My Wishlist</a></li>

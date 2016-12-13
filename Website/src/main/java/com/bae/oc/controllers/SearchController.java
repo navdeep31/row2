@@ -19,13 +19,21 @@ import com.bae.oc.entities.Product;
 @Named("search")
 @RequestScoped
 public class SearchController {
+	
+	//////////////////////////////////INJECTIONS/////////////////////////////////////
+	
 	@Inject
 	private ProductSearchService searchService;
 	@Inject 
 	private SelectedProduct selectedProduct;
 	@Inject
 	private SearchResultsController searchResults;
+	
+	/////////////////////////////////ATTRIBUTES//////////////////////////////////////
+	
 	private String term;
+	
+	////////////////////////////////METHODS/////////////////////////////////////////
 	
 	/**
 	 * Puts search results into List
@@ -42,11 +50,12 @@ public class SearchController {
 		if (results != null){
 			if (results.size() == 1) {
 				selectedProduct.setProduct(results.get(0));
-				return "product";
+				return "productPage";
 			} else {
 				searchResults.setSearchResults(results);
 				return "searchResults";
-			}}
+			}
+		}
 		else {return "browse";}
 	}
 

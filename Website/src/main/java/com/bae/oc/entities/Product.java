@@ -29,7 +29,7 @@ public class Product {
 	@Id
 	@Column(name = "id", nullable=false, unique = true)
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
-	private long productID;
+	private long id;
 	
 	@ManyToOne
 	@JoinColumn(name="stock_id", nullable =false)
@@ -88,7 +88,7 @@ public class Product {
 	public Product(long productID, long stockID, String name, String description, int quantity, double rrp,
 			double currentPrice, ProductStatus status, LocalDate dateAdded, String category) {
 		super();
-		this.productID = productID;
+		this.id = productID;
 		this.stockID = stockID;
 		this.name = name;
 		this.description = description;
@@ -110,14 +110,14 @@ public class Product {
 	 * 
 	 * @MethodAuthor N GILL
 	 */
-	public long getProductID() {
-		return productID;
+	public long getId() {
+		return id;
 	}
 
 
 
-	public void setProductID(long productID) {
-		this.productID = productID;
+	public void setId(long productID) {
+		this.id = productID;
 	}
 
 	
