@@ -42,7 +42,7 @@ public class ProductController {
 		Product product = productService.findProductByPId(productId);
 		if (product != null){
 			selectedProduct.setProduct(product); //selected product controller
-			return "product";
+			return "productPage";
 		}
 		return "browse";
 	}

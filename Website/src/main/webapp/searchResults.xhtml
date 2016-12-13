@@ -4,21 +4,38 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	template="templates/main.xhtml">
 	<meta charset="utf-8" />
-	<ui:define name="pagetitle">Search</ui:define>
-	<ui:define name="maincontent">
+	
+	<meta name="author" content="Alex Dawson" />
+	<meta name="author" content="Navdeep Gill" />
+	
+	<ui:define name="pageTitle">Search</ui:define>
+	
+	<ui:define name="mainContent">
+	
+	<div class="container">
+	
+		<!-- Message -->
 		<header class="jumbotron">
 			<h1>Search Results</h1>
 			<p>Didn't find what you were looking for? Search again!</p>
 		</header>
-		<article class="row">
+		
+		<!-- Search results -->
+		<section class="row">
+		
+			<!-- In a form as contains command buttons (and links?) Maybe reconsider -->
 			<h:form>
-				<h:outputText escape="false" value="No Products Found" rendered="#{searchResults.results.rowCount==0}" />
-				<h:panelGroup rendered="#{searchResults.results.rowCount>0}">
+				
+				<!-- Output text for no products -->
+				<h:outputText escape="false" value="No Products Found" rendered="#{searchResults.pageResults.rowCount==0}" />
+				
+				
+				<h:panelGroup rendered="#{searchResults.pageResults.rowCount>0}">
 					<h:commandLink value="Previous" action="#{searchResults.previous}" rendered="#{searchResults.pagination.hasPreviousPage}" />
 					<h:outputText value="#{searchResults.pagination.pageFirstItem + 1}..#{searchResults.pagination.pageLastItem + 1}/#{searchResults.pagination.itemsCount}" />
 					<h:commandLink value="Next" action="#{searchResults.next}" rendered="#{searchResults.pagination.hasNextPage}" />
 					<div>
-						<ui:repeat var="product" value="#{searchResults.results}">
+						<ui:repeat var="product" value="#{searchResults.pageResults}">
 							<section class="col-xs-12 col-md-4">
 								<h:commandLink action="#{products.select(product.id)}" value="#{product.name}"/>
 								<p><h:outputText value="#{product.description}" /></p>
@@ -31,6 +48,11 @@
 					<h:commandLink value="Next" action="#{searchResults.next}" rendered="#{searchResults.pagination.hasNextPage}" />
 				</h:panelGroup>
 			</h:form>
-		</article>
+		</section>
+		
+	</div>
+	
+	
+		
 	</ui:define>
 </ui:composition>

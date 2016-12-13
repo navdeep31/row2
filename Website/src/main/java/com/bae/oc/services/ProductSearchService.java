@@ -17,12 +17,15 @@ import com.bae.oc.managers.ProductManager;
 @Stateless
 public class ProductSearchService {
 	
+	//////////////////////////////////INJECTIONS/////////////////////////////////////
+	
 	@Inject
 	private ProductManager productManager;
 	
 	@Inject
 	private ProductService productService;
 	
+	//////////////////////////////////METHODS/////////////////////////////////////
 	
 	/**
 	 * Returns similar names to search term
@@ -61,7 +64,9 @@ public class ProductSearchService {
 		List<Product> results = new ArrayList<>();
 		if(term.matches("[0-9]")){
 			Product result = productService.findProductByPId(term);
-			if(result!=null) results.add(result);
+			if(result!=null) {
+				results.add(result);
+			}
 		}
 		results.addAll(searchByProductName(term));
 		results.addAll(searchByProductDescription(term));
