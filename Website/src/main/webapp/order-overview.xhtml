@@ -149,9 +149,11 @@
 				<!-- Payment Overview -->
 				
 				<!-- Confirm -->
-				<div class="form-group">
-					<h:commandButton action="#{confirmorder.goToOverview}" value="Confirm Order Details" class="btn btn-blue btn-lg btn-block" />
-				</div>
+				<h:form>
+					<div class="form-group">
+						<h:commandButton action="#{confirmorder.confirmOrderSubmit()}" value="Confirm Order" class="btn btn-blue btn-lg btn-block" />
+					</div>
+				</h:form>
 				
 			
 			</div>	

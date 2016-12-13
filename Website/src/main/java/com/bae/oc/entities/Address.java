@@ -8,7 +8,9 @@ package com.bae.oc.entities;
  *
  */
 public class Address {
+	
 	//////////////////////////////////////////////// Attributes/////////////////////////////////////////////////////
+	
 	private int id;
 	private String line1;
 	private String line2;

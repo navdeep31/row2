@@ -2,6 +2,7 @@ package com.bae.oc.controllers;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,16 +26,21 @@ import com.bae.oc.services.OrderService;
 @ConversationScoped
 public class ConfirmOrderController implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8356976070003181219L;
+	
+	/////////////////////////////INJECTIONS//////////////////////////////////////////////////////
+	
 	@Inject
 	private OrderService orderService;
 	@Inject
 	private CurrentUser currentUser; 
 	@Inject
 	private AddressService addressService;
+	@Inject
+	private Conversation conversation;
+	
+	/////////////////////////////////ATTRIBUTES/////////////////////////////////////////////////
+	
 	private CustomerOrder customerOrder;
 	
 	private String bLine1;
@@ -46,6 +52,8 @@ public class ConfirmOrderController implements Serializable {
 	private String dLine2;
 	private String dCity;
 	private String dPostcode;
+	
+	/////////////////////////////////////METHODS/////////////////////////////////////////////////
 	
 	/**
 	 *
@@ -62,14 +70,16 @@ public class ConfirmOrderController implements Serializable {
 	 */	
 	
 	public String goToOrderDetails(){
+		conversation.begin();
 		if(currentUser.isLoggedIn() == false) {
 			return "login";
 		}
-		System.out.println("Trying to set Custmoer Order");
+		System.out.println("Trying to set Customer Order");
 		
 		try{
 			customerOrder = orderService.getBasket(currentUser.getCustomer().getId());
 			System.out.println("Set ConfirmOrder Customer Order");
+			System.out.println("Customer Order : " + customerOrder);
 			orderService.checkBasket(customerOrder.getId());
 			return "order-details";
 		} catch (Exception e) {
@@ -104,6 +114,7 @@ public class ConfirmOrderController implements Serializable {
 		success = addressService.isValidAddress(bLine1, bPostcode, bCity);
 		}
 		if(success && bLine2NotNull){
+			System.out.println("CustomerOrder in goToOverview method: " + customerOrder);
 			customerOrder.setBillingAddress(addressService.checkAddressExists(new Address(bLine1, bLine2, bPostcode, bCity)));
 		} else if (success) {
 			customerOrder.setBillingAddress(addressService.checkAddressExists(new Address(bLine1, bPostcode, bCity)));
@@ -147,6 +158,7 @@ public class ConfirmOrderController implements Serializable {
 		}
 		
 		orderService.confirmOrder(customerOrder.getId());
+		conversation.end();
 		return "order-confirmation";
 		
 		// TODO If time create e-mail confirmation here

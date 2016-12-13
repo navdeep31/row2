@@ -41,7 +41,6 @@ public class AddressManagerOffline implements AddressManager {
 
 	@Override
 	public List<Address> findAllAddresses() {
-		// TODO Auto-generated method stub
 		return testData.getAddresses();
 	}
 
