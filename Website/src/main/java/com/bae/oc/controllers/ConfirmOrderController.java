@@ -65,12 +65,15 @@ public class ConfirmOrderController implements Serializable {
 		if(currentUser.isLoggedIn() == false) {
 			return "login";
 		}
+		System.out.println("Trying to set Custmoer Order");
 		
 		try{
 			customerOrder = orderService.getBasket(currentUser.getCustomer().getId());
+			System.out.println("Set ConfirmOrder Customer Order");
 			orderService.checkBasket(customerOrder.getId());
 			return "order-details";
 		} catch (Exception e) {
+			System.out.println("Exception");
 			return null;
 		}
 	}
