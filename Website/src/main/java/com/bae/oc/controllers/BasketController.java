@@ -35,7 +35,7 @@ public class BasketController implements Serializable {
 	private SelectedProduct selectedProduct;
 
 	private CustomerOrder basket;
-	private int quantity;
+	private String quantity;
 	private int lineNumber = 0;
 
 	public int getLineNumber() {
@@ -73,7 +73,7 @@ public class BasketController implements Serializable {
 		}
 		
 		if(orderService.checkBasket(basket.getId())) {
-			return "orderdetails1";
+			return "order-details";
 		} else {
 			
 		}
@@ -168,16 +168,19 @@ public class BasketController implements Serializable {
 	 * @param String
 	 * @return String
 	 */
-	public String updateQuantity(String quantity) {
+	public String updateQuantity(long productId) {
 		System.out.println("update quantity");
 		if (currentUser.isLoggedIn() == false) {
 			return "login";
 		}
 		try {
+			System.out.println("productId " + productId + " quantity " + quantity);
+			
 			orderService.updateQuantity(orderService.getBasket(currentUser.getCustomer().getId()).getId(),
-					selectedProduct.getProduct().getProductID(), quantity);
+					productId, quantity);
 			return "basket";
 		} catch (Exception e) {
+			System.out.println("fail");
 			return "placeholder";
 		}
 
@@ -274,7 +277,7 @@ public class BasketController implements Serializable {
 	 * @return String
 	 */
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(String quantity) {
 		System.out.println("setquantity");
 		this.quantity = quantity;
 	}

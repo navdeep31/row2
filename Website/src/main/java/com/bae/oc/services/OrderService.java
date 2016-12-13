@@ -242,6 +242,7 @@ public class OrderService {
 			int quantityInt = Integer.parseInt(quantity);
 			updateQuantity(customerOrderId, productId, quantityInt);
 		} catch (NumberFormatException e) {
+			System.out.println("number format exception");
 			// TODO Exception
 		}
 
@@ -265,21 +266,23 @@ public class OrderService {
 	public void updateQuantity(long customerOrderId, long productId, int quantity) {
 		boolean isInBasket = false;
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
-
+		System.out.println(customerOrder.getOrderLines().size());
 		if (quantity <= 0) {
 			// TODO add Exception
 		}
 
 		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
+			System.out.println(productId + " " + custOrderLine.getProduct().getProductID());
 			if (custOrderLine.getProduct().getProductID() == productId) {
 				isInBasket = true;
+				System.out.println("setting quantity");
 				custOrderLine.setQuantity(quantity);
 				break;
 			}
 		}
 
 		if (!isInBasket) {
-
+			System.out.println("not in basket");
 			// TODO add Exception
 		}
 

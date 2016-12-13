@@ -2,6 +2,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="templates/main.xhtml">
 	<meta charset="utf-8" />
 	<author>Tim Spencer</author>
@@ -44,7 +45,7 @@
 					</p>
 				</div>
 
-				<div class="col-sm-8" align="right">
+				<div class="col-sm-8" align="right" id="checkoutbutton">
 					<h:form>
 						<h:commandButton value="Go To Checkout"
 							action="#{basket.checkOutBasket()}"
@@ -54,7 +55,7 @@
 
 			</div>
 
-			<ui:repeat var="orderLine" value="#{basket.basket.getOrderLines()}">
+			<c:forEach var="orderLine" items="#{basket.basket.getOrderLines()}">
 				<div class="row" id="orderline">
 					<div class="col-sm-4" align="left">
 						<a href="#"> <img class="img-responsive"
@@ -101,6 +102,11 @@
 												<f:passThroughAttribute name="alt" value="First Name" />
 												<f:passThroughAttribute name="required" value="true" />
 											</h:inputText>
+											<div>
+											<h:commandButton value="Update Quantity"
+											action="#{basket.updateQuantity(orderLine.getProduct().getProductID())}"
+											class="btn btn-grey" />
+											</div>
 										</h:form>
 
 									</div>
@@ -109,7 +115,7 @@
 
 
 							<div class="row">
-								<div class="col-sm-4" align="left">
+								<div class="col-sm-12" align="right">
 									<h:form>
 										<h:commandButton value="Remove From Basket"
 											action="#{basket.removeFromBasket(orderLine.getProduct().getProductID())}"
@@ -118,13 +124,7 @@
 					
 	
 								</div>
-								<div class="col-sm-8" align="right">
-									<h:form>
-										<h:commandButton value="Update Quantity"
-											action="#{basket.removeFromBasket(orderLine.getProduct().getProductID())}"
-											class="btn btn-grey" />
-									</h:form>
-									</div>
+								
 							</div>
 						</div>
 
@@ -136,7 +136,7 @@
 				</div>
 
 
-			</ui:repeat>
+			</c:forEach>
 
 
 

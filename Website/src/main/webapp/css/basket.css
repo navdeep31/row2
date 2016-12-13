@@ -4,6 +4,11 @@
 	
 }
 
+#checkoutbutton {
+	margin-top: 23px;
+	veritcal-align: center; 
+}
+
 #heading h1 {
 	font-size: 300%;
 	font-color: blue; 
@@ -69,7 +74,7 @@ input.form-control {
 }
 
 .btn-blue {
-	background-color: rgb(149,179,215);
+	background-color: rgb(149, 179, 215);
 	
 	color: #ffffff;
 }
