@@ -139,7 +139,7 @@ public class BasketController implements Serializable {
 
 	public String setBasket() {
 		if (currentUser.isLoggedIn() == false) {
-			return "register.xhtml";
+			return "";
 		} else {
 			
 			

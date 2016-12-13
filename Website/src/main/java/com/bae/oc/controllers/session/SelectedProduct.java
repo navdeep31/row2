@@ -23,9 +23,7 @@ public class SelectedProduct implements Serializable {
 	 */
 	private static final long serialVersionUID = -2929402503570398917L;
 
-	private Product product = new Product(1l, 1l, "Timberley Gnome", "An extremely hideous gnome. Great for keeping away unwanted animals (e.g. foxes). "
-			+ "Please keep away from young children as they may be scarred for life.", 10, 19.99, 16.99,
-			ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome");;
+	private Product product;
 	
 	/*
 	 * EDITED getProduct() - manually set product to test xhtml Product Page. Original code below:
@@ -33,9 +31,6 @@ public class SelectedProduct implements Serializable {
 	 */
 
 	public Product getProduct() {
-		product = new Product(1l, 1l, "Timberley Gnome", "An extremely hideous gnome. Great for keeping away unwanted animals (e.g. foxes). "
-				+ "Please keep away from young children as they may be scarred for life.", 10, 19.99, 16.99,
-				ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome");
 		return product;
 	}
 	

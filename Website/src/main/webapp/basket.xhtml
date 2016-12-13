@@ -12,7 +12,9 @@
 	<ui:define name="mainContent">
 		<h:outputText value="#{basket.setBasket()}" />
 		<link type="text/css" rel="stylesheet" href="css/basket.css" />
-		<div class="container" id="basket">
+		
+		<ui:fragment rendered="#{user.isLoggedIn()}">
+		<div class="container" id="basket" >
 			<div class="row" id="baskettitle">
 
 				<div class="col-md-12 main" align="left">
@@ -141,6 +143,13 @@
 
 
 		</div>
+		</ui:fragment>
+		<ui:fragment rendered="#{!user.isLoggedIn()}">
+		<div class="container">
+				<h:button value="Not logged in. Press to register." outcome="register" class="btn btn-blue"/>
+		
+		</div>
+		</ui:fragment>
 
 	</ui:define>
 
