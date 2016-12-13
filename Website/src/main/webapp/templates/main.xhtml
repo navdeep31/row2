@@ -47,23 +47,7 @@
 					</ul></li>
 			</ul>
 			<a class="navbar-brand" href="home.xhtml">NB Gardens</a>
-			
-			
-			<!-- Search bar -->
-			<h:form class ="navbar-formnavbar-left">
-				<div class="form-group">
-				<h:inputText value ="#{search.term}" class="form-control">
-					<f:passThroughAttribute name ="type" value="text" />
-					<f:passThroughAttribute name ="placeholder" value="Search..." />
-					<f:passThroughAttribute name ="alt" value="Search" />
-				</h:inputText>
-				<h:commandButton action ="#{search.search}" value="Seach" class="btn btn-success">
-					<f:passThroughAttribute name ="style" value="display: none;" />
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-				</h:commandButton>
-				</div>
-			</h:form>
-			
+		
 			<!-- Drop down Account / Login Menu -->					
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -117,6 +101,22 @@
 									class="glyphicon glyphicon-shopping-cart"></span> Basket
 							</a></li>
 						</ul>
+						
+			<!-- Search bar -->
+			<h:form class ="navbar-form navbar-right">
+				<div class="form-group">
+				<h:inputText value ="#{search.term}" class="form-control">
+					<f:passThroughAttribute name ="type" value="text" />
+					<f:passThroughAttribute name ="placeholder" value="Search..." />
+					<f:passThroughAttribute name ="alt" value="Search" />
+				</h:inputText>
+				<h:commandLink action ="#{search.search}" class="btn btn-default">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</h:commandLink>
+				</div>
+			</h:form>
+						
+						
 				</div>
 	</nav>
 
