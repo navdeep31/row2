@@ -74,7 +74,7 @@
 							lectus.
 						</p>
 
-						<hr />
+					
 						<div class="row" id="linestotalsbox">
 							<div class="row">
 								<div class="col-sm-4">
@@ -102,9 +102,9 @@
 												<f:passThroughAttribute name="alt" value="First Name" />
 												<f:passThroughAttribute name="required" value="true" />
 											</h:inputText>
-											<div>
+											<div> <hr id = "line"/>
 											<h:commandButton value="Update Quantity"
-											action="#{basket.updateQuantity(orderLine.getProduct().getProductID())}"
+											action="#{basket.updateQuantity(orderLine.getProduct().getId())}"
 											class="btn btn-grey" />
 											</div>
 										</h:form>
@@ -118,7 +118,7 @@
 								<div class="col-sm-12" align="right">
 									<h:form>
 										<h:commandButton value="Remove From Basket"
-											action="#{basket.removeFromBasket(orderLine.getProduct().getProductID())}"
+											action="#{basket.removeFromBasket(orderLine.getProduct().getId())}"
 											class="btn btn-grey" />
 									</h:form>
 					
