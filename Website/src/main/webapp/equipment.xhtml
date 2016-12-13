@@ -2,12 +2,20 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="templates/main.xhtml">
 	<meta charset="utf-8" />
 	
 	<ui:define name="pageTitle">Equipment</ui:define>
 	
 	<ui:define name="mainContent">
+	
+		<f:metadata>
+    		<f:viewParam name="term" value="#{search.term}" />
+    		<c:set var="equipment" value="equipment" scope="request" />
+    		<f:viewAction action="#{search.setTerm(equipment)}" />
+    		<f:viewAction action="#{search.search}" />
+		</f:metadata>
 	
 		<div class="container">
 		
