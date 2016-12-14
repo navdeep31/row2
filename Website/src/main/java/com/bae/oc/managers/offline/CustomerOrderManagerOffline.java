@@ -66,7 +66,9 @@ public class CustomerOrderManagerOffline implements CustomerOrderManager {
 
 		List<Customer> customers = testData.getCustomers();
 		for (int j = 0; j < customers.size(); j++){
+			
 			if (customers.get(j).getId() == iCustomer.getId()) {
+				System.out.println("customer: " + customers.get(j));
 				for (CustomerOrder order : customers.get(j).getOrders()) {
 					
 					if (order.getId() == iOrder.getId()) {

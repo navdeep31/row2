@@ -81,7 +81,7 @@ public class ConfirmOrderController implements Serializable {
 			System.out.println("Set ConfirmOrder Customer Order");
 			System.out.println("Customer Order : " + customerOrder);
 			orderService.checkBasket(customerOrder.getId());
-			return "order-details";
+			return "";
 		} catch (Exception e) {
 			System.out.println("Exception");
 			return null;

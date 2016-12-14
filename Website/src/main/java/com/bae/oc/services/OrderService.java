@@ -128,6 +128,9 @@ public class OrderService {
 		if (basket == null) {
 			System.out.println("new basket");
 			basket = new CustomerOrder();
+			List<CustomerOrder> orders = customer.getOrders();
+			orders.add(basket);
+			customer.setOrders(orders);
 		}
 
 		return basket;

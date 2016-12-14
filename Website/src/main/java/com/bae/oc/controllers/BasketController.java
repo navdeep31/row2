@@ -92,6 +92,7 @@ public class BasketController implements Serializable {
 		long customerOrderId = currentUser.getCustomer().getId();
 		basket = orderService.getBasket(currentUser.getCustomer().getId());
 
+		System.out.println("productId " + productId);
 		orderService.addToBasket(customerOrderId, productId, currentUser.getCustomer());
 
 		return null;
