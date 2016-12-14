@@ -136,7 +136,6 @@ public class OrderHistoryController implements Serializable{
 
 	public int iterateLineNumber() {	
 		return lineNumber++;
-		
 				
 	}
 	
