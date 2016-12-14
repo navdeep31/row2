@@ -75,6 +75,12 @@ public class TestData {
 		customers.get(1).getOrders().add(new CustomerOrder());
 		customers.get(1).getOrders().add(customerOrder.get(1));
 		
+		customerOrder.get(0).getOrderLines().get(0).setStatus(Status.ORDER);
+		customerOrder.get(0).getOrderLines().get(1).setStatus(Status.ORDER);
+		customerOrder.get(0).setStatus(Status.ORDER);
+		
+		customers.get(1).getOrders().add(customerOrder.get(0));
+		
 		// TODO Add Employee and PurchaseOrders data when IMS testing begins
 		// setEmployees(new ArrayList<>());
 		// setPurchaseOrders(new ArrayList<PurchaseOrder>());
