@@ -41,6 +41,16 @@ public class Employee {
 		return password_hash;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setPassword_hash(String password_hash) {
+		this.password_hash = password_hash;
+	}
+	
+	
+
 	
 	
 }

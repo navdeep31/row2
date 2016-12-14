@@ -33,6 +33,17 @@ public class EmployeeController {
 	 */
 	public String update() {
 		
+		if(currentUser.isLoggedIn()) {
+			try {
+			currentUser.setEmployee(employeeService.update(currentUser.getEmployee(), password));
+			return "homepage";
+			} catch (NullPointerException e)  {
+				System.out.println("User put wrong password in");
+			}
+		}
+		
+				
+		
 		return null;
 	}
 
