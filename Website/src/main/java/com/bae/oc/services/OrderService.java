@@ -120,6 +120,7 @@ public class OrderService {
 				if (custOrders.getStatus().equals(Status.BASKET)) {
 					basket = custOrders;
 					System.out.println("old basket");
+					System.out.println(custOrders.getStatus());
 				}
 			}
 		} catch (Exception e) {

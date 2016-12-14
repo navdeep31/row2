@@ -59,8 +59,8 @@
 				
 			<c:forEach var="orderLine" items="#{basket.basket.getOrderLines()}">
 				<div class="row" id="orderline">
-					<div class="col-sm-4" align="left">
-						<a href="#"> <img class="img-responsive"
+					<div class="col-sm-4" align="left" action="#{basket.setSelectedProduct()}">
+						<a href="productPage.xhtml"> <img class="img-responsive"
 							src="images/CatTools.png" width="auto" height="auto" /></a>
 					</div>
 					<div class="col-sm-8" align="left">

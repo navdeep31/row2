@@ -18,6 +18,8 @@ public interface EmployeeManager {
 	 */
 	public Employee findEmployeeById (long id);
 	
+	public Employee findEmployeeByEmail (String email); 
+	
 	public void updateEmployee (Employee employee); 
 }
 

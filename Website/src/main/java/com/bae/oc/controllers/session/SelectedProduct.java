@@ -31,6 +31,8 @@ public class SelectedProduct implements Serializable {
 	 */
 
 	public Product getProduct() {
+		
+	
 		return product;
 	}
 	

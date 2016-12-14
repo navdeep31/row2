@@ -39,4 +39,10 @@ public class EmployeeManagerOffline implements EmployeeManager {
 		
 	}
 
+	@Override
+	public Employee findEmployeeByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -42,6 +42,11 @@ public class BasketController implements Serializable {
 		return lineNumber;
 	}
 
+
+	public void setSelectedProduct() {
+		selectedProduct.setProduct(basket.getOrderLines().get(lineNumber).getProduct());
+	}
+	
 	public String ititerateLineNumber() {
 		if (lineNumber == basket.getOrderLines().size() - 1) {
 
