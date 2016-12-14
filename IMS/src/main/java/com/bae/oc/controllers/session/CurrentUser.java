@@ -24,8 +24,7 @@ public class CurrentUser {
 	 * Checks if the employee is logged in or not. 
 	 */
 	public boolean isLoggedIn() {
-		
-		return false; 
+		return employee != null ? true : false; 
 	}
 	
 	/**
