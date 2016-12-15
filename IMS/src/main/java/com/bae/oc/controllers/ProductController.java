@@ -11,9 +11,9 @@ import com.bae.oc.services.ProductService;
 @Named("product")
 public class ProductController {
 	@Inject
-	SelectedProduct selectedProduct;
+	private SelectedProduct selectedProduct;
 	@Inject
-	ProductService productService;
+	private ProductService productService;
 	
 	private String name = "";
 	
