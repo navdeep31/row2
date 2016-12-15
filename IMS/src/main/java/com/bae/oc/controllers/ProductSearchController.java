@@ -1,11 +1,15 @@
 package com.bae.oc.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bae.oc.controllers.session.SelectedProduct;
 import com.bae.oc.controllers.session.SelectedProducts;
+import com.bae.oc.entities.Product;
 import com.bae.oc.services.ProductSearchService;
 
 @RequestScoped
@@ -28,7 +32,19 @@ public class ProductSearchController {
 	 * @return String
 	 */
 	public String searchProducts() {
-		return null;
+		List<Product> results = productSearchService.searchBy(term);
+		
+		if(results.size() == 1) {
+			selectedProduct.setProduct(results.get(0));
+			return "productpage";
+		} else if (results.size() > 1) {
+			selectedProducts.setSearchResults(results);
+			return "resultspage";
+		} else {
+			return "emptyresults";
+		}
+		
+		
 	}
 	
 	
