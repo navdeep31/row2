@@ -124,7 +124,10 @@ public class OrderHistoryController implements Serializable{
 		return orderId;
 	}
 	
-	
+	public int getEnumValue(){
+		
+		return orderService.getStatusValue(orderId);
+	}
 	
 	public int getLineNumber() {
 		return lineNumber;

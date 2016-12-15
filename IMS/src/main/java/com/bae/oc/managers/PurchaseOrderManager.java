@@ -23,5 +23,7 @@ public interface PurchaseOrderManager {
 	List<PurchaseOrder> findAllPurchaseOrders();
 
 	PurchaseOrder findPurchaseByEmployee(int employeeId);
+	
+	PurchaseOrder findOrderById(int iId);
 
 }
