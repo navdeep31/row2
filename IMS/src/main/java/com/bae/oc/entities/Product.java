@@ -53,13 +53,13 @@ public class Product {
 	@Column
 	@NotNull
 	//Assume Product in pence hence integer
-	private double rrp;
+	private long rrp;
 	
 	
 	@Column(name="current_price")
 	@NotNull
 	//Assume Product in pence hence integer
-	private double currentPrice;
+	private long currentPrice;
 	
 	@Column(length=225)
 	@Size(max=225)
@@ -85,8 +85,8 @@ public class Product {
 	 */
 	public Product(){}
 	
-	public Product(long productID, long stockID, String name, String description, int quantity, double rrp,
-			double currentPrice, ProductStatus status, LocalDate dateAdded, String category) {
+	public Product(long productID, long stockID, String name, String description, int quantity, long rrp,
+			long currentPrice, ProductStatus status, LocalDate dateAdded, String category) {
 		super();
 		this.productID = productID;
 		this.stockID = stockID;
@@ -200,13 +200,13 @@ public class Product {
 	 * 
 	 * @MethodAuthor N GILL
 	 */
-	public double getRrp() {
+	public long getRrp() {
 		return rrp;
 	}
 
 
 
-	public void setRrp(int rrp) {
+	public void setRrp(long rrp) {
 		this.rrp = rrp;
 	}
 
@@ -218,13 +218,13 @@ public class Product {
 	 * 
 	 * @MethodAuthor N GILL
 	 */
-	public double getCurrentPrice() {
+	public long getCurrentPrice() {
 		return currentPrice;
 	}
 
 
 
-	public void setCurrentPrice(int currentPrice) {
+	public void setCurrentPrice(long currentPrice) {
 		this.currentPrice = currentPrice;
 	}
 

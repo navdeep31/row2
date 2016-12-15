@@ -10,13 +10,21 @@ import com.bae.oc.controllers.session.SelectedProduct;
 import com.bae.oc.enums.ProductStatus;
 import com.bae.oc.services.ProductService;
 
+/**
+ * 
+ * @author Tim Spencer
+ * @version 0.1
+ *
+ */
+
 @RequestScoped
-@Named("product")
-public class ProductController {
+@Named("newProduct")
+public class NewProductController {
+	
 	@Inject
-	SelectedProduct selectedProduct;
+	SelectedProduct selectedProduct; 
 	@Inject
-	ProductService productService;
+	ProductService productService; 
 	
 	private long productId;
 	
@@ -38,19 +46,18 @@ public class ProductController {
 	
 	private String category = ""; 
 	
-	/**
-	 * 
-	 * Update products through empty categories or placeholders (may use patterns when 
-	 * actually built). 
-	 * 
-	 * @MethodAuthor Tim Spencer
-	 * @return String
-	 * 
-	 */
-	public String updateProduct() {
-		return null; 
-	}
 	
+	/**
+	 * @MethodAuthor Tim Spencer
+	 * Creates a product by using variables passed through getters/setters, checking if they are blank or not. 
+	 * Depending on build type, may use placeholder variables or a builder pattern. 
+	 * @return String
+	 */
+	public String createProduct() {
+		return category;
+		
+	}
+
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
@@ -220,5 +227,7 @@ public class ProductController {
 	public LocalDate getDateAdded() {
 		return dateAdded;
 	}
+	
+	
 	
 }
