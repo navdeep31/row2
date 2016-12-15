@@ -3,11 +3,7 @@ package com.bae.oc.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-/**
- * 
- * @author Tim Spencer edit 0.2
- *
- */
+
 
 /**
  * Creating shortcut for finding by purchase order
@@ -20,18 +16,18 @@ import javax.validation.constraints.NotNull;
 
 })
 
+/**
+ * 
+ * @author Tim Spencer
+ * @author Alex Dawson
+ * @version 0.3 15/12/2016
+ *
+ */
 @Entity
 @Table(name = "purchase_order_line")
 public class PurchaseOrderLine {
-
-	/**
-	 * Join Purchase order to purchase order line using join table command. Uses
-	 * the id as it's own key.
-	 */
-	@Id
-	@ManyToOne
-	@JoinTable(name = "purchase_order", joinColumns = @JoinColumn(name = "purchase_order_id", referencedColumnName = "id", nullable = false))
-	private long purchaseOrderId;
+	
+	/////////////////////////////////////////////////////ATTRIBUTES////////////////////////////////////////////////
 
 	/**
 	 * Generates an ID for the line number.
@@ -42,84 +38,94 @@ public class PurchaseOrderLine {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int lineNumber;
 
-	@OneToOne
-	@NotNull
-	@JoinTable(name = "stock", joinColumns = @JoinColumn(name = "stock_id", referencedColumnName = "line_number", nullable = false))
-	private int stockId;
+	//TODO Review databasing
+	
+	//TODO Product databasing
+	private Product product;
 
 	@Column(nullable = false)
 	@NotNull
 	private int quantity;
 
-	public PurchaseOrderLine() {
-
-	}
-
-	public PurchaseOrderLine(int purchaseOrderId, int lineNumber, int stockId, int quantity) {
-		this.purchaseOrderId = purchaseOrderId;
-		this.lineNumber = lineNumber;
-		this.stockId = stockId;
-		this.quantity = quantity;
-	}
-
+	/////////////////////////////////////////////////////CONSTRUCTORS////////////////////////////////////////////////	
+	
 	/**
-	 * @return the purchaseOrderId
+	 * All argument constructor
+	 * 
+	 * @param iLineNumber Line Number
+	 * @param iProduct Product (Object)
+	 * @param iQuantity Quantity of product to be ordered
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
-	public long getPurchaseOrderId() {
-		return purchaseOrderId;
+	public PurchaseOrderLine(int iLineNumber, Product iProduct, int iQuantity) {
+		this.lineNumber = iLineNumber;
+		this.product = iProduct;
+		this.quantity = iQuantity;
 	}
+	
+	/////////////////////////////////////////////////////METHODS////////////////////////////////////////////////	
 
 	/**
-	 * @param purchaseOrderId
-	 *            the purchaseOrderId to set
-	 */
-	public void setPurchaseOrderId(int purchaseOrderId) {
-		this.purchaseOrderId = purchaseOrderId;
-	}
-
-	/**
-	 * @return the lineNumber
+	 * Returns the Purchase Order Line Number
+	 * 
+	 * @return Purchase Order Line Number
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
 	public int getLineNumber() {
-		return lineNumber;
+		return this.lineNumber;
 	}
 
 	/**
-	 * @param lineNumber
-	 *            the lineNumber to set
+	 * 
+	 * 
+	 * @param iLineNumberPurchase Order Line Number to set
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
-	public void setLineNumber(int lineNumber) {
-		this.lineNumber = lineNumber;
+	public void setLineNumber(int iLineNumber) {
+		this.lineNumber = iLineNumber;
 	}
 
 	/**
-	 * @return the stockId
+	 * Returns the product of the order line
+	 * 
+	 * @return Product (Object)
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
-	public int getStockId() {
-		return stockId;
+	public Product getProduct() {
+		return this.product;
 	}
-
+	
 	/**
-	 * @param stockId
-	 *            the stockId to set
+	 * Sets the product of the order line
+	 * 
+	 * @param iProduct Product (Object)
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
-	public void setStockId(int stockId) {
-		this.stockId = stockId;
+	public void setProduct(Product iProduct) {
+		this.product = iProduct;
 	}
-
+	
 	/**
-	 * @return the quantity
+	 * @return The quantity of product to order
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
 	public int getQuantity() {
-		return quantity;
+		return this.quantity;
 	}
 
 	/**
-	 * @param quantity
-	 *            the quantity to set
+	 * @param iQuantity The quantity of product to order to set
+	 * 
+	 * @MethodAuthor Alex Dawson
 	 */
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setQuantity(int iQuantity) {
+		this.quantity = iQuantity;
 	}
 
 }
