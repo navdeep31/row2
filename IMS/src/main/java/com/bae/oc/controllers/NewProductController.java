@@ -54,7 +54,15 @@ public class NewProductController {
 	 * @return String
 	 */
 	public String createProduct() {
-		return category;
+		try {
+			selectedProduct.setProduct(productService.createProduct(productId, stockId, name, 
+					description, quantity, rrp, currentPrice, status, dateAdded, category));
+			
+			return "productpage"; 
+			
+		} catch (Exception e) {
+			return "createproduct"; 
+		}
 		
 	}
 

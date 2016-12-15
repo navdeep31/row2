@@ -42,11 +42,17 @@ public class ProductService {
 	public Product createProduct(long productID, long stockID, String name, String description, int quantity, long rrp,
 			long currentPrice, ProductStatus status, LocalDate dateAdded, String category) {
 		
-		return null; 
+		//TODO Validation below
+		
+		Product product = new Product(productID, stockID, name, description, quantity, rrp, currentPrice, status, dateAdded, category);	
+		productManager.createNewProduct(product);
+		
+		return product; 
 		
 	}
 	/**
 	 * Overloaded version of created product that takes Strings instead of primitives. Used for parsing. 
+	 * Does not add products to the database, instead calls non-overloaded method which does this. 
 	 * 
 	 * @MethodAuthor
 	 * 
@@ -61,9 +67,52 @@ public class ProductService {
 	 * @param dateAdded
 	 * @param category
 	 * @return
+	 * @throws Exception 
 	 */
-	public Product createProduct(String productID, String stockID, String name, String description, String quantity, String rrp, String currentPrice, String status, String dateAdded, String category) {
-		return null;
+	public Product createProduct(String productID, String stockID, String name, String description, String quantity, String rrp, String currentPrice, String status, String dateAdded, String category) throws Exception {
+		
+		long lProductID;
+		long lStockID;
+		int iQuantity;
+		long lCurrentPrice;
+		long lRRP;
+		ProductStatus eStatus; 
+		LocalDate ldDateAdded;
+		
+		try {
+			
+			lProductID = Long.parseLong(productID); 
+			lStockID = Long.parseLong(stockID);
+			if(!quantity.isEmpty()) {
+			iQuantity = Integer.parseInt(quantity);
+			} else {
+				iQuantity = 0;
+			}
+			lCurrentPrice = Long.parseLong(currentPrice);
+			lRRP = Long.parseLong(rrp);
+			// Work out how this works
+			ldDateAdded = LocalDate.parse(dateAdded); 
+			
+			//Modify if feel like it
+			if(status.isEmpty()) {
+				eStatus = ProductStatus.AVALIABLE;
+			} else if (status.equals("AVALIABLE")) {
+				eStatus = ProductStatus.AVALIABLE;
+			} else if (status.equals("ON_HOLD")) {
+				eStatus = ProductStatus.ON_HOLD;
+			} else if (status.equals("DISCONTINUED")) {
+				eStatus = ProductStatus.DISCONTINUED;
+			} else {
+				throw new Exception();
+			}
+			
+		} catch (Exception e) {
+			throw new Exception("format exception"); 
+		}
+		
+		Product product = createProduct(lProductID, lStockID, name, description, iQuantity, lRRP, lCurrentPrice, eStatus, ldDateAdded, category);
+		
+		return product;
 		
 	}
 	
