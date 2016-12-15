@@ -1,6 +1,6 @@
 package com.bae.oc.controllers;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -8,11 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bae.oc.controllers.session.CurrentOrder;
-import com.bae.oc.controllers.session.SelectedOrder;
 import com.bae.oc.controllers.session.SelectedProduct;
-import com.bae.oc.entities.Address;
-import com.bae.oc.entities.Employee;
-import com.bae.oc.entities.PurchaseOrderLine;
 import com.bae.oc.services.OrderService;
 
 /**
@@ -85,15 +81,38 @@ public class CurrentOrderController {
 	 */
 	public String addLine() {
 		
-		order.setOrder(orderService.addLine(order.getOrder(), product, newQuantity));
+		order.setOrder(orderService.addLine(order.getOrder(), product.getProduct(), newQuantity));
 		
 		return "products";
 		
 	}
 	
 	public List<String> getQuantities() {
+		
 		int numberOfLines = order.getOrder().getOrderLines().size();
 		
+		if(numberOfLines != quantities.size()) {
+			
+			quantities = new ArrayList<String>(numberOfLines);
+			
+		}
+			
+		for (int i = 0; i < numberOfLines; i++) {
+			
+			if(!quantities.get(i).isEmpty()) {
+				
+				quantities.set(i, String.valueOf(order.getOrder().getOrderLines().get(i).getQuantity()));
+				
+			}
+			
+		}
+		
+		return quantities;
+		
+	}
+	
+	public void setQuantities(List<String> iQuantities) {
+		this.quantities = iQuantities;
 	}
 	
 	public String getNewQuantity() {
