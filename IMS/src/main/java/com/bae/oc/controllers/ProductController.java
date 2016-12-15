@@ -6,6 +6,12 @@ import javax.inject.Named;
 
 import com.bae.oc.controllers.session.SelectedProduct;
 import com.bae.oc.services.ProductService;
+/**
+ * 
+ * @author Tim Spencer
+ * @version 0.1
+ *
+ */
 
 @RequestScoped
 @Named("product")

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 import javax.inject.Named;
 
 import com.bae.oc.entities.Product;
@@ -18,9 +19,9 @@ import com.bae.oc.util.PaginationHelper;
 @Named("products")
 public class SelectedProducts {
 	
-	PaginationHelper pagination = null;
+	private PaginationHelper pagination = null;
 
-	DataModel<Product> pageProducts;
+	private DataModel<Product> pageProducts;
 	
 	private List<Product> searchResults;
 	
@@ -37,14 +38,17 @@ public class SelectedProducts {
 
 				@Override
 				public int getItemsCount() {
-					// TODO Auto-generated method stub
-					return 0;
+					return searchResults.size();
 				}
 
 				@Override
-				public DataModel<?> createPageDataModel() {
-					// TODO Auto-generated method stub
-					return null;
+				public DataModel<Product> createPageDataModel() {
+					try {
+						return new ListDataModel<Product>(searchResults.subList(getPageFirstItem(), getPageFirstItem() + getPageSize()));
+					} catch (Exception e) {
+						return new ListDataModel<Product>(searchResults.subList(getPageFirstItem(), getItemsCount()));
+					}
+					
 				}
 				
 			};

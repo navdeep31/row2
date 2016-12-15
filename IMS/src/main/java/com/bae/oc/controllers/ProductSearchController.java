@@ -6,6 +6,7 @@ import javax.inject.Named;
 
 import com.bae.oc.controllers.session.SelectedProduct;
 import com.bae.oc.controllers.session.SelectedProducts;
+import com.bae.oc.services.ProductSearchService;
 
 @RequestScoped
 @Named("productSearch")
@@ -14,6 +15,8 @@ public class ProductSearchController {
 	SelectedProduct selectedProduct;
 	@Inject
 	SelectedProducts selectedProducts;
+	@Inject
+	ProductSearchService productSearchService;
 	
 	String term;
 
