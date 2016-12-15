@@ -5,12 +5,9 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.bae.oc.controllers.session.CurrentOrder;
-import com.bae.oc.controllers.session.SelectedProduct;
 import com.bae.oc.entities.Product;
 import com.bae.oc.entities.PurchaseOrder;
 import com.bae.oc.entities.PurchaseOrderLine;
-import com.bae.oc.managers.ProductManager;
 import com.bae.oc.managers.PurchaseOrderManager;
 
 /**
@@ -27,9 +24,6 @@ public class OrderService {
 	
 	@Inject
 	private PurchaseOrderManager orderManager;
-	
-	@Inject
-	private ProductManager productManager;
 	
 	///////////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 	
