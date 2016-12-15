@@ -17,6 +17,8 @@ import com.bae.oc.entities.PurchaseOrderLine;
 /**
  * Deals with viewing SelectedOrder
  * 
+ * Implemented with attributes to be ready for change (editing)
+ * 
  * @author Alex Dawson
  *
  */
@@ -38,7 +40,6 @@ public class OrderController {
 	
 	///////////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 
-	public List<String> getNames() {
-	}
+	
 	
 }
