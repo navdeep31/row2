@@ -26,23 +26,23 @@ public class NewProductController {
 	@Inject
 	ProductService productService; 
 	
-	private String productId;
+	private String productId = "";
 	
-	private String stockId;
+	private String stockId = "";
 	
 	private String name = "";
 	
 	private String description = "";
 	
-	private String quantity; 
+	private String quantity = ""; 
 	
-	private String rrp; 
+	private String rrp = ""; 
 	
-	private String currentPrice; 
+	private String currentPrice = ""; 
 	
-	private String status;
+	private String status = "";
 	
-	private String dateAdded;
+	private String dateAdded = "";
 	
 	private String category = ""; 
 	

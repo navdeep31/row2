@@ -18,23 +18,18 @@ public class ProductController {
 	@Inject
 	ProductService productService;
 	
-	private String productId;
-	
-	private String stockId;
-	
 	private String name = "";
 	
 	private String description = "";
 	
-	private String quantity; 
+	private String quantity = ""; 
 	
-	private String rrp; 
+	private String rrp = ""; 
 	
-	private String currentPrice; 
+	private String currentPrice = ""; 
 	
-	private ProductStatus status;
-	
-	private String dateAdded;
+	private String status = "";
+
 	
 	private String category = ""; 
 	
@@ -58,6 +53,10 @@ public class ProductController {
 	 * @return String
 	 */
 	public String getName() {
+		if(this.name.isEmpty()) {
+			return selectedProduct.getProduct().getName();
+		}
+		
 		return name;
 	}
 	
@@ -78,6 +77,10 @@ public class ProductController {
 	 * @return String
 	 */
 	public String getDescription() {
+		if(this.description.isEmpty()) {
+			return selectedProduct.getProduct().getDescription();
+		}
+		
 		return description;
 	}
 	
@@ -98,6 +101,10 @@ public class ProductController {
 	 * @return int
 	 */
 	public String getQuantity() {
+		if(this.quantity.isEmpty()) {
+			return "" + selectedProduct.getProduct().getQuantity();
+		}
+		
 		return ("" + quantity);
 	}
 	
@@ -118,6 +125,10 @@ public class ProductController {
 	 * @return long
 	 */
 	public String getRrp() {
+		if(this.rrp.isEmpty()) {
+			return "" + selectedProduct.getProduct().getQuantity();
+		}
+		
 		return rrp;
 	}
 	
@@ -138,6 +149,10 @@ public class ProductController {
 	 * @return long
 	 */
 	public String getCurrentPrice() {
+		if(this.currentPrice.isEmpty()) {
+			return "" + selectedProduct.getProduct().getCurrentPrice();
+		}
+		
 		return currentPrice;
 	}
 	
@@ -157,7 +172,11 @@ public class ProductController {
 	 * Get status as ProductStatus(enum)
 	 * @return ProductStatus
 	 */
-	public ProductStatus getStatus() {
+	public String getStatus() {
+		if(this.status.isEmpty()) {
+			return "" + selectedProduct.getProduct().getStatus();
+		}
+		
 		return status;
 	}
 	
@@ -167,7 +186,7 @@ public class ProductController {
 	 * Set status as ProductStatus(enum)
 	 * @param ProductStatus
 	 */
-	public void setStatus(ProductStatus status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	
@@ -178,7 +197,11 @@ public class ProductController {
 	 * @return String
 	 */
 	public String getCategory() {
-		return category;
+		if(this.category.isEmpty()) {
+			return selectedProduct.getProduct().getCategory();
+		}
+		
+		return this.category;
 	}
 	
 	/**
@@ -194,21 +217,21 @@ public class ProductController {
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Gets product id as a long.
-	 * @return long
+	 * Gets product id as a String.
+	 * @return String
 	 */
 	public String getProductId() {
-		return productId;
+		return "" + selectedProduct.getProduct().getProductID();
 	}
 	
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Gets stock id a a long.
-	 * @return long
+	 * Gets stock id as a String.
+	 * @return String
 	 */
 	public String getStockId() {
-		return stockId;
+		return "" + selectedProduct.getProduct().getStockID();
 	}
 	
 	/**
@@ -218,7 +241,8 @@ public class ProductController {
 	 * @return LocalDate
 	 */
 	public String getDateAdded() {
-		return dateAdded;
+		
+		return selectedProduct.getProduct().getName(); 
 	}
 	
 }
