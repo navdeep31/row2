@@ -26,23 +26,23 @@ public class NewProductController {
 	@Inject
 	ProductService productService; 
 	
-	private long productId;
+	private String productId;
 	
-	private long stockId;
+	private String stockId;
 	
 	private String name = "";
 	
 	private String description = "";
 	
-	private int quantity; 
+	private String quantity; 
 	
-	private long rrp; 
+	private String rrp; 
 	
-	private long currentPrice; 
+	private String currentPrice; 
 	
-	private ProductStatus status;
+	private String status;
 	
-	private LocalDate dateAdded;
+	private String dateAdded;
 	
 	private String category = ""; 
 	
@@ -101,10 +101,10 @@ public class NewProductController {
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Gets quantity as int. 
-	 * @return int
+	 * Gets quantity as String. 
+	 * @return String
 	 */
-	public int getQuantity() {
+	public String getQuantity() {
 		return quantity;
 	}
 	
@@ -114,47 +114,47 @@ public class NewProductController {
 	 * Sets quantity through int. 
 	 * @param int
 	 */
-	public void setQuantity(int quantity) {
+	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
 	
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Get rrp as a long (in pence). 
-	 * @return long
+	 * Get rrp as a String (in pence). 
+	 * @return String
 	 */
-	public long getRrp() {
+	public String getRrp() {
 		return rrp;
 	}
 	
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Sets rrp as a long (in pence).
-	 * @param long
+	 * Sets rrp as a String (in pence).
+	 * @param String
 	 */
-	public void setRrp(long rrp) {
+	public void setRrp(String rrp) {
 		this.rrp = rrp;
 	}
 	
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Get current price as a long (in pence). 
-	 * @return long
+	 * Get current price as a String (in pence). 
+	 * @return String
 	 */
-	public long getCurrentPrice() {
+	public String getCurrentPrice() {
 		return currentPrice;
 	}
 	
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Sets current price as a long (in pence).
-	 * @param long
+	 * Sets current price as a String (in pence).
+	 * @param String 
 	 */
-	public void setCurrentPrice(long currentPrice) {
+	public void setCurrentPrice(String currentPrice) {
 		this.currentPrice = currentPrice;
 	}
 	
@@ -164,17 +164,17 @@ public class NewProductController {
 	 * Get status as ProductStatus(enum)
 	 * @return ProductStatus
 	 */
-	public ProductStatus getStatus() {
+	public String getStatus() {
 		return status;
 	}
 	
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Set status as ProductStatus(enum)
+	 * Set status as ProductStatus(enum) as a String
 	 * @param ProductStatus
 	 */
-	public void setStatus(ProductStatus status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	
@@ -201,32 +201,34 @@ public class NewProductController {
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Gets product id as a long.
+	 * Gets product id as a String.
 	 * @return long
 	 */
-	public long getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 	
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Gets stock id a a long.
+	 * Gets stock id as a String.
 	 * @return long
 	 */
-	public long getStockId() {
+	public String getStockId() {
 		return stockId;
 	}
 	
 	/**
 	 * 
 	 * @MethodAuthor Tim Spencer
-	 * Get date added in LocalDate format.
+	 * Get date added in LocalDate format as a String.
 	 * @return LocalDate
 	 */
-	public LocalDate getDateAdded() {
+	public String getDateAdded() {
 		return dateAdded;
 	}
+	
+	
 	
 	
 	

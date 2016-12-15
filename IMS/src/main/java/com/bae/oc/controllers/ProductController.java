@@ -18,23 +18,23 @@ public class ProductController {
 	@Inject
 	ProductService productService;
 	
-	private long productId;
+	private String productId;
 	
-	private long stockId;
+	private String stockId;
 	
 	private String name = "";
 	
 	private String description = "";
 	
-	private int quantity; 
+	private String quantity; 
 	
-	private long rrp; 
+	private String rrp; 
 	
-	private long currentPrice; 
+	private String currentPrice; 
 	
 	private ProductStatus status;
 	
-	private LocalDate dateAdded;
+	private String dateAdded;
 	
 	private String category = ""; 
 	
@@ -97,8 +97,8 @@ public class ProductController {
 	 * Gets quantity as int. 
 	 * @return int
 	 */
-	public int getQuantity() {
-		return quantity;
+	public String getQuantity() {
+		return ("" + quantity);
 	}
 	
 	/**
@@ -107,7 +107,7 @@ public class ProductController {
 	 * Sets quantity through int. 
 	 * @param int
 	 */
-	public void setQuantity(int quantity) {
+	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
 	
@@ -117,7 +117,7 @@ public class ProductController {
 	 * Get rrp as a long (in pence). 
 	 * @return long
 	 */
-	public long getRrp() {
+	public String getRrp() {
 		return rrp;
 	}
 	
@@ -127,7 +127,7 @@ public class ProductController {
 	 * Sets rrp as a long (in pence).
 	 * @param long
 	 */
-	public void setRrp(long rrp) {
+	public void setRrp(String rrp) {
 		this.rrp = rrp;
 	}
 	
@@ -137,7 +137,7 @@ public class ProductController {
 	 * Get current price as a long (in pence). 
 	 * @return long
 	 */
-	public long getCurrentPrice() {
+	public String getCurrentPrice() {
 		return currentPrice;
 	}
 	
@@ -147,7 +147,7 @@ public class ProductController {
 	 * Sets current price as a long (in pence).
 	 * @param long
 	 */
-	public void setCurrentPrice(long currentPrice) {
+	public void setCurrentPrice(String currentPrice) {
 		this.currentPrice = currentPrice;
 	}
 	
@@ -197,7 +197,7 @@ public class ProductController {
 	 * Gets product id as a long.
 	 * @return long
 	 */
-	public long getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 	
@@ -207,7 +207,7 @@ public class ProductController {
 	 * Gets stock id a a long.
 	 * @return long
 	 */
-	public long getStockId() {
+	public String getStockId() {
 		return stockId;
 	}
 	
@@ -217,7 +217,7 @@ public class ProductController {
 	 * Get date added in LocalDate format.
 	 * @return LocalDate
 	 */
-	public LocalDate getDateAdded() {
+	public String getDateAdded() {
 		return dateAdded;
 	}
 	
