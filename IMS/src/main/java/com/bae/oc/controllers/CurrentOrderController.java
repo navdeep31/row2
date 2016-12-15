@@ -1,6 +1,7 @@
 package com.bae.oc.controllers;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -85,15 +86,38 @@ public class CurrentOrderController {
 	 */
 	public String addLine() {
 		
-		order.setOrder(orderService.addLine(order.getOrder(), product, newQuantity));
+		order.setOrder(orderService.addLine(order.getOrder(), product.getProduct(), newQuantity));
 		
 		return "products";
 		
 	}
 	
 	public List<String> getQuantities() {
+		
 		int numberOfLines = order.getOrder().getOrderLines().size();
 		
+		if(numberOfLines != quantities.size()) {
+			
+			quantities = new ArrayList<String>(numberOfLines);
+			
+		}
+			
+		for (int i = 0; i < numberOfLines; i++) {
+			
+			if(!quantities.get(i).isEmpty()) {
+				
+				quantities.set(i, String.valueOf(order.getOrder().getOrderLines().get(i).getQuantity()));
+				
+			}
+			
+		}
+		
+		return quantities;
+		
+	}
+	
+	public void setQuantities(List<String> iQuantities) {
+		this.quantities = iQuantities;
 	}
 	
 	public String getNewQuantity() {
