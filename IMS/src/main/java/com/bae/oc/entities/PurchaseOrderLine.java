@@ -46,8 +46,25 @@ public class PurchaseOrderLine {
 	@Column(nullable = false)
 	@NotNull
 	private int quantity;
+	
+	private static int lineCount = 0;
 
 	/////////////////////////////////////////////////////CONSTRUCTORS////////////////////////////////////////////////	
+	
+	/**
+	 * No line number constructor
+	 * 
+	 * @param iLineNumber Line Number
+	 * @param iProduct Product (Object)
+	 * @param iQuantity Quantity of product to be ordered
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public PurchaseOrderLine(Product iProduct, int iQuantity) {
+		this.lineNumber = ++lineCount;
+		this.product = iProduct;
+		this.quantity = iQuantity;
+	}
 	
 	/**
 	 * All argument constructor
@@ -63,6 +80,8 @@ public class PurchaseOrderLine {
 		this.product = iProduct;
 		this.quantity = iQuantity;
 	}
+	
+	
 	
 	/////////////////////////////////////////////////////METHODS////////////////////////////////////////////////	
 
