@@ -327,5 +327,29 @@ public class OrderService {
 		}
 		return orderHistory;
 	}
+	
+	public int getStatusValue(long customerOrderId) {
+		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
+		int status = 0;
+		switch (customerOrder.getStatus()){
+			case BASKET: break;
+			case ORDER:
+				status = 25;
+				break;
+			case DISPATCHED:
+				status = 50;
+				break;
+			case DELIVERED:
+				status = 75;
+				break;
+			case PAID:
+				status = 100;
+				break;
+		
+		}
+		
+		return status;
+		
+	}
 
 }

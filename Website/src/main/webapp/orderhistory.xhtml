@@ -14,13 +14,13 @@
 
 		<div class="container">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Your Account</a></li>
+				<li class="breadcrumb-item"><a href="mydetails.xhtml">Your Account</a></li>
 				<li class="breadcrumb-item active"><h:outputText
 						value="#{user.getCustomer().getFirstName()} " /> <h:outputText
 						value="#{user.getCustomer().getLastName()}" />'s Order History</li>
 			</ol>
 		</div>
-	<!-- -->
+
 
 
 		<div class="container">
@@ -70,6 +70,18 @@
 					<div class="collapse order-details content-block"
 						id="#{loop.index}">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-block">
+						<div class="hidden-lg hidden-md col-sm-12 col-xs-6">
+									<h5>Price: 
+									<h:outputText
+										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getCost()}" />
+								</h5>
+						</div>
+						<div class="hidden-lg hidden-md hidden-sm col-xs-6">
+						<h5>Order Number: 
+									<h:outputText
+										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getId()}" />
+								</h5>
+						</div>
 							<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6">
 								<h4>Expected DATE HERE</h4>
 								<h4>
@@ -92,14 +104,7 @@
 										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getDeliveryAddress().getPostcode()}" />
 								</h6>
 							</div>
-							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-								<button type="button" class="btn btn-lg btn-primary">Track
-									Order</button>
-								<button type="button" class="btn btn-lg btn-primary">Details</button>
-								<button type="button" class="btn btn-lg btn-primary">Invoice</button>
-							</div>
-
-							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+								<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
 								<div class="progress">
 									<div
 										class="progress-bar progress-bar-success progress-bar-striped active" action="#{orderhistory.iterateLineNumber()}"
@@ -109,6 +114,13 @@
 									</div>
 								</div>
 							</div>
+							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+								<button type="button" class="btn btn-lg btn-primary">Track Order</button>
+								<button type="button" class="btn btn-lg btn-primary">Details</button>
+								<button type="button" class="btn btn-lg btn-primary">Invoice</button>
+							</div>
+
+
 						</div>
 					</div>
 					
