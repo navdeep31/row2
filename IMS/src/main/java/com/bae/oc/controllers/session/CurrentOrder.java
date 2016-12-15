@@ -1,5 +1,7 @@
 package com.bae.oc.controllers.session;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -16,11 +18,11 @@ import com.bae.oc.entities.PurchaseOrder;
  */
 @Named("currentOrder")
 @SessionScoped
-public class CurrentOrder {
+public class CurrentOrder implements Serializable {
 	
 	////////////////////////////////////////////////INJECTIONS/////////////////////////////////////////////////
 	
-	
+	private static final long serialVersionUID = 4604194124385366184L;
 	
 	///////////////////////////////////////////////ATTRIBUTES//////////////////////////////////////////////////
 	

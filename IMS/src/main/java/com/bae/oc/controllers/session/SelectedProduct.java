@@ -5,18 +5,18 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import com.bae.oc.entities.PurchaseOrder;
+import com.bae.oc.entities.Product;
 
 /**
- * Stores Selected Order (selected order on order history page to view details and edit)
+ * Stores Selected Product (selected product on products page to view details, edit, add to basket)
  * 
  * @author Alex Dawson
  * @version 0.1 15/12/2016
  *
  */
-@Named("selectedOrder")
+@Named("selectedProduct")
 @SessionScoped
-public class SelectedOrder implements Serializable {
+public class SelectedProduct implements Serializable {
 	
 	////////////////////////////////////////////////INJECTIONS/////////////////////////////////////////////////
 	
@@ -24,30 +24,30 @@ public class SelectedOrder implements Serializable {
 	
 	///////////////////////////////////////////////ATTRIBUTES//////////////////////////////////////////////////
 	
-	private PurchaseOrder order = null;
+	private Product product = null;
 	
 	///////////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 	
 	/**
-	 * Returns Current (Purchase) Order
+	 * Returns Selected Product
 	 * 
-	 * @return Current (Purchase) Order
+	 * @return Selected Product
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
-	public PurchaseOrder getOrder() {
-		return this.order;
+	public Product getProduct() {
+		return this.product;
 	}
 	
 	/**
-	 * Sets Current (Purchase) Order
+	 * Sets Selected Product
 	 * 
-	 * @param iOrder Current (Purchase) Order to set
+	 * @param iOrder Selected Product to set
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
-	public void setOrder(PurchaseOrder iOrder) {
-		this.order = iOrder;
+	public void setProduct(Product iProduct) {
+		this.product = iProduct;
 	}
 
 }
