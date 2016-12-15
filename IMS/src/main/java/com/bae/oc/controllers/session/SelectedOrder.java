@@ -29,9 +29,9 @@ public class SelectedOrder implements Serializable {
 	///////////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 	
 	/**
-	 * Returns Current (Purchase) Order
+	 * Returns Selected (Purchase) Order
 	 * 
-	 * @return Current (Purchase) Order
+	 * @return Selected (Purchase) Order
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
@@ -40,9 +40,9 @@ public class SelectedOrder implements Serializable {
 	}
 	
 	/**
-	 * Sets Current (Purchase) Order
+	 * Sets Selected (Purchase) Order
 	 * 
-	 * @param iOrder Current (Purchase) Order to set
+	 * @param iOrder Selected (Purchase) Order to set
 	 * 
 	 * @MethodAuthor Alex Dawson
 	 */
