@@ -11,23 +11,30 @@ import javax.ejb.Startup;
 
 import com.bae.oc.entities.Employee;
 import com.bae.oc.entities.Product;
+import com.bae.oc.entities.PurchaseOrder;
 import com.bae.oc.entities.Stock;
 import com.bae.oc.enums.ProductStatus;
 
 @Startup
 @Singleton
 public class TestData {
+	
+	//////////////////////////////////////////ATTRIBUTES/////////////////////////////////////////
 
 	List<Stock> stock;
 	List<Employee> employees;
 	List<Product> products;
+	List<PurchaseOrder> orders;
+	
+	////////////////////////////////////////POST CONSTRUCT///////////////////////////////////////
 	
 	@PostConstruct
 	private void setupData(){
 		
-	stock = new ArrayList<>();
-	employees = new ArrayList<>();
-	products = new ArrayList<>();
+	stock = new ArrayList<Stock>();
+	employees = new ArrayList<Employee>();
+	products = new ArrayList<Product>();
+	orders = new ArrayList<PurchaseOrder>();
 		
 		
 	stock.add(new Stock(1l, ProductStatus.AVALIABLE));
@@ -60,8 +67,12 @@ public class TestData {
 		products.add(new Product(11l,11l,"Garden Trowel","TODO Garden Trowel", 0, 1399, 1099, ProductStatus.ON_HOLD, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
 		products.add(new Product(12l,12l,"Rake","TODO Rake description", 12, 1199, 999, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
 		products.add(new Product(13l,13l,"Garden Gloves","TODO Garden Glove description", 6, 1499, 1499, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
+		
+		//TODO Add example purchase orders
 	
 	}
+	
+	///////////////////////////////////////////////METHODS//////////////////////////////////
 
 	public List<Stock> getStock() {
 		return stock;
@@ -85,6 +96,10 @@ public class TestData {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+	
+	public List<PurchaseOrder> getOrders() {
+		return this.orders;
 	}
 	
 	

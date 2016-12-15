@@ -6,15 +6,14 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.bae.oc.entities.Product;
 import com.bae.oc.entities.PurchaseOrder;
-import com.bae.oc.managers.ProductManager;
 import com.bae.oc.managers.PurchaseOrderManager;
 
 /**
  * Deals with methods for order search and returning lists of orders
  * 
  * @author Alex Dawson
+ * @version 0.1 15/12/2016
  *
  */
 @Stateless
@@ -27,30 +26,7 @@ public class OrderSearchService {
 	
 	//////////////////////////////////METHODS/////////////////////////////////////
 	
-	/**
-	 * Returns similar names to search term
-	 * 
-	 * @param name
-	 * @return List of Products
-	 * 
-	 * @MethodAuthor N GILL
-	 */
-	private List<Product> searchByProductName(String name){
-		return productManager.findProductByNameLike(name);
-	}
-	
-	/**
-	 * Returns similar description to search term
-	 * 
-	 * @param description
-	 * @return List of Products
-	 * 
-	 * @MethodAuthor N GILL
-	 */
-	private List<Product> searchByProductDescription(String description){
-		return productManager.findProductByDescriptionLike(description);
-	}
-	
+	//TODO More search / filter methods
 	
 	/**
 	 * Returns exact order if matches Order ID

@@ -117,9 +117,9 @@ public class PurchaseOrderManagerOffline implements PurchaseOrderManager {
 	 * @MethodAuthor Alex Dawson
 	 */
 	@Override
-	public PurchaseOrder findPurchaseOrderById(int iId) {
+	public PurchaseOrder findOrderById(int iId) {
 		
-		for(PurchaseOrder order: testData.getPurchaseOrders()) {
+		for(PurchaseOrder order: testData.getOrders()) {
 			
 			if(order.getId() == iId) {
 				

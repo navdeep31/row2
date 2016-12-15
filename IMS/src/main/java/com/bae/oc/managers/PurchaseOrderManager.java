@@ -24,6 +24,6 @@ public interface PurchaseOrderManager {
 
 	PurchaseOrder findPurchaseByEmployee(int employeeId);
 	
-	PurchaseOrder findPurchaseOrderById(int iId);
+	PurchaseOrder findOrderById(int iId);
 
 }

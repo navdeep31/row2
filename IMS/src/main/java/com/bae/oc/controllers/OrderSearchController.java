@@ -8,7 +8,6 @@ import javax.inject.Named;
 
 import com.bae.oc.controllers.session.SelectedOrder;
 import com.bae.oc.controllers.session.SelectedOrders;
-import com.bae.oc.entities.Product;
 import com.bae.oc.entities.PurchaseOrder;
 import com.bae.oc.services.OrderSearchService;
 
@@ -16,6 +15,7 @@ import com.bae.oc.services.OrderSearchService;
  * Deals with (order) search terms and setting SelectedOrders as a result
  * 
  * @author Alex Dawson
+ * @version 0.1 15/12/2016
  *
  */
 @Named("orderSearch")
@@ -39,13 +39,11 @@ public class OrderSearchController {
 	////////////////////////////////METHODS/////////////////////////////////////////
 	
 	/**
-	 * Puts search results into List
-	 * checks for no results 
-	 * if 1 product found takes you directly to product page and sets selected product
+	 * Searching by term
 	 * 
-	 * @return A string to navigate to the correct web page based on search results
+	 * @return String of next page to navigate to
 	 * 
-	 * @MethodAuthor N Gill
+	 * @MethodAuthor Alex Dawson
 	 * 
 	 */
 	public String search(){
