@@ -39,7 +39,13 @@ public class ProductController {
 	 * 
 	 */
 	public String updateProduct() {
-		return null; 
+		try {
+			selectedProduct.setProduct(productService.updateProduct(selectedProduct.getProduct(), name, description, quantity, rrp, currentPrice, status, category));
+			return "productpage"; 
+		} catch(Exception e) {
+			System.out.println(e);
+			return "createproduct";
+		}
 	}
 	
 	/**

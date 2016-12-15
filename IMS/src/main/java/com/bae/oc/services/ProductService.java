@@ -145,10 +145,24 @@ public class ProductService {
 	 * @param status
 	 * @param category
 	 * @return
+	 * @throws IOException 
 	 */
 	public Product updateProduct(Product product, String name, String description, int quantity, long rrp,
-			long currentPrice, ProductStatus status, String category) {
+			long currentPrice, ProductStatus status, String category) throws IOException {
 
+		if(rrp<=0 || currentPrice<=0 || name.isEmpty() || category.isEmpty()) {
+			throw new IOException();
+		}
+		product.setName(name);
+		product.setDescription(description);
+		product.setQuantity(quantity);
+		product.setRrp(rrp);
+		product.setCurrentPrice(currentPrice);
+		product.setStatus(status);
+		product.setCategory(category);
+		
+		productManager.updateProduct(product);
+		
 		return product;
 
 	}
@@ -172,7 +186,7 @@ public class ProductService {
 	 * @throws Exception
 	 */
 	public Product updateProduct(Product product, String name, String description, String quantity, String rrp,
-			String currentPrice, String status, String category) throws Exception {
+			String currentPrice, String status, String category) throws IllegalArgumentException, IOException {
 
 		int iQuantity;
 		long lCurrentPrice;
@@ -210,7 +224,7 @@ public class ProductService {
 			}
 
 		} catch (Exception e) {
-			throw new Exception("format exception");
+			throw new IllegalArgumentException("format exception");
 		}
 
 		product = updateProduct(product, name, description, iQuantity, lRRP, lCurrentPrice, eStatus, category); 
