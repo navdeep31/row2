@@ -17,7 +17,7 @@ import com.bae.oc.util.TestData;
 public class PurchaseOrderManagerOffline implements PurchaseOrderManager {
 
 	@Inject
-	private TestData testdata;
+	private TestData testData;
 	
 	@Override
 	public void createPurchaseOrder(PurchaseOrder purchaseOrder) {
@@ -109,6 +109,28 @@ public class PurchaseOrderManagerOffline implements PurchaseOrderManager {
 		for(PurchaseOrder purchaseorder: testdata.getPurchaseOrders())
 			if(purchaseorder.getEmployeeId().equals(employeeId))
 			return purchaseorder;
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	@Override
+	public PurchaseOrder findPurchaseOrderById(int iId) {
+		
+		for(PurchaseOrder order: testData.getPurchaseOrders()) {
+			
+			if(order.getId() == iId) {
+				
+				return order;
+				
+			}
+			
+		}			
+		
+		// Returns null if not found
+		//TODO Check appropriateness of this
 		return null;
 	}
 
