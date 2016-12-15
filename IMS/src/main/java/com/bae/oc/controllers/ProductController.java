@@ -1,13 +1,10 @@
 package com.bae.oc.controllers;
 
-import java.time.LocalDate;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bae.oc.controllers.session.SelectedProduct;
-import com.bae.oc.enums.ProductStatus;
 import com.bae.oc.services.ProductService;
 
 @RequestScoped
@@ -29,7 +26,6 @@ public class ProductController {
 	private String currentPrice = ""; 
 	
 	private String status = "";
-
 	
 	private String category = ""; 
 	

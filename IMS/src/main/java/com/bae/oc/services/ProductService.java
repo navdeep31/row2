@@ -45,6 +45,27 @@ public class ProductService {
 		return null; 
 		
 	}
+	/**
+	 * Overloaded version of created product that takes Strings instead of primitives. Used for parsing. 
+	 * 
+	 * @MethodAuthor
+	 * 
+	 * @param productID
+	 * @param stockID
+	 * @param name
+	 * @param description
+	 * @param quantity
+	 * @param rrp
+	 * @param currentPrice
+	 * @param status
+	 * @param dateAdded
+	 * @param category
+	 * @return
+	 */
+	public Product createProduct(String productID, String stockID, String name, String description, String quantity, String rrp, String currentPrice, String status, String dateAdded, String category) {
+		return null;
+		
+	}
 	
 	/**
 	 * 
@@ -65,14 +86,10 @@ public class ProductService {
 	 */
 	public Product updateProduct(Product product, String name, String description, int quantity, long rrp,
 			long currentPrice, ProductStatus status, String category) {
-				
-		
-		
 		
 			return product;
 	
 	}
-	
 	
 	
 }
