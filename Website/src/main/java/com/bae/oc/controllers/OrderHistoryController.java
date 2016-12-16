@@ -125,8 +125,9 @@ public class OrderHistoryController implements Serializable{
 	}
 	
 	public int getEnumValue(){
+		long id = orderHistory.get(lineNumber).getId();
 		
-		return orderService.getStatusValue(orderId);
+		return orderService.getStatusValue(id);
 	}
 	
 	public int getLineNumber() {
