@@ -91,5 +91,16 @@ public class LoginController {
 		return email;
 	}
 	
+	/**
+	 * 
+	 * Sets the email as entered by user. 
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 * @return String
+	 */
+	public void setEmail(String iEmail) {
+		this.email = iEmail;
+	}
+	
 	
 }
