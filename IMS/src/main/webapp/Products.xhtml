@@ -2,6 +2,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="templates/main.xhtml">
 	<meta charset="utf-8" />
 
@@ -9,8 +10,13 @@
 
 	<ui:define name="mainContent">
 		<div class="container">
-			<div>
-				<STRONG>Products</STRONG>
+			<div class="row">
+				<c:forEach var="product" items="#{searchResults.pageProducts}"
+					varStatus="loop">
+					<h:outputText value="#{product.name}" />
+				</c:forEach>
+
+
 			</div>
 		</div>
 
