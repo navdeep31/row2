@@ -74,6 +74,8 @@ public class TestData {
 		addresses.add(new Address("2 Example Drive", "EX1 8LE", "Atlantis"));
 		addresses.add(new Address("30 Testing Road", "GN2 8ME", "Debug City"));
 		
+		orders.add(new PurchaseOrder(1, employees.get(0), addresses.get(0), LocalDate.of(2012, Month.JANUARY, 10)));
+		
 		//TODO Add example purchase orders
 	
 	}
@@ -129,6 +131,10 @@ public class TestData {
 	 */
 	public void setAddresses(List<Address> iAddresses) {
 		this.addresses = iAddresses;
+	}
+
+	public void setOrders(List<PurchaseOrder> orders) {
+		this.orders = orders;
 	}
 	
 	
