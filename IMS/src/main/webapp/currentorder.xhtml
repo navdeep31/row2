@@ -12,17 +12,39 @@
 	<ui:define name="pageTitle">Current Order</ui:define>
 	
 	<ui:define name="mainContent">
+	<link type="text/css" rel="stylesheet" href="css/currentorder.css" />
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 pre-scrollable">
 					<c:forEach var="purchaseOrder" items="#{productSearch.searchAll()}" varStatus="loop">
-					<div class="well well-sm">
-								<h6>
+					<div class="well">
+					<div class="row">
+					<div class="col-md-10">
+								<h5>Item: 
 									<h:outputText
-										value="#{products.getSearchResults().get(productSearch.lineNumber).getName()}" />
-								</h6>
-								<div action="#{productSearch.iterateLineNumber()}"></div>
-					</div>
+										value="#{products.getSearchResults().get(loop.index).getName()}" /> <span class="pull-right">ID: 
+
+									<h:outputText
+										value="#{products.getSearchResults().get(loop.index).getProductID()}" /></span>
+										</h5>
+													<h5>Quantity: 
+									<h:outputText
+										value="#{products.getSearchResults().get(loop.index).getQuantity()}" />
+																<span class="pull-right">Price: 
+									<h:outputText
+										value="#{products.getSearchResults().get(loop.index).getCurrentPrice()}" />
+										</span></h5>
+										</div>
+										
+							<div class="col-md-2" align="right">
+							<button type="button" class="btn btn-default btn-lg"
+								data-toggle="collapse" data-target="##{loop.index}"
+								aria-expanded="false" aria-controls="#{loop.index}">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							</button>
+</div>
+</div>
+</div>
 					</c:forEach>
 </div>
 			

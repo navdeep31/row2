@@ -1,6 +1,5 @@
 package com.bae.ims.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -23,7 +22,6 @@ public class ProductSearchController {
 	ProductSearchService productSearchService;
 	
 	String term;
-	private int lineNumber = 0;
 	
 	/**
 	 *  
@@ -45,7 +43,6 @@ public class ProductSearchController {
 			return "products";
 		}
 		
-
 	}
 	
 	/**
@@ -71,18 +68,6 @@ public class ProductSearchController {
 		this.term = term;
 	}
 	
-	public int getLineNumber() {
-		return lineNumber;
-	}
-
-	public void setLineNumber(int lineNumber) {
-		this.lineNumber = lineNumber;
-	}
-
-	public int iterateLineNumber() {	
-		return lineNumber++;
-				
-	}
 	
 	
 }
