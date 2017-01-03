@@ -30,14 +30,14 @@ public class LoginService {
 	
 	public Employee loginEmployee(String email, String password) {
 		
-	Employee employee = employeeManager.findEmployeeByEmail(email);
-	
-	if(employee != null && employee.getPassword_hash().equals(password)) {
-		return employee; 
-	} 
-	
-	return null;
-	
+		Employee employee = employeeManager.findEmployeeByEmail(email);
+		
+		if(employee != null && employee.getPassword_hash().equals(password)) {
+			return employee; 
+		} 
+		
+		return null;
+		
 	}
 	
 }
