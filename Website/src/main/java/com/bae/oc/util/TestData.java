@@ -1,6 +1,7 @@
 package com.bae.oc.util;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,22 +63,26 @@ public class TestData {
 		customerOrder.add(new CustomerOrder());
 		
 		customerOrderLine = new ArrayList<>();
-		customerOrderLine.add(new CustomerOrderLine(1l,1 , products.get(0), 2, Status.ORDER));
+		customerOrderLine.add(new CustomerOrderLine(1l,1 , products.get(0), 2, Status.ORDERED));
 		customerOrder.get(1).setOrderLines(customerOrderLine);
-		customerOrder.get(1).setStatus(Status.ORDER);
+		customerOrder.get(1).setStatus(Status.DELIVERED);
 		
 		customers.add(new Customer("Joe", "Bloggs", "j.bloggs@example.com", "qwerty", addresses.get(0)));
 		customers.add(new Customer("Mr", "Robot", "elliot@fsociety.com", "password1", addresses.get(1)));
 	
+		
+		customerOrder.get(0).setOrderDate(LocalDateTime.now());
+		customerOrder.get(1).setOrderDate(LocalDateTime.now());
+		
 		customers.get(0).getOrders().add(new CustomerOrder());
 		customers.get(0).getOrders().add(customerOrder.get(0));
 		
 		customers.get(1).getOrders().add(new CustomerOrder());
 		customers.get(1).getOrders().add(customerOrder.get(1));
 		
-		customerOrder.get(0).getOrderLines().get(0).setStatus(Status.ORDER);
-		customerOrder.get(0).getOrderLines().get(1).setStatus(Status.ORDER);
-		customerOrder.get(0).setStatus(Status.ORDER);
+		customerOrder.get(0).getOrderLines().get(0).setStatus(Status.ORDERED);
+		customerOrder.get(0).getOrderLines().get(1).setStatus(Status.ORDERED);
+		customerOrder.get(0).setStatus(Status.DISPATCHED);
 		
 		customers.get(1).getOrders().add(customerOrder.get(0));
 		

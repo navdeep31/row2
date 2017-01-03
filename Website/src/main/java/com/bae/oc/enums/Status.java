@@ -1,5 +1,5 @@
 package com.bae.oc.enums;
 
 public enum Status {
-	BASKET, ORDER, DISPATCHED, DELIVERED, PAID
+	BASKET, ORDERED, DISPATCHED, DELIVERED, PAID
 }

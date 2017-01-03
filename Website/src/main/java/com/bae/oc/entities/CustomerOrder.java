@@ -1,5 +1,6 @@
 package com.bae.oc.entities;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -73,10 +74,10 @@ public class CustomerOrder {
 	
 	@ManyToOne
 	@JoinColumn(name="address_id", nullable=false)
-	
-
-	
 	private Address billingAddress;
+	
+	@Column(name="orderDate")
+	private LocalDateTime orderDate;
 	
 	private static int idCount = 0;
 	//TODO Possibly needs a rethink with database integration? (unless stored in database?)
@@ -300,6 +301,14 @@ public class CustomerOrder {
 		}
 	
 		return cost;		
+	}
+
+	public LocalDateTime getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(LocalDateTime orderDate) {
+		this.orderDate = orderDate;
 	}
 
 }
