@@ -43,5 +43,9 @@ public class ProductSearchService {
 		return productsFound;
 	}
 	
+	public List<Product> searchAll(){
+		return productManager.findAllProducts();
+	}
+	
 	
 }

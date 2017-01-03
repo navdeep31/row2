@@ -55,10 +55,10 @@ public class ProductSearchController {
 	 * @MethodAuthor Alex Dawson
 	 * 
 	 */
-	public String searchAll() {
-		setTerm("");
-		searchProducts();
-		return "products";
+	public List<Product> searchAll() {
+	
+		return productSearchService.searchAll();
+		
 	}
 	
 	
