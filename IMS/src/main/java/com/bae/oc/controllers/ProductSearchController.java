@@ -47,6 +47,14 @@ public class ProductSearchController {
 		
 	}
 	
+	/**
+	 * Searches for all products
+	 * 
+	 * @return String of next page to navigate to
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 * 
+	 */
 	public String searchAll() {
 		setTerm("");
 		searchProducts();

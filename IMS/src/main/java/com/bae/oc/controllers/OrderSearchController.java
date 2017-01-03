@@ -53,12 +53,12 @@ public class OrderSearchController {
 			if (results.size() == 1) {
 				
 				order.setOrder(results.get(0));
-				return "products";
+				return "orderhistory";
 				
 			} else {
 				
 				orders.setOrders(results);
-				return "products";
+				return "orderhistory";
 				
 			}
 			
@@ -70,6 +70,20 @@ public class OrderSearchController {
 			
 		}
 		
+	}
+	
+	/**
+	 * Searches for all purchase orders
+	 * 
+	 * @return String of next page to navigate to
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 * 
+	 */
+	public String searchAll() {
+		setTerm("");
+		search();
+		return "orderhistory";
 	}
 
 	/**
