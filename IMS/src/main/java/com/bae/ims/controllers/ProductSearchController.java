@@ -23,7 +23,8 @@ public class ProductSearchController {
 	ProductSearchService productSearchService;
 	
 	String term;
-
+	private int lineNumber = 0;
+	
 	/**
 	 *  
 	 * @MethodAuthor Tim Spencer
@@ -68,6 +69,19 @@ public class ProductSearchController {
 
 	public void setTerm(String term) {
 		this.term = term;
+	}
+	
+	public int getLineNumber() {
+		return lineNumber;
+	}
+
+	public void setLineNumber(int lineNumber) {
+		this.lineNumber = lineNumber;
+	}
+
+	public int iterateLineNumber() {	
+		return lineNumber++;
+				
 	}
 	
 	

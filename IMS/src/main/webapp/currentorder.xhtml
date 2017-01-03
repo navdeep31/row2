@@ -16,7 +16,13 @@
 			<div class="row">
 				<div class="col-md-4 pre-scrollable">
 					<c:forEach var="purchaseOrder" items="#{productSearch.searchAll()}" varStatus="loop">
-					<div class="well well-sm">...</div>
+					<div class="well well-sm">
+								<h6>
+									<h:outputText
+										value="#{products.getSearchResults().get(productSearch.lineNumber).getName()}" />
+								</h6>
+								<div action="#{productSearch.iterateLineNumber()}"></div>
+					</div>
 					</c:forEach>
 </div>
 			
