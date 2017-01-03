@@ -1,5 +1,6 @@
 package com.bae.oc.controllers.session;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -17,8 +18,10 @@ import com.bae.oc.util.PaginationHelper;
  */
 @SessionScoped
 @Named("products")
-public class SelectedProducts {
+public class SelectedProducts implements Serializable {
 	
+	private static final long serialVersionUID = -6598440530037752975L;
+
 	private PaginationHelper pagination = null;
 
 	private DataModel<Product> pageProducts;
