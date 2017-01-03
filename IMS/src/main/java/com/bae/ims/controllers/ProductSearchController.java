@@ -44,7 +44,7 @@ public class ProductSearchController {
 			return "products";
 		}
 		
-		
+
 	}
 	
 	/**
@@ -56,7 +56,7 @@ public class ProductSearchController {
 	 * 
 	 */
 	public List<Product> searchAll() {
-	
+		selectedProducts.setSearchResults(productSearchService.searchAll());
 		return productSearchService.searchAll();
 		
 	}
