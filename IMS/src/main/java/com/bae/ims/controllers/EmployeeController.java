@@ -22,14 +22,14 @@ public class EmployeeController {
 	@Inject
 	EmployeeService employeeService; 
 	
-	String name;
-	String email;
-	String password;
+	String name = "";
+	String email = "";
+	String password = "";
 	
 	/**
 	 * Updates customer's password. 
 	 * @MethodAuthor Tim Spencer
-	 * @return
+	 * @return(
 	 */
 	public String update() {
 		
@@ -40,9 +40,7 @@ public class EmployeeController {
 			} catch (NullPointerException e)  {
 				System.out.println("User put wrong password in");
 			}
-		}
-		
-				
+		}				
 		
 		return null;
 	}
@@ -50,9 +48,10 @@ public class EmployeeController {
 	/**
 	 * Gets employee's password for display. 
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
 	 * @return
 	 */
-	public String getPassword() {
+	public String getPassword() {		
 		return password;
 	}
 
@@ -68,20 +67,41 @@ public class EmployeeController {
 	/**
 	 * Gets employee's name for display. 
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
 	 * @return
 	 */
 	public String getName() {
+		
+		if(this.name.isEmpty()) {
+			this.name = currentUser.getEmployee().getName();
+		}
+		
 		return name;
+	}
+	
+	public void setName(String iName) {
+		this.name = iName;
 	}
 
 	/**
 	 * Gets employee's email for display. 
-	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
 	 * @return
 	 */
 	public String getEmail() {
+		
+		if(this.email.isEmpty()) {
+			this.email = currentUser.getEmployee().getEmail();
+		}
+		
 		return email;
 	}
+	
+	public void setEmail(String iEmail) {
+		this.email = iEmail;
+	}
+	
+	
 
 	
 	

@@ -38,20 +38,28 @@
 			<ui:fragment rendered="#{user.loggedIn}">
 			
 			<!-- Left aligned navbar elements -->
+			
+			<!-- Wrapping form for command elements and keeping bootstrap css selectors working -->
+			<h:form>
+			
 			<ul class="nav navbar-nav navbar-left">
-				<li><a href="#">Home</a></li>
+				<li><a href="home.xhtml">Home</a></li>
 				<li>
-					<h:commandButton action="#{productSearch.searchAll}">Products</h:commandButton>
+					<h:commandLink action="#{productSearch.searchAll}" value="Products" />
 				</li>
 				<li>
-					<h:commandButton action="#{orderSearch.searchAll}">OrderHistory</h:commandButton>
+					<h:commandLink action="#{orderSearch.searchAll}" value="Order History" />
 				</li>
 			</ul>
+			
+			</h:form>
+						
+			<!-- Wrapping form for command elements and keeping bootstrap css selectors working -->
+			<h:form>
 			
 			<!-- Right aligned navbar elements -->
 			<ul class="nav navbar-nav navbar-right">
 			
-
 				
 				<!-- Current Order -->
 				<li><a href="#">Current Order</a></li>
@@ -67,16 +75,20 @@
 						
 						<span class="glyphicon glyphicon-user" />
 						
-						<h:outputText value="#{employee.name}" />
+						 <h:outputText value="#{employee.name}" />
 					</a>
 					
 					<ul class="dropdown-menu">
-						<li><a href="#">Edit Password</a></li>
-						<li><a href="#">Log Out</a></li>
+						<li><a href="account.xhtml">Edit Password</a></li>
+						<li>
+							<h:commandLink action="#{login.logout}" value="Log Out" />
+						</li>
 					</ul>
 				</li>
 				
 			</ul>
+			
+			</h:form>
 			
 			</ui:fragment>
 			

@@ -34,14 +34,35 @@ public class Employee {
 	private String name; 
 	
 	//Employee constructor
+	/**
+	 * 
+	 * @param id
+	 * @param name
+	 * @param email
+	 * @param password_hash
+	 * 
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
+	 */
 	public Employee (long id, String name, String email, String password_hash) {
 		this.id=id;
+		this.name = name;
 		this.email=email;
 		this.password_hash=password_hash; 
 	}
 	
+	/**
+	 * 
+	 * @param name
+	 * @param email
+	 * @param password_hash
+	 * 
+	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
+	 */
 	public Employee (String name, String email, String password_hash) {
 		id++; 
+		this.name = name;
 		this.email=email;
 		this.password_hash=password_hash; 
 	}
