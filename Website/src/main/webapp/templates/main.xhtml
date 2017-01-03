@@ -45,8 +45,10 @@
 			</ul>
 			<a class="navbar-brand" href="home.xhtml">NB Gardens</a>
 		
-			<!-- Drop down Account / Login Menu -->					
+			<!-- Right aligned navbar elements -->			
 			<ul class="nav navbar-nav navbar-right">
+			
+				<!-- Drop down Account / Login Menu -->
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"	data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">
@@ -54,50 +56,56 @@
 						<ui:fragment rendered="#{user.loggedIn}">My Account</ui:fragment>
 						<ui:fragment rendered="#{!user.loggedIn}">Log In</ui:fragment>
 					</a>
-								<ul class="dropdown-menu">
-									<ui:fragment rendered="#{user.loggedIn}">
-										<li><a href="wishlist.xhtml">My Wishlist</a></li>
-										<li><a href="orderhistory.xhtml">My Orders</a></li>
-										<li role="separator" class="divider"></li>
-										<li><a href="mydetails.xhtml">My Details</a></li>
-										<li role="separator" class="divider"></li>
-										<li><h:form>
-												<h:commandButton action="#{login.logout}" value="Log Out"
-													class="btn btn-success btn-block" />
-											</h:form></li>
-									</ui:fragment>
-									<ui:fragment rendered="#{!user.loggedIn}">
-										<h:form>
-											<div class="form-group">
-												<label for="inputEmail">Email Address</label>
-												<h:inputText value="#{login.email}" class="form-control">
-													<f:passThroughAttribute name="type" value="email" />
-													<f:passThroughAttribute name="placeholder" value="email..." />
-													<f:passThroughAttribute name="alt" value="Email" />
-												</h:inputText>
-											</div>
-											<div class="form-group">
-												<h:inputText value="#{login.password}" class="form-control">
-													<f:passThroughAttribute name="type" value="password" />
-													<f:passThroughAttribute name="placeholder"
-														value="password..." />
-													<f:passThroughAttribute name="alt" value="Password" />
-												</h:inputText>
-											</div>
-											<h:commandButton action="#{login.login}" value="login"
-												class="btn btn-success">
-
-											</h:commandButton>
-										</h:form>
-										<p>
-											Don't have an account? <a href="register.xhtml">Sign up</a>
-										</p>
-									</ui:fragment>
-								</ul></li>
-							<li><a href="basket.xhtml"> <span
-									class="glyphicon glyphicon-shopping-cart"></span> Basket
-							</a></li>
-						</ul>
+					<ul class="dropdown-menu">
+					
+						<!-- Logged in dropdown elements -->
+						<ui:fragment rendered="#{user.loggedIn}">
+							<li><a href="wishlist.xhtml">My Wishlist</a></li>
+							<li><a href="orderhistory.xhtml">My Orders</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="mydetails.xhtml">My Details</a></li>
+							<li role="separator" class="divider"></li>
+							<li>
+								<h:form>
+									<h:commandButton action="#{login.logout}" value="Log Out" class="btn btn-success btn-block" />
+								</h:form>
+							</li>
+						</ui:fragment>
+						
+						<!-- Logged out dropdown elements -->
+						<ui:fragment rendered="#{!user.loggedIn}">
+							<h:form>
+								<div class="form-group">
+									<label for="inputEmail">Email Address</label>
+									<h:inputText value="#{login.email}" class="form-control">
+										<f:passThroughAttribute name="type" value="email" />
+										<f:passThroughAttribute name="placeholder" value="email..." />
+										<f:passThroughAttribute name="alt" value="Email" />
+									</h:inputText>
+								</div>
+								<div class="form-group">
+									<h:inputText value="#{login.password}" class="form-control">
+										<f:passThroughAttribute name="type" value="password" />
+										<f:passThroughAttribute name="placeholder" value="password..." />
+										<f:passThroughAttribute name="alt" value="Password" />
+									</h:inputText>
+								</div>
+								<h:commandButton action="#{login.login}" value="login" class="btn btn-success">
+								</h:commandButton>
+							</h:form>
+							<p>
+								Don't have an account? <a href="register.xhtml">Sign up</a>
+							</p>
+						</ui:fragment>
+					</ul>
+				</li>
+				
+				<!-- Basket -->
+				<li><a href="basket.xhtml">
+					<span class="glyphicon glyphicon-shopping-cart" />
+					Basket
+				</a></li>
+			</ul>
 						
 			<!-- Search bar -->
 			<h:form class ="navbar-form navbar-right">
