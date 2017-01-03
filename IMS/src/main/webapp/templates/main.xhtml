@@ -40,8 +40,12 @@
 			<!-- Left aligned navbar elements -->
 			<ul class="nav navbar-nav navbar-left">
 				<li><a href="#">Home</a></li>
-				<li><a href="#">Products</a></li>
-				<li><a href="#">Order History</a></li>
+				<li>
+					<h:commandButton action="#{productSearch.searchAll">Products</h:commandButton>
+				</li>
+				<li>
+					<h:commandButton action="#{orderSearch.searchAll">OrderHistory</h:commandButton>
+				</li>
 			</ul>
 			
 			<!-- Right aligned navbar elements -->

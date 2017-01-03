@@ -36,17 +36,22 @@ public class ProductSearchController {
 		
 		if(results.size() == 1) {
 			selectedProduct.setProduct(results.get(0));
-			return "productpage";
+			return "products";
 		} else if (results.size() > 1) {
 			selectedProducts.setSearchResults(results);
-			return "resultspage";
+			return "products";
 		} else {
-			return "emptyresults";
+			return "products";
 		}
 		
 		
 	}
 	
+	public String searchAll() {
+		setTerm("");
+		searchProducts();
+		return "products";
+	}
 	
 	
 	public String getTerm() {
