@@ -58,7 +58,7 @@ public class NewProductController {
 			selectedProduct.setProduct(productService.createProduct(productId, stockId, name, 
 					description, quantity, rrp, currentPrice, status, dateAdded, category));
 			
-			return "productpage"; 
+			return "products"; 
 			
 		} catch (Exception e) {
 			return "createproduct"; 
