@@ -25,7 +25,7 @@ public class ProductSearchController {
 	String term;
 
 	/**
-	 * 
+	 *  
 	 * @MethodAuthor Tim Spencer
 	 * Sets selected products, and sets the selected product if
 	 * one item in selected products in returned. 
