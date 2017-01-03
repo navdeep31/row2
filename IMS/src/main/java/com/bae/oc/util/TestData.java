@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
+import com.bae.oc.entities.Address;
 import com.bae.oc.entities.Employee;
 import com.bae.oc.entities.Product;
 import com.bae.oc.entities.PurchaseOrder;
@@ -21,10 +22,11 @@ public class TestData {
 	
 	//////////////////////////////////////////ATTRIBUTES/////////////////////////////////////////
 
-	List<Stock> stock;
-	List<Employee> employees;
-	List<Product> products;
-	List<PurchaseOrder> orders;
+	private List<Stock> stock;
+	private List<Employee> employees;
+	private List<Product> products;
+	private List<PurchaseOrder> orders;
+	private List<Address> addresses;
 	
 	////////////////////////////////////////POST CONSTRUCT///////////////////////////////////////
 	
@@ -35,6 +37,7 @@ public class TestData {
 	employees = new ArrayList<Employee>();
 	products = new ArrayList<Product>();
 	orders = new ArrayList<PurchaseOrder>();
+	addresses = new ArrayList<Address>();
 		
 		
 	stock.add(new Stock(1l, ProductStatus.AVALIABLE));
@@ -67,6 +70,9 @@ public class TestData {
 		products.add(new Product(11l,11l,"Garden Trowel","TODO Garden Trowel", 0, 1399, 1099, ProductStatus.ON_HOLD, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
 		products.add(new Product(12l,12l,"Rake","TODO Rake description", 12, 1199, 999, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
 		products.add(new Product(13l,13l,"Garden Gloves","TODO Garden Glove description", 6, 1499, 1499, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
+		
+		addresses.add(new Address("2 Example Drive", "EX1 8LE", "Atlantis"));
+		addresses.add(new Address("30 Testing Road", "GN2 8ME", "Debug City"));
 		
 		//TODO Add example purchase orders
 	
@@ -102,6 +108,28 @@ public class TestData {
 		return this.orders;
 	}
 	
+
+	/**
+	 * Returns the test data addresses
+	 * 
+	 * @return List of Addresses
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public List<Address> getAddresses() {
+		return this.addresses;
+	}
+	
+	/**
+	 * Sets the test data addresses
+	 * 
+	 * @param iAddresses List of Addresses
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public void setAddresses(List<Address> iAddresses) {
+		this.addresses = iAddresses;
+	}
 	
 	
 	

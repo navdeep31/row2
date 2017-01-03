@@ -20,16 +20,16 @@ public class StockManagerOffline implements StockManager {
 	
 	@Override
 	public void createStock(Stock stock) {
-		List<Stock> stocks = testData.getStocks();
+		List<Stock> stocks = testData.getStock();
 		stock.setId(stocks.size()+1);
 		stocks.add(stock);
-		testData.setStocks(stocks);
+		testData.setStock(stocks);
 		
 	}
 
 	@Override
 	public void updateStock(Stock stock) {
-		for(Stock testStock: testData.getStocks()) {
+		for(Stock testStock: testData.getStock()) {
 			if(testStock.getId()==stock.getId()) {
 				testStock=stock; 
 			}
@@ -40,9 +40,9 @@ public class StockManagerOffline implements StockManager {
 	@Override
 	public void removeStock(Stock stock) {
 		long iterator = 0;
-		for(Stock testStock : testData.getStocks()) {
+		for(Stock testStock : testData.getStock()) {
 			if(testStock.equals(stock)) {
-				testData.getStocks().remove(iterator); 
+				testData.getStock().remove(iterator); 
 			}
 			iterator++; 
 		}
@@ -51,8 +51,8 @@ public class StockManagerOffline implements StockManager {
 
 	@Override
 	public ArrayList<Stock> findStockById(Long id) {
-		ArrayList<Stock> stocks = new ArrayList();
-		for(Stock testStock: testData.getStocks()) {
+		ArrayList<Stock> stocks = new ArrayList<Stock>();
+		for(Stock testStock: testData.getStock()) {
 			if(id==testStock.getId()) {
 				stocks.add(testStock);
 			}
@@ -62,8 +62,8 @@ public class StockManagerOffline implements StockManager {
 
 	@Override
 	public ArrayList<Stock> findStockByStatus(String status) {
-		ArrayList<Stock> stocks = new ArrayList();
-		for(Stock testStock: testData.getStocks()) {
+		ArrayList<Stock> stocks = new ArrayList<Stock>();
+		for(Stock testStock: testData.getStock()) {
 			if(status.equals(testStock.getStatus())) {
 				stocks.add(testStock);
 			}
@@ -73,8 +73,8 @@ public class StockManagerOffline implements StockManager {
 
 	@Override
 	public ArrayList<Stock> findAllStock() {
-		ArrayList<Stock> stocks = new ArrayList();
-		for(Stock testStock: testData.getStocks()) {
+		ArrayList<Stock> stocks = new ArrayList<Stock>();
+		for(Stock testStock: testData.getStock()) {
 				stocks.add(testStock);
 			
 		}

@@ -1,5 +1,6 @@
 package com.bae.oc.services;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -86,9 +87,10 @@ public class OrderService {
 
 				for (CustomerOrderLine customerOrderLine : customerOrder.getOrderLines()) {
 					customerOrderLine.setItemPrice(customerOrderLine.getProduct().getCurrentPrice());
-					customerOrderLine.setStatus(Status.ORDER);
+					customerOrderLine.setStatus(Status.ORDERED);
 				}
-				customerOrder.setStatus(Status.ORDER);
+				customerOrder.setStatus(Status.ORDERED);
+				customerOrder.setOrderDate(LocalDateTime.now());
 			} else {
 				// TODO add exception
 			}
@@ -328,12 +330,23 @@ public class OrderService {
 		return orderHistory;
 	}
 	
+	/**
+	 * 
+	 * The method is passed the customerOrderId which is passed to the findByOrderId query to obtain the customer object that this Id belongs to.
+	 * The status associated with the Customer Order object is then passed to a switch statement 
+	 * Depending on the Enum that is current set this will return an int of a certain value to be used by the progress bar within the orderhistory.xhtml page
+	 * 
+	 * @MethodAuthor Andrew Claybrook
+	 * @param status
+	 * 
+	 */
+	
 	public int getStatusValue(long customerOrderId) {
 		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
 		int status = 0;
 		switch (customerOrder.getStatus()){
 			case BASKET: break;
-			case ORDER:
+			case ORDERED:
 				status = 25;
 				break;
 			case DISPATCHED:
@@ -345,11 +358,8 @@ public class OrderService {
 			case PAID:
 				status = 100;
 				break;
-		
 		}
-		
 		return status;
-		
 	}
 
 }
