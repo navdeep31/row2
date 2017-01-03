@@ -36,7 +36,7 @@ public class LoginController {
 		currentUser.setEmployee(loginService.loginEmployee(email, password));
 		
 		if(currentUser.isLoggedIn()) {
-			return "homepage";
+			return "home";
 		} 
 		
 		return "login";

@@ -34,6 +34,9 @@
 				<a class="navbar-brand" href="#">NB Gardens IMS</a>
 			</div>
 			
+			<!-- All other elements on log in only -->
+			<ui:fragment rendered="#{user.loggedIn}">
+			
 			<!-- Left aligned navbar elements -->
 			<ul class="nav navbar-nav navbar-left">
 				<li><a href="#">Home</a></li>
@@ -60,10 +63,7 @@
 						
 						<span class="glyphicon glyphicon-user" />
 						
-						<!-- Show User Name by User glyphicon if logged in -->
-						<ui:fragment rendered="#{user.loggedIn}">
-							<h:outputText value="#{employee.name}" />
-						</ui:fragment>
+						<h:outputText value="#{employee.name}" />
 					</a>
 					
 					<ul class="dropdown-menu">
@@ -73,6 +73,9 @@
 				</li>
 				
 			</ul>
+			
+			</ui:fragment>
+			
 		</div>
 	</nav>
 	

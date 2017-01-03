@@ -34,14 +34,46 @@ body {
 .dropdown-menu > li > a {
 	color: #ffffff; /* green #325c57; */
 }
+
 img:hover {
     opacity: 0.5;
     filter: alpha(opacity=50); /* For IE8 and earlier */
    
 }
+
 c {
 	color: rgb(137,191,245);
 }
+
 .footer {
 	background-color: #d9d9d9;
+}
+
+.content-block {
+	background-color: #ffffff; /* grey #d9d9d9; */
+	
+	border-radius: 10px 10px 10px 10px;
+	
+	padding-top: 15px;
+}
+
+.content-head {
+	background-color: rgb(149,179,215);
+	color: #ffffff;
+	
+	border-radius: 10px 10px 0 0;
+}
+
+.content-bottom {
+	background-color: #ffffff; /* grey #d9d9d9; */
+	
+	border-radius: 0px 0px 10px 10px;
+	
+	padding-top: 15px;
+}
+
+.btn-blue {
+	background-color: rgb(149,179,215);
+	
+	color: #ffffff;
 }
