@@ -7,14 +7,8 @@
 .searchBar{
 	margin:0;
 	
-	
 }
 
-/*.orderText{
-	color:rgb(255,255,255);
-	padding:0px;
-	margin:0px;
-}*/
 
 .row1 {
   display: -webkit-box;
@@ -24,14 +18,10 @@
 }
 
 .list-group-item {
-	background:rgba(149, 179, 215, 1);
+	background:rgba(255, 255, 255, 1);
 	color:rgb(255,255,255);
 }
 
-.orderButton{
-	color:rgb(255,255,255);
-	
-}
 
 .well {
 	
@@ -85,3 +75,7 @@
 	float: none;
 	
 	}
+
+.btn-trackorder:hover, .btn-trackorder:focus {
+		background: rgb(252, 255, 179);
+}

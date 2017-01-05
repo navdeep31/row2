@@ -1,0 +1,56 @@
+/*Author - NGill*/
+
+div#frm *{
+	display:inline;
+	
+	}
+	
+	
+	.centerbutton{
+	text-align:center;
+	}
+
+.panel-heading{
+	padding:0px;
+	padding-top:0px;
+	margin:0px;
+	background-color: rgba(149, 179, 215, 1);
+}
+
+
+
+h4{
+	background: rgba(149, 179, 215, 1);
+	color: #FFFFFF;
+	padding:10px;
+	margin:0px;
+	
+}
+
+h5{
+	padding:15px;
+	color: rgba(149, 179, 215, 1);
+	font-weight:bolder;
+	margin:0px;
+	padding:0px;
+	
+}
+
+.searchBar{
+	margin:0;
+	
+}
+
+.btn-edit, .btn-delete{
+	background: rgba(149, 179, 215, 1);
+	color: #FFFFFF;
+	text-align:center;
+
+	margin:50px;
+	
+	
+}
+
+.btn-edit:hover, .btn-edit:focus, .btn-delete:focus, .btn-delete:hover {
+		background: rgb(252, 255, 179);
+}
