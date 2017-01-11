@@ -1,6 +1,8 @@
 package com.bae.oc.controllers;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
@@ -35,7 +37,7 @@ public class BasketController implements Serializable {
 	private SelectedProduct selectedProduct;
 
 	private CustomerOrder basket;
-	private String quantity;
+	private List<String> quantities = new ArrayList<String>();
 	private int lineNumber = 0;
 
 	public int getLineNumber() {
@@ -75,6 +77,8 @@ public class BasketController implements Serializable {
 	 *
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
+	 * 
 	 * @return String
 	 */
 
@@ -83,7 +87,7 @@ public class BasketController implements Serializable {
 			return "login";
 		}
 		
-		if(orderService.checkBasket(basket.getId())) {
+		if(orderService.isValidBasketToOrder(basket)) {
 			return "order-details";
 		} else {
 			
@@ -98,15 +102,14 @@ public class BasketController implements Serializable {
 		if (currentUser.isLoggedIn() == false) {
 			return "login";
 		}
-
-		long productId = selectedProduct.getProduct().getId();
-		long customerOrderId = currentUser.getCustomer().getId();
-		basket = orderService.getBasket(currentUser.getCustomer().getId());
-
-		System.out.println("productId " + productId);
-		orderService.addToBasket(customerOrderId, productId, currentUser.getCustomer());
-
-		return null;
+		
+		if (basket == null) {
+			setBasket();
+		}
+		
+		orderService.addToBasket(basket, selectedProduct.getProduct());
+		
+		return "";
 	}
 
 	/**
@@ -121,18 +124,18 @@ public class BasketController implements Serializable {
 	 *
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
+	 * 
 	 * @return String
 	 */
 
-	public String removeFromBasket(Long productId) {
+	public String removeFromBasket() {
 		System.out.println("Removing from basket");
 		if (currentUser.isLoggedIn() == false) {
 			return "login";
 		} else {
-
-			long customerOrderId = basket.getId();
 			System.out.println("remove from basket");
-			orderService.removeFromBasket(customerOrderId, productId, currentUser.getCustomer());
+			orderService.removeFromBasket(basket, lineNumber);
 
 			return "basket";
 		}
@@ -146,6 +149,8 @@ public class BasketController implements Serializable {
 	 *
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson 
+	 * 
 	 * @return String
 	 */
 
@@ -155,7 +160,7 @@ public class BasketController implements Serializable {
 		} else {
 			
 			
-			basket = orderService.getBasket(currentUser.getCustomer().getId());
+			basket = orderService.getBasket(currentUser.getCustomer());
 			basket.getOrderLines().size();
 			lineNumber = 0;
 			return "";
@@ -177,19 +182,18 @@ public class BasketController implements Serializable {
 	 *
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
+	 * 
 	 * @param String
 	 * @return String
 	 */
-	public String updateQuantity(long productId) {
+	public String updateQuantity() {
 		System.out.println("update quantity");
 		if (currentUser.isLoggedIn() == false) {
 			return "login";
 		}
-		try {
-			System.out.println("productId " + productId + " quantity " + quantity);
-			
-			orderService.updateQuantity(orderService.getBasket(currentUser.getCustomer().getId()).getId(),
-					productId, quantity);
+		try {			
+			orderService.updateQuantity(basket, lineNumber, quantities);
 			return "basket";
 		} catch (Exception e) {
 			System.out.println("fail");
@@ -288,15 +292,29 @@ public class BasketController implements Serializable {
 	 * @MethodAuthor Tim Spencer
 	 * @return String
 	 */
-
-	public void setQuantity(String quantity) {
-		System.out.println("setquantity");
-		this.quantity = quantity;
+	
+	public List<String> getQuantities() {
+		List<CustomerOrderLine>orderLines = basket.getOrderLines();
+		if(quantities.size() != orderLines.size()) {
+			quantities.clear();
+			for(CustomerOrderLine orderLine: orderLines) {
+				quantities.add(String.valueOf(orderLine.getQuantity()));
+			}
+		}
+		return this.quantities;
+	}
+	
+	public void setQuantities(List<String> iQuantities) {
+		this.quantities = iQuantities;
 	}
 
 	public long getProductId() {
 		System.out.println("getting product id");
 		return basket.getOrderLines().get(lineNumber).getProduct().getId();
+	}
+	
+	public String getSize() {
+		return String.valueOf( basket.getOrderLines().size() );
 	}
 
 }

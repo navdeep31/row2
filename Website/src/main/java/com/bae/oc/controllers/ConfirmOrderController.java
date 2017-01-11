@@ -38,6 +38,8 @@ public class ConfirmOrderController implements Serializable {
 	private AddressService addressService;
 	@Inject
 	private Conversation conversation;
+	@Inject
+	private BasketController basketController;
 	
 	/////////////////////////////////ATTRIBUTES/////////////////////////////////////////////////
 	
@@ -77,10 +79,10 @@ public class ConfirmOrderController implements Serializable {
 		System.out.println("Trying to set Customer Order");
 		
 		try{
-			customerOrder = orderService.getBasket(currentUser.getCustomer().getId());
+			customerOrder = orderService.getBasket(currentUser.getCustomer());
 			System.out.println("Set ConfirmOrder Customer Order");
 			System.out.println("Customer Order : " + customerOrder);
-			orderService.checkBasket(customerOrder.getId());
+			orderService.isValidBasketToOrder(customerOrder);
 			return "";
 		} catch (Exception e) {
 			System.out.println("Exception");
@@ -157,8 +159,9 @@ public class ConfirmOrderController implements Serializable {
 			return "login";
 		}
 		
-		orderService.confirmOrder(customerOrder.getId());
-		orderService.getBasket(currentUser.getCustomer().getId());
+		orderService.confirmOrder(customerOrder);
+		orderService.getBasket(currentUser.getCustomer());
+		basketController.setBasket();
 		conversation.end();
 		return "order-confirmation";
 		

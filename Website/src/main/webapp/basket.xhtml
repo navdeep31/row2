@@ -6,6 +6,7 @@
 	template="templates/main.xhtml">
 	<meta charset="utf-8" />
 	<author>Tim Spencer</author>
+	<author>Alex Dawson</author>
 
 	<ui:define name="pageTitle">My Basket</ui:define>
 
@@ -13,28 +14,23 @@
 		<h:outputText value="#{basket.setBasket()}" />
 		<link type="text/css" rel="stylesheet" href="css/basket.css" />
 		
+		<!-- Render normal basket page if logged in -->
 		<ui:fragment rendered="#{user.isLoggedIn()}">
 		<div class="container" id="basket" >
+		
+			<!-- Heading -->
 			<div class="row" id="baskettitle">
-
 				<div class="col-md-12 main" align="left">
-
 					<header id="heading">
-
 						<h1>
 							<h:outputText value="#{user.getCustomer().getFirstName()}" />
 							's Basket
 						</h1>
-
-
 					</header>
-
-
-
 				</div>
-
 			</div>
-
+			
+			<!-- Total cost section -->
 			<div class="row" id="totalcost">
 
 				<div class="col-sm-4" align="left">
@@ -44,6 +40,7 @@
 					</p>
 					<p>
 						<strong>Number of Items: </strong>
+						<h:outputText value="#{basket.size}" />
 					</p>
 				</div>
 
@@ -56,14 +53,21 @@
 				</div>
 
 			</div>
-				
-			<c:forEach var="orderLine" items="#{basket.basket.getOrderLines()}">
+			
+			<!-- Order Lines -->				
+			<c:forEach var="orderLine" items="#{basket.basket.getOrderLines()}" varStatus="loop">
 				<div class="row" id="orderline">
+				
+					<!-- Product picture -->
 					<div class="col-sm-4" align="left" action="#{basket.setSelectedProduct()}">
 						<a href="productPage.xhtml"> <img class="img-responsive"
 							src="images/CatTools.png" width="auto" height="auto" /></a>
 					</div>
+					
+					
 					<div class="col-sm-8" align="left">
+						
+						<!-- Product name and description -->
 						<h3>
 							<h:outputText
 								value="#{basket.basket.getOrderLines().get(basket.lineNumber).getProduct().getName()}" />
@@ -74,9 +78,11 @@
 								value="#{basket.basket.getOrderLines().get(basket.lineNumber).getProduct().getDescription()}" />
 						</p>
 
-					
+						
 						<div class="row" id="linestotalsbox">
 							<div class="row">
+							
+								<!-- Product values -->
 								<div class="col-sm-4">
 
 									<p>
@@ -91,20 +97,22 @@
 									</p>
 
 								</div>
+								
+								<!-- Method buttons  -->
 								<div class="col-sm-8" align="right">
 
 
 									<div class="form-group">
 										<h:form>
 											<label for="updateQuantity" class="control-label"><strong>Quantity</strong>:</label>
-											<h:inputText value="#{basket.quantity}" class="form-control">
+											<h:inputText value="#{basket.quantities[loop.index]}" class="form-control">
 												<f:passThroughAttribute name="Enter Quantity" value="text" />
 												<f:passThroughAttribute name="alt" value="First Name" />
 												<f:passThroughAttribute name="required" value="true" />
 											</h:inputText>
 											<div> <hr id = "line"/>
 											<h:commandButton value="Update Quantity"
-											action="#{basket.updateQuantity(orderLine.getProduct().getId())}"
+											action="#{basket.updateQuantity()}"
 											class="btn btn-grey" />
 											</div>
 										</h:form>
@@ -118,7 +126,7 @@
 								<div class="col-sm-12" align="right">
 									<h:form>
 										<h:commandButton value="Remove From Basket"
-											action="#{basket.removeFromBasket(orderLine.getProduct().getId())}"
+											action="#{basket.removeFromBasket()}"
 											class="btn btn-grey" />
 									</h:form>
 					
@@ -128,7 +136,7 @@
 							</div>
 						</div>
 
-						<h:outputText value="#{basket.ititerateLineNumber()}" />
+						<h:outputText value="#{basket.iterateLineNumber()}" />
 
 					</div>
 

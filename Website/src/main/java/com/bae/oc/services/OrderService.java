@@ -38,34 +38,34 @@ public class OrderService {
 	private ProductManager productManager;
 
 	/**
-	 * Checks the basket for the business rules; if any fail it throws an
-	 * exception; Otherwise it throws an exception.
+	 * Checks if the basket is valid to order (follows business rules)
+	 * If any fail it throws an exception
 	 * 
 	 * @param customerOrder
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
 	 * 
 	 */
 
-	public boolean checkBasket(long customerOrderId) {
-
-		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
-		if (customerOrder.getStatus().equals(Status.BASKET)) {
-			if (customerOrder.getOrderLines().size() != 0) {
-				if (customerOrder.getCost() <= 10000.00) {
-					return true;
-				} else {
-					// TODO add exception
-					return false;
-				}
-			} else {
-				// TODO add exception
-				return false;
-			}
-		} else {
-			// TODO add exception
-			return false;
+	public boolean isValidBasketToOrder(CustomerOrder iCustomerOrder) {
+		
+		// Check if order is a basket
+		if (!iCustomerOrder.getStatus().equals(Status.BASKET)) {
+			// TODO add exception 
 		}
+		
+		// Check if order is non-empty
+		if (iCustomerOrder.getOrderLines().size() == 0) {
+			// TODO add exception
+		}
+		
+		// Check if order is less than max cost
+		if (iCustomerOrder.getCost() > 10000.00) {
+			// TODO add exception
+		}
+		
+		return true;
 	}
 
 	/**
@@ -77,22 +77,22 @@ public class OrderService {
 	 * @param customerOrder
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
 	 * 
 	 */
 
-	public void confirmOrder(long customerOrderId) {
-		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
+	public void confirmOrder(CustomerOrder iCustomerOrder) {
 
-		if (checkBasket(customerOrderId)) {
+		if (isValidBasketToOrder(iCustomerOrder)) {
 
-			if (customerOrder.getStatus().equals(Status.BASKET)) {
+			if (iCustomerOrder.getStatus().equals(Status.BASKET)) {
 
-				for (CustomerOrderLine customerOrderLine : customerOrder.getOrderLines()) {
+				for (CustomerOrderLine customerOrderLine : iCustomerOrder.getOrderLines()) {
 					customerOrderLine.setItemPrice(customerOrderLine.getProduct().getCurrentPrice());
 					customerOrderLine.setStatus(Status.ORDERED);
 				}
-				customerOrder.setStatus(Status.ORDERED);
-				customerOrder.setOrderDate(LocalDateTime.now());
+				iCustomerOrder.setStatus(Status.ORDERED);
+				iCustomerOrder.setOrderDate(LocalDateTime.now());
 			} else {
 				// TODO add exception
 			}
@@ -111,31 +111,36 @@ public class OrderService {
 	 * @param customer
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
 	 * @return CustomerOrder
 	 * 
 	 */
-	public CustomerOrder getBasket(long customerId) {
+	public CustomerOrder getBasket(Customer iCustomer) {
 		CustomerOrder basket = null;
-		Customer customer = customerManager.findById(customerId);
-		System.out.println("currentUserId " + customerId);
+		
+		//DEBUG
+		System.out.println("currentUserId " + iCustomer.getId());
 
 		try {
-			for (CustomerOrder custOrders : customer.getOrders()) {
-				if (custOrders.getStatus().equals(Status.BASKET)) {
-					basket = custOrders;
-					System.out.println("old basket");
-					System.out.println(custOrders.getStatus());
+			for (CustomerOrder order : iCustomer.getOrders()) {
+				if (order.getStatus().equals(Status.BASKET)) {
+					basket = order;
+					System.out.println("Customer with ID " + iCustomer.getId() + " has existing basket with status " + order.getStatus());
 				}
 			}
 		} catch (Exception e) {
-			System.out.println(customer.getId());
+			System.out.println("Exception getting basket for Customer with ID " + iCustomer.getId());
 		}
+		
+		// If there is no existing basket
 		if (basket == null) {
-			System.out.println("new basket");
+			System.out.println("Customer with ID " + iCustomer.getId() + " has no existing basket");
+			
+			// Add new basket to customer's list of orders
 			basket = new CustomerOrder();
-			List<CustomerOrder> orders = customer.getOrders();
+			List<CustomerOrder> orders = iCustomer.getOrders();
 			orders.add(basket);
-			customer.setOrders(orders);
+			iCustomer.setOrders(orders);
 		}
 
 		return basket;
@@ -151,6 +156,8 @@ public class OrderService {
 	 * 
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
+	 * 
 	 * @param customerOrder
 	 * @param productId
 	 * 
@@ -159,17 +166,15 @@ public class OrderService {
 	// Depending on how Product is built Product may change to just the product
 	// ID being passed as an argument.
 
-	public void addToBasket(long customerOrderId, long productId, Customer customer) {
-		Product product = productManager.findProductByPId(productId);
-		CustomerOrder customerOrder = getBasket(customer.getId());
-		List<CustomerOrderLine> order = customerOrder.getOrderLines();
+	public void addToBasket(CustomerOrder iCustomerOrder, Product iProduct) {
+		List<CustomerOrderLine> orderLines = iCustomerOrder.getOrderLines();
 
-		order.add(new CustomerOrderLine(customerOrder.getId(), product, 1));
-		customerOrder.setOrderLines(order);
+		orderLines.add(new CustomerOrderLine(iCustomerOrder.getId(), iProduct, 1));
+		iCustomerOrder.setOrderLines(orderLines);
 
-		System.out.println("pre update" + customerOrder.getOrderLines().size());
+		System.out.println("Number of order lines before update: " + iCustomerOrder.getOrderLines().size());
 
-		customerOrderManager.updateCustomerOrder(customer, customerOrder);
+		customerOrderManager.updateCustomerOrder(iCustomerOrder);
 
 		/*
 		 * boolean isAlreadyInBasket = false;
@@ -195,40 +200,36 @@ public class OrderService {
 	 * 
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor
+	 * 
 	 * @param customerOrder
 	 * @param product
 	 * 
 	 */
 
+	public void removeFromBasket(CustomerOrder iOrder, String iLineNumber) {
+		
+		try {
+			int lineNumber = Integer.parseInt(iLineNumber);
+			removeFromBasket(iOrder, lineNumber);
+		} catch (NumberFormatException e) {
+			System.out.println("number format exception");
+			// TODO Exception
+		}
+		
+	}
+	
 	// Depending on how Product is built Product may change to just the product
 	// ID being passed as an argument.
 
-	public void removeFromBasket(long customerOrderId, long productId, Customer customer) {
-		boolean isInBasket = false;
-		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
-		int counter = 0;
+	public void removeFromBasket(CustomerOrder iOrder, int iLineNumber) {
+		
+		iOrder.getOrderLines().remove(iLineNumber);
 
-		for (int i = 0; i < customerOrder.getOrderLines().size(); i++) {
-			if (customerOrder.getOrderLines().get(i).getProduct().getId() == productId) {
-				isInBasket = true;
-				System.out.println("in loop");
-				List<CustomerOrderLine> order = customerOrder.getOrderLines();
-				order.remove(i);
-				customerOrder.setOrderLines(order);
+		//DEBUG
+		System.out.println("Number of order lines before update:  " + iOrder.getOrderLines().size());
 
-			}
-			++counter;
-		}
-
-		System.out.println("pre update " + customerOrder.getOrderLines().size());
-
-		customerOrderManager.updateCustomerOrder(customer, customerOrder);
-
-		System.out.println("In the middle");
-		if (!isInBasket) {
-			System.out.println("notinbasket");
-			// TODO add Exception
-		}
+		customerOrderManager.updateCustomerOrder(iOrder);
 
 	}
 
@@ -240,15 +241,30 @@ public class OrderService {
 	 * 
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
+	 * 
 	 * @param customerOrder
 	 * @param product
 	 * 
 	 */
 
-	public void updateQuantity(long customerOrderId, long productId, String quantity) {
+	public void updateQuantity(CustomerOrder iOrder, String iLineNumber, List<String> iQuantities) {
 		try {
-			int quantityInt = Integer.parseInt(quantity);
-			updateQuantity(customerOrderId, productId, quantityInt);
+			
+			int lineNumber = Integer.parseInt(iLineNumber);
+			int quantity = Integer.parseInt(iQuantities.get(lineNumber));
+			updateQuantity(iOrder, lineNumber, quantity);
+		} catch (NumberFormatException e) {
+			System.out.println("number format exception");
+			// TODO Exception
+		}
+
+	}
+	
+	public void updateQuantity(CustomerOrder iOrder, int iLineNumber, List<String> iQuantities) {
+		try {
+			int quantity = Integer.parseInt(iQuantities.get(iLineNumber));
+			updateQuantity(iOrder, iLineNumber, quantity);
 		} catch (NumberFormatException e) {
 			System.out.println("number format exception");
 			// TODO Exception
@@ -266,34 +282,22 @@ public class OrderService {
 	 * 
 	 * @MethodAuthor Andrew Claybrook
 	 * @MethodAuthor Tim Spencer
-	 * @param customerOrder
-	 * @param product
+	 * @MethodAuthor Alex Dawson
 	 * 
 	 */
 
-	public void updateQuantity(long customerOrderId, long productId, int quantity) {
-		boolean isInBasket = false;
-		CustomerOrder customerOrder = customerOrderManager.findByOrderId(customerOrderId);
-		System.out.println(customerOrder.getOrderLines().size());
-		if (quantity <= 0) {
+	public void updateQuantity(CustomerOrder iOrder, int iLineNumber, int iQuantity) {
+		
+		//DEBUG
+		System.out.println("Number of order lines: " + iOrder.getOrderLines().size());
+		
+		if (iQuantity <= 0) {
 			// TODO add Exception
 		}
-
-		for (CustomerOrderLine custOrderLine : customerOrder.getOrderLines()) {
-
-			if (custOrderLine.getProduct().getId() == productId) {
-
-				isInBasket = true;
-				System.out.println("setting quantity");
-				custOrderLine.setQuantity(quantity);
-				break;
-			}
-		}
-
-		if (!isInBasket) {
-			System.out.println("not in basket");
-			// TODO add Exception
-		}
+		
+		//Assume line number is 0-indexed
+		
+		iOrder.getOrderLines().get(iLineNumber).setQuantity(iQuantity);
 
 	}
 
