@@ -61,15 +61,25 @@ public class ProductSearchService {
 	 * @MethodAuthor N GILL
 	 */
 	public List<Product> searchBy(String term){
-		List<Product> results = new ArrayList<>();
+		
+		// Generate results by different search methods for given term
+		List<Product> nameResults = searchByProductName(term);
+		List<Product> descriptionResults = searchByProductDescription(term);
 		if(term.matches("[0-9]")){
-			Product result = productService.findProductByPId(term);
-			if(result!=null) {
-				results.add(result);
+			Product idResult = productService.findProductByPId(term);
+			if(idResult != null) {
+				descriptionResults.add(idResult);
 			}
 		}
-		results.addAll(searchByProductName(term));
-		results.addAll(searchByProductDescription(term));
+		
+		// Collate search results into single list of unique entries
+		List<Product> results = nameResults;
+		for(Product product: descriptionResults) {
+			if(!results.contains(product)) {
+				results.add(product);
+			}
+		}
+		
 		if (results.isEmpty()) {return null;}
 		else {return results;}
 		

@@ -158,6 +158,7 @@ public class ConfirmOrderController implements Serializable {
 		}
 		
 		orderService.confirmOrder(customerOrder.getId());
+		orderService.getBasket(currentUser.getCustomer().getId());
 		conversation.end();
 		return "order-confirmation";
 		

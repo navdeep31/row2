@@ -70,7 +70,9 @@ public class OrderService {
 
 	/**
 	 * Validate's if something is a basket; if it is, change the order to
-	 * Status.Order. If not, throws exception.
+	 * Status.Order.
+	 * 
+	 * If not, throws exception.
 	 * 
 	 * @param customerOrder
 	 * @MethodAuthor Andrew Claybrook

@@ -126,6 +126,10 @@ public class SelectedOrders implements Serializable {
 		pageResults = null;
 		this.orders = iOrders;
 	}
+	
+	public List<PurchaseOrder> getOrders() {
+		return this.orders;
+	}
 
 	
 }	
