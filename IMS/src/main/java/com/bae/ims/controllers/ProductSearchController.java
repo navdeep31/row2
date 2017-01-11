@@ -35,6 +35,7 @@ public class ProductSearchController {
 		
 		if(results.size() == 1) {
 			selectedProduct.setProduct(results.get(0));
+			selectedProducts.setSearchResults(results);
 			return "products";
 		} else if (results.size() > 1) {
 			selectedProducts.setSearchResults(results);
