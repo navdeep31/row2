@@ -62,16 +62,23 @@
 				<c:forEach var="purchaseOrderItemList" items="#{currentOrder.getOrder().getOrderLines()}" varStatus="loop">
 				<div class="well">
 					<div class="row">
-						<div class="col-md-2"><h4>ID: <h:outputText value="#{purchaseOrderItemList.getProduct().getProductID()}" /></h4></div>
-						<div class="col-md-4"><h4><h:outputText value="#{purchaseOrderItemList.getProduct().getName()}" /></h4></div>
-						<div class="col-md-2"><h4><h:outputText value="#{purchaseOrderItemList.getProduct().getCurrentPriceString()}" /></h4></div>
-						<div class="col-md-2"><div class="form-group">
+						<div class="col-md-2"><h4>Item ID</h4> 
+						<h5><h:outputText value="#{purchaseOrderItemList.getProduct().getProductID()}" /></h5></div>
+						<div class="col-md-4"><h4>Product Name</h4>
+						<h5><h:outputText value="#{purchaseOrderItemList.getProduct().getName()}" /></h5></div>
+						<div class="col-md-2"><h4>Item Price</h4>
+						<h5><h:outputText value="#{purchaseOrderItemList.getProduct().getCurrentPriceString()}" /></h5></div>
+						<div class="col-md-2"><h4>Quantity: <h:outputText value="#{purchaseOrderItemList.getQuantity()}" /></h4>
+						<div class="form-group">
   						<h:form>
-  						<h:inputText class="form-control" id="temp" value="1" binding="#{purchaseOrderItemList.setQuantity(inputText)}" ></h:inputText>
-
+  						
+  						<h:inputText value="#{purchaseOrderItemList.jsfQuantity}" />
+						<h:commandButton value="Submit" action="#{purchaseOrderItemList.setQuantity(purchaseOrderItemList.jsfQuantity)}" />
+						
   						</h:form>
 						</div></div>
-						<div class="col-md-2"><h4><h:outputText value="#{purchaseOrderItemList.getProduct().getStatus()}" /></h4></div>
+						<div class="col-md-2"><h4>Item Status</h4>
+						<h5><h:outputText value="#{purchaseOrderItemList.getProduct().getStatus()}" /></h5></div>
 					</div>
 				</div>
 				</c:forEach>
