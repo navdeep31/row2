@@ -11,7 +11,8 @@ import javax.inject.Named;
 import com.bae.oc.controllers.session.CurrentUser;
 import com.bae.oc.entities.CustomerOrder;
 import com.bae.oc.services.OrderService;
-import com.bae.oc.util.StringFormatter;
+// ?? Doesn't currently exist - unknown author
+//import com.bae.oc.util.StringFormatter;
 
 /**
  * Controller for the Order History
@@ -155,15 +156,22 @@ public class OrderHistoryController implements Serializable{
 	}
 	
 	public String getOrderString() {
-		return StringFormatter.properCasing((orderHistory.get(lineNumber).getStatus().toString()));
+		
+		// ?? Alternative version that doesn't compile currently - unknown author
+		// return StringFormatter.properCasing((orderHistory.get(lineNumber).getStatus().toString()));
+		
+		return (orderHistory.get(lineNumber).getStatus().toString());
 	}
 	
 	public String getOrderDate() {
 			
 		String day =""+ orderHistory.get(lineNumber).getOrderDate().getDayOfMonth();
-		String month = ""+ StringFormatter.properCasing(orderHistory.get(lineNumber).getOrderDate().getMonth().toString());
-		String year = "" + orderHistory.get(lineNumber).getOrderDate().getYear();
 		
+		// ?? Alternative version taht doesn't compile currently - unknown author
+		// String month = ""+ StringFormatter.properCasing(orderHistory.get(lineNumber).getOrderDate().getMonth().toString());
+		String month = ""+ orderHistory.get(lineNumber).getOrderDate().getMonth().toString();
+		
+		String year = "" + orderHistory.get(lineNumber).getOrderDate().getYear();		
 		
 		return day + " " + month + " " + year;
 		
