@@ -104,9 +104,9 @@ public class ProductService {
 
 			// Modify if feel like it
 			if (status.isEmpty()) {
-				eStatus = ProductStatus.AVALIABLE;
+				eStatus = ProductStatus.AVAILABLE;
 			} else if (status.equals("AVALIABLE")) {
-				eStatus = ProductStatus.AVALIABLE;
+				eStatus = ProductStatus.AVAILABLE;
 			} else if (status.equals("ON_HOLD")) {
 				eStatus = ProductStatus.ON_HOLD;
 			} else if (status.equals("DISCONTINUED")) {
@@ -214,7 +214,7 @@ public class ProductService {
 			if (status.isEmpty()) {
 				eStatus = product.getStatus();
 			} else if (status.equals("AVALIABLE")) {
-				eStatus = ProductStatus.AVALIABLE;
+				eStatus = ProductStatus.AVAILABLE;
 			} else if (status.equals("ON_HOLD")) {
 				eStatus = ProductStatus.ON_HOLD;
 			} else if (status.equals("DISCONTINUED")) {

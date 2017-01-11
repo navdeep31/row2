@@ -65,7 +65,7 @@ public class PurchaseOrder {
 	/**
 	 * Default constructor
 	 */
-	PurchaseOrder() {
+		public PurchaseOrder() {
 		this.id = idCount++;
 		this.orderLines = new ArrayList<PurchaseOrderLine>();
 	}

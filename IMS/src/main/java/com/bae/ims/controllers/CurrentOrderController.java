@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import com.bae.ims.controllers.session.CurrentOrder;
 import com.bae.ims.controllers.session.SelectedProduct;
+import com.bae.ims.entities.PurchaseOrder;
 import com.bae.ims.services.OrderService;
 
 /**
@@ -79,11 +80,19 @@ public class CurrentOrderController {
 	 * 
 	 * @return String of the next page to visit
 	 */
-	public String addLine() {
+	public void addLine() {
+		
+		if (order.getOrder() == null){
+			order.setOrder(new PurchaseOrder());
+		}
 		
 		order.setOrder(orderService.addLine(order.getOrder(), product.getProduct(), newQuantity));
 		
-		return "products";
+		System.out.println(order.getOrder());
+		System.out.println(product.getProduct());
+		System.out.println(newQuantity);
+		
+		// return "products";
 		
 	}
 	

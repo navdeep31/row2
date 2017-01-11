@@ -146,5 +146,9 @@ public class PurchaseOrderLine {
 	public void setQuantity(int iQuantity) {
 		this.quantity = iQuantity;
 	}
+	
+	public void setQuantity(String iQuantity) {
+		this.quantity = Integer.parseInt(iQuantity);
+	}
 
 }

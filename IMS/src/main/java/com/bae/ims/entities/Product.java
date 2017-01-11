@@ -222,6 +222,12 @@ public class Product {
 		return currentPrice;
 	}
 
+	public String getCurrentPriceString() {
+		double poundsAndPence = (double) currentPrice / 100.00;
+		String currentPriceString = "£" + poundsAndPence;
+		
+		return currentPriceString;
+	}
 
 
 	public void setCurrentPrice(long currentPrice) {

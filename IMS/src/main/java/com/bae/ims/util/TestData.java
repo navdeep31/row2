@@ -40,36 +40,36 @@ public class TestData {
 	addresses = new ArrayList<Address>();
 		
 		
-	stock.add(new Stock(1l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(2l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(3l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(4l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(5l, ProductStatus.AVALIABLE));
+	stock.add(new Stock(1l, ProductStatus.AVAILABLE));
+		stock.add(new Stock(2l, ProductStatus.AVAILABLE));
+		stock.add(new Stock(3l, ProductStatus.AVAILABLE));
+		stock.add(new Stock(4l, ProductStatus.AVAILABLE));
+		stock.add(new Stock(5l, ProductStatus.AVAILABLE));
 		stock.add(new Stock(6l, ProductStatus.DISCONTINUED));
-		stock.add(new Stock(7l, ProductStatus.AVALIABLE));
+		stock.add(new Stock(7l, ProductStatus.AVAILABLE));
 		stock.add(new Stock(8l, ProductStatus.ON_HOLD));
-		stock.add(new Stock(9l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(10l, ProductStatus.AVALIABLE));
+		stock.add(new Stock(9l, ProductStatus.AVAILABLE));
+		stock.add(new Stock(10l, ProductStatus.AVAILABLE));
 		stock.add(new Stock(11l, ProductStatus.ON_HOLD));
-		stock.add(new Stock(12l, ProductStatus.AVALIABLE));
-		stock.add(new Stock(13l, ProductStatus.AVALIABLE));
+		stock.add(new Stock(12l, ProductStatus.AVAILABLE));
+		stock.add(new Stock(13l, ProductStatus.AVAILABLE));
 
 	employees.add(new Employee(0, "Bill", "hello@email.com", "qwerty"));
 		employees.add(new Employee(1, "Al", "yes@email.com", "12345"));
 	
-	products.add(new Product(1l,1l,"Kimberley Gnome","Scotland's finest Kimberley gnome", 12, 1999, 1699, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
-		products.add(new Product(2l,2l,"Garden Gnome","Our famous original garden gnome", 8, 1599, 1499, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
-		products.add(new Product(3l,3l,"Fishing Gnome","Gone fishin", 8, 1590, 1499, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
-		products.add(new Product(4l,4l,"Deluxe Hot Tub","NOTE: Is not a time machine", 3, 49999, 45999, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Hot Tub"));
-		products.add(new Product(5l,5l,"Hot Tub Time Machine","Note: Is a time machine", 1, 55999, 51299, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Hot Tub"));
+	products.add(new Product(1l,1l,"Kimberley Gnome","Scotland's finest Kimberley gnome", 12, 1999, 1699, ProductStatus.AVAILABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
+		products.add(new Product(2l,2l,"Garden Gnome","Our famous original garden gnome", 8, 1599, 1499, ProductStatus.AVAILABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
+		products.add(new Product(3l,3l,"Fishing Gnome","Gone fishin", 8, 1590, 1499, ProductStatus.AVAILABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Gnome"));
+		products.add(new Product(4l,4l,"Deluxe Hot Tub","NOTE: Is not a time machine", 3, 49999, 45999, ProductStatus.AVAILABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Hot Tub"));
+		products.add(new Product(5l,5l,"Hot Tub Time Machine","Note: Is a time machine", 1, 55999, 51299, ProductStatus.AVAILABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Hot Tub"));
 		products.add(new Product(6l,6l,"Bubbletron 3000","BUBBLEZ!", 0, 31999, 30999, ProductStatus.DISCONTINUED, LocalDate.of(2016, Month.DECEMBER, 7), "Hot Tub"));
-		products.add(new Product(7l,7l,"Rose Bush","Roses are red...", 0, 1599, 1499, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Plants"));
+		products.add(new Product(7l,7l,"Rose Bush","Roses are red...", 0, 1599, 1499, ProductStatus.AVAILABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Plants"));
 		products.add(new Product(8l,8l,"20x Violets","Violets are blue...", 5, 1799, 1299, ProductStatus.ON_HOLD, LocalDate.of(2016, Month.DECEMBER, 7), "Plants"));
-		products.add(new Product(9l,9l,"10x Fuchsia","I can see into the fuchsia", 15, 1999, 1699, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Plants"));
-		products.add(new Product(10l,10l,"Pitchfork","TODO Pitchfork instructions", 6, 2499, 1999, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
+		products.add(new Product(9l,9l,"10x Fuchsia","I can see into the fuchsia", 15, 1999, 1699, ProductStatus.AVAILABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Plants"));
+		products.add(new Product(10l,10l,"Pitchfork","TODO Pitchfork instructions", 6, 2499, 1999, ProductStatus.AVAILABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
 		products.add(new Product(11l,11l,"Garden Trowel","TODO Garden Trowel", 0, 1399, 1099, ProductStatus.ON_HOLD, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
-		products.add(new Product(12l,12l,"Rake","TODO Rake description", 12, 1199, 999, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
-		products.add(new Product(13l,13l,"Garden Gloves","TODO Garden Glove description", 6, 1499, 1499, ProductStatus.AVALIABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
+		products.add(new Product(12l,12l,"Rake","TODO Rake description", 12, 1199, 999, ProductStatus.AVAILABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
+		products.add(new Product(13l,13l,"Garden Gloves","TODO Garden Glove description", 6, 1499, 1499, ProductStatus.AVAILABLE, LocalDate.of(2016, Month.DECEMBER, 7), "Equipment"));
 		
 		addresses.add(new Address("2 Example Drive", "EX1 8LE", "Atlantis"));
 		addresses.add(new Address("30 Testing Road", "GN2 8ME", "Debug City"));

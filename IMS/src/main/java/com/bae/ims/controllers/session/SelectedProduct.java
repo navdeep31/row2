@@ -24,7 +24,7 @@ public class SelectedProduct implements Serializable {
 	
 	///////////////////////////////////////////////ATTRIBUTES//////////////////////////////////////////////////
 	
-	private Product product = null;
+	private Product product;
 	
 	///////////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 	
@@ -48,6 +48,7 @@ public class SelectedProduct implements Serializable {
 	 */
 	public void setProduct(Product iProduct) {
 		this.product = iProduct;
+		System.out.println(iProduct.getProductID());
 	}
 
 }

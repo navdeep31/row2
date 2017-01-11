@@ -16,32 +16,34 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 pre-scrollable">
-					<c:forEach var="purchaseOrder" items="#{productSearch.searchAll()}" varStatus="loop">
+					<c:forEach var="productlist" items="#{productSearch.searchAll()}" varStatus="loop">
 					<div class="well">
 					<div class="row">
 					<div class="col-md-10">
 								<h5>Item: 
 									<h:outputText
-										value="#{products.getSearchResults().get(loop.index).getName()}" /> <span class="pull-right">ID: 
+										value="#{productlist.getName()}" /> <span class="pull-right">ID: 
 
 									<h:outputText
-										value="#{products.getSearchResults().get(loop.index).getProductID()}" /></span>
+										value="#{productlist.getProductID()}" /></span>
 										</h5>
 													<h5>Quantity: 
 									<h:outputText
-										value="#{products.getSearchResults().get(loop.index).getQuantity()}" />
+										value="#{productlist.getQuantity()}" />
 																<span class="pull-right">Price: 
 									<h:outputText
-										value="#{products.getSearchResults().get(loop.index).getCurrentPrice()}" />
+										value="#{productlist.getCurrentPrice()}" />
 										</span></h5>
 										</div>
 										
-							<div class="col-md-2" align="right">
-							<button type="button" class="btn btn-default btn-lg"
-								data-toggle="collapse" data-target="##{loop.index}"
-								aria-expanded="false" aria-controls="#{loop.index}">
+							<div class="col-md-2">
+							<h:form>
+							<h:commandLink type="button button-default" action="#{selectedProduct.setProduct(products.searchResults.get(loop.index))}">
+								<f:actionListener binding="#{current.setNewQuantity('1')}" />
+								<f:actionListener binding="#{current.addLine()}" />
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-							</button>
+							</h:commandLink>
+							</h:form>
 </div>
 </div>
 </div>
@@ -55,7 +57,26 @@
 			
 			
 			
-			<div class="col-md-8 pre-scrollable"><p>SECOND COLUMN</p></div>
+			<div class="col-md-8 pre-scrollable">
+			
+				<c:forEach var="purchaseOrderItemList" items="#{currentOrder.getOrder().getOrderLines()}" varStatus="loop">
+				<div class="well">
+					<div class="row">
+						<div class="col-md-2"><h4>ID: <h:outputText value="#{purchaseOrderItemList.getProduct().getProductID()}" /></h4></div>
+						<div class="col-md-4"><h4><h:outputText value="#{purchaseOrderItemList.getProduct().getName()}" /></h4></div>
+						<div class="col-md-2"><h4><h:outputText value="#{purchaseOrderItemList.getProduct().getCurrentPriceString()}" /></h4></div>
+						<div class="col-md-2"><div class="form-group">
+  						<h:form>
+  						<h:inputText class="form-control" id="temp" value="1" binding="#{purchaseOrderItemList.setQuantity(inputText)}" ></h:inputText>
+
+  						</h:form>
+						</div></div>
+						<div class="col-md-2"><h4><h:outputText value="#{purchaseOrderItemList.getProduct().getStatus()}" /></h4></div>
+					</div>
+				</div>
+				</c:forEach>
+				
+</div>
 			</div>
 			</div>
 	</ui:define>

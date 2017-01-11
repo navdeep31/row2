@@ -7,5 +7,5 @@ package com.bae.ims.enums;
  * @version 0.1 07/12/2016
  */
 public enum ProductStatus {
-	AVALIABLE, ON_HOLD, DISCONTINUED 
+	AVAILABLE, ON_HOLD, DISCONTINUED 
 }
