@@ -41,6 +41,10 @@ public class CurrentOrderController {
 	
 	///////////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 	
+	public void addSubmittedOrder() {
+		orderService.addNewOrder(order.getOrder());
+	}	
+	
 	/**
 	 * Updates (the quantities of) the current order
 	 * 

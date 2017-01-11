@@ -8,11 +8,13 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.bae.ims.controllers.session.CurrentOrder;
 import com.bae.ims.controllers.session.SelectedOrder;
 import com.bae.ims.entities.Address;
 import com.bae.ims.entities.Employee;
 import com.bae.ims.entities.PurchaseOrder;
 import com.bae.ims.entities.PurchaseOrderLine;
+import com.bae.ims.services.OrderService;
 
 /**
  * Deals with viewing SelectedOrder
@@ -29,17 +31,21 @@ public class OrderController {
 	////////////////////////////////////////////////INJECTIONS/////////////////////////////////////////////////
 	
 	@Inject
-	private SelectedOrder order;
+	private SelectedOrder selectedOrder;
+	@Inject
+	private CurrentOrder currentOrder;
+	@Inject
+	private OrderService orderService;
 	
 	///////////////////////////////////////////////ATTRIBUTES//////////////////////////////////////////////////
 	
 	private List<PurchaseOrderLine> orderLines;
+	private PurchaseOrder order;
 	private Employee employee;
 	private Address deliveryAddress;
 	private LocalDate dateAdded;
 	
 	///////////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 
-	
 	
 }

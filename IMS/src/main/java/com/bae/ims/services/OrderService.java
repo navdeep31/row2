@@ -90,5 +90,9 @@ public class OrderService {
 		return iOrder;
 		
 	}
+	
+	public void addNewOrder(PurchaseOrder iOrder) {
+		orderManager.createPurchaseOrder(iOrder);
+	}
 
 }
