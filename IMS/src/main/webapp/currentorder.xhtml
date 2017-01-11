@@ -74,6 +74,7 @@
 			<h:form>
 							<h:commandLink value="Submit Order" styleClass="btn btn-primary" action="orderconfirmation.xhtml">
 							<f:actionListener binding="#{current.addSubmittedOrder()}" />
+							<f:actionListener binding="#{current.createNewOrder()}" />
 							</h:commandLink>
 							</h:form></h2>
 				<c:forEach var="purchaseOrderItemList" items="#{currentOrder.getOrder().getOrderLines()}" varStatus="loop">

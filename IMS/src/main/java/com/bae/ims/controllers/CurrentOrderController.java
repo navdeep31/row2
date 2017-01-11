@@ -45,6 +45,10 @@ public class CurrentOrderController {
 		orderService.addNewOrder(order.getOrder());
 	}	
 	
+	public void createNewOrder() {
+		order.setOrder(null);
+	}
+	
 	/**
 	 * Updates (the quantities of) the current order
 	 * 

@@ -71,7 +71,6 @@ public class OrderService {
 		//TODO Double check indexing
 		
 		//Removes order line with given index
-		System.out.println("LINE NUMBER TO REMOVE" + iLineNumber);
 		iOrder.getOrderLines().remove(Integer.parseInt(iLineNumber));
 		
 		orderManager.updatePurchaseOrder(iOrder);
