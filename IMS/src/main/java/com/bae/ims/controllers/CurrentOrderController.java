@@ -87,11 +87,7 @@ public class CurrentOrderController {
 		}
 		
 		order.setOrder(orderService.addLine(order.getOrder(), product.getProduct(), newQuantity));
-		
-		System.out.println("GET ORDER "+ order.getOrder());
-		System.out.println("GET PRODUCT "+ product.getProduct());
-		System.out.println("GET QUANTITY "+ newQuantity);
-		
+				
 		// return "products";
 		
 	}

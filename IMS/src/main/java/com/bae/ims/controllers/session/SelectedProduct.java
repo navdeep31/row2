@@ -48,7 +48,6 @@ public class SelectedProduct implements Serializable {
 	 */
 	public void setProduct(Product iProduct) {
 		this.product = iProduct;
-		System.out.println("SELECTED PRODUCT " + iProduct.getProductID());
 	}
 
 }
