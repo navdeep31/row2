@@ -1,0 +1,81 @@
+/*Author - NGill*/
+
+#main-content {
+	
+}
+
+.searchBar{
+	margin:0;
+	
+}
+
+
+.row1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.list-group-item {
+	background:rgba(255, 255, 255, 1);
+	color:rgb(255,255,255);
+}
+
+
+.well {
+	
+	margin:0px;
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-left:0px;
+	padding-right:0px;
+	
+}
+
+.panel-heading{
+	margin:0px;
+	padding:0px;}
+	
+.tableOrder{
+	background:rgba(149, 179, 215, 1);
+	color:rgb(255,255,255);
+}
+
+.panel-body{
+	margin:0px;
+}
+
+.tableItems{
+	margin-left:0px;
+	
+	padding-left:0px;
+	
+}
+
+.table{
+    width: 100%;
+    margin: auto;
+    padding: 0px;
+    float: none;
+}
+
+.btn-trackorder{
+	width: 40%;
+	
+	background: rgba(149, 179, 215, 1);
+	color: #FFFFFF;
+	text-align:center;
+	
+}
+
+.TrackOrderBtn{
+	/*border: 1px solid rgba(217, 217, 2217, 1);*/
+	margin: auto;
+	float: none;
+	
+	}
+
+.btn-trackorder:hover, .btn-trackorder:focus {
+		background: rgb(252, 255, 179);
+}
