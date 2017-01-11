@@ -16,6 +16,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 pre-scrollable">
+				<div class="well main">
+				<div class="form-group">
+
+        			
+        			<h2>Products:</h2><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search pull-right"></span></button>
+         				<input type="text" class="form-control" placeholder="Search Product..."></input>
+         				</div>
+
+
+       				
+
+      			
 					<c:forEach var="productlist" items="#{productSearch.searchAll()}" varStatus="loop">
 					<div class="well">
 					<div class="row">
@@ -38,9 +50,9 @@
 										
 							<div class="col-md-2">
 							<h:form>
-							<h:commandLink type="button button-default" action="#{selectedProduct.setProduct(products.searchResults.get(loop.index))}">
+							<h:commandLink type="button button-default" action="#{current.addLine()}">
 								<f:actionListener binding="#{current.setNewQuantity('1')}" />
-								<f:actionListener binding="#{current.addLine()}" />
+								<f:actionListener binding="#{selectedProduct.setProduct(products.searchResults.get(loop.index))}" />
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 							</h:commandLink>
 							</h:form>
@@ -49,7 +61,7 @@
 </div>
 					</c:forEach>
 </div>
-			
+	</div>		
 			
 			
 			
@@ -58,13 +70,14 @@
 			
 			
 			<div class="col-md-8 pre-scrollable">
-			
+			<div class="well main"><h2>Current Order:<button type="button" class="btn btn-lg btn-primary pull-right">Submit Order</button></h2>
+			<br/>
 				<c:forEach var="purchaseOrderItemList" items="#{currentOrder.getOrder().getOrderLines()}" varStatus="loop">
 				<div class="well">
 					<div class="row">
 						<div class="col-md-2"><h4>Item ID</h4> 
 						<h5><h:outputText value="#{purchaseOrderItemList.getProduct().getProductID()}" /></h5></div>
-						<div class="col-md-4"><h4>Product Name</h4>
+						<div class="col-md-3"><h4>Product Name</h4>
 						<h5><h:outputText value="#{purchaseOrderItemList.getProduct().getName()}" /></h5></div>
 						<div class="col-md-2"><h4>Item Price</h4>
 						<h5><h:outputText value="#{purchaseOrderItemList.getProduct().getCurrentPriceString()}" /></h5></div>
@@ -73,17 +86,26 @@
   						<h:form>
   						
   						<h:inputText value="#{purchaseOrderItemList.jsfQuantity}" />
-						<h:commandButton value="Submit" action="#{purchaseOrderItemList.setQuantity(purchaseOrderItemList.jsfQuantity)}" />
+						<h:commandLink value="Update" action="#{purchaseOrderItemList.setQuantity(purchaseOrderItemList.jsfQuantity)}" />
 						
   						</h:form>
 						</div></div>
 						<div class="col-md-2"><h4>Item Status</h4>
 						<h5><h:outputText value="#{purchaseOrderItemList.getProduct().getStatus()}" /></h5></div>
+						<div class="col-md-1">
+						<h:form>
+							<h:commandLink type="button button-default" action="#{current.removeLine()}">
+								<f:actionListener binding="#{current.setLineToRemove(loop.index)}" />
+								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+							</h:commandLink>
+							</h:form>
+						</div>
 					</div>
 				</div>
 				</c:forEach>
 				
 </div>
+			</div>
 			</div>
 			</div>
 	</ui:define>

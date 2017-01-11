@@ -1,0 +1,15 @@
+input {
+	max-width: 100%;
+}
+
+.pre-scrollable {
+	max-height: 900px;
+}
+
+.main {
+	background: white;
+}
+
+btn btn-default {
+	color: #000000;
+}
