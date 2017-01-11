@@ -24,28 +24,17 @@
       			</form>
       			
 			</nav>
-		
+			
+		<c:forEach var="orderlist" items="#{orderSearch.searchAll()}" varStatus="loop">
 			<div class="list-group">
-  				<button type="button" class="list-group-item orderButton">Order No: 1234
+  				<button type="button" class="list-group-item orderButton">Order No: 
+  				<h:outputText value="#{orderlist.getId()}"></h:outputText>
   				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
   				</button> 				
-  				
-  				<button type="button" class="list-group-item">Order No: 4587
-  				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
-  				</button>
-  				
-  				<button type="button" class="list-group-item">Order No: 7845
-  				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
-  				</button>
-  				
-  				<button type="button" class="list-group-item">Order No: 2451
-  				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
-  				</button>
-  				
-  				<button type="button" class="list-group-item">Order No: 4538
-  				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
-  				</button>
+  			
 			</div> <!-- End list-group -->
+		</c:forEach>
+			
 		</div> <!-- End orderList -->
 		
 		<div class="col-md-8 orderDetails">
