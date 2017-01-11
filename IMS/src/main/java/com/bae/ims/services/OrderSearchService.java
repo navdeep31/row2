@@ -66,5 +66,9 @@ public class OrderSearchService {
 		
 	}
 	
+	public List<PurchaseOrder> searchAll() {
+		return orderManager.findAllPurchaseOrders();
+	}
+	
 
 }

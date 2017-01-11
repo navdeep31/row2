@@ -80,10 +80,9 @@ public class OrderSearchController {
 	 * @MethodAuthor Alex Dawson
 	 * 
 	 */
-	public String searchAll() {
-		setTerm("");
-		search();
-		return "orderhistory";
+	public List<PurchaseOrder> searchAll() {
+		orders.setOrders(searchService.searchAll());
+		return orders.getOrders();
 	}
 
 	/**
