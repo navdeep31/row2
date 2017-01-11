@@ -47,6 +47,8 @@ public class PurchaseOrderLine {
 	@NotNull
 	private int quantity;
 	
+	private String jsfQuantity;
+	
 	private static int lineCount = 0;
 
 	/////////////////////////////////////////////////////CONSTRUCTORS////////////////////////////////////////////////	
@@ -147,8 +149,18 @@ public class PurchaseOrderLine {
 		this.quantity = iQuantity;
 	}
 	
-	public void setQuantity(String iQuantity) {
-		this.quantity = Integer.parseInt(iQuantity);
+	public void setQuantity(String jsfQuantity) {
+		this.quantity = Integer.parseInt(jsfQuantity);
 	}
 
+	public String getJsfQuantity() {
+		return jsfQuantity;
+	}
+
+	public void setJsfQuantity(String jsfQuantity) {
+		this.jsfQuantity = jsfQuantity;
+	}
+
+	
+	
 }

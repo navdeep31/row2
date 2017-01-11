@@ -44,9 +44,9 @@
 						<div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
 							<header id="totalprice">
 								<H5>TOTAL</H5>
-								<H5>
+								<H5>£
 									<h:outputText
-										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getCost()}" />
+										value="#{orderhistory.orderHistory.get(loop.index).getCost()}" />
 								</H5>
 							</header>
 						</div>
@@ -56,7 +56,7 @@
 								<h5>ORDER NUMBER</h5>
 								<h5>
 									<h:outputText
-										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getId()}" />
+										value="#{orderhistory.orderHistory.get(loop.index).getId()}" />
 								</h5>
 							</header>
 						</div>
@@ -75,13 +75,13 @@
 						<div class="hidden-lg hidden-md col-sm-12 col-xs-6">
 									<h5>Price: 
 									<h:outputText
-										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getCost()}" />
+										value="#{orderhistory.orderHistory.get(loop.index).getCost()}" />
 								</h5>
 						</div>
 						<div class="hidden-lg hidden-md hidden-sm col-xs-6">
 						<h5>Order Number: 
 									<h:outputText
-										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getId()}" />
+										value="#{orderhistory.orderHistory.get(loop.index).getId()}" />
 								</h5>
 						</div>
 							<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6">
@@ -96,30 +96,31 @@
 								<h4>Dispatched To:</h4>
 								<h6>
 									<h:outputText
-										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getDeliveryAddress().getLine1()}" />
+										value="#{orderhistory.orderHistory.get(loop.index).getDeliveryAddress().getLine1()}" />
 								</h6>
 								<h6>
 									<h:outputText
-										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getDeliveryAddress().getCity()}" />
+										value="#{orderhistory.orderHistory.get(loop.index).getDeliveryAddress().getCity()}" />
 								</h6>
 								<h6>
 									<h:outputText
-										value="#{orderhistory.orderHistory.get(orderhistory.lineNumber).getDeliveryAddress().getPostcode()}" />
+										value="#{orderhistory.orderHistory.get(loop.index).getDeliveryAddress().getPostcode()}" />
 								</h6>
 							</div>
-								<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+								<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
 								<div class="progress">
 									<div
 										class="progress-bar progress-bar-success progress-bar-striped active"
 										role="progressbar" aria-valuenow="#{orderhistory.getEnumValue()}" aria-valuemin="0"
 										aria-valuemax="100" style="width: #{orderhistory.getEnumValue()}%">
-										<span class="sr-only">40% Complete (success)</span>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" action="#{orderhistory.iterateLineNumber()}">
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
 								<button type="button" class="btn btn-lg btn-primary">Track Order</button>
+								<br/>
 								<button type="button" class="btn btn-lg btn-primary">Details</button>
+								<br/>
 								<button type="button" class="btn btn-lg btn-primary">Invoice</button>
 							</div>
 
