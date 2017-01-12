@@ -1,5 +1,6 @@
 package com.bae.ims.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bae.ims.controllers.session.CurrentOrder;
+import com.bae.ims.controllers.session.CurrentUser;
 import com.bae.ims.controllers.session.SelectedProduct;
 import com.bae.ims.entities.PurchaseOrder;
 import com.bae.ims.enums.ProductStatus;
@@ -34,6 +36,9 @@ public class CurrentOrderController {
 	@Inject
 	private OrderService orderService;
 	
+	@Inject
+	private CurrentUser currentUser;
+	
 	///////////////////////////////////////////////ATTRIBUTES//////////////////////////////////////////////////
 	
 	private List<String> quantities;
@@ -43,11 +48,20 @@ public class CurrentOrderController {
 	///////////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 	
 	public void addSubmittedOrder() {
+		order.getOrder().setEmployeeId(currentUser.getEmployee());
+		order.getOrder().setDateAdded(LocalDate.now());
 		orderService.addNewOrder(order.getOrder());
 	}	
 	
 	public void createNewOrder() {
 		order.setOrder(null);
+	}
+	
+	public String redirect(){
+		if(currentUser.isLoggedIn() == false){
+		return "login";
+		}
+		return null;
 	}
 	
 	/**
