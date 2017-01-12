@@ -10,9 +10,12 @@ import javax.inject.Named;
 
 import com.bae.ims.controllers.session.CurrentOrder;
 import com.bae.ims.controllers.session.CurrentUser;
+import com.bae.ims.controllers.session.SelectedAddress;
 import com.bae.ims.controllers.session.SelectedProduct;
+import com.bae.ims.entities.Address;
 import com.bae.ims.entities.PurchaseOrder;
 import com.bae.ims.enums.ProductStatus;
+import com.bae.ims.services.AddressService;
 import com.bae.ims.services.OrderService;
 
 /**
@@ -39,9 +42,16 @@ public class CurrentOrderController {
 	@Inject
 	private CurrentUser currentUser;
 	
+	@Inject
+	private SelectedAddress selectedAddress;
+	
+	@Inject
+	private AddressService addressService;
+	
 	///////////////////////////////////////////////ATTRIBUTES//////////////////////////////////////////////////
 	
 	private List<String> quantities;
+	private List<Address> addresses;
 	private String newQuantity;
 	private String lineToRemove;
 	
@@ -50,6 +60,7 @@ public class CurrentOrderController {
 	public void addSubmittedOrder() {
 		order.getOrder().setEmployeeId(currentUser.getEmployee());
 		order.getOrder().setDateAdded(LocalDate.now());
+		order.getOrder().setDeliveryAddress(selectedAddress.getAddress());
 		orderService.addNewOrder(order.getOrder());
 	}	
 	
@@ -57,6 +68,11 @@ public class CurrentOrderController {
 		order.setOrder(null);
 	}
 	
+	public List<Address> searchAllAddresses() {
+		selectedAddress.setAddresses(addressService.getAllAddresses());
+		return selectedAddress.getAddresses();
+	}
+
 	public String redirect(){
 		if(currentUser.isLoggedIn() == false){
 		return "login";
@@ -103,20 +119,21 @@ public class CurrentOrderController {
 	 * 
 	 * @return String of the next page to visit
 	 */
-	public void addLine() {
+	public String addLine() {
 		
 		if (order.getOrder() == null){
 			order.setOrder(new PurchaseOrder());
 		}
 		
 		if (product.getProduct().getStatus() == ProductStatus.DISCONTINUED) {
-			
+			return "currentorder?faces-redirect=true&includeViewParams=true&discon=true";
 		}
 		else
 		{
 		order.setOrder(orderService.addLine(order.getOrder(), product.getProduct(), newQuantity));
 		}		
 		// return "products";
+		return null;
 		
 	}
 	
@@ -163,5 +180,15 @@ public class CurrentOrderController {
 	public void setLineToRemove(String iLineToRemove) {
 		this.lineToRemove = iLineToRemove;
 	}
+
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+	
+	
 
 }

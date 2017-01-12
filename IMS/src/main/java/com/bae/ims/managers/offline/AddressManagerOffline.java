@@ -1,5 +1,6 @@
 package com.bae.ims.managers.offline;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -7,6 +8,7 @@ import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 
 import com.bae.ims.entities.Address;
+import com.bae.ims.entities.Product;
 import com.bae.ims.managers.AddressManager;
 import com.bae.ims.util.TestData;
 @Stateless
@@ -39,10 +41,20 @@ public class AddressManagerOffline implements AddressManager {
 		testData.setAddresses(addresses);
 	}
 
+	/**
+	 * Finds all addresses from testData
+	 * 
+	 *@MethodAuthor Andrew Claybrook
+	 */
+	
 	@Override
 	public List<Address> findAllAddresses() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Address> addressesFound = new ArrayList<Address>();
+		for (Address address : testData.getAddresses()){
+			addressesFound.add(address);
+		}
+		return addressesFound;
 	}
 
 	@Override
