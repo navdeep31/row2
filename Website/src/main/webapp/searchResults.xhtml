@@ -36,9 +36,14 @@
 					<h:commandLink value="Next" action="#{searchResults.next}" rendered="#{searchResults.pagination.hasNextPage}" />
 					<div>
 						<ui:repeat var="product" value="#{searchResults.pageResults}">
-							<section class="col-xs-12 col-md-4">
-								<h:commandLink action="#{products.select(product.id)}" value="#{product.name}"/>
-								<p><h:outputText value="#{product.description}" /></p>
+							<section class="col-xs-12 col-md-4 product-listbox">
+									<div class="col-xs-12 col-md-6 product-img">
+										<h:graphicImage value="#{product.getImageUrl()}" class="img-responsive center-block" />
+									</div>
+									<div class="col-xs-12 col-md-6">
+										<h:commandLink action="#{products.select(product.id)}" value="#{product.name}"/>
+										<p><h:outputText value="#{product.description}" /></p>
+									</div>						
 								<h:commandButton class="btn btn-primary btn-block" action="#{wishlist.addToWishlist(product.id)}" value="Add to Wishlist" rendered="#{user.loggedIn}" />
 							</section>
 						</ui:repeat>

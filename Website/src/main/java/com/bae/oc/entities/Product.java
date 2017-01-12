@@ -74,6 +74,8 @@ public class Product {
 	@NotNull
 	private String category;
 	
+	private String imageUrl;
+	
 	
 	/////////////////////CONSTRUCTOR/////////////////////////
 	
@@ -98,6 +100,22 @@ public class Product {
 		this.status = status;
 		this.dateAdded = dateAdded;
 		this.category = category;
+	}
+	
+	public Product(long productID, long stockID, String name, String description, int quantity, int rrp,
+			int currentPrice, ProductStatus status, LocalDate dateAdded, String category, String iImageUrl) {
+		super();
+		this.id = productID;
+		this.stockID = stockID;
+		this.name = name;
+		this.description = description;
+		this.quantity = quantity;
+		this.rrp = rrp;
+		this.currentPrice = currentPrice;
+		this.status = status;
+		this.dateAdded = dateAdded;
+		this.category = category;
+		this.imageUrl = iImageUrl;
 	}
 
 
@@ -300,6 +318,14 @@ public class Product {
 	 */
 	public String getRRPString() {
 		return "£" + (this.rrp / 100) + "." + (this.rrp % 100);
+	}
+	
+	public String getImageUrl() {
+		return this.imageUrl;
+	}
+	
+	public void setImageUrl(String iImageUrl) {
+		this.imageUrl = iImageUrl;
 	}
 	
 	

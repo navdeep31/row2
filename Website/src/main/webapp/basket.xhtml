@@ -13,6 +13,7 @@
 	<ui:define name="mainContent">
 		<h:outputText value="#{basket.setBasket()}" />
 		<link type="text/css" rel="stylesheet" href="css/newbasket.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="css/productPage.css" />
 		
 		<!-- Render normal basket page if logged in -->
 		<ui:fragment rendered="#{user.isLoggedIn()}">
@@ -59,9 +60,10 @@
 				<div class="row" id="orderline">
 				
 					<!-- Product picture -->
-					<div class="col-sm-4" align="left" action="#{basket.setSelectedProduct()}">
-						<a href="productPage.xhtml"> <img class="img-responsive"
-							src="images/CatTools.png" width="auto" height="auto" /></a>
+					<div class="col-sm-4 productImage" align="left" action="#{basket.setSelectedProduct()}">
+						<a href="productPage.xhtml">
+							<h:graphicImage value="#{selected.getProduct().getImageUrl()}" class="img-responsive center-block" />
+						</a>
 					</div>
 					
 					
