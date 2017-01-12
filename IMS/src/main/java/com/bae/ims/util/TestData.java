@@ -13,6 +13,7 @@ import com.bae.ims.entities.Address;
 import com.bae.ims.entities.Employee;
 import com.bae.ims.entities.Product;
 import com.bae.ims.entities.PurchaseOrder;
+import com.bae.ims.entities.PurchaseOrderLine;
 import com.bae.ims.entities.Stock;
 import com.bae.ims.enums.ProductStatus;
 
@@ -26,6 +27,7 @@ public class TestData {
 	private List<Employee> employees;
 	private List<Product> products;
 	private List<PurchaseOrder> orders;
+	private List<PurchaseOrderLine> orderLines;
 	private List<Address> addresses;
 	
 	////////////////////////////////////////POST CONSTRUCT///////////////////////////////////////
@@ -37,6 +39,7 @@ public class TestData {
 	employees = new ArrayList<Employee>();
 	products = new ArrayList<Product>();
 	orders = new ArrayList<PurchaseOrder>();
+	orderLines = new ArrayList<PurchaseOrderLine>();
 	addresses = new ArrayList<Address>();
 		
 		
@@ -74,10 +77,16 @@ public class TestData {
 		addresses.add(new Address("2 Example Drive", "EX1 8LE", "Atlantis"));
 		addresses.add(new Address("30 Testing Road", "GN2 8ME", "Debug City"));
 		
-		orders.add(new PurchaseOrder(1, employees.get(0), addresses.get(0), LocalDate.of(2012, Month.JANUARY, 10)));
+		PurchaseOrder order1 = new PurchaseOrder(1, employees.get(0), addresses.get(0), LocalDate.of(2012, Month.JANUARY, 10));
+		order1.addOrderLine(new PurchaseOrderLine(products.get(0), 250));
+		order1.addOrderLine(new PurchaseOrderLine(products.get(1), 150));
+		orders.add(order1);
 		
-		//TODO Add example purchase orders
-	
+		PurchaseOrder order2 = new PurchaseOrder(2, employees.get(0), addresses.get(0), LocalDate.of(2013, Month.JANUARY, 11));
+		order2.addOrderLine(new PurchaseOrderLine(products.get(2), 250));
+		order2.addOrderLine(new PurchaseOrderLine(products.get(3), 200));
+		orders.add(order2);
+		
 	}
 	
 	///////////////////////////////////////////////METHODS//////////////////////////////////
@@ -108,6 +117,16 @@ public class TestData {
 	
 	public List<PurchaseOrder> getOrders() {
 		return this.orders;
+	}
+	
+	public void setOrderLines(List<PurchaseOrderLine> orderLines){
+		this.orderLines= orderLines;
+		
+	}
+	
+	public List<PurchaseOrderLine> getOrderLines(){
+		return this.orderLines;
+		
 	}
 	
 

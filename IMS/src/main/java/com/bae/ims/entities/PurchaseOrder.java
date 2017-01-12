@@ -182,6 +182,10 @@ public class PurchaseOrder {
 		this.dateAdded = dateAdded;
 	}
 	
+	public void addOrderLine(PurchaseOrderLine iOrderLine) {
+		this.orderLines.add(iOrderLine);
+	}
+	
 	
 
 }

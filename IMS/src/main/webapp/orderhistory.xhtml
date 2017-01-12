@@ -24,17 +24,16 @@
       			</form>
       			
 			</nav>
-			
+				<div class="list-group">
 		<c:forEach var="orderlist" items="#{orderSearch.searchAll()}" varStatus="loop">
-			<div class="list-group">
-  				<button type="button" class="list-group-item orderButton">Order No: 
-  				<h:outputText value="#{orderlist.getId()}"></h:outputText>
-  				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
-  				</button> 				
-  			
-			</div> <!-- End list-group -->
-		</c:forEach>
+		<h:form>
+  				<h:commandLink type="button" class="list-group-item orderButton" value="Order No: #{orderlist.getId()}" action="#{selectedOrder.setOrder(orderlist)}">
+  				<!--  <span style="float: right" class="glyphicon glyphicon-chevron-right"></span> -->
+  				</h:commandLink> 				
+  				</h:form>
 			
+		</c:forEach>
+			</div> <!-- End list-group -->
 		</div> <!-- End orderList -->
 		
 		<div class="col-md-8 orderDetails">
@@ -50,9 +49,9 @@
 						</thead>
 						<tbody>
 							<tr>
-							<td>1234</td>
-							<td>01/01/2017</td>
-							<td>Al Stock</td>
+							<td><h:outputText value="#{selectedOrder.getOrder().getId()}"></h:outputText></td>
+							<td><h:outputText value="#{selectedOrder.getOrder().getEmployee().getName()}"></h:outputText></td>
+							<td><h:outputText value="#{selectedOrder.getOrder().getDateAdded()}"></h:outputText></td>
 							</tr>
 						</tbody>
 					</table>
@@ -63,10 +62,13 @@
    					<div class="row1">
    						<div class="col-md-3 Address">
    							<h4>Delivery Address:</h4>
-   							<P>NB Gardens</P>
-   							<P>Warehouse 1A</P>
-   							<P>Manchester</P>
-   							<P>M4 8WF</P>
+   							<h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getLine1()}"></h:outputText>
+   							<P></P>
+   							<h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getLine2()}"></h:outputText>
+   							<P></P>
+   							<h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getCity()}"></h:outputText>
+   							<P></P>
+   							<h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getPostcode()}"></h:outputText>
    						</div> <!-- End Address -->
    					
    						<div class="col-md-9 TrackOrderBtn">
@@ -88,16 +90,13 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach var="orderlist1" items="#{selectedOrder.getOrder().getOrderLines()}" varStatus="loop">
 							<tr>
-							<td>547894</td>
-							<td>100</td>
-							<td>17</td>
+							<td><h:outputText value="#{orderlist1.getProduct().getStockID()}"></h:outputText></td>
+							<td><h:outputText value="#{orderlist1.getQuantity()}"></h:outputText></td>
+							<td><h:outputText value="#{orderlist1.getProduct().getQuantity()}"></h:outputText></td>
 							</tr>
-							<tr>
-							<td>451298</td>
-							<td>150</td>
-							<td>14</td>
-							</tr>
+						</c:forEach>
 						</tbody>
 						</table>
    					</div> <!-- End row2 -->

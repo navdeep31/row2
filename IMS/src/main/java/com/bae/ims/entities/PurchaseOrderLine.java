@@ -153,6 +153,13 @@ public class PurchaseOrderLine {
 		this.quantity = Integer.parseInt(jsfQuantity);
 	}
 
+	
+	
+	/**
+	 * @param iQuantity The quantity of product to order to set calculated in some strange mysterious way
+	 * 
+	 * @MethodAuthor Andy's dodgy getters/setters for quantity
+	 */
 	public String getJsfQuantity() {
 		return jsfQuantity;
 	}
