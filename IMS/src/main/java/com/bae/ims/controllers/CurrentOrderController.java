@@ -10,6 +10,7 @@ import javax.inject.Named;
 import com.bae.ims.controllers.session.CurrentOrder;
 import com.bae.ims.controllers.session.SelectedProduct;
 import com.bae.ims.entities.PurchaseOrder;
+import com.bae.ims.enums.ProductStatus;
 import com.bae.ims.services.OrderService;
 
 /**
@@ -94,8 +95,13 @@ public class CurrentOrderController {
 			order.setOrder(new PurchaseOrder());
 		}
 		
+		if (product.getProduct().getStatus() == ProductStatus.DISCONTINUED) {
+			
+		}
+		else
+		{
 		order.setOrder(orderService.addLine(order.getOrder(), product.getProduct(), newQuantity));
-				
+		}		
 		// return "products";
 		
 	}
