@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bae.ims.controllers.session.CurrentOrder;
+import com.bae.ims.controllers.session.CurrentUser;
 import com.bae.ims.controllers.session.SelectedProduct;
 import com.bae.ims.entities.PurchaseOrder;
 import com.bae.ims.enums.ProductStatus;
@@ -34,6 +35,9 @@ public class CurrentOrderController {
 	@Inject
 	private OrderService orderService;
 	
+	@Inject
+	private CurrentUser currentUser;
+	
 	///////////////////////////////////////////////ATTRIBUTES//////////////////////////////////////////////////
 	
 	private List<String> quantities;
@@ -48,6 +52,13 @@ public class CurrentOrderController {
 	
 	public void createNewOrder() {
 		order.setOrder(null);
+	}
+	
+	public String redirect(){
+		if(currentUser.isLoggedIn() == false){
+		return "login";
+		}
+		return null;
 	}
 	
 	/**
