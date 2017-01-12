@@ -1,0 +1,41 @@
+<ui:composition xmlns="https://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="templates/main.xhtml">
+	<meta charset="utf-8" />
+
+	<ui:define name="pageTitle">Edit ProductID: <h:outputText
+			value="#{selectedProduct.getProduct().getProductID()}" />
+	</ui:define>
+
+	<ui:define name="mainContent">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 orderDetails">
+			<div class="panel panel-default">
+				<div id="panelhead2" class="panel-heading panelhead12">
+					<h4>Stock ID: #1234</h4>
+				</div>
+				<!-- End Panel-heading -->
+
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-1"></div>
+						<div class="col-md-4"> 
+							<h3>Products:</h3>
+						</div>
+					</div>
+				
+				</div>
+				<!-- End panel Body -->
+			</div>
+			<!-- End Panel -->
+		</div>
+		<!-- End orderDetails -->
+		<div class="col-md-2"></div>
+
+
+		<!-- End Container -->
+	</ui:define>
+</ui:composition>
