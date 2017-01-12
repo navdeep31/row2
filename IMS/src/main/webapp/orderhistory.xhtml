@@ -62,13 +62,14 @@
    					<div class="row1">
    						<div class="col-md-3 Address">
    							<h4>Delivery Address:</h4>
-   							<h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getLine1()}"></h:outputText>
-   							<P></P>
-   							<h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getLine2()}"></h:outputText>
-   							<P></P>
-   							<h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getCity()}"></h:outputText>
-   							<P></P>
-   							<h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getPostcode()}"></h:outputText>
+   							
+   							<P><h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getLine1()}"></h:outputText></P>
+   							
+   							<P><h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getLine2()}"></h:outputText></P>
+   							
+   							<P><h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getCity()}"></h:outputText></P>
+   							
+   							<P><h:outputText value="#{selectedOrder.getOrder().getDeliveryAddress().getPostcode()}"></h:outputText></P>
    						</div> <!-- End Address -->
    					
    						<div class="col-md-9 TrackOrderBtn">
@@ -85,6 +86,7 @@
 						<thead class = "text-center">
 							<tr>
 							<th class="text-center">Stock ID:</th>
+							<th class="text-center">Stock Name:</th>
 							<th class="text-center">Quantity Ordered:</th>
 							<th class="text-center">Current Stock Level:</th>
 							</tr>
@@ -93,6 +95,7 @@
 						<c:forEach var="orderlist1" items="#{selectedOrder.getOrder().getOrderLines()}" varStatus="loop">
 							<tr>
 							<td><h:outputText value="#{orderlist1.getProduct().getStockID()}"></h:outputText></td>
+							<td><h:outputText value="#{orderlist1.getProduct().getName()}"></h:outputText></td>
 							<td><h:outputText value="#{orderlist1.getQuantity()}"></h:outputText></td>
 							<td><h:outputText value="#{orderlist1.getProduct().getQuantity()}"></h:outputText></td>
 							</tr>
@@ -102,7 +105,7 @@
    					</div> <!-- End row2 -->
    					</div> <!-- End Well -->
    					<div class="col-md-12 row3" align="right">
-   					   	<h3>Total: £2514.25</h3>				
+   					 			
    					</div> <!-- End row3 -->
    					
    					
