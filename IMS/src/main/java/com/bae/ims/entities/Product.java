@@ -204,6 +204,12 @@ public class Product {
 		return rrp;
 	}
 
+	public String getRRPString() {
+		double poundsAndPence = (double) rrp / 100.00;
+		String RRPString = "£" + poundsAndPence;
+		
+		return RRPString;
+	}
 
 
 	public void setRrp(long rrp) {
