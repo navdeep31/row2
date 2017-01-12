@@ -13,9 +13,11 @@
 	
 	<ui:define name="mainContent">
 	<link type="text/css" rel="stylesheet" href="css/currentorder.css" />
-			<div class="alert alert-warning alert-dismissible" role="alert">
+	<div class="container">
+			<div id="discontinueError" class="alert alert-warning alert-dismissible" role="alert" style="display: none;">
   			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>
-  			<strong>Warning!</strong> Better check yourself, you're not looking too good.
+  			<strong>Error!</strong> Adding of a discontinued item is not allowed!. If this item has become available then please amend this first in the products menu.
+			</div>
 			</div>
 		<div class="container">
 			<div class="row">
@@ -76,12 +78,22 @@
 			
 			<div class="col-md-8 pre-scrollable">
 			<div class="well main"><h2>Current Order
-			<h:form>
+			<span class="pull-right"><h:form>
 							<h:commandLink value="Submit Order" styleClass="btn btn-primary" action="orderconfirmation.xhtml">
 							<f:actionListener binding="#{current.addSubmittedOrder()}" />
 							<f:actionListener binding="#{current.createNewOrder()}" />
+							<f:actionListener binding="#{selectedAddress.setAddress(address.getId())}" />
 							</h:commandLink>
-							</h:form></h2>
+							</h:form></span></h2>
+							
+					<h3>Address: 
+					
+					<h:selectOneMenu value="#{selectedAddress.address}">
+    					<f:selectItems value="#{selectedAddress.addresses}" var="address" itemLabel="#{address.getLine1()}" itemValue="#{address.getId()}" />
+					</h:selectOneMenu>
+					
+					</h3>
+							
 				<c:forEach var="purchaseOrderItemList" items="#{currentOrder.getOrder().getOrderLines()}" varStatus="loop">
 				<div class="well">
 					<div class="row">
@@ -96,6 +108,7 @@
   						<h:form>
   						
   						<h:inputText value="#{purchaseOrderItemList.jsfQuantity}" />
+
 						<h:commandLink value="Update" action="#{purchaseOrderItemList.setQuantity(purchaseOrderItemList.jsfQuantity)}" />
 						
   						</h:form>
@@ -111,7 +124,7 @@
 							</h:commandLink>
 							</h:form>
 						</div>
-						<script src="js/currentorder.js" type="text/javascript"></script>
+						
 					</div>
 				</div>
 				</c:forEach>
@@ -123,8 +136,9 @@
 			
 	<f:metadata>
     <f:viewAction action="#{current.redirect}" />
+    <f:viewAction action="#{current.searchAllAddresses()}" />
 	</f:metadata>
-
+	<script src="js/currentorder.js" type="text/javascript"></script>
 	</ui:define>
 	
 </ui:composition>
