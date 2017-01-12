@@ -1,5 +1,6 @@
 package com.bae.ims.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +48,8 @@ public class CurrentOrderController {
 	///////////////////////////////////////////////METHODS/////////////////////////////////////////////////////
 	
 	public void addSubmittedOrder() {
+		order.getOrder().setEmployeeId(currentUser.getEmployee());
+		order.getOrder().setDateAdded(LocalDate.now());
 		orderService.addNewOrder(order.getOrder());
 	}	
 	
