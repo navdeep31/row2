@@ -30,6 +30,7 @@ public class SelectedAddress implements Serializable {
 	///////////////////////////////////////////////ATTRIBUTES//////////////////////////////////////////////////
 	
 	private Address address = null;
+	private String addressId;
 	private List<Address> addresses;
 	
 	///////////////////////////////////////////////METHODS/////////////////////////////////////////////////////
@@ -53,6 +54,7 @@ public class SelectedAddress implements Serializable {
 	 * @MethodAuthor Alex Dawson
 	 */
 	public void setAddress(Address iAddressOrder) {
+		System.out.println(iAddressOrder);
 		this.address = iAddressOrder;
 	}
 
@@ -64,5 +66,14 @@ public class SelectedAddress implements Serializable {
 		this.addresses = addresses;
 	}
 
+	public String getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(String addressId) {
+		this.addressId = addressId;
+	}
+
+	
 	
 }
