@@ -9,25 +9,27 @@
 	<ui:define name="pageTitle">Order History</ui:define>
 	<ui:define name="mainContent">
 		<link type="text/css" rel="stylesheet" href="css/orderhistory.css" />
-
-
-
+		
+		<!-- Breadcrumbs -->
 		<div class="container">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="mydetails.xhtml">Your Account</a></li>
-				<li class="breadcrumb-item active"><h:outputText
-						value="#{user.getCustomer().getFirstName()} " /> <h:outputText
-						value="#{user.getCustomer().getLastName()}" />'s Order History</li>
+				<li class="breadcrumb-item">
+					<a href="mydetails.xhtml">Your Account</a>
+				</li>
+				<li class="breadcrumb-item active">
+					<h:outputText value="#{user.getCustomer().getFirstName()} #{user.getCustomer().getLastName()}" />'s Order History
+				</li>
 			</ol>
 		</div>
 
 
-
+		<!-- Orders -->
 		<div class="container">
 			<div class="row">
-				<c:forEach var="customerOrder"
-					items="#{orderhistory.getOrderHistory()}" varStatus="loop">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-head">
+				<c:forEach var="customerOrder" items="#{orderhistory.getOrderHistory()}" varStatus="loop">
+					
+					<!-- Order header -->
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-head">						
 						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 							<header id="status-date">
 								<h5>
@@ -40,7 +42,6 @@
 
 							</header>
 						</div>
-
 						<div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
 							<header id="totalprice">
 								<H5>TOTAL</H5>
@@ -50,7 +51,6 @@
 								</H5>
 							</header>
 						</div>
-
 						<div class="col-lg-3 col-md-3 col-sm-4 hidden-xs">
 							<header id="ordernumber">
 								<h5>ORDER NUMBER</h5>
@@ -60,7 +60,6 @@
 								</h5>
 							</header>
 						</div>
-
 						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" align="right">
 							<button type="button" class="btn btn-default btn-lg"
 								data-toggle="collapse" data-target="##{loop.index}"
@@ -69,27 +68,31 @@
 							</button>
 						</div>
 					</div>
-					<div class="collapse order-details content-block"
-						id="#{loop.index}">
+					
+					<!-- Collapsible details -->
+					<div class="collapse order-details content-block" id="#{loop.index}">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-block">
-						<div class="hidden-lg hidden-md col-sm-12 col-xs-6">
+							
+							<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+							
+							<!-- Small xs only -->
+							<div class="hidden-lg hidden-md col-sm-12 col-xs-6">
 									<h5>Price: 
-									<h:outputText
-										value="#{orderhistory.orderHistory.get(loop.index).getCost()}" />
+									<h:outputText value="#{orderhistory.orderHistory.get(loop.index).getCostString()}" />
 								</h5>
-						</div>
-						<div class="hidden-lg hidden-md hidden-sm col-xs-6">
-						<h5>Order Number: 
+							</div>
+							<div class="hidden-lg hidden-md hidden-sm col-xs-6">
+								<h5>Order Number: 
 									<h:outputText
 										value="#{orderhistory.orderHistory.get(loop.index).getId()}" />
 								</h5>
-						</div>
+							</div>
+							
+							<!-- First line -->
 							<div class="col-lg-8 col-md-8 col-sm-4 col-xs-6">
-								<h:outputText
-										value="#{orderhistory.getOrderDate()}" />
+								<h:outputText value="#{orderhistory.getOrderDate()}" />
 								<h4>
-									<h:outputText
-										value="#{orderhistory.getEnumValueString()}" />
+									<h:outputText value="#{orderhistory.getEnumValueString()}" />
 								</h4>
 							</div>
 							<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
@@ -107,7 +110,9 @@
 										value="#{orderhistory.orderHistory.get(loop.index).getDeliveryAddress().getPostcode()}" />
 								</h6>
 							</div>
-								<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+							
+							<!-- Second line -->
+							<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
 								<div class="progress">
 									<div
 										class="progress-bar progress-bar-success progress-bar-striped active"
@@ -116,13 +121,20 @@
 									</div>
 								</div>
 							</div>
+							
+							</div>
+							
+							<!-- Buttons -->
 							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-								<button type="button" class="btn btn-lg btn-primary">Track Order</button>
-								<br/>
 								<button type="button" class="btn btn-lg btn-primary">Details</button>
 								<br/>
-								<button type="button" class="btn btn-lg btn-primary">Invoice</button>
+								<br/>
+								<!-- TODO Invoice, tracking -->
 							</div>
+							
+							
+							
+							
 
 
 						</div>
