@@ -36,28 +36,21 @@
   				<span style="float: right" class="glyphicon glyphicon-plus"></span>
   				</button> 				
   				
-  				<button type="button" class="list-group-item">Stock ID: #4587
+  				<c:forEach var="productlist" items="#{productSearch.searchAll()}" varStatus="loop">
+  				<h:form>
+  				<h:commandLink type="button" class="list-group-item" value="Stock ID: ##{productlist.getStockID()}" action="#{selectedProduct.setProduct(productlist)}">
   				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
-  				</button>
+  				</h:commandLink> 				
+  				</h:form>
+  				</c:forEach>
   				
-  				<button type="button" class="list-group-item">Stock ID: #7845
-  				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
-  				</button>
-  				
-  				<button type="button" class="list-group-item">Stock ID: #2451
-  				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
-  				</button>
-  				
-  				<button type="button" class="list-group-item">Stock ID: #4538
-  				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
-  				</button>
 			</div> <!-- End list-group -->
 		</div> <!-- End orderList -->
 			
 			<div class="col-md-8 orderDetails">
 			<div class="panel panel-default">
 				<div id="panelhead2" class="panel-heading panelhead12">
-					<h4>Stock ID: #1234</h4>
+					<h4>Stock ID: #<h:outputText value="#{selectedProduct.getProduct().getStockID()}"></h:outputText></h4>
 				</div><!-- End Panel-heading -->
 	  			
 	  			<div class="panel-body">
@@ -71,32 +64,49 @@
    						
    						<div id="frm">
    							<h5 class="productHeaders">Product ID:</h5> 
-   							<p class="productInfo" align="justify">4514</p>
+   							<p class="productInfo" align="justify"><h:outputText value="#{selectedProduct.getProduct().getProductID()}"></h:outputText></p>
    						</div>
    						
    						<div id="frm">
    						<h5 class="productHeaders" >Name:</h5> 
-   						<p class= "productInfo" align="justify">Kimberley Gnome</p>
+   						<p class= "productInfo" align="justify"><h:outputText value="#{selectedProduct.getProduct().getName()}"></h:outputText></p>
    						</div>
    						
+   			   						
    						<div id="frm">
-   						<h5 class="productHeaders">Location</h5> 
-   						<p class= "productInfo" align="justify">B12</p>
-   						</div>
-   						
-   						<div id="frm">
-   						<h5 class="productHeaders">Default Stock Level:</h5> 
-   						<p class= "productInfo" align="justify">150</p>
+   						<h5 class="productHeaders">Quantity:</h5> 
+   						<p class= "productInfo" align="justify"><h:outputText value="#{selectedProduct.getProduct().getQuantity()}"></h:outputText></p>
    						</div>
    						
    						<div id="frm">
    						<h5 class="productHeaders">RRP:</h5> 
-   						<p class= "productInfo" align="justify">£16.99</p>
+   						<p class= "productInfo" align="justify"><h:outputText value="#{selectedProduct.getProduct().getRRPString()}"></h:outputText></p>
    						</div>
    						
    						<div id="frm">
+   						<h5 class="productHeaders">Current Price:</h5> 
+   						<p class= "productInfo" align="justify"><h:outputText value="#{selectedProduct.getProduct().getCurrentPriceString()}"></h:outputText></p>
+   						</div>
+   						
+   						<div id="frm">
+   						<h5 class="productHeaders">Product Status:</h5> 
+   						<p class= "productInfo" align="justify"><h:outputText value="#{selectedProduct.getProduct().getStatus()}"></h:outputText></p>
+   						</div>
+   						
+   						<div id="frm">
+   						<h5 class="productHeaders">Date Added:</h5> 
+   						<p class= "productInfo" align="justify"><h:outputText value="#{selectedProduct.getProduct().getDateAdded()}"></h:outputText></p>
+   						</div>
+   						
+   						<div id="frm">
+   						<h5 class="productHeaders">Category:</h5> 
+   						<p class= "productInfo" align="justify"><h:outputText value="#{selectedProduct.getProduct().getCategory()}"></h:outputText></p>
+   						</div>
+
+   						
+   						<div id="frm">
    						<h5 class="productHeaders">Website Description:</h5> 
-   						<p class= "productInfo" align="justify">Another one of our crap gnomes</p>
+   						<p class= "productInfo" align="justify"><h:outputText value="#{selectedProduct.getProduct().getDescription()}"></h:outputText></p>
    						</div>
    						
    						</div> <!-- End productDetails -->
