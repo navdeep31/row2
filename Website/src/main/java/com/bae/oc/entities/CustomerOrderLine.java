@@ -57,7 +57,7 @@ public class CustomerOrderLine {
 	 */
 	
 	@Column(name="item_Price")
-	private double itemPrice;
+	private int itemPrice;
 
 	/*@Column(name="order_confirmation", nullable=false)
 	@NotNull
@@ -211,7 +211,7 @@ public class CustomerOrderLine {
 	 * @return itemPrice
 	 */
 	
-	public double getItemPrice() {
+	public int getItemPrice() {
 		return itemPrice;
 	}
 
@@ -224,7 +224,7 @@ public class CustomerOrderLine {
 	 * 
 	 */
 	
-	public double getTotalLinePrice() {
+	public int getTotalLinePrice() {
 		if(itemPrice!=0) {
 		
 		return itemPrice*quantity; 
@@ -242,7 +242,7 @@ public class CustomerOrderLine {
 	 * 
 	 */
 	
-	public void setItemPrice(double itemPrice) {
+	public void setItemPrice(int itemPrice) {
 		if(status.equals(Status.BASKET)) this.itemPrice = itemPrice;
 	}
 

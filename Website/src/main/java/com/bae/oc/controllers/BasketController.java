@@ -19,8 +19,9 @@ import com.bae.oc.services.OrderService;
  * 
  * @author Andrew Claybrook
  * @author Tim Spencer
+ * @author Alex Dawson
  *
- * @version 0.1
+ * @version 0.2 11/01/2017
  */
 
 @Named("basket")
@@ -235,11 +236,12 @@ public class BasketController implements Serializable {
 	 * Turns the basket's total cost to a string
 	 *
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
 	 * @return String
 	 */
 
 	public String getTotalCost() {
-		return "" + basket.getCost();
+		return basket.getCostString();
 	}
 
 	/**
@@ -247,11 +249,13 @@ public class BasketController implements Serializable {
 	 * Turns the first line to a totalLinePrice
 	 * 
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
 	 * @return String
 	 */
 
 	public String getLineCost() {
-		return "" + basket.getOrderLines().get(lineNumber).getTotalLinePrice();
+		int pricePence = basket.getOrderLines().get(lineNumber).getTotalLinePrice();
+		return "£" + (pricePence / 100) + "." + (pricePence % 100);
 	}
 
 	/**
@@ -276,11 +280,13 @@ public class BasketController implements Serializable {
 	 * get basket method.
 	 *
 	 * @MethodAuthor Tim Spencer
+	 * @MethodAuthor Alex Dawson
 	 * @return String
 	 */
 
 	public String getItemPrice() {
-		return "" + basket.getOrderLines().get(lineNumber).getProduct().getCurrentPrice();
+		int pricePence = basket.getOrderLines().get(lineNumber).getProduct().getCurrentPrice();
+		return "£" + (pricePence / 100) + "." + (pricePence % 100);
 	}
 
 	/**

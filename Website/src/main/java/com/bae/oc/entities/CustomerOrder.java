@@ -294,8 +294,8 @@ public class CustomerOrder {
 		this.customer = customer;
 	} */
 	
-	public double getCost() {
-		double cost = 0;
+	public int getCost() {
+		int cost = 0;
 		for(CustomerOrderLine cusOrderLine: orderLines) {
 			cost += cusOrderLine.getTotalLinePrice(); 
 		}
@@ -309,6 +309,21 @@ public class CustomerOrder {
 
 	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
+	}
+	
+	/**
+	 * 
+	 * @return £PPP.pp Cost of order
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public String getCostString() {
+		int cost = this.getCost();
+		if(cost == 0) {
+			return "£0.00";
+		} else {
+			return "£" + (cost / 100) + "." + (cost % 100);
+		}		
 	}
 
 }

@@ -53,13 +53,13 @@ public class Product {
 	@Column
 	@NotNull
 	//Assume Product in pence hence integer
-	private double rrp;
+	private int rrp;
 	
 	
 	@Column(name="current_price")
 	@NotNull
 	//Assume Product in pence hence integer
-	private double currentPrice;
+	private int currentPrice;
 	
 	@Column(length=225)
 	@Size(max=225)
@@ -85,8 +85,8 @@ public class Product {
 	 */
 	public Product(){}
 	
-	public Product(long productID, long stockID, String name, String description, int quantity, double rrp,
-			double currentPrice, ProductStatus status, LocalDate dateAdded, String category) {
+	public Product(long productID, long stockID, String name, String description, int quantity, int rrp,
+			int currentPrice, ProductStatus status, LocalDate dateAdded, String category) {
 		super();
 		this.id = productID;
 		this.stockID = stockID;
@@ -200,7 +200,7 @@ public class Product {
 	 * 
 	 * @MethodAuthor N GILL
 	 */
-	public double getRrp() {
+	public int getRrp() {
 		return rrp;
 	}
 
@@ -218,7 +218,7 @@ public class Product {
 	 * 
 	 * @MethodAuthor N GILL
 	 */
-	public double getCurrentPrice() {
+	public int getCurrentPrice() {
 		return currentPrice;
 	}
 
@@ -280,6 +280,26 @@ public class Product {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	
+	/**
+	 * 
+	 * @return £PPP.pp of Current Price
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public String getCurrentPriceString() {
+		return "£" + (this.currentPrice / 100) + "." + (this.currentPrice % 100);
+	}
+	
+	/**
+	 * 
+	 * @return £PPP.pp RRP
+	 * 
+	 * @MethodAuthor Alex Dawson
+	 */
+	public String getRRPString() {
+		return "£" + (this.rrp / 100) + "." + (this.rrp % 100);
 	}
 	
 	

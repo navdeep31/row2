@@ -27,6 +27,15 @@ import com.bae.oc.managers.CustomerManager;
 import com.bae.oc.managers.CustomerOrderManager;
 import com.bae.oc.managers.ProductManager;
 
+
+/**
+ * 
+ * 
+ * @author Somebody
+ * @author Alex Dawson
+ * @version 0.2 11/01/2017
+ *
+ */
 @Stateless
 public class OrderService {
 
