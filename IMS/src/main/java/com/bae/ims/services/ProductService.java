@@ -46,11 +46,10 @@ public class ProductService {
 
 		// TODO Validation below
 		if ((productID < 0) || (stockID < 0) || (quantity <= 0) || (rrp <= 0) || (currentPrice <= 0)) {
-			throw new IOException();
+			
 		}
 
-		Product product = new Product(productID, stockID, name, description, quantity, rrp, currentPrice, status,
-				dateAdded, category);
+		Product product = new Product(name, description, rrp, status, category);
 		productManager.createNewProduct(product);
 
 		return product;
@@ -80,28 +79,35 @@ public class ProductService {
 	public Product createProduct(String productID, String stockID, String name, String description, String quantity,
 			String rrp, String currentPrice, String status, String dateAdded, String category) throws Exception {
 
-		long lProductID;
-		long lStockID;
-		int iQuantity;
-		long lCurrentPrice;
-		long lRRP;
-		ProductStatus eStatus;
-		LocalDate ldDateAdded;
+		long lProductID = 0;
+		long lStockID = 0;
+		int iQuantity = 0;
+		long lCurrentPrice = 0;
+		long lRRP = 0;
+		ProductStatus eStatus = null;
+		LocalDate ldDateAdded = null;
 
 		try {
 
+			if(!productID.isEmpty()) {
 			lProductID = Long.parseLong(productID);
 			lStockID = Long.parseLong(stockID);
+			}
 			if (!quantity.isEmpty()) {
 				iQuantity = Integer.parseInt(quantity);
 			} else {
 				iQuantity = 0;
 			}
+			if (!currentPrice.isEmpty()) {
 			lCurrentPrice = Long.parseLong(currentPrice);
+			}
+			if (!rrp.isEmpty()) {
 			lRRP = Long.parseLong(rrp);
+			}
 			// Work out how this works
+			if (!dateAdded.isEmpty()) {
 			ldDateAdded = LocalDate.parse(dateAdded);
-
+			}
 			// Modify if feel like it
 			if (status.isEmpty()) {
 				eStatus = ProductStatus.AVAILABLE;
@@ -112,11 +118,11 @@ public class ProductService {
 			} else if (status.equals("DISCONTINUED")) {
 				eStatus = ProductStatus.DISCONTINUED;
 			} else {
-				throw new Exception();
+				//throw new Exception();
 			}
 
-		} catch (Exception e) {
-			throw new Exception("format exception");
+		} finally  {
+			//throw new Exception("format exception");
 		}
 
 		Product product = createProduct(lProductID, lStockID, name, description, iQuantity, lRRP, lCurrentPrice,

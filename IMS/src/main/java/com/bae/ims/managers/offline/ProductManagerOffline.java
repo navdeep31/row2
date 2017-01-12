@@ -27,6 +27,7 @@ public class ProductManagerOffline implements ProductManager {
 	public void createNewProduct(Product product) {
 		List<Product> products = testData.getProducts();
 		product.setProductID(products.size() + 1);
+		product.setStockID(products.size() + 1);
 		products.add(product);
 		testData.setProducts(products);
 	}

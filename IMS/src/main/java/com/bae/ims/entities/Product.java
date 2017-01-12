@@ -99,6 +99,16 @@ public class Product {
 		this.dateAdded = dateAdded;
 		this.category = category;
 	}
+	
+	public Product(String name, String description, long rrp, ProductStatus status, String category) {
+		this.name = name; 
+		this.description = description;
+		this.rrp = rrp;
+		this.currentPrice = rrp;
+		this.status = status;
+		this.category = category;
+		this.dateAdded = LocalDate.now();
+	}
 
 
 

@@ -55,12 +55,14 @@ public class NewProductController {
 	 */
 	public String createProduct() {
 		try {
+			System.out.println("problem here");
 			selectedProduct.setProduct(productService.createProduct(productId, stockId, name, 
 					description, quantity, rrp, currentPrice, status, dateAdded, category));
 			
 			return "products"; 
 			
 		} catch (Exception e) {
+			System.out.println(e.toString());
 			return "createproduct"; 
 		}
 		
