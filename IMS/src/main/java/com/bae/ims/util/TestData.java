@@ -82,7 +82,7 @@ public class TestData {
 		order1.addOrderLine(new PurchaseOrderLine(products.get(1), 150));
 		orders.add(order1);
 		
-		PurchaseOrder order2 = new PurchaseOrder(2, employees.get(0), addresses.get(0), LocalDate.of(2013, Month.JANUARY, 11));
+		PurchaseOrder order2 = new PurchaseOrder(2, employees.get(1), addresses.get(1), LocalDate.of(2013, Month.JANUARY, 11));
 		order2.addOrderLine(new PurchaseOrderLine(products.get(2), 250));
 		order2.addOrderLine(new PurchaseOrderLine(products.get(3), 200));
 		orders.add(order2);

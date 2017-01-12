@@ -28,7 +28,7 @@
 		<c:forEach var="orderlist" items="#{orderSearch.searchAll()}" varStatus="loop">
 		<h:form>
   				<h:commandLink type="button" class="list-group-item orderButton" value="Order No: #{orderlist.getId()}" action="#{selectedOrder.setOrder(orderlist)}">
-  				<!--  <span style="float: right" class="glyphicon glyphicon-chevron-right"></span> -->
+  				<span style="float: right" class="glyphicon glyphicon-chevron-right"></span>
   				</h:commandLink> 				
   				</h:form>
 			
@@ -50,8 +50,8 @@
 						<tbody>
 							<tr>
 							<td><h:outputText value="#{selectedOrder.getOrder().getId()}"></h:outputText></td>
-							<td><h:outputText value="#{selectedOrder.getOrder().getEmployee().getName()}"></h:outputText></td>
 							<td><h:outputText value="#{selectedOrder.getOrder().getDateAdded()}"></h:outputText></td>
+							<td><h:outputText value="#{selectedOrder.getOrder().getEmployee().getName()}"></h:outputText></td>
 							</tr>
 						</tbody>
 					</table>
