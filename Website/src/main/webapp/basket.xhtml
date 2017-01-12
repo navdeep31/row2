@@ -23,8 +23,8 @@
 				<div class="col-md-12 main" align="left">
 					<header id="heading">
 						<h1>
-							<h:outputText value="#{user.getCustomer().getFirstName()}" />
-							's Basket
+							<h:outputText value="#{user.getCustomer().getFirstName()}" />'s Basket
+							
 						</h1>
 					</header>
 				</div>
@@ -105,7 +105,7 @@
 									<div class="form-group">
 										<h:form>
 											<label for="updateQuantity" class="control-label"><strong>Quantity</strong>:</label>
-											<h:inputText value="#{basket.quantities[loop.index]}" class="form-control">
+											<h:inputText value="#{basket.quantities[loop.index]}" class="test form-control">
 												<f:passThroughAttribute name="Enter Quantity" value="text" />
 												<f:passThroughAttribute name="alt" value="First Name" />
 												<f:passThroughAttribute name="required" value="true" />
