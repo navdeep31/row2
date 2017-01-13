@@ -40,34 +40,40 @@
 												aria-hidden="true"></span></a>
 					<c:forEach var="productlist" items="#{productSearch.searchAll()}"
 						varStatus="loop">
-						<div class="row list-group-item orderButton listitems">
-							<div class="col-lg-10">
-								<div>
-									Product ID:
-									<h:outputText value="#{productlist.getProductID()}" />
-								</div>
-								<div>
-									Name:
-									<h:outputText value="#{productlist.getName()}" />
-								</div>
-								<div>
-									Status:
-									<h:outputText value="#{productlist.getStatus()}" />
-
-								</div>
-							</div>
-							<div class="col-lg-2\">
-								<h:form>
-									<h:commandLink type="button button-default"
-										action="#{selectedProduct.setProduct(productlist)}">
+						
+						<h:form>
+						<h:commandLink type="button" class="row list-group-item orderButton listitems" action="#{selectedProduct.setProduct(productlist)}">
+																				
+							
+								
+									
+										<P>
+										<span value="#{productlist.getProductID()}">
+										<h:outputText value="Stock ID: #{productlist.getStockID()}"></h:outputText>
+										</span></P>
+										
+										<P>	
+										<span value="#{productlist.getName()}">
+										<h:outputText value="Name: #{productlist.getName()}"></h:outputText>
 										<span style="float: right"
 											class="glyphicon glyphicon-chevron-right listbuttons"
 											aria-hidden="true"></span>
+										</span></P>
+										
+										<P>
+										<span value="#{productlist.getStatus()}">
+										<h:outputText value="Status: #{productlist.getStatus()}"></h:outputText>
+										</span> </P>
+										
+										
+									
+									
 									</h:commandLink>
+								
 								</h:form>
 
-							</div>
-						</div>
+							
+						
 					</c:forEach>
 
 				</div>
@@ -78,7 +84,9 @@
 			<div class="col-md-8 orderDetails">
 				<div class="panel panel-default">
 					<div id="panelhead2" class="panel-heading panelhead12">
-						<h4>Stock ID: #1234</h4>
+						<h4>
+						<h:outputText value="Stock ID: #{selectedProduct.getProduct().getStockID()}"></h:outputText>
+						</h4>
 					</div>
 					<!-- End Panel-heading -->
 
