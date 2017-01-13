@@ -12,7 +12,7 @@
 
 	<ui:define name="mainContent">
 		<h:outputText value="#{basket.setBasket()}" />
-		<link type="text/css" rel="stylesheet" href="css/newbasket.css" />
+		<link type="text/css" rel="stylesheet" href="css/basket-final.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="css/productPage.css" />
 		
 		<!-- Render normal basket page if logged in -->
@@ -60,14 +60,14 @@
 				<div class="row" id="orderline">
 				
 					<!-- Product picture -->
-					<div class="col-sm-4 productImage" align="left" action="#{basket.setSelectedProduct()}">
+					<div class="col-sm-4 productImage" action="#{basket.setSelectedProduct()}">
 						<a href="productPage.xhtml">
 							<h:graphicImage value="#{selected.getProduct().getImageUrl()}" class="img-responsive center-block" />
 						</a>
 					</div>
 					
 					
-					<div class="col-sm-8" align="left">
+					<div class="col-sm-7 col-sm-offset-1">
 						
 						<!-- Product name and description -->
 						<h3>
@@ -101,7 +101,7 @@
 								</div>
 								
 								<!-- Method buttons  -->
-								<div class="col-sm-8" align="right">
+								<div class="col-sm-4 col-sm-offset-4">
 
 
 									<div class="form-group">
@@ -115,7 +115,7 @@
 											<div> <hr id = "line"/>
 											<h:commandButton value="Update Quantity"
 											action="#{basket.updateQuantity()}"
-											class="btn btn-grey" />
+											class="btn btn-grey btn-block" />
 											</div>
 										</h:form>
 
@@ -125,11 +125,11 @@
 
 
 							<div class="row">
-								<div class="col-sm-12" align="right">
+								<div class="col-sm-4 col-sm-offset-8">
 									<h:form>
 										<h:commandButton value="Remove From Basket"
 											action="#{basket.removeFromBasket()}"
-											class="btn btn-grey" />
+											class="btn btn-grey btn-block" />
 									</h:form>
 					
 	

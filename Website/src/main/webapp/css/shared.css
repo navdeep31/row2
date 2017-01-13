@@ -54,6 +54,7 @@ c {
 	border-radius: 15px;
 	margin-top: 15px;
 	margin-bottom: 15px;
+	max-height: 212px;
 }
 
 .product-listbox {
@@ -63,4 +64,9 @@ c {
 	border: 5px solid rgb(149,179,215);
 	border-radius: 15px;
 	margin: 15px 5px;
+	height: 300px;
+}
+
+.listbox-container {
+	margin: 0px;
 }

@@ -21,7 +21,7 @@
 		</header>
 		
 		<!-- Search results -->
-		<section class="row">
+		<section class="row listbox-container">
 		
 			<!-- In a form as contains command buttons (and links?) Maybe reconsider -->
 			<h:form>
@@ -34,13 +34,13 @@
 					<h:commandLink value="Previous" action="#{searchResults.previous}" rendered="#{searchResults.pagination.hasPreviousPage}" />
 					<h:outputText value="#{searchResults.pagination.pageFirstItem + 1}..#{searchResults.pagination.pageLastItem + 1}/#{searchResults.pagination.itemsCount}" />
 					<h:commandLink value="Next" action="#{searchResults.next}" rendered="#{searchResults.pagination.hasNextPage}" />
-					<div>
+					<div class="row listbox-container">
 						<ui:repeat var="product" value="#{searchResults.pageResults}">
 							<section class="col-xs-12 col-md-4 product-listbox">
-									<div class="col-xs-12 col-md-6 product-img">
+									<div class="col-xs-6 product-img">
 										<h:graphicImage value="#{product.getImageUrl()}" class="img-responsive center-block" />
 									</div>
-									<div class="col-xs-12 col-md-6">
+									<div class="col-xs-6">
 										<h:commandLink action="#{products.select(product.id)}" value="#{product.name}"/>
 										<p><h:outputText value="#{product.description}" /></p>
 									</div>						
