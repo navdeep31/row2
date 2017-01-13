@@ -24,35 +24,51 @@
 		<section class="row listbox-container">
 		
 			<!-- In a form as contains command buttons (and links?) Maybe reconsider -->
-			<h:form>
+			
 				
 				<!-- Output text for no products -->
 				<h:outputText escape="false" value="No Products Found" rendered="#{searchResults.pageResults.rowCount==0}" />
 				
-				
-				<h:panelGroup rendered="#{searchResults.pageResults.rowCount>0}">
+				<h:panelGroup class="col-xs-12" rendered="#{searchResults.pageResults.rowCount>0}">
+					<h:form>
 					<h:commandLink value="Previous" action="#{searchResults.previous}" rendered="#{searchResults.pagination.hasPreviousPage}" />
 					<h:outputText value="#{searchResults.pagination.pageFirstItem + 1}..#{searchResults.pagination.pageLastItem + 1}/#{searchResults.pagination.itemsCount}" />
 					<h:commandLink value="Next" action="#{searchResults.next}" rendered="#{searchResults.pagination.hasNextPage}" />
+					</h:form>
 					<div class="row listbox-container">
 						<ui:repeat var="product" value="#{searchResults.pageResults}">
-							<section class="col-xs-12 col-md-4 product-listbox">
-									<div class="col-xs-6 product-img">
-										<h:graphicImage value="#{product.getImageUrl()}" class="img-responsive center-block" />
+							<section class="col-xs-12 col-md-4">
+								<div class="row listbox-container">
+									<div class="col-xs-12 product-listbox">
+										<div class="row listbox-container">
+											<div class="col-xs-6 product-img">
+												<h:graphicImage value="#{product.getImageUrl()}" class="img-responsive center-block" />
+											</div>
+											<div class="col-xs-6">
+												<h:form>
+												<h:commandLink action="#{products.select(product.id)}" value="#{product.name}"/>
+												<p><h:outputText value="#{product.description}" /></p>
+												</h:form>
+										
+										</div>
+										
+										<div class="col-xs-12">		
+										<br/>	
+										<h:commandButton class="btn btn-primary btn-block" action="#{basket.addToBasket(product)}" value="Add to Basket" rendered="#{user.loggedIn}" />
+										</div>
+										</div>
 									</div>
-									<div class="col-xs-6">
-										<h:commandLink action="#{products.select(product.id)}" value="#{product.name}"/>
-										<p><h:outputText value="#{product.description}" /></p>
-									</div>						
-								<h:commandButton class="btn btn-primary btn-block" action="#{wishlist.addToWishlist(product.id)}" value="Add to Wishlist" rendered="#{user.loggedIn}" />
+								</div>
+								
 							</section>
 						</ui:repeat>
 					</div>
+					<h:form>
 					<h:commandLink value="Previous" action="#{searchResults.previous}" rendered="#{searchResults.pagination.hasPreviousPage}" />
 					<h:outputText value="#{searchResults.pagination.pageFirstItem + 1}..#{searchResults.pagination.pageLastItem + 1}/#{searchResults.pagination.itemsCount}" />
 					<h:commandLink value="Next" action="#{searchResults.next}" rendered="#{searchResults.pagination.hasNextPage}" />
+					</h:form>
 				</h:panelGroup>
-			</h:form>
 		</section>
 		
 	</div>

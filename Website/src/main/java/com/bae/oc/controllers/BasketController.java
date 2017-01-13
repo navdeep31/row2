@@ -13,6 +13,7 @@ import com.bae.oc.controllers.session.CurrentUser;
 import com.bae.oc.controllers.session.SelectedProduct;
 import com.bae.oc.entities.CustomerOrder;
 import com.bae.oc.entities.CustomerOrderLine;
+import com.bae.oc.entities.Product;
 import com.bae.oc.services.OrderService;
 
 /**
@@ -109,6 +110,21 @@ public class BasketController implements Serializable {
 		}
 		
 		orderService.addToBasket(basket, selectedProduct.getProduct());
+		
+		return "";
+	}
+	
+	public String addToBasket(Product product) {
+
+		if (currentUser.isLoggedIn() == false) {
+			return "login";
+		}
+		
+		if (basket == null) {
+			setBasket();
+		}
+		
+		orderService.addToBasket(basket, product);
 		
 		return "";
 	}

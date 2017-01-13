@@ -47,23 +47,21 @@ c {
 }
 
 .product-img {
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding: 5px 5px;
 	background-color: rgba(217, 217, 217, 1);
 	border: 5px solid rgba(149, 179, 215, 1);
 	border-radius: 15px;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin 5px 0px;
 	max-height: 212px;
 }
 
 .product-listbox {
-	padding: -5px;
+	padding: 15px;
 	background-color: #ffffff;
 	border: 5px solid rgb(149,179,215);
 	border-radius: 15px;
-	margin: 15px 5px;
-	height: 300px;
+	margin: 15px 15px;
+	height: 250px;
 }
 
 .listbox-container {
