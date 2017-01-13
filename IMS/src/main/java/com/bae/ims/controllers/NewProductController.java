@@ -59,7 +59,7 @@ public class NewProductController {
 			selectedProduct.setProduct(productService.createProduct(productId, stockId, name, 
 					description, quantity, rrp, currentPrice, status, dateAdded, category));
 			
-			return "products"; 
+			return "Products"; 
 			
 		} catch (Exception e) {
 			System.out.println(e.toString());
