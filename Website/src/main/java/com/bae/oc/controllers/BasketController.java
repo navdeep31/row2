@@ -230,6 +230,21 @@ public class BasketController implements Serializable {
 		}
 
 	}
+	
+	public String updateQuantity(int iLineNumber) {
+		System.out.println("update quantity");
+		if (currentUser.isLoggedIn() == false) {
+			return "login";
+		}
+		try {			
+			orderService.updateQuantity(basket, iLineNumber, quantities);
+			return "basket";
+		} catch (Exception e) {
+			System.out.println("fail");
+			return "placeholder";
+		}
+
+	}
 
 	/**
 	 * Method firstly uses the isLoggedIn() method from the CurrentUser Session
