@@ -157,6 +157,18 @@ public class BasketController implements Serializable {
 			return "basket";
 		}
 	}
+	
+	public String removeFromBasket(int iLineNumber) {
+		System.out.println("Removing from basket");
+		if (currentUser.isLoggedIn() == false) {
+			return "login";
+		} else {
+			System.out.println("remove from basket");
+			orderService.removeFromBasket(basket, iLineNumber);
+
+			return "basket";
+		}
+	}
 
 	/**
 	 * Method firstly uses the isLoggedIn() method from the CurrentUser Session

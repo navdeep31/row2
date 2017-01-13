@@ -233,7 +233,11 @@ public class OrderService {
 
 	public void removeFromBasket(CustomerOrder iOrder, int iLineNumber) {
 		
-		iOrder.getOrderLines().remove(iLineNumber);
+		List<CustomerOrderLine> orderLines = iOrder.getOrderLines();
+		
+		orderLines.remove(iLineNumber);
+		
+		iOrder.setOrderLines(orderLines);
 
 		//DEBUG
 		System.out.println("Number of order lines before update:  " + iOrder.getOrderLines().size());
