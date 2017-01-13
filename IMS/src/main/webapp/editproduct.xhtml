@@ -21,20 +21,19 @@
 
 				<div class="panel-body">
 					<h:form>
-						<div class="row">
+						<div class="row">s
 							<div class="col-md-1"></div>
 							<div class="col-md-4">
 								<h3>Name:</h3>
-								<h:inputText value="#{product.name}"
-									class="test form-control">
+								<h:inputText value="#{product.name}" class="test form-control">
 									<f:passThroughAttribute name="Enter Quantity" value="text" />
 									<f:passThroughAttribute name="alt" value="name" />
 									<f:passThroughAttribute name="required" value="true" />
 								</h:inputText>
 							</div>
 							<div class="col-md-4">
-							<h3></h3>
-							
+								<h3></h3>
+
 							</div>
 						</div>
 					</h:form>
@@ -48,5 +47,8 @@
 
 
 		<!-- End Container -->
+		<f:metadata>
+			<f:viewAction action="#{current.redirect}" />
+		</f:metadata>
 	</ui:define>
 </ui:composition>
